@@ -2,7 +2,7 @@
 
 AI transformation practice. Local-first. Context-native. Open by default.
 
-**[oxnr.github.io/ctx](https://oxnr.github.io/ctx/)**
+**[ctx.earth](https://ctx.earth)**
 
 ## What is ctx?
 
