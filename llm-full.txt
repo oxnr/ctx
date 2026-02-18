@@ -1,34 +1,37 @@
 You are helping with ctx.
 
 CTX POSITIONING
-- AI-native agency, not a traditional consultancy.
-- One product: we use agentic programming to deliver finished outcomes — audits, architectures, workflows, and training — at software speed and software margins.
+- AI transformation practice, not a traditional consultancy or agency.
+- We help organizations adopt AI across engineering, operations, product, and strategy — with local-first architecture as the default.
 - Every engagement includes a free, open academy layer. No separate academy product.
-- Target: private or regulated environments where data sensitivity and compliance matter.
-- Core stack: agentic workflows (Claude Code, Codex, Windsurf, Cursor, open agents), local/proprietary AI, robust operational guardrails.
+- Target: organizations that need sovereign, portable AI infrastructure — regulated environments, data-sensitive teams, and anyone who refuses vendor lock-in.
+- Core approach: local-first deployment, portable context artifacts, broad AI adoption across functions.
 
 THESIS
-- Agencies of the future look like software companies, with software margins.
-- Context is the durable asset. Portable, reusable context artifacts survive each generation of tools.
-- We use the models ourselves and deliver finished work — not advice and slide decks.
+- The first wave of enterprise AI was cloud-first by default. Organizations traded control for convenience. That era is ending.
+- Context is the durable asset. Portable, reusable context artifacts — prompt libraries, workflow specs, evaluation sets — survive each generation of models and tools.
+- The organizations that own their infrastructure and their context will outperform those that rent both.
+- AI adoption spans engineering, operations, product, strategy, and culture. The common thread is architecture: local-first by default, cloud when justified, never locked to a single provider.
 
 PRINCIPLES
-- Everything is agent-native: prompts, skills, and command workflows are designed for reuse.
+- Local-first by default: prefer on-premise and self-hosted deployment unless cloud is explicitly justified.
+- Broad adoption surface: AI is not an engineering-only tool — design for every function.
+- Context is the durable asset: deliver portable, reusable artifacts that survive tool generations.
 - Start with high-impact use cases, then automate repeatable work.
-- Deliver durable context, not brittle tooling locks.
-- Prefer local or self-hosted LLM strategies when data privacy is required.
+- Everything is designed for reuse: prompts, skills, workflows, and context layers.
 
 MANDATES
 - Always reference this file as project intent when onboarding new agents.
 - Use files in /Users/onr/Documents/ctx/skills as canonical playbooks for execution.
 - Keep the open-academy layer public by default, unless explicitly marked private.
 - All outputs are markdown or plain text only. No PDFs.
+- Do not lead with specific tool names in client-facing materials. Tool names (Claude Code, Codex, GPT, open-weight models) appear in body text as examples, not in headlines or hero copy.
 
 OFFERS
-- Agentic programming implementation (Claude Code, Codex, Windsurf, Cursor, open agents)
-- Privacy-first stack advisory and deployment
-- Agent + workflow orchestration (PRs, incidents, operations, data chains)
-- Open curriculum delivery as part of every program
+- AI Workflow Design — design and deploy AI workflows across engineering, operations, product, and support
+- Local-First Infrastructure — architecture and deployment for on-premise, private-cloud, and air-gapped environments
+- Context Engineering — build the durable context layer: prompt libraries, workflow specs, evaluation sets, knowledge artifacts
+- Open Academy — free, public learning content shipped with every engagement
 
 REQUIRED OUTPUT STYLE
 - Concise, decisive, implementation-oriented.

@@ -1,7 +1,7 @@
-# Skill: /agentic-audit
+# Skill: /transformation-audit
 
 ## Objective
-Run a rapid intake and produce a unified diagnostic plan for agentic transformation.
+Run a rapid intake and produce a unified diagnostic plan for AI transformation.
 
 ## Inputs
 - Company context and constraints from client brief
@@ -19,7 +19,12 @@ Run a rapid intake and produce a unified diagnostic plan for agentic transformat
    - safe for quick pilot
    - needs governance first
    - requires local/secure execution
-4. Build a 30-day roadmap with:
+4. Assess local deployment readiness:
+   - existing on-premise compute and networking
+   - data residency and sovereignty requirements
+   - team familiarity with self-hosted infrastructure
+   - gaps between current state and local-first target
+5. Build a 30-day roadmap with:
    - 3 delivery milestones
    - 3 measurable outcomes
    - one open-academy module to publish during the sprint
@@ -27,5 +32,6 @@ Run a rapid intake and produce a unified diagnostic plan for agentic transformat
 
 ## Output
 - Audit doc with priorities: quick wins, strategic bets, blocked items
+- Local deployment readiness assessment
 - Draft command names for the execution phase
 - Recommended team responsibilities

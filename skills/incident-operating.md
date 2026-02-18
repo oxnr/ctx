@@ -1,7 +1,7 @@
 # Skill: /incident-operating
 
 ## Objective
-Run a structured response when an agentic workflow produces wrong outputs or process failures.
+Run a structured response when an AI workflow produces wrong outputs or process failures.
 
 ## Inputs
 - Incident summary from agent run
@@ -19,6 +19,7 @@ Run a structured response when an agentic workflow produces wrong outputs or pro
    - data error
    - model quality error
    - environment failure
+   - infrastructure/deployment failure (network, compute, storage, model hosting)
 4. Remediate with smallest safe rollback.
 5. Update:
    - skill prompts

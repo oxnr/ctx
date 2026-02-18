@@ -6,7 +6,7 @@ Publish a practical open learning module tied to the current implementation phas
 ## Inputs
 - Chosen workflow or stack feature from consulting sprint
 - Current client constraints and success criteria
-- Audience level (engineer, product, leadership)
+- Audience level (engineer, product, operations, leadership)
 
 ## Steps
 1. Define one core outcome for the module (e.g., safe delegation for coding tasks).
@@ -17,10 +17,13 @@ Publish a practical open learning module tied to the current implementation phas
 3. Write in public-safe terms:
    - no sensitive client data
    - no internal secrets
-4. Publish artifacts:
-  - markdown module
-  - FAQ from likely operational questions
-  - all outputs in markdown or plain text only
+4. Ensure modules are infrastructure-independent:
+   - no hard dependencies on specific providers or deployment targets
+   - examples should work across cloud, private-cloud, and on-premise environments
+5. Publish artifacts:
+   - markdown module
+   - FAQ from likely operational questions
+   - all outputs in markdown or plain text only
 
 ## Output
 - Open module with clear learning outcome

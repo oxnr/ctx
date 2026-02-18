@@ -1,7 +1,7 @@
-# Skill: /design-stack
+# Skill: /design-local-stack
 
 ## Objective
-Recommend an agentic architecture that satisfies privacy constraints and real-world operability.
+Recommend an AI architecture that satisfies sovereignty and control constraints and real-world operability.
 
 ## Inputs
 - Security requirements (PII, regulated data, retention policy)
