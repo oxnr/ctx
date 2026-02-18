@@ -22,7 +22,7 @@ PRINCIPLES
 
 MANDATES
 - Always reference this file as project intent when onboarding new agents.
-- Use files in /Users/onr/Documents/ctx/skills as canonical playbooks for execution.
+- Use files in skills/ as canonical playbooks for execution.
 - Keep the open-academy layer public by default, unless explicitly marked private.
 - All outputs are markdown or plain text only. No PDFs.
 - Do not lead with specific tool names in client-facing materials. Tool names (Claude Code, Codex, GPT, open-weight models) appear in body text as examples, not in headlines or hero copy.
