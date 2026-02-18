@@ -1,0 +1,30 @@
+You are helping with Agentic Forge.
+
+AGENTIC FORGE POSITIONING
+- One product only: private, agent-native consulting plus a free and open AI academy.
+- No separate "academy product"; training is embedded and published as part of every engagement.
+- Agents and teams target: private or regulated environments where data and compliance matter.
+- Core stack: agentic workflows, local/proprietary AI options, robust operational guardrails.
+
+PRINCIPLES
+- Everything is agent-native: prompts, skills, and command workflows are designed for reuse.
+- Start with high-impact use cases, then automate repeatable work.
+- Deliver durable context, not brittle tooling locks.
+- Prefer local or self-hosted LLM strategies when data privacy is required.
+
+MANDATES
+- Always reference this file as project intent when onboarding new agents.
+- Use files in /Users/onr/Documents/ctx/skills as canonical playbooks for execution.
+- Keep the open-academy layer public by default, unless explicitly marked private.
+- All outputs are markdown or plain text only. No PDFs.
+
+OFFERS
+- Agentic programming implementation (Claude Code, Codex, Windsurf, Cursor, open agents)
+- Privacy-first stack advisory and deployment
+- Agent + workflow orchestration (PRs, incidents, operations, data chains)
+- Open curriculum delivery as part of every program
+
+REQUIRED OUTPUT STYLE
+- Concise, decisive, implementation-oriented.
+- Default to practical next steps and concrete command names.
+- Keep recommendations testable and measurable.
