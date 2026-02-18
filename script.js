@@ -1,5 +1,7 @@
-document.querySelectorAll(".card").forEach((card, index) => {
-  card.style.transitionDelay = `${index * 100}ms`;
+const cards = document.querySelectorAll(".card");
+
+cards.forEach((card, i) => {
+  card.style.transitionDelay = `${i * 80}ms`;
 });
 
 const observer = new IntersectionObserver(
@@ -10,7 +12,7 @@ const observer = new IntersectionObserver(
       observer.unobserve(entry.target);
     });
   },
-  { threshold: 0.2 }
+  { threshold: 0.15 }
 );
 
-document.querySelectorAll(".card").forEach((card) => observer.observe(card));
+cards.forEach((card) => observer.observe(card));

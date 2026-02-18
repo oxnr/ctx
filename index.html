@@ -3,224 +3,182 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Agentic Forge | Build for the AI Era</title>
+    <title>ctx — AI-Native Agency</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="grain"></div>
-    <div class="site-shell">
-      <header class="hero">
-        <nav class="top-nav">
-          <p class="brand">AGENTIC FORGE</p>
-          <a class="nav-link" href="#offering">Offering</a>
-          <a class="nav-link" href="#curriculum">Open Academy</a>
-          <a class="nav-link" href="#tools">Tools</a>
-          <a class="nav-link" href="#process">How We Work</a>
-          <a class="nav-link cta" href="#contact">Book a Session</a>
-        </nav>
+    <nav>
+      <a href="/" class="brand">ctx</a>
+      <div class="nav-links">
+        <a href="#thesis">Thesis</a>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#academy">Academy</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
 
-        <p class="label">AI + automation consultancy</p>
-        <h1>Build AI teams that survive shifting models and tools.</h1>
-        <p class="subtitle">
-          We are one product: private, agent-native consulting with a free and open
-          academy embedded in every engagement. We ship strategy, systems, and hands-on
-          training that works with Claude Code, Codex, Windsurf, Cursor, and what comes next.
+    <main>
+      <section class="hero">
+        <h1>We deliver the finished product.<br />Not the pitch deck.</h1>
+        <p class="hero-sub">
+          ctx is an AI-native agency. We use agentic programming to ship real outcomes —
+          audits, architectures, workflows, and training — at software speed and software margins.
+          Every engagement includes a free, open academy layer.
         </p>
-        <div class="command-card">
-          <p class="cmd-prefix">/agentic-bootstrap</p>
-          <p class="cmd-copy">
-            Run an end-to-end intake, then produce a 30-day execution roadmap and
-            a public learning sprint plan for the team.
+      </section>
+
+      <section id="thesis" class="section">
+        <p class="section-label">Thesis</p>
+        <h2>AI-Native Agencies</h2>
+        <div class="prose">
+          <p>
+            Agencies have always been hard to scale. Low margins, slow manual work,
+            and the only way to grow is to add more people.
+          </p>
+          <p>
+            AI changes this. Instead of selling advice and hoping clients execute,
+            we use the models ourselves and deliver finished work — at a fraction of the time
+            and multiples of the quality.
+          </p>
+          <p>
+            Agencies of the future will look more like software companies, with software margins.
+            We're building that now, focused on the agentic programming stack: Claude Code,
+            Codex, Windsurf, Cursor, and the open tools emerging around them.
+          </p>
+          <p>
+            Our thesis: <em>context is the durable asset</em>. Portable, reusable context
+            artifacts — not rigid platform dependencies — are what survive each generation
+            of tools.
           </p>
         </div>
-      </header>
+      </section>
 
-      <main>
-        <section id="offering" class="panel">
-          <div class="section-head">
-            <p class="label">The single offer</p>
-            <h2>Consulting + Open Academy, always bundled</h2>
-          </div>
-          <div class="grid">
-            <article class="card">
-              <p class="card-tag">Track 01</p>
-              <h3>1) Agentic Programming Delivery</h3>
-              <p>
-                Set up and scale agent-based development workflows across Claude Code,
-                Codex, Windsurf, Cursor and open platforms. We design task decomposition,
-                quality gates, memory, and review loops.
-              </p>
-              <ul>
-                <li>Developer workflow modernization</li>
-                <li>Agent instruction design (Agents.md / task prompts)</li>
-                <li>Review + approval guardrails</li>
-              </ul>
-            </article>
+      <section id="work" class="section">
+        <p class="section-label">What We Do</p>
+        <h2>Four tracks, one engagement</h2>
+        <div class="grid">
+          <article class="card">
+            <span class="card-num">01</span>
+            <h3>Agentic Programming</h3>
+            <p>
+              Set up and scale agent-based development workflows. Task decomposition,
+              quality gates, memory systems, and review loops across Claude Code, Codex,
+              Windsurf, and Cursor.
+            </p>
+          </article>
+          <article class="card">
+            <span class="card-num">02</span>
+            <h3>Privacy-First AI</h3>
+            <p>
+              Architecture and deployment for local, proprietary, and air-gapped models.
+              For teams where data sensitivity is non-negotiable: RAG pipelines,
+              policy enforcement, compliance-ready designs.
+            </p>
+          </article>
+          <article class="card">
+            <span class="card-num">03</span>
+            <h3>Agent Workflows</h3>
+            <p>
+              Durable orchestration for production: PR pipelines, incident playbooks,
+              data refresh chains, and human-in-the-loop checkpoints using open
+              tooling and clear contracts.
+            </p>
+          </article>
+          <article class="card">
+            <span class="card-num">04</span>
+            <h3>Open Academy</h3>
+            <p>
+              Every engagement ships free, public learning content. Reusable prompts,
+              labs, playbooks, and implementation checklists — all markdown,
+              never paywalled.
+            </p>
+          </article>
+        </div>
+      </section>
 
-            <article class="card">
-              <p class="card-tag">Track 02</p>
-              <h3>2) Privacy-First AI Stack</h3>
-              <p>
-                Advisory and implementation for local, proprietary, and offline-ready
-                models where data sensitivity is non-negotiable.
-              </p>
-              <ul>
-                <li>Local LLM architecture and deployment</li>
-                <li>RAG + policy enforcement</li>
-                <li>Air-gapped and compliance-friendly designs</li>
-              </ul>
-            </article>
-
-            <article class="card">
-              <p class="card-tag">Track 03</p>
-              <h3>3) Agents + Workflow Engine</h3>
-              <p>
-                Build durable orchestration: ticket routing, PR pipelines, incident
-                playbooks, data refresh chains, and human-in-the-loop checkpoints.
-              </p>
-              <ul>
-                <li>Open-source orchestration integration</li>
-                <li>Tool contracts and handoff standards</li>
-                <li>Observability and incident response for agents</li>
-              </ul>
-            </article>
-
-            <article class="card">
-              <p class="card-tag">Track 04</p>
-              <h3>4) Open Academy Layer (built-in)</h3>
-              <p>
-                Every engagement ships free public learning content: reusable prompts,
-                labs, and playbooks for engineering, product, and leadership.
-              </p>
-              <ul>
-                <li>Public playbooks after every phase</li>
-                <li>Reusable company-safe templates</li>
-                <li>Free and open curriculum, not a separate paid product</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section id="curriculum" class="panel">
-          <div class="section-head">
-            <p class="label">Open academy</p>
-            <h2>Full Curriculum (Modular)</h2>
-          </div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <h3>Module 1 — Foundations</h3>
-              <p>AI model basics, model context limits, prompt engineering, tool use patterns.</p>
-            </div>
-            <div class="timeline-item">
-              <h3>Module 2 — Agentic Thinking</h3>
-              <p>Task decomposition, orchestration, delegation boundaries, and risk design.</p>
-            </div>
-            <div class="timeline-item">
-              <h3>Module 3 — Private AI Deployment</h3>
-              <p>Local models, security assumptions, data classification, and governance.</p>
-            </div>
-            <div class="timeline-item">
-              <h3>Module 4 — Workflow Architecture</h3>
-              <p>Designing reusable workflows for engineering, support, operations, and sales.</p>
-            </div>
-            <div class="timeline-item">
-              <h3>Module 5 — Evaluation & Reliability</h3>
-              <p>Output quality checks, hallucination control, test harnesses, rollback patterns.</p>
-            </div>
-            <div class="timeline-item">
-              <h3>Module 6 — Scale & Culture</h3>
-              <p>Team operating models, center of excellence, metrics, and capability ladders.</p>
-            </div>
-            <div class="timeline-item">
-              <h3>Module 7 — Free Outputs</h3>
-              <p>
-                Every module produces open artifacts: skill docs, slash-command playbooks,
-                and implementation checklists.
-              </p>
+      <section id="process" class="section">
+        <p class="section-label">Process</p>
+        <h2>How we deliver</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">01</span>
+            <div>
+              <h3>Discover</h3>
+              <p>Audit systems, teams, data sensitivity, and the current toolchain. Identify the highest-leverage use cases.</p>
             </div>
           </div>
-        </section>
+          <div class="step">
+            <span class="step-num">02</span>
+            <div>
+              <h3>Design</h3>
+              <p>Define the context store, agent contracts, governance model, and success metrics.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">03</span>
+            <div>
+              <h3>Ship</h3>
+              <p>Run a 30-day transformation sprint with measurable milestones and working deliverables at every checkpoint.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">04</span>
+            <div>
+              <h3>Publish</h3>
+              <p>Release open academy modules, harden workflows, and document the operating model in portable markdown.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <section id="tools" class="panel">
-          <div class="section-head">
-            <p class="label">Agent-native execution</p>
-            <h2>Skills, llm-full.txt, and command layer</h2>
+      <section id="academy" class="section">
+        <p class="section-label">Open Academy</p>
+        <h2>Curriculum</h2>
+        <p class="section-intro">Every module produces open artifacts: skill docs, playbooks, and implementation checklists.</p>
+        <div class="modules">
+          <div class="module">
+            <span>01</span>
+            <p><strong>Foundations</strong> — AI model basics, context limits, prompt engineering, tool use patterns.</p>
           </div>
-          <div class="stack">
-            <div class="stack-card">
-              <span>skills/</span>
-              <p>
-                Markdown playbooks for every repeatable workflow: audits, stack design,
-                workflow launch, incident handling, and training facilitation.
-              </p>
-            </div>
-            <div class="stack-card">
-              <span>llm-full.txt</span>
-              <p>
-                Universal context file for any model or agent. It defines what this firm
-                is, how we operate, and how to interpret all skills.
-              </p>
-            </div>
-            <div class="stack-card">
-              <span>Slash commands</span>
-              <p>
-                <strong>/agentic-audit</strong>, <strong>/design-stack</strong>,
-                <strong>/deploy-workflow</strong>, <strong>/open-academy</strong>
-              </p>
-            </div>
-            <div class="stack-card">
-              <span>Tool output</span>
-              <p>
-                Open artifacts (unless explicitly restricted): checklists, prompts,
-                templates, and learning modules as markdown or plain text.
-              </p>
-            </div>
+          <div class="module">
+            <span>02</span>
+            <p><strong>Agentic Thinking</strong> — Task decomposition, orchestration, delegation boundaries, and risk design.</p>
           </div>
-        </section>
+          <div class="module">
+            <span>03</span>
+            <p><strong>Private AI Deployment</strong> — Local models, security assumptions, data classification, and governance.</p>
+          </div>
+          <div class="module">
+            <span>04</span>
+            <p><strong>Workflow Architecture</strong> — Designing reusable workflows for engineering, support, operations, and sales.</p>
+          </div>
+          <div class="module">
+            <span>05</span>
+            <p><strong>Evaluation &amp; Reliability</strong> — Output quality, hallucination control, test harnesses, rollback patterns.</p>
+          </div>
+          <div class="module">
+            <span>06</span>
+            <p><strong>Scale &amp; Culture</strong> — Team operating models, centers of excellence, metrics, and capability ladders.</p>
+          </div>
+        </div>
+      </section>
 
-        <section id="process" class="panel">
-          <div class="section-head">
-            <p class="label">Implementation</p>
-            <h2>How we deliver</h2>
-          </div>
-          <div class="stack">
-            <div class="stack-card">
-              <span>01</span>
-              <p><strong>Discover:</strong> audit systems, teams, data sensitivity, current toolchain.</p>
-            </div>
-            <div class="stack-card">
-              <span>02</span>
-              <p><strong>Design:</strong> define the context store, agent contracts, and governance model.</p>
-            </div>
-            <div class="stack-card">
-              <span>03</span>
-              <p><strong>Ship:</strong> run a 30-day transformation sprint with measurable milestones.</p>
-            </div>
-            <div class="stack-card">
-              <span>04</span>
-              <p><strong>Scale:</strong> publish open academy modules in markdown/plain text, harden workflows, and document the operating model.</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" class="panel cta-band">
-          <p class="label">Start here</p>
-          <h2>Ready for a no-fluff diagnosis of your AI stack?</h2>
-          <p>Tell us your team size, data constraints, and current toolchain. We return a practical roadmap in 10 days.</p>
-          <a href="mailto:hello@agenticforge.com" class="btn">Get in touch</a>
-        </section>
-      </main>
-    </div>
+      <section id="contact" class="section section-cta">
+        <h2>If you're rethinking how agencies and service businesses of the future will be built, we'd like to hear from you.</h2>
+        <a href="mailto:hello@ctx.dev" class="btn">Get in touch</a>
+      </section>
+    </main>
 
     <footer>
-      <p>© 2026 Agentic Forge</p>
-      <p>Agent-first. Privacy-first. Outcome-first.</p>
+      <p>&copy; 2026 ctx</p>
+      <p>Context-first. Agent-native. Open by default.</p>
     </footer>
 
     <script src="script.js" defer></script>

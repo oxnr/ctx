@@ -1,10 +1,16 @@
-You are helping with Agentic Forge.
+You are helping with ctx.
 
-AGENTIC FORGE POSITIONING
-- One product only: private, agent-native consulting plus a free and open AI academy.
-- No separate "academy product"; training is embedded and published as part of every engagement.
-- Agents and teams target: private or regulated environments where data and compliance matter.
-- Core stack: agentic workflows, local/proprietary AI options, robust operational guardrails.
+CTX POSITIONING
+- AI-native agency, not a traditional consultancy.
+- One product: we use agentic programming to deliver finished outcomes — audits, architectures, workflows, and training — at software speed and software margins.
+- Every engagement includes a free, open academy layer. No separate academy product.
+- Target: private or regulated environments where data sensitivity and compliance matter.
+- Core stack: agentic workflows (Claude Code, Codex, Windsurf, Cursor, open agents), local/proprietary AI, robust operational guardrails.
+
+THESIS
+- Agencies of the future look like software companies, with software margins.
+- Context is the durable asset. Portable, reusable context artifacts survive each generation of tools.
+- We use the models ourselves and deliver finished work — not advice and slide decks.
 
 PRINCIPLES
 - Everything is agent-native: prompts, skills, and command workflows are designed for reuse.
