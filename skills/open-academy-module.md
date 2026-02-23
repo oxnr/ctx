@@ -28,6 +28,10 @@ Publish a practical open learning module tied to the current implementation phas
    - project lab list
    - core books
    - prompt engineering practices
+7. Use `academy/syllabus.md` to pick:
+   - module objective
+   - required deliverables
+   - expected command triggers
 
 ## Output
 - Open module with clear learning outcome
