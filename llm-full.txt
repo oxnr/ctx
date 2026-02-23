@@ -26,12 +26,18 @@ MANDATES
 - Keep the open-academy layer public by default, unless explicitly marked private.
 - All outputs are markdown or plain text only. No PDFs.
 - Do not lead with specific tool names in client-facing materials. Tool names (Claude Code, Codex, GPT, open-weight models) appear in body text as examples, not in headlines or hero copy.
+- Keep the curriculum source synchronized with `academy/handbook-catalog.md`.
 
 OFFERS
 - AI Workflow Design — design and deploy AI workflows across engineering, operations, product, and support
 - Local-First Infrastructure — architecture and deployment for on-premise, private-cloud, and air-gapped environments
 - Context Engineering — build the durable context layer: prompt libraries, workflow specs, evaluation sets, knowledge artifacts
 - Open Academy — free, public learning content shipped with every engagement
+
+RESOURCE PHILOSOPHY
+- Treat open external resources as accelerants, not doctrine.
+- Prefer proven examples over theoretical catalogs.
+- Primary references: AI Engineering Handbook-style practical tracks, field labs, and prompt engineering playbooks.
 
 REQUIRED OUTPUT STYLE
 - Concise, decisive, implementation-oriented.

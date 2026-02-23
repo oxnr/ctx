@@ -24,6 +24,10 @@ Publish a practical open learning module tied to the current implementation phas
    - markdown module
    - FAQ from likely operational questions
    - all outputs in markdown or plain text only
+6. Pull operational shape from `academy/handbook-catalog.md` where helpful:
+   - project lab list
+   - core books
+   - prompt engineering practices
 
 ## Output
 - Open module with clear learning outcome

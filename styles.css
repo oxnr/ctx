@@ -271,6 +271,41 @@ nav {
   color: var(--text);
 }
 
+.resource-grid {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.resource-block h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+}
+
+.resource-list {
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+  color: var(--text-secondary);
+  padding: 0;
+}
+
+.resource-list li {
+  line-height: 1.7;
+}
+
+.resource-list a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.resource-list a:hover {
+  border-bottom-color: var(--text);
+}
+
 /* ---- CTA ---- */
 
 .section-cta {
@@ -325,6 +360,10 @@ footer {
 @media (min-width: 768px) {
   .grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .resource-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
