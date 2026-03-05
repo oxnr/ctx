@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Rethink+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
     <link rel="canonical" href="https://ctx.earth/" />
   </head>
-  <body class="subpage">
+  <body class="subpage home-page">
     <header class="site-header">
       <a class="brand" href="/">ctx</a>
       <div class="header-actions">
@@ -44,36 +44,62 @@
     </header>
 
     <main>
-      <section class="hero section" data-reveal>
-        <p class="hero-kicker">Harness, not noise</p>
-        <h1>The future is Agentic.</h1>
-        <p class="hero-subtitle">
-          Local-first AI harnesses, open curriculum, and consulting for teams that ship.
-        </p>
+      <section class="hero section hero-home" data-reveal>
+        <div class="hero-surface" aria-hidden="true">
+          <svg class="hero-signal" preserveAspectRatio="none"></svg>
+        </div>
+        <div class="hero-copy">
+          <p class="hero-kicker">Local-first AI practice</p>
+          <h1>AI work that survives the next model cycle.</h1>
+          <p class="hero-subtitle">
+            For teams building with agents, real workflows, and reusable context.
+          </p>
+          <p class="hero-phrase">
+            <span class="hero-phrase__label">Built around</span>
+            <span class="hero-keyword" data-keywords="context,workflow,handoffs,standards">context</span>
+            <span class="hero-phrase__suffix">instead of platform churn.</span>
+          </p>
+        </div>
       </section>
 
       <section class="section section-compact" data-reveal>
-        <p class="section-label">What is inside</p>
+        <p class="section-label">Explore</p>
         <div class="overview-grid">
           <a class="micro-card" href="/thesis">
-            <p class="micro-card__label">Thesis</p>
-            <h3>Why we exist</h3>
-            <p>A model is a component, not a strategy. The harness is what survives.</p>
+            <div class="micro-card__top">
+              <p class="micro-card__label">Thesis</p>
+              <p class="micro-card__route">/thesis</p>
+            </div>
+            <h3>Why this exists</h3>
+            <p>Models change fast. Your workflow, context, and standards need to outlast them.</p>
+            <p class="micro-card__meta">Argument, tradeoffs, and what should stay stable.</p>
           </a>
           <a class="micro-card" href="/practice">
-            <p class="micro-card__label">Practice</p>
-            <h3>What we build and how we decide</h3>
-            <p>Four build areas and five operating principles.</p>
+            <div class="micro-card__top">
+              <p class="micro-card__label">Practice</p>
+              <p class="micro-card__route">/practice</p>
+            </div>
+            <h3>How we work</h3>
+            <p>Design, infrastructure, context, and learning with methods that teams can actually keep.</p>
+            <p class="micro-card__meta">Build areas, operating principles, and delivery shape.</p>
           </a>
           <a class="micro-card" href="/stack">
-            <p class="micro-card__label">Stack</p>
-            <h3>How it holds together</h3>
-            <p>Providers, routing, orchestration, context, and delivery.</p>
+            <div class="micro-card__top">
+              <p class="micro-card__label">Stack</p>
+              <p class="micro-card__route">/stack</p>
+            </div>
+            <h3>What the system uses</h3>
+            <p>Providers, routing, orchestration, context, and rollout in one live technical snapshot.</p>
+            <p class="micro-card__meta">Catalog-driven stack view with current model links.</p>
           </a>
           <a class="micro-card" href="/learn">
-            <p class="micro-card__label">Learn</p>
-            <h3>Open curriculum</h3>
-            <p>Open program for teams building and scaling AI systems.</p>
+            <div class="micro-card__top">
+              <p class="micro-card__label">Learn</p>
+              <p class="micro-card__route">/learn</p>
+            </div>
+            <h3>Program for teams</h3>
+            <p>Open material for teams moving from experimentation to repeatable AI work.</p>
+            <p class="micro-card__meta">Curriculum, role design, and practical rollout patterns.</p>
           </a>
         </div>
       </section>
