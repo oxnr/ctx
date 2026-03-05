@@ -434,6 +434,16 @@ h2 {
   color: var(--text-secondary);
 }
 
+.data-table a {
+  color: var(--text);
+  text-decoration-color: var(--text-dim);
+  text-underline-offset: 0.18em;
+}
+
+.data-table a:hover {
+  text-decoration-color: var(--text);
+}
+
 .data-table tr:last-child td {
   border-bottom: 0;
 }
