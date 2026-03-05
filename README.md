@@ -1,94 +1,155 @@
 # ctx
 
-AI transformation practice. Local-first. Context-native. Open by default.
+Local-first AI transformation practice.
 
-**[ctx.earth](https://ctx.earth)**
+Public site, public curriculum, and repo-native operating system for durable AI work.
 
-## What is ctx?
+[ctx.earth](https://ctx.earth) · [Repository](https://github.com/oxnr/ctx) · [Contributing](./CONTRIBUTING.md) · [Security](./SECURITY.md) · [Code license](./LICENSE) · [Content license](./LICENSE-CONTENT)
 
-ctx helps organizations adopt AI across engineering, operations, product, and strategy — with local-first architecture as the default. On-premise models. Portable context. No vendor lock.
+## What This Repository Is
 
-## Tracks
+`ctx` is both the public website for the practice and the working repository behind it.
 
-- **AI Workflow Design** — design and deploy AI workflows across functions
-- **Local-First Infrastructure** — on-premise, private-cloud, and air-gapped deployment
-- **Context Engineering** — durable context layers that survive model generations
-- **Open Academy** — free, public learning content shipped with every engagement
+It combines:
 
-## Thesis
+- a static site published at `ctx.earth`
+- an open academy in markdown
+- repo-local skills and operating playbooks
+- deterministic sync and audit scripts
+- a live provider catalog that drives the public stack page
+- an agent library index for reusable role and workflow references
 
-The organizations that own their infrastructure and their context will outperform those that rent both.
+The operating thesis is simple: models change; context, contracts, and harnesses should survive.
 
-Default execution policy: CLI-first and file-first. MCP/agent protocols are optional integration layers, never the portability layer.
+## Why It Exists
 
-## Structure
+- Most AI implementations are still too tool-bound and too vendor-bound.
+- The durable layer is not the model; it is the operating harness around the model.
+- Teams need portable context artifacts, explicit workflows, and public learning material they can keep after any engagement ends.
+- The repository is meant to stay legible to both humans and agents: plain text first, explicit scripts, minimal hidden behavior.
 
-```
-index.html          Homepage
-thesis/index.html   Thesis page
-practice/index.html Practice page (build areas + operating principles)
-stack/index.html    Generated stack snapshot page
-learn/index.html    Learn / Academy page (13-module curriculum)
-styles.css          Styles
-script.js           Interactions (accordions, nav toggle)
-llm-full.txt        LLM context file
-provider-catalog/   Provider and model registry (live)
-skills/             Canonical playbooks
-  agentic-audit.md
-  build-agent-workflow.md
-  design-private-stack.md
-  quality-cycle.md
-  task-contract.md
-  incident-operating.md
-  skill-factory.md
-  context-compression-policy.md
-  superset-patterns.md
-  open-academy-module.md
-  harness-engineering.md
-  prompt-engineering.md
-  provider-stack.md
-  provider-catalog-update.md
-  internet-research.md
-  agent-library-update.md
-  anthropic-academy.md
-  web-quality-audit.md
-  humanizer.md
-  recall.md
-scripts/            Sync and maintenance tools
-  quality-cycle.sh
-  sync-provider-catalog.sh
-  render-stack-page.py
-  sync-agent-library.sh
-  recall-index.sh
-  recall-search.sh
-agent-library/      Curated local specialist profiles for quick reuse
+## What Ships Here
+
+```mermaid
+flowchart LR
+  academy["academy/*.md"] --> site["ctx.earth"]
+  skills["skills/*.md"] --> academy
+  provider["provider-catalog/*.md"] --> render["scripts/render-stack-page.py"]
+  render --> stack["stack/index.html"]
+  stack --> site
+  pages["index + thesis + practice + learn"] --> site
+  audit["scripts/web-quality-audit.sh<br/>scripts/quality-cycle.sh"] --> reports["reports/quality-audit/"]
+  agentlib["scripts/sync-agent-library.sh"] --> library["agent-library/*.md"]
 ```
 
-## Technical snapshot
+## Repository Map
 
-`provider-catalog/index.md` is the source of truth for live provider/model inventory.
+| Path | Role | Notes |
+| --- | --- | --- |
+| `index.html` | Landing page | Public homepage for the practice |
+| `thesis/index.html` | Thesis page | Why the practice exists |
+| `practice/index.html` | Practice page | Build areas and operating principles |
+| `stack/index.html` | Generated stack page | Regenerated from `provider-catalog/index.md` |
+| `learn/index.html` | Academy page | Public learning surface |
+| `academy/` | Curriculum source | Canonical syllabus and role mapping |
+| `skills/` | Playbooks | Markdown-first operating instructions for repeatable work |
+| `scripts/` | Deterministic automation | Sync, render, indexing, and quality scripts |
+| `provider-catalog/` | Live provider registry | Source of truth for public stack snapshots |
+| `agent-library/` | Reusable role references | Local index, sources, and sync history |
+| `llm-full.txt` | Machine-oriented project intent | Repo context for agent onboarding and alignment |
+| `reports/quality-audit/` | Local generated artifacts | Gitignored audit outputs |
 
-- Refresh the catalog with `./scripts/sync-provider-catalog.sh`.
-- That sync also regenerates `stack/index.html` through `scripts/render-stack-page.py`.
-- Public stack copy should never be hand-edited with pinned provider/model claims.
+## File Conventions
 
-## Custom domain
+- Public routes are extensionless: `/`, `/thesis`, `/practice`, `/stack`, `/learn`.
+- Route content lives in `foo/index.html`; legacy root `foo.html` files exist only as compatibility redirects.
+- `stack/index.html` is generated. Do not hand-edit public provider/model claims there.
+- `provider-catalog/index.md` is the canonical source for the live stack snapshot.
+- `academy/syllabus.md` is the single active curriculum sequence.
+- `skills/` are markdown playbooks, not framework plugins or package-manager artifacts.
+- `llm-full.txt` is the repo's machine-readable intent file. It is not the public-facing README.
 
-`ctx.earth` is intended to run on GitHub Pages with direct DNS, not registrar-side redirects.
+## No Hidden Build Step
 
-- Apex `ctx.earth`: keep only the four GitHub Pages A records:
-  - `185.199.108.153`
-  - `185.199.109.153`
-  - `185.199.110.153`
-  - `185.199.111.153`
-- Remove registrar URL redirect records for `@`.
-- Remove any extra apex A record that is not one of the four GitHub Pages IPs.
-- Add `www` as a `CNAME` to `oxnr.github.io`.
-- In GitHub Pages settings, keep the custom domain set to `ctx.earth` and enable HTTPS after DNS settles.
+This repository intentionally avoids a framework build pipeline.
 
-## License
+- The public site is plain HTML, CSS, and a small amount of JavaScript.
+- The operating artifacts are markdown, shell scripts, and one small Python generator.
+- GitHub Pages serves the site directly.
+- There are no mandatory Git hooks. All quality and generation steps are explicit commands in `scripts/`.
 
-Code in this repository is licensed under MIT. Written content and curriculum materials are licensed under CC BY 4.0.
+If you want local automation, wire the existing scripts into your own pre-commit or pre-push flow rather than introducing hidden repo behavior.
 
-- See `LICENSE` for the code license.
-- See `LICENSE-CONTENT` for the content license.
+## Local Preview And Checks
+
+Serve the site locally:
+
+```sh
+python3 -m http.server 8000
+```
+
+Run the public-site quality audit:
+
+```sh
+./scripts/web-quality-audit.sh .
+```
+
+Run the recurring quality gate:
+
+```sh
+./scripts/quality-cycle.sh . 0 9999
+```
+
+Refresh the provider catalog and regenerate the public stack page:
+
+```sh
+./scripts/sync-provider-catalog.sh
+```
+
+Refresh the local agent library index and source map:
+
+```sh
+./scripts/sync-agent-library.sh
+```
+
+## Open Source Model
+
+Code and operational scripts are open under MIT.
+
+Written content, curriculum material, and site copy are open under CC BY 4.0.
+
+See:
+
+- [`LICENSE`](./LICENSE)
+- [`LICENSE-CONTENT`](./LICENSE-CONTENT)
+
+## Contribution Model
+
+Contributions are welcome, especially in these areas:
+
+- content clarity and curriculum improvements
+- static-site quality, accessibility, and copy fixes
+- provider catalog and stack-page generation improvements
+- agent workflow and playbook quality
+- documentation that makes the repository easier for outsiders to understand and reuse
+
+Before opening a pull request, read [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+Security reporting guidance lives in [SECURITY.md](./SECURITY.md).
+
+## Deployment
+
+`ctx.earth` is intended to run on GitHub Pages with direct DNS, not registrar-side forwarding.
+
+- Apex `ctx.earth` should use only the four GitHub Pages A records.
+- `www` should be a `CNAME` to `oxnr.github.io`.
+- The repo keeps the custom domain in [`CNAME`](./CNAME).
+- Registrar redirect records should not be used for the production host.
+
+## Related Canonical Files
+
+- [`academy/syllabus.md`](./academy/syllabus.md) for curriculum order
+- [`provider-catalog/index.md`](./provider-catalog/index.md) for live provider inventory
+- [`agent-library/sources.md`](./agent-library/sources.md) for agent-library provenance
+- [`agent-library/sync-log.md`](./agent-library/sync-log.md) for sync history
+- [`llm-full.txt`](./llm-full.txt) for machine-oriented repo intent

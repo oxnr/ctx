@@ -59,9 +59,40 @@ a {
   text-decoration: none;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .top-nav {
   display: flex;
   gap: 2rem;
+}
+
+.repo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.repo-link:hover {
+  color: var(--text);
+  border-color: var(--text-secondary);
+  background: var(--surface);
+}
+
+.repo-link svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
 }
 
 .nav-toggle {
@@ -571,6 +602,10 @@ body.subpage .accordion__toggle {
     gap: 1.25rem;
     flex-wrap: wrap;
     justify-content: flex-end;
+  }
+
+  .header-actions {
+    gap: 0.75rem;
   }
 
   .top-nav a {
