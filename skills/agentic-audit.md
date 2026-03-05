@@ -1,4 +1,4 @@
-# Skill: /transformation-audit
+# Skill: /agentic-audit (alias: /transformation-audit)
 
 ## Objective
 Run a rapid intake and produce a unified diagnostic plan for AI transformation.
@@ -24,7 +24,11 @@ Run a rapid intake and produce a unified diagnostic plan for AI transformation.
    - data residency and sovereignty requirements
    - team familiarity with self-hosted infrastructure
    - gaps between current state and local-first target
-5. Build a 30-day roadmap with:
+5. Assess context compression risk:
+   - which workflows rely on vendor compaction, memory, or summarization features
+   - whether critical decisions depend on compacted outputs
+   - recovery plan for compacted artifact failure or drift
+6. Build a 30-day roadmap with:
    - 3 delivery milestones
    - 3 measurable outcomes
    - one open-academy module to publish during the sprint

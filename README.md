@@ -26,13 +26,27 @@ index.html          Site
 styles.css          Styles
 script.js           Card animations
 llm-full.txt        LLM context file
+provider-catalog/   Provider and model registry (live)
 skills/             Canonical playbooks
   agentic-audit.md
   build-agent-workflow.md
   design-private-stack.md
+  task-contract.md
   incident-operating.md
+  context-compression-policy.md
+  superset-patterns.md
   open-academy-module.md
-```
+  harness-engineering.md
+  prompt-engineering.md
+  provider-stack.md
+  provider-catalog-update.md
+  internet-research.md
+  agent-library-update.md
+scripts/            Sync and maintenance tools
+  sync-provider-catalog.sh
+  sync-agent-library.sh
+agent-library/      Curated local specialist profiles for quick reuse
+``` 
 
 ## License
 

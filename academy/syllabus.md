@@ -7,6 +7,7 @@ This is the single, active syllabus for all engagements.
 - Output for every module: markdown module file + `/` companion skill + one validation checklist.
 - One published artifact is mandatory.
 - All outputs remain markdown or plain text.
+- Each module includes one `/harness-loop` pass to avoid regressions before publish.
 
 ## Sequence
 
@@ -135,12 +136,25 @@ This is the single, active syllabus for all engagements.
   - `/agentic-audit`
   - `/open-academy`
 
+13) Provider stack and implementation depth
+- Objectives:
+  - Build a full end-to-end AI stack map for every use case.
+  - Connect providers, routing, terminals, coding agents, and observability tooling.
+- Deliverables:
+  - provider-catalog with local registry and sync cadence
+  - terminal/agent command map by role
+  - image, audio, and multimodal fallback playbook
+- Trigger skills:
+  - `/provider-stack`
+  - `/provider-catalog-update`
+  - `/internet-research`
+
 ## Delivery mapping
 - Engagement mode: `4 tracks + 1 blended academy`.
 - Weekly cadence:
-  - Week 1: /agentic-audit, /design-stack
-  - Week 2: /deploy-workflow, /prompt-engineering
-  - Week 3: /open-academy and quality hardening
+  - Week 1: /agentic-audit, /design-stack, /agent-library-update
+  - Week 2: /deploy-workflow, /prompt-engineering, /provider-stack
+  - Week 3: /open-academy, /incident-operating, /provider-catalog-update
 
 ## Completion criteria
 - The firm can produce the same process with another model or stack.

@@ -19,6 +19,8 @@
         <a href="#thesis">Thesis</a>
         <a href="#work">Work</a>
         <a href="#process">Process</a>
+        <a href="#stack">Stack</a>
+        <a href="#offering">Offering</a>
         <a href="#academy">Academy</a>
         <a href="#resources">Resources</a>
         <a href="#contact">Contact</a>
@@ -47,8 +49,8 @@
           <p>
             The next wave belongs to organizations that treat context as a durable asset.
             Portable, reusable context artifacts — prompt libraries, workflow specs,
-            evaluation sets — survive each generation of models and tools. They compound
-            in value instead of expiring with the next vendor pivot.
+            evaluation sets, and context libraries — survive each generation of models and
+            tools. They compound in value instead of expiring with the next vendor pivot.
           </p>
           <p>
             AI adoption is not an engineering-only problem. It spans operations, product,
@@ -58,7 +60,7 @@
           </p>
           <p>
             Our thesis: <em>the organizations that own their infrastructure and their context
-            will outperform those that rent both</em>. We exist to make that transition fast,
+            will outperform those that rent both.</em> We exist to make that transition fast,
             safe, and repeatable.
           </p>
         </div>
@@ -115,14 +117,14 @@
             <span class="step-num">01</span>
             <div>
               <h3>Discover</h3>
-              <p>Audit systems, teams, data sensitivity, and the current AI footprint. Identify the highest-leverage use cases and local deployment readiness.</p>
+              <p>Audit systems, teams, data sensitivity, and current AI footprint. Identify the highest-leverage use cases and local deployment readiness.</p>
             </div>
           </div>
           <div class="step">
             <span class="step-num">02</span>
             <div>
               <h3>Design</h3>
-              <p>Define the context layer, deployment model, governance framework, and success metrics. Local-first by default.</p>
+              <p>Define context layer, deployment model, governance framework, and success metrics. Scope in high-level commitments and avoid ticket fragmentation.</p>
             </div>
           </div>
           <div class="step">
@@ -139,7 +141,127 @@
               <p>Release open academy modules, harden workflows, and document the operating model in portable markdown.</p>
             </div>
           </div>
+          <div class="step">
+            <span class="step-num">05</span>
+            <div>
+              <h3>Quality Gate</h3>
+              <p>Run short previews and targeted checks before broad rollout. Keep review focused on risk, not exhaustive line-by-line checks.</p>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <section id="stack" class="section">
+        <p class="section-label">Provider + Delivery Stack</p>
+        <h2>High-level framework, low-level implementation</h2>
+        <p class="section-intro">
+          Context-first delivery is a stack problem: provider matrix, routing policy, agent execution,
+          terminal workflows, and readout/observability.
+        </p>
+        <div class="stack-grid">
+          <article class="stack-card">
+            <h3>Provider model plane</h3>
+            <p>Text/coding, multimodal, image, speech, and retrieval models with explicit version tracking.</p>
+            <ul class="stack-list">
+              <li><code>OpenAI</code>, <code>Claude</code>, <code>Gemini</code>, <code>Grok</code>, <code>Qwen</code>, <code>Mistral</code>, <code>Llama</code>.</li>
+              <li>Updated from `provider-catalog/index.md` with live version pull.</li>
+            </ul>
+          </article>
+          <article class="stack-card">
+            <h3>Routing + aggregation plane</h3>
+            <p>Fail-safe provider switching and policy-bound routing before workload reaches users.</p>
+            <ul class="stack-list">
+              <li>OpenRouter-style abstraction, local policy layers, failover routing.</li>
+              <li>Fallbacks by function: coding, support, research, image, and retrieval.</li>
+            </ul>
+          </article>
+          <article class="stack-card">
+            <h3>Execution plane</h3>
+            <p>Terminal-native and agent-native tools for production-level consistency.</p>
+            <ul class="stack-list">
+              <li>Agents: Claude Code, Codex, Cursor, Windsurf, OpenHands.</li>
+              <li>Terminals: local shells, tmux, SSH, CI runners, containerized agents.</li>
+            </ul>
+          </article>
+          <article class="stack-card">
+            <h3>Readout plane</h3>
+            <p>Quality, incidents, and model behavior are measured continuously.</p>
+            <ul class="stack-list">
+              <li>Agent logs, evaluation traces, rollback checks, and issue summaries.</li>
+              <li>Small preview windows before broad rollout, then automated policy checks.</li>
+            </ul>
+          </article>
+        </div>
+        <p class="section-intro">
+          Slash command flow: <strong>/provider-stack</strong>, <strong>/provider-catalog-update</strong>, <strong>/internet-research</strong>, <strong>/deploy-workflow</strong>, <strong>/incident-operating</strong>.
+        </p>
+      </section>
+
+      <section id="offering" class="section">
+        <p class="section-label">High-to-low offering model</p>
+        <h2>One AI agency, two faces: consulting and free public academy</h2>
+        <p class="section-intro">
+          Every engagement ships the same architecture, from board-level outcomes to terminal-level execution. We do not separate services from teaching.
+        </p>
+        <div class="layer-grid">
+          <article class="layer-card">
+            <h3><span class="layer-num">01</span>Strategy and mandate</h3>
+            <p>Define business outcomes, risk profile, data boundaries, and adoption targets before choosing tooling.</p>
+            <ul class="layer-list">
+              <li>AI strategy, governance, and rollout model.</li>
+              <li>Operating model for owners, escalation, and accountability.</li>
+              <li>Public academy modules tied to the engagement scope.</li>
+            </ul>
+          </article>
+          <article class="layer-card">
+            <h3><span class="layer-num">02</span>Context architecture</h3>
+            <p>Context files become the durable asset across agents and model changes.</p>
+            <ul class="layer-list">
+              <li><code>agents.md</code>, <code>settings.json</code>, and domain entity notes.</li>
+              <li>Versioned workflows, decision logs, and project playbooks.</li>
+            <li>Low-friction handoff: markdown + one source of truth.</li>
+            </ul>
+          </article>
+          <article class="layer-card">
+            <h3><span class="layer-num">03</span>Provider + model plane</h3>
+            <p>Provider matrix and routing remain swappable.</p>
+            <ul class="layer-list">
+              <li>Local/private deployment options and cloud fallback.</li>
+              <li>Text, coding, multimodal, image, speech, and retrieval models.</li>
+              <li>Version policy and failover before user-facing execution.</li>
+            </ul>
+          </article>
+          <article class="layer-card">
+            <h3><span class="layer-num">04</span>Skill and workflow plane</h3>
+            <p>High-level skills for portability; deterministic scripts for repeatability.</p>
+            <ul class="layer-list">
+              <li>Skill-first design, then migration to scripts when stable.</li>
+              <li>Concise skill metadata, selective loading, and one-level references.</li>
+              <li>Use <strong>/skill-factory</strong> to standardize skill creation and evolution.</li>
+            </ul>
+          </article>
+          <article class="layer-card">
+            <h3><span class="layer-num">05</span>Execution plane</h3>
+            <p>Agent-native and terminal-native tooling with auditable outputs.</p>
+            <ul class="layer-list">
+              <li>Claude Code, Codex, Cursor, Windsurf, OpenHands, etc.</li>
+              <li>Shell/terminal, tmux/SSH, CI runners, and secure environment control.</li>
+              <li>Repeatable CLI commands and structured handoff to humans.</li>
+            </ul>
+          </article>
+          <article class="layer-card">
+            <h3><span class="layer-num">06</span>Readout and reliability</h3>
+            <p>Behavior and value are measured at each layer, with controlled fallback.</p>
+            <ul class="layer-list">
+              <li>Output quality checks, incident drills, rollback conditions.</li>
+              <li>Provider drift and catalog sync validation before release.</li>
+              <li>Decision logs to make updates safe and explainable.</li>
+            </ul>
+          </article>
+        </div>
+        <p class="section-intro">
+          Slash command flow: <strong>/task-contract</strong>, <strong>/agentic-audit</strong>, <strong>/design-stack</strong>, <strong>/provider-stack</strong>, <strong>/provider-catalog-update</strong>, <strong>/context-compression-policy</strong>, <strong>/skill-factory</strong>, <strong>/agent-library-update</strong>, <strong>/incident-operating</strong>, <strong>/harness-loop</strong>.
+        </p>
       </section>
 
       <section id="academy" class="section">
@@ -185,9 +307,25 @@
             <span>08</span>
             <p><strong>Sustained growth</strong> — Continuous improvement loops and scale patterns.</p>
           </div>
+          <div class="module">
+            <span>09</span>
+            <p><strong>Data and integrations</strong> — Connector map, sync contracts, and deterministic adapters.</p>
+          </div>
+          <div class="module">
+            <span>10</span>
+            <p><strong>Team operating model</strong> — Capability levels, ownership, and handoff standards.</p>
+          </div>
+          <div class="module">
+            <span>11</span>
+            <p><strong>Productive publishing</strong> — Open modules with clear redaction and portability.</p>
+          </div>
+          <div class="module">
+            <span>12</span>
+            <p><strong>Scale and maintain</strong> — Upgrade cadence, context drift policy, and long-run playbooks.</p>
+          </div>
         </div>
         <p class="section-intro">
-          Slash command flow: <strong>/agentic-audit</strong>, <strong>/design-stack</strong>, <strong>/deploy-workflow</strong>, <strong>/prompt-engineering</strong>, <strong>/open-academy</strong>, <strong>/incident-operating</strong>.
+          Slash command flow: <strong>/agentic-audit</strong>, <strong>/design-stack</strong>, <strong>/deploy-workflow</strong>, <strong>/prompt-engineering</strong>, <strong>/provider-stack</strong>, <strong>/provider-catalog-update</strong>, <strong>/open-academy</strong>, <strong>/internet-research</strong>, <strong>/incident-operating</strong>, <strong>/harness-loop</strong>, <strong>/agent-library-update</strong>.
         </p>
       </section>
 
@@ -217,11 +355,42 @@
             </ul>
           </div>
           <div class="resource-block">
+            <h3>Provider + Stack Registry</h3>
+            <ul class="resource-list">
+              <li><a href="provider-catalog/index.md">Live provider stack snapshot</a></li>
+              <li><a href="provider-catalog/sources.md">Catalog source policy</a></li>
+              <li><a href="provider-catalog/sync-log.md">Catalog sync log</a></li>
+              <li><a href="skills/provider-stack.md">Stack design playbook</a></li>
+            </ul>
+          </div>
+          <div class="resource-block">
+            <h3>Skill creation framework</h3>
+            <ul class="resource-list">
+              <li><a href="skills/skill-factory.md">/skill-factory playbook</a></li>
+              <li><a href="skills/task-contract.md">/task-contract execution framework</a></li>
+              <li><a href="skills/context-compression-policy.md">/context-compression-policy</a></li>
+              <li><a href="skills/superset-patterns.md">/superset-patterns</a></li>
+              <li><a href="https://github.com/anthropics/skills/tree/main/skills/skill-creator">Anthropic Skill-Creator reference</a></li>
+              <li>Structured frontmatter, progressive loading, and deterministic script handoff.</li>
+            </ul>
+          </div>
+          <div class="resource-block">
             <h3>Signals: communities + news</h3>
             <ul class="resource-list">
               <li>Discord + Slack AI infra communities</li>
               <li>Newsletters: The Batch, Latent Space, The Sequence</li>
               <li>Prompting discipline from current best practices</li>
+              <li><a href="https://openai.com/index/harness-engineering/">OpenAI — harness engineering guide</a></li>
+            </ul>
+          </div>
+          <div class="resource-block">
+            <h3>Agent Library</h3>
+            <ul class="resource-list">
+              <li><a href="agent-library/index.md">Curated local specialist profiles</a></li>
+              <li><a href="agent-library/README.md">Sync policy and source map</a></li>
+              <li><a href="agent-library/sync-log.md">Latest library updates</a></li>
+              <li><a href="https://github.com/msitarzewski/agency-agents">Agency Agents source</a></li>
+              <li><a href="https://github.com/superset-sh/superset">Superset source (workspace patterns + agent command conventions)</a></li>
             </ul>
           </div>
         </div>

@@ -1,4 +1,4 @@
-# Skill: /design-local-stack
+# Skill: /design-stack (alias: /design-local-stack)
 
 ## Objective
 Recommend an AI architecture that satisfies sovereignty and control constraints and real-world operability.
@@ -19,11 +19,20 @@ Recommend an AI architecture that satisfies sovereignty and control constraints 
    - baseline tasks
    - high-risk tasks
    - fallback model routing rules
-4. Define policy controls:
+4. Add provider matrix and toolchain mapping:
+   - model provider + version policy
+   - routing rules and fallback providers
+   - terminal/CLI execution model
+   - observability and readout tooling
+5. Define policy controls:
    - context redaction
    - tool allowlist
    - logging, retention, and audit rules
-5. Produce runbook and minimal architecture diagram.
+6. Produce runbook and minimal architecture diagram.
+
+## Optional execution pattern
+- Use `/provider-stack` first when this scope includes more than one team or any image/multimodal use-case.
+- Prefer worktree-style execution for medium/high-risk changes: one branch and one workspace per major agent track, plus explicit setup/teardown hooks.
 
 ## Output
 - One-page architecture choice with trade-offs

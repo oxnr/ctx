@@ -19,8 +19,38 @@ PRINCIPLES
 - Context is the durable asset: deliver portable, reusable artifacts that survive tool generations.
 - Start with high-impact use cases, then automate repeatable work.
 - Everything is designed for reuse: prompts, skills, workflows, and context layers.
+- Keep a local specialist agent library to reduce reinvented prompts and to preserve role-specific operating standards.
+- Read less with each iteration: prioritize systems that make wrong outputs obvious and fixable quickly over exhaustive manual review.
+- Keep planning at a chunk level: epics/decision blocks over overloaded ticket granularity, especially for fast-moving AI work.
+- Treat issues as explicit context commitments, not a queue to become a bottleneck.
+- Treat provider/model selection as a versioned infrastructure decision, not a preference.
+- Keep a stable provider registry for context, so tool migrations are adapter changes, not methodology changes.
+- Separate decision layers: provider sources, routing policies, terminal/agent tools, and governance/observability.
+- Keep sessions contract-first: define scope, acceptance, and rollback before execution; split discovery and implementation phases.
+- Use anti-sycophancy review loops for risky work: find assumptions, challenge them, then decide with minimal-rework rollback criteria.
+- Treat context compaction/summarization as an operational optimization only. Keep canonical raw context where decisions can be audited, and pin compaction semantics/version in policy.
+
+EXECUTION PRINCIPLES (How we run AI systems)
+- We do not make code review a virtue. We make it a signal: small, high-confidence checks before larger releases.
+- For every run, prove the change by outputs and contracts first, then review only what matters for risk.
+- Design guardrails so teams can spend less time reading code and more time shaping architecture, intent, and assumptions.
+- Build every stack in three layers:
+  - provider + model layer
+  - agent + workflow layer
+  - terminal + delivery + observability layer
+
+HARNESS-FIRST ENGINEERING PRINCIPLES
+- Humans should optimize for design and control; agents execute implementation and iteration.
+- The system should be legible to agents: repository-local, versioned, and self-contained.
+- Start with minimal working scope and grow depth-first (goal -> decomposition -> next block).
+- Keep boundaries explicit with contracts, not inferred assumptions.
+- Build and test in a loop: execute -> validate -> recover -> retry.
+- Treat docs like code: linked, versioned, and mechanically checkable.
+- Keep a recurring cleanup loop for stale context, broken links, and old assumptions.
 
 MANDATES
+- Provider layer is a first-class operating artifact. Keep provider metadata current and versioned.
+- Confirm high-impact model/provider updates through `/internet-research` before production adoption.
 - Always reference this file as project intent when onboarding new agents.
 - Use files in skills/ as canonical playbooks for execution.
 - Keep the open-academy layer public by default, unless explicitly marked private.
@@ -28,12 +58,22 @@ MANDATES
 - Do not lead with specific tool names in client-facing materials. Tool names (Claude Code, Codex, GPT, open-weight models) appear in body text as examples, not in headlines or hero copy.
 - Keep the curriculum source synchronized with `academy/handbook-catalog.md`.
 - `academy/syllabus.md` is the canonical sequence for every engagement.
+- Keep `AGENTS.md` concise as a map of execution rules; push detail into markdown artifacts.
+- Maintain a repo-level operating log of plans, decisions, and known cleanup debt.
+- Agent library policy:
+  - Prefer local markdown-first agent definitions.
+  - Track library sources and sync history for every update.
+  - If a source repo changes, refresh it before client-facing rollouts.
+  - Include implementation-reference repositories (for example `superset-sh/superset`) for proven workspace/command patterns, not just role profiles.
 
 OFFERS
 - AI Workflow Design — design and deploy AI workflows across engineering, operations, product, and support
 - Local-First Infrastructure — architecture and deployment for on-premise, private-cloud, and air-gapped environments
 - Context Engineering — build the durable context layer: prompt libraries, workflow specs, evaluation sets, knowledge artifacts
 - Open Academy — free, public learning content shipped with every engagement
+
+Reference influence:
+- OpenAI, "Harness engineering" (`https://openai.com/index/harness-engineering/`) and related operational playbooks.
 
 RESOURCE PHILOSOPHY
 - Treat open external resources as accelerants, not doctrine.
@@ -45,3 +85,16 @@ REQUIRED OUTPUT STYLE
 - Concise, decisive, implementation-oriented.
 - Default to practical next steps and concrete command names.
 - Keep recommendations testable and measurable.
+
+REPEATED OPERATING LOOP
+1. State intent and constraints in one short brief.
+2. Define one narrow deliverable with one acceptance check.
+3. Execute the relevant skill with complete context attachments.
+4. Capture validation artifacts (results, logs, assumptions, risks).
+5. Fix the root cause, not only the symptom.
+6. Update decisions and plans before closing.
+7. Add one cleanup action to reduce future agent ambiguity.
+8. Include a minimal preview pass before escalation:
+   - show a short proposed diff summary
+   - highlight the highest-risk file/decision
+   - require a stop/review gate only for high-impact failures

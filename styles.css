@@ -271,6 +271,97 @@ nav {
   color: var(--text);
 }
 
+.stack-grid {
+  margin-top: 2.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.stack-card {
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  background: var(--surface);
+}
+
+.stack-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.stack-card p {
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.stack-list {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+  padding: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.stack-list code {
+  background: #161616;
+  padding: 0.05rem 0.35rem;
+}
+
+.layer-grid {
+  margin-top: 2.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.layer-card {
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  background: var(--surface);
+}
+
+.layer-card h3 {
+  font-size: 1rem;
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-start;
+  margin-bottom: 0.6rem;
+}
+
+.layer-num {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  margin-top: 0.12rem;
+  min-width: 1.6rem;
+}
+
+.layer-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+}
+
+.layer-list {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+  padding: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.layer-list li {
+  position: relative;
+  padding-left: 0.8rem;
+}
+
+.layer-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--text-dim);
+}
+
 .resource-grid {
   margin-top: 2rem;
   display: grid;
@@ -364,6 +455,14 @@ footer {
 
   .resource-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stack-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .layer-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
