@@ -28,6 +28,7 @@ Build an end-to-end AI stack definition that connects providers, runtime tools, 
    - terminal standard (iTerm2/Warp/Terminal/Windows Terminal)
    - session orchestration (tmux/SSH/agent runner sessions)
    - agent executors (Claude Code, Codex, Cursor, Windsurf, OpenHands)
+   - protocol adapter policy: keep MCP/other adapters optional and replaceable
 5. Define supporting tooling by lane:
    - orchestration/aggregation: OpenRouter, LiteLLM, vLLM, llama.cpp
    - image generation: OpenAI image, Gemini image, Midjourney, SDXL/FLUX providers

@@ -3,7 +3,7 @@
 This is the single, active syllabus for all engagements.
 
 ## Format
-- Duration: 3 weeks per module.
+- Bounded module blocks with explicit scope and acceptance.
 - Output for every module: markdown module file + `/` companion skill + one validation checklist.
 - One published artifact is mandatory.
 - All outputs remain markdown or plain text.
@@ -26,11 +26,14 @@ This is the single, active syllabus for all engagements.
 - Objectives:
   - Move from ad-hoc prompts to reusable prompt contracts.
   - Reduce variance in outputs and format.
+  - Add Anthropic Academy-aligned fluency (Delegation, Description, Discernment, Diligence) for teams using enterprise agents.
 - Deliverables:
   - `skills/context-contracts.md`
   - test prompts and acceptance checks
+  - `academy/anthropic-academy.md` mapping for current cohort
 - Trigger skill:
   - `/prompt-engineering`
+  - `/anthropic-academy`
 
 3) Agentic thinking and workflow design
 - Objectives:
@@ -90,10 +93,13 @@ This is the single, active syllabus for all engagements.
   - Enable reproducible score tracking.
 - Deliverables:
   - evaluation set for top use case
-  - weekly quality dashboard spec
+  - quality dashboard spec
+  - web quality baseline and remediation plan for release candidates
 - Trigger skill:
   - `/design-stack`
   - `/deploy-workflow`
+  - `/web-quality-audit`
+  - `/quality-cycle`
 
 9) Data and integrations
 - Objectives:
@@ -148,6 +154,112 @@ This is the single, active syllabus for all engagements.
   - `/provider-stack`
   - `/provider-catalog-update`
   - `/internet-research`
+
+## Role-to-module mapping
+
+Use this mapping to assign cohorts and teaching order per audience.
+
+### Engineering
+- Primary modules:
+  - 2) Prompting and context quality
+  - 3) Agentic thinking and workflow design
+  - 5) Context engineering
+  - 6) RAG and knowledge systems
+  - 9) Data and integrations
+  - 13) Provider stack and implementation depth
+- Delivery focus:
+  - deterministic prompt contracts
+  - agent handoff patterns
+  - code-aware validation hooks
+- Companion skills:
+  - `/prompt-engineering`
+  - `/deploy-workflow`
+  - `/agentic-audit`
+  - `/provider-stack`
+
+### Operations
+- Primary modules:
+  - 1) Foundations: AI in production
+  - 4) Local-first architecture
+  - 7) Safety and reliability
+  - 8) Evaluation and observability
+  - 10) Team operating model
+  - 12) Scale and maintain
+- Delivery focus:
+  - policy and residency boundaries
+  - runbook discipline
+  - incident and rollback behavior
+- Companion skills:
+  - `/design-stack`
+  - `/incident-operating`
+  - `/quality-cycle`
+  - `/deploy-workflow`
+
+### Leadership
+- Primary modules:
+  - 1) Foundations: AI in production
+  - 4) Local-first architecture
+  - 10) Team operating model
+  - 11) Productive publishing
+  - 12) Scale and maintain
+  - 13) Provider stack and implementation depth
+- Delivery focus:
+  - adoption outcomes and risk posture
+  - capability growth across teams
+  - budget/quality/rollback trade-offs
+- Companion skills:
+  - `/agentic-audit`
+  - `/open-academy`
+  - `/design-stack`
+  - `/quality-cycle`
+
+### Sales and GTM
+- Primary modules:
+  - 1) Foundations: AI in production
+  - 2) Prompting and context quality
+  - 5) Context engineering
+  - 8) Evaluation and observability
+  - 11) Productive publishing
+  - 13) Provider stack and implementation depth
+- Delivery focus:
+  - value narratives by use-case
+  - offer packaging from service to training
+  - transparent model constraints and commitments
+- Companion skills:
+  - `/prompt-engineering`
+  - `/open-academy`
+  - `/provider-stack`
+  - `/anthropic-academy`
+
+### Customer support
+- Primary modules:
+  - 1) Foundations: AI in production
+  - 2) Prompting and context quality
+  - 6) RAG and knowledge systems
+  - 7) Safety and reliability
+  - 8) Evaluation and observability
+  - 9) Data and integrations
+- Delivery focus:
+  - response accuracy and escalation policy
+  - retrieval quality for support content
+  - measurable error boundaries and fallback plans
+- Companion skills:
+  - `/web-quality-audit`
+  - `/incident-operating`
+  - `/provider-catalog-update`
+  - `/deploy-workflow`
+
+## Role launch command packages
+
+Use one role command to pull the full phase bundle:
+- `/cohort-syllabus --role engineering` (+ `/syllabus-engineering`)
+- `/cohort-syllabus --role operations` (+ `/syllabus-operations`)
+- `/cohort-syllabus --role leadership` (+ `/syllabus-leadership`)
+- `/cohort-syllabus --role sales` (+ `/syllabus-sales`)
+- `/cohort-syllabus --role support` (+ `/syllabus-support`)
+
+Reference artifact:
+- `academy/role-syllabi.md` contains the phase bundle.
 
 ## Delivery mapping
 - Engagement mode: `4 tracks + 1 blended academy`.

@@ -55,6 +55,7 @@ MANDATES
 - Provider layer is a first-class operating artifact. Keep provider metadata current and versioned.
 - Confirm high-impact model/provider updates through `/internet-research` before production adoption.
 - Always reference this file as project intent when onboarding new agents.
+- Run a recurring release-quality gate via `/quality-cycle` (default weekly) when publishing web-facing assets.
 - Use files in skills/ as canonical playbooks for execution.
 - Keep the open-academy layer public by default, unless explicitly marked private.
 - All outputs are markdown or plain text only. No PDFs.
@@ -72,6 +73,9 @@ MANDATES
   - Track library sources and sync history for every update.
   - If a source repo changes, refresh it before client-facing rollouts.
   - Include implementation-reference repositories (for example `superset-sh/superset`) for proven workspace/command patterns, not just role profiles.
+- Quality policy:
+  - Use `/web-quality-audit` before public-facing release points.
+  - Treat quality findings as commitments in decisions and follow-up tickets.
 
 OFFERS
 - AI Workflow Design — design and deploy AI workflows across engineering, operations, product, and support
@@ -81,12 +85,27 @@ OFFERS
 
 Reference influence:
 - OpenAI, "Harness engineering" (`https://openai.com/index/harness-engineering/`) and related operational playbooks.
+- Anthropic Academy (Skilljar) course structure for high-signal onboarding and agent workflow sequencing.
+
+Anthropic Academy incorporation rule:
+- Use public catalog tracks as curriculum shape only; execution, governance, and portability stay in repo-local `skills/`, `scripts/`, and markdown artifacts.
+- Keep this stack in local-first terms:
+  - Module-to-track mapping in `academy/anthropic-academy.md`
+  - Course adaptation in `skills/anthropic-academy.md`
+  - Open module publication in `academy/syllabus.md` + `/open-academy`
 
 RESOURCE PHILOSOPHY
 - Treat open external resources as accelerants, not doctrine.
 - Prefer proven examples over theoretical catalogs.
 - Primary references: AI Engineering Handbook-style practical tracks, field labs, and prompt engineering playbooks.
+- Addy Osmani web-quality references were reviewed and adapted for practical static quality checks (`https://github.com/addyosmani/web-quality-skills`).
+- `blader/humanizer` is optional for publishing polish only; it is not a validation layer.
 - Update syllabus modules when external practice evidence changes or client demands require new sequence.
+
+INTERFACING PRINCIPLES
+- Protocols like MCP, platform-specific plugins, and similar interfaces are treated as adapters, not the core architecture.
+- CLI + local artifacts (markdown, scripts, git) remain the stable layer for portability.
+- Prefer deterministic CLI contracts first; add protocol adapters only where they simplify adoption.
 
 REQUIRED OUTPUT STYLE
 - Concise, decisive, implementation-oriented.

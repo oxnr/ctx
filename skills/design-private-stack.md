@@ -23,12 +23,17 @@ Recommend an AI architecture that satisfies sovereignty and control constraints 
    - model provider + version policy
    - routing rules and fallback providers
    - terminal/CLI execution model
+   - protocol adapters only as needed (for example MCP or API-native wrappers)
    - observability and readout tooling
 5. Define policy controls:
    - context redaction
    - tool allowlist
    - logging, retention, and audit rules
 6. Produce runbook and minimal architecture diagram.
+
+## Interfacing bias
+- Favor direct terminal workflows and repository-backed execution over protocol-specific tool ecosystems.
+- Treat MCP as a compatibility layer: useful when a client already has it, but not required for your architecture.
 
 ## Optional execution pattern
 - Use `/provider-stack` first when this scope includes more than one team or any image/multimodal use-case.

@@ -19,20 +19,28 @@ ctx helps organizations adopt AI across engineering, operations, product, and st
 
 The organizations that own their infrastructure and their context will outperform those that rent both.
 
+Default execution policy: CLI-first and file-first. MCP/agent protocols are optional integration layers, never the portability layer.
+
 ## Structure
 
 ```
-index.html          Site
+index.html          Homepage
+thesis.html         Thesis page
+work.html           Practice page (build areas + operating principles)
+stack.html          Stack page (system layers)
+learn.html          Learn / Academy page (13-module curriculum)
 styles.css          Styles
-script.js           Card animations
+script.js           Interactions (accordions, nav toggle)
 llm-full.txt        LLM context file
 provider-catalog/   Provider and model registry (live)
 skills/             Canonical playbooks
   agentic-audit.md
   build-agent-workflow.md
   design-private-stack.md
+  quality-cycle.md
   task-contract.md
   incident-operating.md
+  skill-factory.md
   context-compression-policy.md
   superset-patterns.md
   open-academy-module.md
@@ -42,8 +50,12 @@ skills/             Canonical playbooks
   provider-catalog-update.md
   internet-research.md
   agent-library-update.md
+  anthropic-academy.md
+  web-quality-audit.md
+  humanizer.md
   recall.md
 scripts/            Sync and maintenance tools
+  quality-cycle.sh
   sync-provider-catalog.sh
   sync-agent-library.sh
   recall-index.sh

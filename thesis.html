@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thesis — ctx</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="subpage">
+    <header class="site-header">
+      <a class="brand" href="index.html">ctx</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+        <span>Menu</span>
+      </button>
+      <nav id="site-nav" class="top-nav">
+        <a class="nav-link" href="thesis.html">Thesis</a>
+        <a class="nav-link" href="work.html">Practice</a>
+        <a class="nav-link" href="stack.html">Stack</a>
+        <a class="nav-link" href="learn.html">Learn</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section" data-reveal>
+        <p class="hero-kicker">Thesis</p>
+        <h1>A model is a component, not a strategy.</h1>
+        <p class="hero-subtitle">
+          The teams that win are not the ones with the best model. They are the ones with the best harness around it.
+        </p>
+      </section>
+
+      <section class="section section-compact" data-reveal>
+        <div class="accordion-list">
+          <article class="accordion" data-group="thesis">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="thesis-premise">
+              <span class="accordion__title">
+                <span class="accordion__index">01</span>
+                <span>The premise</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="thesis-premise">
+              <p>
+                Every major AI provider ships a new model every quarter. Capabilities improve, pricing shifts, APIs change. Teams that build their strategy around a single model or provider are rebuilding every cycle. The architecture around the model — context management, routing logic, evaluation gates, recovery paths — is what survives. That architecture is the harness.
+              </p>
+              <p>
+                A harness treats every model as a replaceable component. It defines how context enters the system, how tasks get routed, how outputs get validated, and how failures get recovered. When a model changes, the harness stays. When a provider disappears, the harness reroutes. When a new capability appears, the harness absorbs it without rewriting contracts.
+              </p>
+            </div>
+          </article>
+          <article class="accordion" data-group="thesis">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="thesis-longevity">
+              <span class="accordion__title">
+                <span class="accordion__index">02</span>
+                <span>Longevity over versioning</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="thesis-longevity">
+              <p>
+                Most AI implementations are tied to a specific model version. When that version gets deprecated or a better option appears, the implementation breaks or stalls. This is not a technical problem — it is an architectural one. The fix is to design for longevity from the start: abstract the model behind a routing layer, version your context artifacts independently, and keep evaluation criteria stable even as the underlying model changes.
+              </p>
+              <p>
+                Longevity means your prompts, your context capsules, your evaluation sets, and your workflow contracts all outlive the model they were built for. When GPT-5 replaces GPT-4, when Claude 5 replaces Claude 4, when a local model becomes good enough for a task that used to require a frontier model — your team swaps the component and keeps shipping. No rewrite. No retraining. No lost quarter.
+              </p>
+            </div>
+          </article>
+          <article class="accordion" data-group="thesis">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="thesis-context">
+              <span class="accordion__title">
+                <span class="accordion__index">03</span>
+                <span>Context as durable product</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="thesis-context">
+              <p>
+                The most expensive thing in an AI system is not the model — it is the context. Context is what the system knows about your domain, your decisions, your constraints, your history. When context is lost, the system starts from zero. When context drifts, the system makes wrong decisions confidently. When context is poorly structured, the system wastes tokens on noise and misses signal.
+              </p>
+              <p>
+                We treat context as a first-class product with its own lifecycle: creation, mutation, archival, and deletion. Context capsules are scoped per domain, per role, per session. They are versioned, recoverable, and portable across projects. The goal is cross-session continuity without context pollution — every piece of state earns its place or gets removed.
+              </p>
+            </div>
+          </article>
+          <article class="accordion" data-group="thesis">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="thesis-local">
+              <span class="accordion__title">
+                <span class="accordion__index">04</span>
+                <span>Local-first by default</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="thesis-local">
+              <p>
+                Sending everything to a cloud endpoint is the path of least resistance and the path of least control. Local-first means your data, your context, and your execution stay on infrastructure you control until there is a clear reason to go elsewhere. This is not anti-cloud — it is pro-control. Cloud endpoints are components in the harness, not the foundation.
+              </p>
+              <p>
+                Local-first gives you data sovereignty, predictable latency, and the ability to operate when connectivity is unreliable. It also forces better architecture: when you cannot rely on unlimited cloud compute, you design smaller context, smarter routing, and leaner workflows. The constraint produces better systems.
+              </p>
+            </div>
+          </article>
+          <article class="accordion" data-group="thesis">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="thesis-ownership">
+              <span class="accordion__title">
+                <span class="accordion__index">05</span>
+                <span>Team ownership is the exit criteria</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="thesis-ownership">
+              <p>
+                A harness that only works when the consultant is in the room is not a harness — it is a dependency. The measure of a successful engagement is that the team can operate, extend, and maintain the system without external help. Every template, every playbook, every workflow we ship is designed to be owned by the team that uses it.
+              </p>
+              <p>
+                This means open artifacts, plain-text formats, and no proprietary lock-in. It means teaching the reasoning behind architectural decisions, not just the decisions themselves. It means the team can swap us out, bring in a different advisor, or evolve the system independently. If the firm can produce the same process with another stack, the engagement succeeded.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Knowledge is free. Time isn't.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

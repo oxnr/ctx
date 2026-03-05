@@ -69,3 +69,43 @@ This practice pulls from public AI Engineering field resources and uses only wha
   - model and context observability stacks
 - Academy module for team training:
   - `academy/provider-stack.md`
+- Interface strategy reference:
+  - MCP and similar protocols are treated as optional adapters; CLI + filesystem remain the portability layer.
+
+## Quality and delivery references
+- Practical web-quality guardrails are pulled from:
+  - [addyosmani/web-quality-skills](https://github.com/addyosmani/web-quality-skills)
+- This repo informs practical pre-release checks in `skills/web-quality-audit.md`.
+
+## Communication quality references
+- Optional publication polish reference:
+  - [blader/humanizer](https://github.com/blader/humanizer)
+- Use case:
+  - natural language polish for open modules and public academy content.
+- Constraint:
+  - do not use for evidence artifacts (incidents, decisions, model/provider records).
+- Follow-up checks:
+  - `/quality-cycle`
+  - `/web-quality-audit` when output is public.
+
+## Learning platform references
+- Anthropic Academy (Skilljar) is used as a high-signal curriculum source for:
+  - prompt design,
+  - Claude Code workflow,
+  - MCP and integration boundaries,
+  - enterprise adoption and enablement patterns.
+- Local adaptations are tracked in:
+  - `academy/anthropic-academy.md`
+  - `skills/anthropic-academy.md`
+
+## Anthropic Academy curriculum extraction (ctx-specific)
+- High-signal mapping currently maintained as:
+  - foundation, developer workflow, integration, operations, and trainer tracks;
+  - no dependency on Anthropic-specific orchestration layer.
+- Operational conversion pattern:
+  1) map selected course to `academy/syllabus.md`;
+  2) create local skill wrappers where behavior is repeatable;
+  3) move only deterministic routines into `scripts/`.
+- Current implementation stance:
+  - MCP content is treated as optional runtime glue.
+  - CLI + local markdown + git remain the stable portability layer.

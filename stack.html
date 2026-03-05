@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stack — ctx</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="subpage">
+    <header class="site-header">
+      <a class="brand" href="index.html">ctx</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+        <span>Menu</span>
+      </button>
+      <nav id="site-nav" class="top-nav">
+        <a class="nav-link" href="thesis.html">Thesis</a>
+        <a class="nav-link" href="work.html">Practice</a>
+        <a class="nav-link" href="stack.html">Stack</a>
+        <a class="nav-link" href="learn.html">Learn</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section" data-reveal>
+        <p class="hero-kicker">Stack</p>
+        <h1>Harness-first engineering.</h1>
+        <p class="hero-subtitle">
+          Five layers, real tooling. Expand any plane for the specific tools, providers, and configurations we use.
+        </p>
+      </section>
+
+      <section class="section section-compact" data-reveal>
+        <p class="section-label">System layers</p>
+        <div class="accordion-list">
+          <article class="accordion" data-group="stack">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="stack-interface">
+              <span class="accordion__title">
+                <span class="accordion__index">01</span>
+                <span>Interface plane</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="stack-interface">
+              <p>
+                Three surfaces: IDE, terminal, and web. Each surface has a primary agent runner and a defined handoff format. Claude Code runs in project mode with CLAUDE.md context files. Cursor uses .cursorrules for per-project behavior. Terminal sessions run through iTerm2 with tmux for multi-pane orchestration.
+              </p>
+              <ul>
+                <li>IDE agents: Claude Code (primary — project mode, tool use, file system access), Cursor (secondary — fast inline edits with .cursorrules), Windsurf (cascade mode for multi-file refactors). Each agent gets a scoped context file, not the full repo.</li>
+                <li>Terminal: iTerm2 + tmux sessions. One pane per agent task. Claude Code CLI for agentic terminal work. Warp for quick commands. Every terminal session is logged to ~/.claude/logs for audit replay.</li>
+                <li>Handoff format: JSON task objects — {task, context_capsule, acceptance_criteria, output_schema}. When a planning agent passes to a coding agent, the handoff is a typed contract, not a chat message.</li>
+                <li>Web surfaces: review dashboards, approval gates, and evaluation UIs. Built with plain HTML/CSS/JS — no framework dependency. Served locally or deployed to Cloudflare Pages.</li>
+                <li>Agent runners: Claude Code for autonomous multi-step work, Codex CLI for sandboxed code generation, OpenHands for browser-based agent tasks. Each runner maps to specific task types — never interchangeable.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="stack">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="stack-model">
+              <span class="accordion__title">
+                <span class="accordion__index">02</span>
+                <span>Model plane</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="stack-model">
+              <p>
+                Seven provider families behind one routing interface. Claude Sonnet 4 for complex reasoning and code. GPT-4o for fast structured outputs. Gemini 2.5 Pro for long-context analysis. Llama 3.1 70B via Ollama for local-only tasks. Every model is pinned to a specific version — no silent upgrades.
+              </p>
+              <ul>
+                <li>Anthropic: Claude Opus 4 (complex reasoning, architecture), Claude Sonnet 4 (primary workhorse — code, analysis, review), Claude Haiku 3.5 (classification, routing, formatting at $0.25/MTok input).</li>
+                <li>OpenAI: GPT-4o (structured JSON outputs, function calling), GPT-4o-mini (fast low-cost tasks). o3 for mathematical/logical reasoning tasks that need chain-of-thought verification.</li>
+                <li>Google: Gemini 2.5 Pro (1M token context — full codebase analysis, long document processing), Gemini 2.0 Flash (vision tasks, image analysis, multimodal routing).</li>
+                <li>Local models: Llama 3.1 70B and Qwen 2.5 72B via Ollama for sensitive data that cannot leave the machine. Mistral Large for European data residency requirements. vLLM for production-grade local serving.</li>
+                <li>Embedding: text-embedding-3-large (OpenAI) for semantic search, nomic-embed-text (local) for private data. All embeddings stored in pgvector with cosine similarity indexing.</li>
+                <li>Cost tracking: every API call logged with model, tokens, latency, and cost. Claude Sonnet: ~$3/MTok input, $15/MTok output. Haiku: ~$0.25/$1.25. Budget alerts at 80% of per-team monthly limits.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="stack">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="stack-routing">
+              <span class="accordion__title">
+                <span class="accordion__index">03</span>
+                <span>Routing plane</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="stack-routing">
+              <p>
+                OpenRouter for multi-provider API access with automatic failover. LiteLLM as self-hosted proxy for teams that need full control. Custom routing policies per task type — simple formatting goes to Haiku, code generation to Sonnet, sensitive data to local Llama. Every routing decision is logged.
+              </p>
+              <ul>
+                <li>Task-type routing table: classification → Haiku, code generation → Sonnet, architecture review → Opus, summarization → GPT-4o-mini, long-doc analysis → Gemini 2.5 Pro, sensitive PII → local Llama 3.1. The table is a versioned config file, not hardcoded.</li>
+                <li>OpenRouter: primary gateway for cloud models. Automatic provider failover — if Anthropic is rate-limited, reroute to backup. Usage tracked per-key, per-team. Spend limits enforced at the gateway.</li>
+                <li>LiteLLM proxy: self-hosted on internal infrastructure for teams with data residency requirements. Same API interface as OpenRouter — swap by changing one environment variable. Supports custom model aliases.</li>
+                <li>Risk classification: customer data → local only. Financial outputs → Opus + human review. Public content → any model, fast routing. Internal docs → Sonnet with standard context. Risk level determines eligible models and review requirements.</li>
+                <li>Fallback chains: Sonnet → GPT-4o → local Llama (degraded). Each fallback is pre-tested with golden sets. Fallback triggers on: rate limit, latency > 30s, error rate > 5%, or provider outage. Notification fires on every fallback activation.</li>
+                <li>Audit: every routing decision → {timestamp, task_type, model_selected, alternatives_considered, latency_ms, cost_usd, outcome}. Queryable via SQL. Weekly reports per team.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="stack">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="stack-execution">
+              <span class="accordion__title">
+                <span class="accordion__index">04</span>
+                <span>Execution plane</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="stack-execution">
+              <p>
+                Agents execute in sandboxed environments with explicit permission boundaries. Claude Code gets file system read/write within the project directory. No network access unless explicitly granted per task. Every tool call is logged with input, output, duration, and exit code.
+              </p>
+              <ul>
+                <li>Sandbox model: Docker containers for untrusted code execution. Claude Code project mode for trusted repo work — permissions defined in CLAUDE.md (allowed commands, file patterns, network rules). Codex CLI runs in isolated sandbox by default.</li>
+                <li>Permission boundaries: file system (read/write per directory pattern), network (allowlist per domain), process (allowed commands list), secrets (env vars injected per task, never in context). Violations logged and blocked.</li>
+                <li>CI integration: GitHub Actions for automated testing of agent outputs. Every PR from an agent runs the same pipeline as human PRs — lint, type-check, test, build. Agent PRs get auto-labeled for review priority.</li>
+                <li>Tool contracts: each tool has a typed schema — input (JSON Schema), output (JSON Schema), permissions (file/network/process), timeout (seconds). Tools are registered in a catalog. Agents discover tools from the catalog, not from prompts.</li>
+                <li>Audit trail: {timestamp, agent_id, tool_name, input_hash, output_hash, duration_ms, exit_code, permissions_used}. Stored in append-only log. Queryable for debugging, compliance, and cost attribution. 90-day retention default.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="stack">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="stack-harness">
+              <span class="accordion__title">
+                <span class="accordion__index">05</span>
+                <span>Harness plane</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="stack-harness">
+              <p>
+                The durable layer. CLAUDE.md files as behavioral contracts per project. Context capsules stored as versioned markdown in .ctx/ directories. Decision logs in append-only files. Session memory in SQLite, promoted to durable context via explicit commit. Everything here survives model swaps and provider changes.
+              </p>
+              <ul>
+                <li>Context capsules: markdown files in .ctx/capsules/ — one per domain (architecture, decisions, evaluation, team). Each capsule has a header with scope, last-updated, and expiry. Capsules are loaded into agent context at session start based on task type.</li>
+                <li>CLAUDE.md contracts: per-project behavioral definitions — coding standards, allowed patterns, forbidden patterns, review criteria, test requirements. The agent reads this file first. It is the behavioral boundary for everything that follows.</li>
+                <li>Decision log: .ctx/decisions/ — append-only markdown. Each entry: {date, decision, rationale, alternatives_considered, owner}. Agents reference decisions before proposing changes. Contradicting a logged decision requires explicit override.</li>
+                <li>Session memory: SQLite database at .ctx/memory.db. Current session state, scratch work, intermediate results. Volatile by default. Promoted to capsule via `ctx promote` command when the team decides something is durable.</li>
+                <li>Recovery: every context mutation is a git commit in the .ctx/ directory. Rollback to any previous state with `git log .ctx/`. Corruption recovery: rebuild capsules from decision log + source code analysis. Tested quarterly.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Knowledge is free. Time isn't.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

@@ -54,6 +54,7 @@ Keep the body short. If it grows beyond fast comprehension, split into one focus
 - Keep sessions short: design, verify, and close within one bounded context window.
 - Split work into a quick research pass and a separate execution pass.
 - If a generated update cannot be validated in one pass, fail fast and request a revised contract.
+- For publication-ready docs, run `/humanizer` after quality gates only if style polish is needed.
 
 ## Deterministic migration rule
 Use scripts when all of these are true:
@@ -61,6 +62,10 @@ Use scripts when all of these are true:
 - You execute the same skill repeatedly with the same expected outcome.
 - You care about stable IDs, exact formats, and predictable files.
 - Manual review only for exceptions and exceptions-only.
+
+Interface rule:
+- Use protocol adapters only after CLI/scripts are stabilized.
+- If a protocol (including MCP) can be dropped without changing the core playbook, keep it outside the canonical skill contract.
 
 If only some parts are deterministic, keep the orchestration as a skill and call the script for the stable core.
 

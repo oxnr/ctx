@@ -28,12 +28,22 @@ Publish a practical open learning module tied to the current implementation phas
    - project lab list
    - core books
    - prompt engineering practices
+   - `academy/anthropic-academy.md` for structured course-level patterns.
+   - `skills/anthropic-academy.md` for module-to-skill conversion rules.
 7. Use `academy/syllabus.md` to pick:
    - module objective
    - required deliverables
    - expected command triggers
+8. Optional publication polish:
+   - `/humanizer` for public-facing readability refinement only.
+   - keep evidence, policy, and test sections unchanged.
 
 ## Output
 - Open module with clear learning outcome
 - Companion command prompt or skill
 - Feedback prompt to improve the next module
+
+## Optional Anthropic conversion pattern
+- 1) Select 1 Anthropic Academy track for this cohort.
+- 2) Adapt one behavior pattern from it into a module or skill.
+- 3) Publish public artifact + one private execution-ready runbook artifact.
