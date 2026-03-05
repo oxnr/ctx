@@ -49,6 +49,7 @@ HARNESS-FIRST ENGINEERING PRINCIPLES
 - Treat docs like code: linked, versioned, and mechanically checkable.
 - Keep a recurring cleanup loop for stale context, broken links, and old assumptions.
 - Treat skills as controlled automation: track trigger quality and avoid accidental over-triggering.
+- Start each run with context preload (`/recall`) before tool execution to reduce rework and reset drift.
 
 MANDATES
 - Provider layer is a first-class operating artifact. Keep provider metadata current and versioned.
@@ -60,6 +61,7 @@ MANDATES
 - Do not lead with specific tool names in client-facing materials. Tool names (Claude Code, Codex, GPT, open-weight models) appear in body text as examples, not in headlines or hero copy.
 - Keep the curriculum source synchronized with `academy/handbook-catalog.md`.
 - `academy/syllabus.md` is the canonical sequence for every engagement.
+- Prefer preloading local context (`/recall`) over re-explaining state in every new session.
 - Keep `AGENTS.md` concise as a map of execution rules; push detail into markdown artifacts.
 - Maintain a repo-level operating log of plans, decisions, and known cleanup debt.
 - New skills and high-change skill updates require trigger tests:

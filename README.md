@@ -42,9 +42,12 @@ skills/             Canonical playbooks
   provider-catalog-update.md
   internet-research.md
   agent-library-update.md
+  recall.md
 scripts/            Sync and maintenance tools
   sync-provider-catalog.sh
   sync-agent-library.sh
+  recall-index.sh
+  recall-search.sh
 agent-library/      Curated local specialist profiles for quick reuse
 ``` 
 
