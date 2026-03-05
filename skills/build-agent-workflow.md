@@ -40,11 +40,14 @@ Define and launch an AI workflow with measurable quality and safety gates.
    - generate a short summary of intended changes
    - run only targeted validation for the changed area
    - review full output only when risk is high or acceptance fails
-9. Implement fallback policy:
+9. For workflows that introduce new/changed skills:
+   - run a smoke trigger set (3 positive + 3 negative examples)
+   - validate skill selection behavior before full rollout
+10. Implement fallback policy:
    - escalation path
    - cancellation criteria
    - recovery sequence
-10. Keep issue-style trackers lightweight:
+11. Keep issue-style trackers lightweight:
    - use high-level commitments for what matters
    - include context and evidence per entry
    - avoid per-file ticketization that slows execution

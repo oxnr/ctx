@@ -29,6 +29,7 @@ PRINCIPLES
 - Keep sessions contract-first: define scope, acceptance, and rollback before execution; split discovery and implementation phases.
 - Use anti-sycophancy review loops for risky work: find assumptions, challenge them, then decide with minimal-rework rollback criteria.
 - Treat context compaction/summarization as an operational optimization only. Keep canonical raw context where decisions can be audited, and pin compaction semantics/version in policy.
+- Treat skills as measurable components, not only instruction bundles. New or changed skills should include a trigger test plan (positive + negative cases).
 
 EXECUTION PRINCIPLES (How we run AI systems)
 - We do not make code review a virtue. We make it a signal: small, high-confidence checks before larger releases.
@@ -47,6 +48,7 @@ HARNESS-FIRST ENGINEERING PRINCIPLES
 - Build and test in a loop: execute -> validate -> recover -> retry.
 - Treat docs like code: linked, versioned, and mechanically checkable.
 - Keep a recurring cleanup loop for stale context, broken links, and old assumptions.
+- Treat skills as controlled automation: track trigger quality and avoid accidental over-triggering.
 
 MANDATES
 - Provider layer is a first-class operating artifact. Keep provider metadata current and versioned.
@@ -60,6 +62,9 @@ MANDATES
 - `academy/syllabus.md` is the canonical sequence for every engagement.
 - Keep `AGENTS.md` concise as a map of execution rules; push detail into markdown artifacts.
 - Maintain a repo-level operating log of plans, decisions, and known cleanup debt.
+- New skills and high-change skill updates require trigger tests:
+  - 3 positive inputs that should invoke the skill.
+  - 3 negative inputs that should not invoke the skill.
 - Agent library policy:
   - Prefer local markdown-first agent definitions.
   - Track library sources and sync history for every update.
@@ -98,3 +103,4 @@ REPEATED OPERATING LOOP
    - show a short proposed diff summary
    - highlight the highest-risk file/decision
    - require a stop/review gate only for high-impact failures
+9. If a skill changed, include a quick trigger smoke check (true-positive and true-negative cases).

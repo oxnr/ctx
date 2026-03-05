@@ -21,6 +21,7 @@ Skills are portable by default and deterministic wherever possible.
 3. **Steps**: numbered execution path.
 4. **Output**: expected artifacts and format.
 5. **Failure handling**: what to do when APIs, agents, or outputs fail.
+6. **Trigger tests**: at least three positive and three negative examples to constrain when the skill should fire.
 
 Keep the body short. If it grows beyond fast comprehension, split into one focused skill with sub-links.
 
@@ -40,6 +41,14 @@ Keep the body short. If it grows beyond fast comprehension, split into one focus
 4. Add one concrete input/output contract so agents can self-validate.
 5. Add a fallback path when provider/API availability drops.
 6. Save examples of successful invocation in the skill body or linked notes.
+7. Build a trigger test set:
+   - 3 positive requests that should invoke the skill.
+   - 3 negative requests that should not.
+   - optional: expected trigger confidence bands (when using an agent-native tool).
+8. If the environment supports skill execution plugins (e.g., Claude Code plugin), use built-in test generation first:
+   - generate candidate trigger tests
+   - inspect false positives/false negatives
+   - optimize the wording or aliases to improve trigger precision.
 
 ## Hardening rule
 - Keep sessions short: design, verify, and close within one bounded context window.
