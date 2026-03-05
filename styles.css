@@ -454,94 +454,7 @@ html.js [data-reveal].is-visible {
   margin: 0;
 }
 
-/* ---- INDEX: ABOVE THE FOLD ---- */
-
-body.page-index {
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  background: var(--bg);
-  background-image: radial-gradient(ellipse at 25% 0%, rgba(60, 60, 60, 0.18) 0%, transparent 55%);
-}
-
-body.page-index main {
-  flex: 1;
-}
-
-body.page-index .hero.section + .section {
-  border-top: 0;
-  padding-top: 0;
-}
-
-body.page-index .site-header {
-  max-width: none;
-  width: 100%;
-  margin: 0;
-  padding: 1.25rem clamp(2rem, 6vw, 6rem);
-}
-
-body.page-index .hero {
-  max-width: none;
-  padding: 2.5rem clamp(2rem, 6vw, 6rem) 1rem;
-}
-
-body.page-index .hero-kicker {
-  font-size: 0.72rem;
-}
-
-body.page-index .hero h1 {
-  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
-  margin-top: 0.5rem;
-}
-
-body.page-index .hero-subtitle {
-  font-size: 1.05rem;
-  margin-top: 0.6rem;
-  line-height: 1.65;
-}
-
-body.page-index .section {
-  max-width: none;
-  padding: 1rem clamp(2rem, 6vw, 6rem);
-}
-
-body.page-index .section-label {
-  margin-bottom: 0.5rem;
-}
-
-body.page-index .overview-grid {
-  margin-top: 0.75rem;
-}
-
-body.page-index .micro-card {
-  padding: 1.4rem 1.75rem;
-  gap: 0.4rem;
-}
-
-body.page-index .micro-card:hover {
-  background: #141414;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-}
-
-body.page-index .micro-card h3 {
-  font-size: 1.1rem;
-}
-
-body.page-index .micro-card p {
-  font-size: 0.92rem;
-  line-height: 1.6;
-}
-
-body.page-index .site-footer {
-  max-width: none;
-  padding: 1.25rem clamp(2rem, 6vw, 6rem);
-  margin-top: auto;
-}
-
-/* Disable reveal animations on index and subpages */
-html.js body.page-index [data-reveal],
-html.js body.page-index .micro-card,
+/* Disable reveal animations on shared pages */
 html.js body.subpage [data-reveal],
 html.js body.subpage .micro-card,
 html.js body.subpage .info-card {
@@ -648,19 +561,9 @@ body.subpage .accordion__toggle {
 
 @media (max-width: 760px) {
   /* Release above-the-fold on mobile — mobile is a scroll experience */
-  body.subpage,
-  body.page-index {
+  body.subpage {
     height: auto;
     overflow: visible;
-  }
-
-  body.page-index .site-header,
-  body.page-index .hero,
-  body.page-index .section,
-  body.page-index .site-footer {
-    max-width: var(--max-w);
-    padding-left: clamp(1.5rem, 4vw, 2rem);
-    padding-right: clamp(1.5rem, 4vw, 2rem);
   }
 
   .top-nav {

@@ -53,7 +53,7 @@ HARNESS-FIRST ENGINEERING PRINCIPLES
 
 MANDATES
 - Provider layer is a first-class operating artifact. Keep provider metadata current and versioned.
-- `stack.html` is generated from `provider-catalog/index.md` via `scripts/render-stack-page.py`; do not hand-edit pinned model/version claims on the public stack page.
+- `stack/index.html` is generated from `provider-catalog/index.md` via `scripts/render-stack-page.py`; do not hand-edit pinned model/version claims on the public stack page.
 - Confirm high-impact model/provider updates through `/internet-research` before production adoption.
 - Always reference this file as project intent when onboarding new agents.
 - Run a recurring release-quality gate via `/quality-cycle` (default weekly) when publishing web-facing assets.

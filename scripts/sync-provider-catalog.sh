@@ -158,4 +158,4 @@ python3 "$STACK_RENDER_SCRIPT"
 
 echo "✅ Provider catalog sync complete: $INDEX_FILE"
 echo "📘 Sync log updated: $SYNC_LOG"
-echo "🧭 Stack page updated: ${ROOT_DIR}/stack.html"
+echo "🧭 Stack page updated: ${ROOT_DIR}/stack/index.html"

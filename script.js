@@ -1,12 +1,26 @@
 (() => {
+  if (/\/index\.html$/.test(window.location.pathname)) {
+    const canonicalPath = window.location.pathname.replace(/index\.html$/, "");
+    window.location.replace(`${canonicalPath}${window.location.search}${window.location.hash}`);
+    return;
+  }
+
   document.documentElement.classList.add("js");
 
-  const to = window.location.pathname.split("/").pop() || "index.html";
+  const normalizePath = (pathname) => {
+    const withoutIndex = pathname.replace(/\/index\.html$/, "/");
+    const trimmed = withoutIndex !== "/" ? withoutIndex.replace(/\/$/, "") : withoutIndex;
+    if (trimmed === "/") return "index";
+    const segment = trimmed.split("/").pop();
+    return segment || "index";
+  };
+
+  const to = normalizePath(window.location.pathname);
 
   const navLinks = document.querySelectorAll(".nav-link");
   navLinks.forEach((link) => {
-    const href = new URL(link.href).pathname.split("/").pop() || "index.html";
-    if (to === href || (to === "" && href === "index.html")) {
+    const href = normalizePath(new URL(link.href).pathname);
+    if (to === href) {
       link.classList.add("is-active");
       link.setAttribute("aria-current", "page");
     }

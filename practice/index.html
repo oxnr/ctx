@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice — ctx</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="canonical" href="https://ctx.earth/practice" />
+  </head>
+  <body class="subpage">
+    <header class="site-header">
+      <a class="brand" href="/">ctx</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+        <span>Menu</span>
+      </button>
+      <nav id="site-nav" class="top-nav">
+        <a class="nav-link" href="/thesis">Thesis</a>
+        <a class="nav-link" href="/practice">Practice</a>
+        <a class="nav-link" href="/stack">Stack</a>
+        <a class="nav-link" href="/learn">Learn</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section" data-reveal>
+        <p class="hero-kicker">Practice</p>
+        <h1>What we build and how we decide.</h1>
+        <p class="hero-subtitle">
+          Four build areas and five operating principles. Expand any area for scope, method, and deliverables.
+        </p>
+      </section>
+
+      <section class="section section-compact" data-reveal>
+        <p class="section-label">Build areas</p>
+        <div class="accordion-list">
+          <article class="accordion" data-group="work">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="work-workflow">
+              <span class="accordion__title">
+                <span class="accordion__index">01</span>
+                <span>AI Workflow Design</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="work-workflow">
+              <p>
+                We map every decision point, handoff rule, and validation gate so agents always know what to do next and humans always know where to intervene. Workflow design is not about automation for its own sake — it is about making the boundary between human judgment and machine execution explicit, auditable, and repeatable.
+              </p>
+              <ul>
+                <li>Task decomposition: break complex work into atomic agent tasks with clear input/output contracts and acceptance criteria per step.</li>
+                <li>Role definitions: assign planning, execution, review, and publish responsibilities to specific agents or humans with escalation rules for ambiguity.</li>
+                <li>Handoff contracts: structured outputs at every boundary — JSON schemas, typed responses, validation checks — so the next step never guesses what it received.</li>
+                <li>Multi-agent coordination: patterns for parallel execution, sequential chains, and review loops with conflict resolution when agents disagree.</li>
+                <li>Quality gates: automated validation between workflow stages — format checks, content verification, safety filters, and human-approval triggers for high-risk outputs.</li>
+                <li>Workflow versioning: every workflow is a versioned artifact. Changes are tracked, tested against golden sets, and rolled back when regressions appear.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="work">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="work-local">
+              <span class="accordion__title">
+                <span class="accordion__index">02</span>
+                <span>Local-First Infrastructure</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="work-local">
+              <p>
+                We keep data and execution local where it matters so control and latency stay predictable. Local-first is not anti-cloud — it is a design constraint that produces better architecture. When you control where data lives and where computation happens, you get sovereignty, auditability, and the ability to operate without dependency on external uptime.
+              </p>
+              <ul>
+                <li>Data classification: tier every data type by sensitivity — public, internal, confidential, regulated — and route each tier to infrastructure that matches its policy requirements.</li>
+                <li>Deployment options: on-device for sensitive tasks, local server for team-wide workloads, private-cloud for scale, hybrid for mixed requirements. We map each use case to the right deployment shape.</li>
+                <li>Secure routing: policy-driven controls that enforce which data goes where, with redaction pipelines for context that crosses trust boundaries.</li>
+                <li>Provider fallback: when a cloud endpoint is unavailable or a provider changes terms, the system reroutes to the next option without contract rewrites or workflow interruption.</li>
+                <li>Composable toolchain: terminal orchestration, CI integration, container workflows, and API adapters that work together without framework lock-in. Every tool is replaceable.</li>
+                <li>Compliance boundaries: data residency rules, retention policies, audit trails, and access controls that satisfy regulatory requirements without adding operational friction.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="work">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="work-context">
+              <span class="accordion__title">
+                <span class="accordion__index">03</span>
+                <span>Context Engineering</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="work-context">
+              <p>
+                We design context as small, explicit capsules that stay recoverable in production. Context is the most expensive thing in an AI system — not because of token cost, but because when it is lost, the system starts from zero. We build the architecture that prevents that.
+              </p>
+              <ul>
+                <li>Context capsules: scoped packages of state per domain, per role, per session. Each capsule has clear boundaries — what it contains, what it excludes, and when it expires.</li>
+                <li>Volatile vs durable state: separate session-specific context (conversation history, scratch state) from project truth (decisions, contracts, architecture docs). Different lifecycles, different storage, different recovery.</li>
+                <li>Versioning and rollback: every context mutation is tracked. When outputs degrade, you can trace back to the context change that caused it and recover the previous state.</li>
+                <li>Cross-project continuity: patterns that carry useful context between projects without pollution. Lessons learned, decision frameworks, and evaluation criteria transfer. Project-specific noise does not.</li>
+                <li>Token budgeting: context is finite. We design systems that fit within model limits without truncation surprises — priority ordering, progressive disclosure, and compression strategies that preserve signal.</li>
+                <li>Context hygiene: regular audits of what is in the context window. Stale information gets archived. Redundant information gets deduplicated. Every token earns its place.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="work">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="work-learn">
+              <span class="accordion__title">
+                <span class="accordion__index">04</span>
+                <span>Harness and Learning Program</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="work-learn">
+              <p>
+                Open artifacts are part of every engagement. We do not build systems that only work when we are in the room. Every template, every playbook, every workflow we ship is designed to be owned, extended, and maintained by the team that uses it.
+              </p>
+              <ul>
+                <li>Curriculum-linked implementation: every engagement maps to modules from the 13-module open curriculum. Teams learn the reasoning behind decisions, not just the decisions themselves.</li>
+                <li>Repeatable onboarding: new team members get up to speed through structured templates and documented decision history, not tribal knowledge or consultant handoff calls.</li>
+                <li>Template packs: prompt templates, workflow contracts, evaluation rubrics, and context capsule structures — all in plain text, all versioned, all portable to any stack.</li>
+                <li>Review workflows: built-in quality cycles for every artifact — create, review, ship, measure. The team runs these independently after the engagement ends.</li>
+                <li>Role-based adoption paths: engineering, operations, leadership, sales, and support each get tailored learning tracks with different module priorities and different skill companions.</li>
+                <li>Exit criteria: the engagement succeeds when the team can produce the same process with another model or stack. No vendor lock-in. No consultant dependency.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-compact" data-reveal>
+        <p class="section-label">Operating principles</p>
+        <div class="principle-list">
+          <div class="principle-item">
+            <span class="principle-item__index">01</span>
+            <span class="principle-item__name">Signal Over Chatter</span>
+            <span class="principle-item__desc">Every output needs intent, evidence, and a next step.</span>
+          </div>
+          <div class="principle-item">
+            <span class="principle-item__index">02</span>
+            <span class="principle-item__name">Context Efficiency</span>
+            <span class="principle-item__desc">Keep context small. Evolve it only when state changes.</span>
+          </div>
+          <div class="principle-item">
+            <span class="principle-item__index">03</span>
+            <span class="principle-item__name">Role Orchestra</span>
+            <span class="principle-item__desc">Roles are behavioral contracts with narrow scope.</span>
+          </div>
+          <div class="principle-item">
+            <span class="principle-item__index">04</span>
+            <span class="principle-item__name">Model Diversity</span>
+            <span class="principle-item__desc">Route by task type, cost, and risk — not brand loyalty.</span>
+          </div>
+          <div class="principle-item">
+            <span class="principle-item__index">05</span>
+            <span class="principle-item__name">Execution Continuity</span>
+            <span class="principle-item__desc">Design recoveries and rollbacks by default.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Knowledge is free. Time isn't.</p>
+    </footer>
+
+    <script src="/script.js" defer></script>
+  </body>
+</html>

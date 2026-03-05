@@ -25,10 +25,10 @@ Default execution policy: CLI-first and file-first. MCP/agent protocols are opti
 
 ```
 index.html          Homepage
-thesis.html         Thesis page
-work.html           Practice page (build areas + operating principles)
-stack.html          Generated stack snapshot page
-learn.html          Learn / Academy page (13-module curriculum)
+thesis/index.html   Thesis page
+practice/index.html Practice page (build areas + operating principles)
+stack/index.html    Generated stack snapshot page
+learn/index.html    Learn / Academy page (13-module curriculum)
 styles.css          Styles
 script.js           Interactions (accordions, nav toggle)
 llm-full.txt        LLM context file
@@ -69,7 +69,7 @@ agent-library/      Curated local specialist profiles for quick reuse
 `provider-catalog/index.md` is the source of truth for live provider/model inventory.
 
 - Refresh the catalog with `./scripts/sync-provider-catalog.sh`.
-- That sync also regenerates `stack.html` through `scripts/render-stack-page.py`.
+- That sync also regenerates `stack/index.html` through `scripts/render-stack-page.py`.
 - Public stack copy should never be hand-edited with pinned provider/model claims.
 
 ## Custom domain
