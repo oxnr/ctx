@@ -11,7 +11,6 @@ from urllib.parse import quote
 ROOT_DIR = Path(__file__).resolve().parents[1]
 CATALOG_FILE = ROOT_DIR / "provider-catalog" / "index.md"
 OUTPUT_FILE = ROOT_DIR / "stack" / "index.html"
-LEGACY_REDIRECT_FILE = ROOT_DIR / "stack.html"
 REPO_URL = "https://github.com/oxnr/ctx"
 
 
@@ -294,26 +293,6 @@ def main() -> None:
 
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_FILE.write_text(html_output, encoding="utf-8")
-    LEGACY_REDIRECT_FILE.write_text(
-        """<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting to /stack</title>
-    <meta http-equiv="refresh" content="0; url=/stack" />
-    <link rel="canonical" href="https://ctx.earth/stack" />
-    <script>
-      window.location.replace("/stack");
-    </script>
-  </head>
-  <body>
-    <p>Redirecting to <a href="/stack">/stack</a>...</p>
-  </body>
-</html>
-""",
-        encoding="utf-8",
-    )
 
 
 if __name__ == "__main__":

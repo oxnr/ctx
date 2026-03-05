@@ -30,16 +30,18 @@ The operating thesis is simple: models change; context, contracts, and harnesses
 
 ## What Ships Here
 
-```mermaid
-flowchart LR
-  academy["academy/*.md"] --> site["ctx.earth"]
-  skills["skills/*.md"] --> academy
-  provider["provider-catalog/*.md"] --> render["scripts/render-stack-page.py"]
-  render --> stack["stack/index.html"]
-  stack --> site
-  pages["index + thesis + practice + learn"] --> site
-  audit["scripts/web-quality-audit.sh<br/>scripts/quality-cycle.sh"] --> reports["reports/quality-audit/"]
-  agentlib["scripts/sync-agent-library.sh"] --> library["agent-library/*.md"]
+```text
+academy/*.md                          curriculum source
+skills/*.md                           reusable playbooks and operating rules
+provider-catalog/*.md                 live provider inventory
+scripts/render-stack-page.py          stack page generator
+stack/index.html                      generated public stack page
+index.html + thesis/ + practice/      public site routes
+learn/                                public academy route
+scripts/web-quality-audit.sh          static-site audit
+scripts/quality-cycle.sh              release quality gate
+agent-library/*.md                    local role and workflow reference set
+reports/quality-audit/                generated local audit output
 ```
 
 ## Repository Map
@@ -62,7 +64,9 @@ flowchart LR
 ## File Conventions
 
 - Public routes are extensionless: `/`, `/thesis`, `/practice`, `/stack`, `/learn`.
-- Route content lives in `foo/index.html`; legacy root `foo.html` files exist only as compatibility redirects.
+- Route content lives in `foo/index.html`.
+- Public pages should not ship root `thesis.html`, `learn.html`, or `stack.html` files because GitHub Pages will treat `/thesis`, `/learn`, and `/stack` as those files instead of the directory routes.
+- Legacy `.html` page URLs are handled through [`404.html`](./404.html).
 - `stack/index.html` is generated. Do not hand-edit public provider/model claims there.
 - `provider-catalog/index.md` is the canonical source for the live stack snapshot.
 - `academy/syllabus.md` is the single active curriculum sequence.
