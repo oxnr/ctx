@@ -3,7 +3,7 @@ set -euo pipefail
 
 usage() {
   echo "Usage: $0 <file-or-directory>"
-  echo "Runs fast, static HTML quality checks and prints a JSON-like summary."
+  echo "Runs fast, static HTML quality checks and prints valid JSON."
   exit 1
 }
 
@@ -17,106 +17,126 @@ if [[ ! -e "$TARGET" ]]; then
   exit 1
 fi
 
-if ! command -v rg >/dev/null 2>&1 && ! command -v grep >/dev/null 2>&1; then
-  echo "Either rg or grep is required." >&2
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "python3 is required for $0" >&2
   exit 1
 fi
 
-if command -v rg >/dev/null 2>&1; then
-  mapfile -t FILES_LIST < <(rg --files "$TARGET" -g '*.html' -g '*.htm' 2>/dev/null || true)
-  if [[ ${#FILES_LIST[@]} -eq 0 ]]; then
-    echo "No html files found under: $TARGET"
-    exit 0
-  fi
-else
-  mapfile -t FILES_LIST < <(find "$TARGET" -type f \( -name '*.html' -o -name '*.htm' \))
-  if [[ ${#FILES_LIST[@]} -eq 0 ]]; then
-    echo "No html files found under: $TARGET"
-    exit 0
-  fi
-fi
+python3 - "$TARGET" <<'PY'
+import json
+import re
+import subprocess
+import sys
+from pathlib import Path
+from typing import Optional
 
-TOTAL_ISSUES=0
-TOTAL_WARNINGS=0
-declare -a ISSUES
-declare -a WARNINGS
 
-for FILE in "${FILES_LIST[@]}"; do
-  if [[ ! -r "$FILE" ]]; then
-    continue
-  fi
+target = Path(sys.argv[1])
 
-  # Structural checks
-  if ! rg -q "<!doctype html" -i "$FILE"; then
-    ISSUES+=("$FILE: missing HTML5 doctype")
-    ((TOTAL_ISSUES+=1))
-  fi
 
-  if ! rg -q "<meta[^>]*charset=[\"']?utf-8" -i "$FILE"; then
-    WARNINGS+=("$FILE: missing charset utf-8 declaration")
-    ((TOTAL_WARNINGS+=1))
-  fi
+def repo_root_for(path: Path) -> Optional[Path]:
+    start = path if path.is_dir() else path.parent
+    try:
+        proc = subprocess.run(
+            ["git", "-C", str(start), "rev-parse", "--show-toplevel"],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    return Path(proc.stdout.strip())
 
-  if ! rg -q "<meta[^>]*name=[\"']viewport[\"']" -i "$FILE"; then
-    ISSUES+=("$FILE: missing viewport meta tag")
-    ((TOTAL_ISSUES+=1))
-  fi
 
-  if ! rg -q "<html[^>]*lang=" -i "$FILE"; then
-    ISSUES+=("$FILE: missing html lang attribute")
-    ((TOTAL_ISSUES+=1))
-  fi
+def collect_tracked_html_files(repo_root: Path, path: Path):
+    try:
+        proc = subprocess.run(
+            ["git", "-C", str(repo_root), "ls-files", "*.html", "*.htm"],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return None
 
-  if ! rg -q "<title[^>]*>.*</title>" -i "$FILE"; then
-    ISSUES+=("$FILE: missing title tag")
-    ((TOTAL_ISSUES+=1))
-  fi
+    tracked = [repo_root / line for line in proc.stdout.splitlines() if line.strip()]
 
-  if rg -q '<img[^>]*>' -i "$FILE" && rg -P -q '<img(?![^>]*\salt=)[^>]*>' -i "$FILE"; then
-    WARNINGS+=("$FILE: possible images without alt text")
-    ((TOTAL_WARNINGS+=1))
-  fi
+    if path.is_file():
+        resolved = path.resolve()
+        return [file_path for file_path in tracked if file_path.resolve() == resolved]
 
-  if rg -q "http://" "$FILE" >/dev/null 2>&1; then
-    WARNINGS+=("$FILE: contains plain http links")
-    ((TOTAL_WARNINGS+=1))
-  fi
+    resolved_target = path.resolve()
+    return [file_path for file_path in tracked if resolved_target in file_path.resolve().parents or file_path.resolve() == resolved_target]
 
-  # Accessibility hints
-  if rg -q "onclick=" -i "$FILE"; then
-    WARNINGS+=("$FILE: inline event handlers detected (accessibility and CSP risk)")
-    ((TOTAL_WARNINGS+=1))
-  fi
 
-done
+def collect_html_files(path: Path):
+    repo_root = repo_root_for(path)
+    if repo_root is not None:
+        tracked = collect_tracked_html_files(repo_root, path)
+        if tracked is not None:
+            return sorted(tracked)
 
-{
-  echo "{"
-  echo "  \"target\": \"${TARGET}\" ,"
-  echo "  \"issue_count\": ${TOTAL_ISSUES},"
-  echo "  \"warning_count\": ${TOTAL_WARNINGS},"
-  echo "  \"issues\": ["
-  for i in "${!ISSUES[@]}"; do
-    if [[ $i -gt 0 ]]; then
-      echo ","
-    fi
-    printf "    \"%s\"" "${ISSUES[$i]//\"/\\\"}"
-  done
-  echo ""
-  echo "  ],"
-  echo "  \"warnings\": ["
-  for i in "${!WARNINGS[@]}"; do
-    if [[ $i -gt 0 ]]; then
-      echo ","
-    fi
-    printf "    \"%s\"" "${WARNINGS[$i]//\"/\\\"}"
-  done
-  echo ""
-  echo "  ]"
-  echo "}"
-} > /tmp/ctx-web-quality-audit.json
+    if path.is_file():
+        if path.suffix.lower() in {".html", ".htm"}:
+            return [path]
+        return []
+    return sorted(
+        file_path
+        for file_path in path.rglob("*")
+        if file_path.is_file() and file_path.suffix.lower() in {".html", ".htm"}
+    )
 
-cat /tmp/ctx-web-quality-audit.json
-echo
-echo "Summary: ${TOTAL_ISSUES} issues, ${TOTAL_WARNINGS} warnings"
-echo "Targets scanned: ${#FILES_LIST[@]}"
+
+files = collect_html_files(target)
+issues = []
+warnings = []
+
+checks = [
+    (issues, re.compile(r"<!doctype html", re.IGNORECASE), "missing HTML5 doctype"),
+    (warnings, re.compile(r"<meta[^>]*charset=[\"']?utf-8", re.IGNORECASE), "missing charset utf-8 declaration"),
+    (issues, re.compile(r"<meta[^>]*name=[\"']viewport[\"']", re.IGNORECASE), "missing viewport meta tag"),
+    (issues, re.compile(r"<html[^>]*lang=", re.IGNORECASE), "missing html lang attribute"),
+    (issues, re.compile(r"<title[^>]*>.*?</title>", re.IGNORECASE | re.DOTALL), "missing title tag"),
+]
+
+img_pattern = re.compile(r"<img\b[^>]*>", re.IGNORECASE | re.DOTALL)
+
+for file_path in files:
+    try:
+        content = file_path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        continue
+
+    for bucket, pattern, message in checks:
+        if not pattern.search(content):
+            bucket.append(f"{file_path}: {message}")
+
+    if any("alt=" not in tag.lower() for tag in img_pattern.findall(content)):
+        warnings.append(f"{file_path}: possible images without alt text")
+
+    if "http://" in content:
+        warnings.append(f"{file_path}: contains plain http links")
+
+    if re.search(r"onclick=", content, re.IGNORECASE):
+        warnings.append(f"{file_path}: inline event handlers detected (accessibility and CSP risk)")
+
+result = {
+    "target": str(target),
+    "scanned_count": len(files),
+    "issue_count": len(issues),
+    "warning_count": len(warnings),
+    "issues": issues,
+    "warnings": warnings,
+}
+
+json.dump(result, sys.stdout, indent=2)
+sys.stdout.write("\n")
+
+if files:
+    print(f"Summary: {len(issues)} issues, {len(warnings)} warnings", file=sys.stderr)
+    print(f"Targets scanned: {len(files)}", file=sys.stderr)
+else:
+    print(f"No html files found under: {target}", file=sys.stderr)
+    print("Summary: 0 issues, 0 warnings", file=sys.stderr)
+    print("Targets scanned: 0", file=sys.stderr)
+PY

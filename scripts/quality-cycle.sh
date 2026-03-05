@@ -14,12 +14,31 @@ timestamp() {
   date -u +"%Y-%m-%dT%H:%M:%SZ"
 }
 
+read_json_field() {
+  local file="$1"
+  local field="$2"
+  python3 - "$file" "$field" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    payload = json.load(handle)
+
+print(payload[sys.argv[2]])
+PY
+}
+
 run_ts="$(date -u +"%Y%m%dT%H%M%SZ")"
 ts="$(timestamp)"
 mkdir -p "$ARTIFACT_DIR"
 
 if [[ ! -x "$AQT_SCRIPT" ]]; then
   echo "Missing executable script: $AQT_SCRIPT" >&2
+  exit 1
+fi
+
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "python3 is required for $0" >&2
   exit 1
 fi
 
@@ -33,15 +52,9 @@ echo "Output: ${ARTIFACT_DIR}/web-quality-audit-${run_ts}.json"
 
 "$AQT_SCRIPT" "$target" | tee "$temp_file"
 
-summary_line="$(awk '/^Summary:/{print $0; exit}' "$temp_file" || true)"
-if [[ -z "$summary_line" ]]; then
-  echo "No quality summary emitted by audit script. Aborting." >&2
-  exit 1
-fi
-
-issues="$(awk '/^Summary:/{print $2}' "$temp_file")"
-warnings="$(awk '/^Summary:/{print $4}' "$temp_file")"
-scanned="$(awk '/^Targets scanned:/{print $3}' "$temp_file")"
+issues="$(read_json_field "$temp_file" "issue_count")"
+warnings="$(read_json_field "$temp_file" "warning_count")"
+scanned="$(read_json_field "$temp_file" "scanned_count")"
 
 latest_report="${ARTIFACT_DIR}/web-quality-audit-latest.json"
 cp "$temp_file" "${ARTIFACT_DIR}/web-quality-audit-${run_ts}.json"

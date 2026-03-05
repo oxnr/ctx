@@ -14,6 +14,42 @@ timestamp() {
   date -u +"%Y-%m-%dT%H:%M:%SZ"
 }
 
+render_index_section() {
+  local source="$1"
+  local repo_url="$2"
+  local target="$3"
+  local total_files="0"
+  local wrote_folder="false"
+
+  if [ -d "$target" ]; then
+    total_files="$(find "$target" -type f -name '*.md' | wc -l | tr -d ' ')"
+  fi
+
+  echo "### ${source}"
+  echo "- Repo: ${repo_url}"
+  echo "- Local target: ${target#${ROOT_DIR}/}"
+  echo "- Markdown files: ${total_files}"
+  echo "- Top-level folders with markdown:"
+
+  if [ -d "$target" ]; then
+    for folder in "$target"/*; do
+      if [ -d "$folder" ]; then
+        count="$(find "$folder" -type f -name '*.md' | wc -l | tr -d ' ')"
+        if [ "$count" -gt 0 ]; then
+          echo "  - $(basename "$folder"): ${count}"
+          wrote_folder="true"
+        fi
+      fi
+    done
+  fi
+
+  if [ "$wrote_folder" != "true" ]; then
+    echo "  - none"
+  fi
+
+  echo
+}
+
 sync_source() {
   local source="$1"
   local repo_url="$2"
@@ -97,16 +133,15 @@ sync_source "superset-sh/superset" "https://github.com/superset-sh/superset.git"
   echo "Last synced: $(timestamp)"
   echo
   echo "## Active sources"
-  echo "- https://github.com/msitarzewski/agency-agents"
   echo
-  echo "## Available family folders"
-  for folder in "${VENDORS_DIR}"/msitarzewski-agency-agents/*; do
-    if [ -d "$folder" ]; then
-      count="$(find "$folder" -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')"
-      echo "- $(basename "$folder"): ${count} profiles"
-    fi
-  done
-  echo
+  render_index_section \
+    "msitarzewski/agency-agents" \
+    "https://github.com/msitarzewski/agency-agents" \
+    "${VENDORS_DIR}/msitarzewski-agency-agents"
+  render_index_section \
+    "superset-sh/superset" \
+    "https://github.com/superset-sh/superset" \
+    "${VENDORS_DIR}/superset-sh-superset"
 } > "$INDEX_FILE"
 
 echo "✅ Agent library sync complete."

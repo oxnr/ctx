@@ -1,6 +1,6 @@
 # Provider Catalog (Live Snapshot)
 
-Last synced: 2026-03-05T14:11:24Z
+Last synced: 2026-03-05T19:48:35Z
 
 Source: https://openrouter.ai/api/v1/models
 
@@ -10,13 +10,13 @@ Source: https://openrouter.ai/api/v1/models
 - Supports stack engineering decisions, replacement planning, and auditability.
 
 ## Global counts
-- total_models: 343
+- total_models: 346
 - total_providers: 57
 
 ## Provider snapshot
 | Provider | Count | Latest model | Latest model created (UTC) |
 | --- | ---: | --- | --- |
-| openai | 59 | openai/gpt-5.3-chat | 2026-03-03 18:54 UTC |
+| openai | 61 | openai/gpt-5.4-pro | 2026-03-05 18:12 UTC |
 | qwen | 50 | qwen/qwen3.5-35b-a3b | 2026-02-25 21:10 UTC |
 | google | 27 | google/gemini-3.1-flash-lite-preview | 2026-03-03 04:37 UTC |
 | mistralai | 25 | mistralai/mistral-small-creative | 2025-12-16 18:10 UTC |
@@ -40,8 +40,8 @@ Source: https://openrouter.ai/api/v1/models
 | cohere | 4 | cohere/command-a | 2025-03-13 19:32 UTC |
 | thedrummer | 4 | thedrummer/cydonia-24b-v4.1 | 2025-09-27 00:11 UTC |
 | bytedance-seed | 3 | bytedance-seed/seed-2.0-mini | 2026-02-26 18:38 UTC |
+| inception | 3 | inception/mercury-2 | 2026-03-04 14:57 UTC |
 | openrouter | 3 | openrouter/free | 2026-02-01 03:43 UTC |
-| inception | 2 | inception/mercury | 2025-06-26 21:23 UTC |
 | inflection | 2 | inflection/inflection-3-productivity | 2024-10-11 00:00 UTC |
 | microsoft | 2 | microsoft/phi-4 | 2025-01-10 06:17 UTC |
 | morph | 2 | morph/morph-v3-large | 2025-07-07 17:54 UTC |

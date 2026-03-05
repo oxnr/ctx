@@ -53,6 +53,7 @@ HARNESS-FIRST ENGINEERING PRINCIPLES
 
 MANDATES
 - Provider layer is a first-class operating artifact. Keep provider metadata current and versioned.
+- `stack.html` is generated from `provider-catalog/index.md` via `scripts/render-stack-page.py`; do not hand-edit pinned model/version claims on the public stack page.
 - Confirm high-impact model/provider updates through `/internet-research` before production adoption.
 - Always reference this file as project intent when onboarding new agents.
 - Run a recurring release-quality gate via `/quality-cycle` (default weekly) when publishing web-facing assets.
@@ -76,6 +77,11 @@ MANDATES
 - Quality policy:
   - Use `/web-quality-audit` before public-facing release points.
   - Treat quality findings as commitments in decisions and follow-up tickets.
+- Deployment policy:
+  - `ctx.earth` should use GitHub Pages-compatible direct DNS.
+  - Apex uses only the four GitHub Pages A records.
+  - `www` uses a CNAME to `oxnr.github.io`.
+  - Do not use registrar URL redirect records for the live production host.
 
 OFFERS
 - AI Workflow Design — design and deploy AI workflows across engineering, operations, product, and support

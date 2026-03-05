@@ -5,6 +5,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 CATALOG_DIR="${ROOT_DIR}/provider-catalog"
 INDEX_FILE="${CATALOG_DIR}/index.md"
 SYNC_LOG="${CATALOG_DIR}/sync-log.md"
+STACK_RENDER_SCRIPT="${ROOT_DIR}/scripts/render-stack-page.py"
 
 OPENROUTER_URL="https://openrouter.ai/api/v1/models"
 RAW_FILE="$(mktemp)"
@@ -24,8 +25,42 @@ if ! command -v curl >/dev/null 2>&1; then
   exit 1
 fi
 
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "python3 is required for provider sync" >&2
+  exit 1
+fi
+
 timestamp() {
   date -u +"%Y-%m-%dT%H:%M:%SZ"
+}
+
+write_sync_log() {
+  local now="$1"
+  local model_count="$2"
+  local provider_count="$3"
+  local existing_entries=""
+
+  if [[ -f "$SYNC_LOG" ]]; then
+    existing_entries="$(awk 'BEGIN { keep = 0 } /^## [0-9]{4}-/ { keep = 1 } keep { print }' "$SYNC_LOG")"
+  fi
+
+  {
+    echo "# Provider Catalog Sync Log"
+    echo
+    echo "## Sync log"
+    echo "- last_sync: ${now}"
+    echo "- source: ${OPENROUTER_URL}"
+    echo
+    if [[ -n "$existing_entries" ]]; then
+      printf "%s\n\n" "$existing_entries"
+    fi
+    echo "## ${now}"
+    echo "- source: ${OPENROUTER_URL}"
+    echo "- total_models: ${model_count}"
+    echo "- total_providers: ${provider_count}"
+    echo "- generated_file: provider-catalog/index.md"
+    echo
+  } > "$SYNC_LOG"
 }
 
 fetch_openrouter() {
@@ -112,32 +147,15 @@ sync_openrouter_catalog() {
     echo "- Run '/provider-catalog-update' after major model/version shifts."
   } > "$INDEX_FILE"
 
-  {
-    echo "## $(timestamp)"
-    echo "- source: ${OPENROUTER_URL}"
-    echo "- total_models: ${model_count}"
-    echo "- total_providers: ${provider_count}"
-    echo "- generated_file: provider-catalog/index.md"
-    echo
-  } >> "$SYNC_LOG"
+  write_sync_log "$now" "$model_count" "$provider_count"
 }
 
 mkdir -p "$CATALOG_DIR"
 
-if [[ ! -f "$RAW_FILE" ]]; then
-  : > "$RAW_FILE"
-fi
-
-if [[ -f "$SYNC_LOG" ]]; then
-  if [[ ! -s "$SYNC_LOG" ]]; then
-    echo "# Provider Catalog Sync Log" > "$SYNC_LOG"
-  fi
-else
-  echo "# Provider Catalog Sync Log" > "$SYNC_LOG"
-fi
-
 fetch_openrouter
 sync_openrouter_catalog
+python3 "$STACK_RENDER_SCRIPT"
 
 echo "✅ Provider catalog sync complete: $INDEX_FILE"
 echo "📘 Sync log updated: $SYNC_LOG"
+echo "🧭 Stack page updated: ${ROOT_DIR}/stack.html"

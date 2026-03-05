@@ -1,15 +1,9 @@
 # Agent Library Sources
 
+- last_sync: 2026-03-05T19:47:20Z
+- source_count: 2
 - source: msitarzewski/agency-agents
-  - branch: main
-  - remote: https://github.com/msitarzewski/agency-agents.git
-  - local_dir: agent-library/vendors/msitarzewski-agency-agents
-  - status: pending
-  - last_sync: not yet run
-
+- local_target: agent-library/vendors/msitarzewski-agency-agents
 - source: superset-sh/superset
-  - branch: main
-  - remote: https://github.com/superset-sh/superset.git
-  - local_dir: agent-library/vendors/superset-sh-superset
-  - status: pending
-  - last_sync: not yet run
+- local_target: agent-library/vendors/superset-sh-superset
+

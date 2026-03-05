@@ -27,7 +27,7 @@ Default execution policy: CLI-first and file-first. MCP/agent protocols are opti
 index.html          Homepage
 thesis.html         Thesis page
 work.html           Practice page (build areas + operating principles)
-stack.html          Stack page (system layers)
+stack.html          Generated stack snapshot page
 learn.html          Learn / Academy page (13-module curriculum)
 styles.css          Styles
 script.js           Interactions (accordions, nav toggle)
@@ -57,12 +57,38 @@ skills/             Canonical playbooks
 scripts/            Sync and maintenance tools
   quality-cycle.sh
   sync-provider-catalog.sh
+  render-stack-page.py
   sync-agent-library.sh
   recall-index.sh
   recall-search.sh
 agent-library/      Curated local specialist profiles for quick reuse
-``` 
+```
+
+## Technical snapshot
+
+`provider-catalog/index.md` is the source of truth for live provider/model inventory.
+
+- Refresh the catalog with `./scripts/sync-provider-catalog.sh`.
+- That sync also regenerates `stack.html` through `scripts/render-stack-page.py`.
+- Public stack copy should never be hand-edited with pinned provider/model claims.
+
+## Custom domain
+
+`ctx.earth` is intended to run on GitHub Pages with direct DNS, not registrar-side redirects.
+
+- Apex `ctx.earth`: keep only the four GitHub Pages A records:
+  - `185.199.108.153`
+  - `185.199.109.153`
+  - `185.199.110.153`
+  - `185.199.111.153`
+- Remove registrar URL redirect records for `@`.
+- Remove any extra apex A record that is not one of the four GitHub Pages IPs.
+- Add `www` as a `CNAME` to `oxnr.github.io`.
+- In GitHub Pages settings, keep the custom domain set to `ctx.earth` and enable HTTPS after DNS settles.
 
 ## License
 
-Content and code are open by default.
+Code in this repository is licensed under MIT. Written content and curriculum materials are licensed under CC BY 4.0.
+
+- See `LICENSE` for the code license.
+- See `LICENSE-CONTENT` for the content license.

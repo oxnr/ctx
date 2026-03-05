@@ -155,10 +155,6 @@
         closeAccordion(accordion, panel, toggle);
       } else {
         openAccordion(accordion, panel, toggle);
-        // Unlock scroll on subpage when accordion opens
-        if (document.body.classList.contains("subpage")) {
-          document.body.classList.add("has-expanded");
-        }
       }
     });
   });
