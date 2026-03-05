@@ -48,7 +48,7 @@
         <p class="hero-kicker">Practice</p>
         <h1>What we build and how we decide.</h1>
         <p class="hero-subtitle">
-          Four build areas and five operating principles. Expand any area for scope, method, and deliverables.
+          Four build areas and five operating principles. Open any section for scope, examples, and deliverables.
         </p>
       </section>
 
@@ -125,21 +125,21 @@
             <button class="accordion__toggle" aria-expanded="false" aria-controls="work-learn">
               <span class="accordion__title">
                 <span class="accordion__index">04</span>
-                <span>Harness and Learning Program</span>
+                <span>Team enablement and academy</span>
               </span>
               <span aria-hidden="true">▾</span>
             </button>
             <div class="accordion__panel" id="work-learn">
               <p>
-                Open artifacts are part of every engagement. We do not build systems that only work when we are in the room. Every template, every playbook, every workflow we ship is designed to be owned, extended, and maintained by the team that uses it.
+                Every engagement should leave the team with something they can actually run and teach. That means open artifacts, shared language, and a practical learning path.
               </p>
               <ul>
-                <li>Curriculum-linked implementation: every engagement maps to modules from the 13-module open curriculum. Teams learn the reasoning behind decisions, not just the decisions themselves.</li>
-                <li>Repeatable onboarding: new team members get up to speed through structured templates and documented decision history, not tribal knowledge or consultant handoff calls.</li>
-                <li>Template packs: prompt templates, workflow contracts, evaluation rubrics, and context capsule structures — all in plain text, all versioned, all portable to any stack.</li>
-                <li>Review workflows: built-in quality cycles for every artifact — create, review, ship, measure. The team runs these independently after the engagement ends.</li>
-                <li>Role-based adoption paths: engineering, operations, leadership, sales, and support each get tailored learning tracks with different module priorities and different skill companions.</li>
-                <li>Exit criteria: the engagement succeeds when the team can produce the same process with another model or stack. No vendor lock-in. No consultant dependency.</li>
+                <li>Program-linked delivery: every engagement maps back to the open curriculum, so the team learns why decisions were made, not just what changed.</li>
+                <li>Repeatable onboarding: new people should be able to get up to speed from docs, templates, and decision history.</li>
+                <li>Template packs: prompt templates, workflow contracts, eval rubrics, and context structures stay in plain text and stay portable.</li>
+                <li>Review workflows: the team gets a repeatable loop for making changes, checking them, and shipping them safely.</li>
+                <li>Role-based adoption: engineering, operations, leadership, sales, and support do not need the same training, so we do not force one path on everyone.</li>
+                <li>Exit criteria: the team should be able to keep the process going with or without us.</li>
               </ul>
             </div>
           </article>
@@ -148,32 +148,102 @@
 
       <section class="section section-compact" data-reveal>
         <p class="section-label">Operating principles</p>
-        <div class="principle-list">
-          <div class="principle-item">
-            <span class="principle-item__index">01</span>
-            <span class="principle-item__name">Signal Over Chatter</span>
-            <span class="principle-item__desc">Every output needs intent, evidence, and a next step.</span>
-          </div>
-          <div class="principle-item">
-            <span class="principle-item__index">02</span>
-            <span class="principle-item__name">Context Efficiency</span>
-            <span class="principle-item__desc">Keep context small. Evolve it only when state changes.</span>
-          </div>
-          <div class="principle-item">
-            <span class="principle-item__index">03</span>
-            <span class="principle-item__name">Role Orchestra</span>
-            <span class="principle-item__desc">Roles are behavioral contracts with narrow scope.</span>
-          </div>
-          <div class="principle-item">
-            <span class="principle-item__index">04</span>
-            <span class="principle-item__name">Model Diversity</span>
-            <span class="principle-item__desc">Route by task type, cost, and risk — not brand loyalty.</span>
-          </div>
-          <div class="principle-item">
-            <span class="principle-item__index">05</span>
-            <span class="principle-item__name">Execution Continuity</span>
-            <span class="principle-item__desc">Design recoveries and rollbacks by default.</span>
-          </div>
+        <div class="accordion-list">
+          <article class="accordion" data-group="principles">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="principle-signal">
+              <span class="accordion__title">
+                <span class="accordion__index">01</span>
+                <span>Signal over chatter</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="principle-signal">
+              <p>
+                We want outputs that say what they mean, show what they are based on, and make the next step obvious.
+              </p>
+              <ul>
+                <li>Clear ask in, clear answer out.</li>
+                <li>Evidence beats confidence.</li>
+                <li>If there is no next action, say stop.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="principles">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="principle-context">
+              <span class="accordion__title">
+                <span class="accordion__index">02</span>
+                <span>Context efficiency</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="principle-context">
+              <p>
+                Bigger context is not automatically better. We keep only what helps the task and move the rest into durable docs and systems.
+              </p>
+              <ul>
+                <li>Keep prompts focused.</li>
+                <li>Reset stale state instead of carrying it forever.</li>
+                <li>Store durable knowledge outside the live prompt.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="principles">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="principle-roles">
+              <span class="accordion__title">
+                <span class="accordion__index">03</span>
+                <span>Role clarity</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="principle-roles">
+              <p>
+                Planning, execution, review, and approval are different jobs. When they blur together, quality drops fast.
+              </p>
+              <ul>
+                <li>Give each step a clear owner.</li>
+                <li>Use handoffs instead of assumptions.</li>
+                <li>Keep human approval on risky or irreversible actions.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="principles">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="principle-models">
+              <span class="accordion__title">
+                <span class="accordion__index">04</span>
+                <span>Model diversity</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="principle-models">
+              <p>
+                Different work needs different models. We choose by fit, cost, speed, and risk, not by habit.
+              </p>
+              <ul>
+                <li>Cheap models for routine work.</li>
+                <li>Stronger models for high-stakes reasoning.</li>
+                <li>Local options when data or control matters more than convenience.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="principles">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="principle-continuity">
+              <span class="accordion__title">
+                <span class="accordion__index">05</span>
+                <span>Execution continuity</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="principle-continuity">
+              <p>
+                Things fail. Good systems know how to retry, recover, pause, or stop cleanly instead of falling apart.
+              </p>
+              <ul>
+                <li>Keep checkpoints.</li>
+                <li>Make rollback normal.</li>
+                <li>Escalate early when the system is unsure.</li>
+              </ul>
+            </div>
+          </article>
         </div>
       </section>
     </main>

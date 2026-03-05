@@ -50,16 +50,6 @@ def parse_table(heading: str, text: str) -> tuple[list[str], list[list[str]]]:
     return headers, rows
 
 
-def parse_bullets(heading: str, text: str) -> list[str]:
-    lines = extract_section_lines(heading, text)
-    bullets = []
-    for line in lines:
-        stripped = line.strip()
-        if stripped.startswith("- "):
-            bullets.append(stripped[2:])
-    return bullets
-
-
 def model_link(value: str) -> str | None:
     if "/" not in value:
         return None
@@ -89,6 +79,8 @@ def render_table(headers: list[str], rows: list[list[str]]) -> str:
         "</table>"
         "</div>"
     )
+
+
 def main() -> None:
     catalog = read_catalog()
     last_synced = extract_value(r"^Last synced: (.+)$", catalog, "last synced")
@@ -185,6 +177,106 @@ def main() -> None:
                 </p>
                 {render_table(image_headers, image_rows)}
               </div>
+            </div>
+          </article>
+
+          <article class="accordion" data-group="stack">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="stack-routing">
+              <span class="accordion__title">
+                <span class="accordion__index">03</span>
+                <span>Routing and control</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="stack-routing">
+              <p>
+                This is the layer that decides which model gets which job. It should route by task type, risk, speed, cost, and fallback rules instead of hard-coding one favorite model everywhere.
+              </p>
+              <ul>
+                <li>Route by task, not by brand.</li>
+                <li>Keep a fallback path when a provider is down or no longer worth the cost.</li>
+                <li>Keep routing policy separate from prompt text so it can change cleanly.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="accordion" data-group="stack">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="stack-orchestration">
+              <span class="accordion__title">
+                <span class="accordion__index">04</span>
+                <span>Orchestration and workflow</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="stack-orchestration">
+              <p>
+                This is how work moves through the system: plan, execute, review, approve, publish. It includes agent roles, task handoffs, retries, and the small reusable behaviors around them.
+              </p>
+              <ul>
+                <li>Separate planning, execution, and review.</li>
+                <li>Use clear task contracts, not vague prompts passed from step to step.</li>
+                <li>Keep skills, hooks, and automation around repeatable points in the workflow.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="accordion" data-group="stack">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="stack-context">
+              <span class="accordion__title">
+                <span class="accordion__index">05</span>
+                <span>Context and knowledge</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="stack-context">
+              <p>
+                Models are only as good as the context they get. This layer keeps prompts, docs, retrieval, decisions, and working state useful without stuffing everything into one giant prompt.
+              </p>
+              <ul>
+                <li>Keep context scoped to the job.</li>
+                <li>Store durable knowledge in docs, indexes, and retrieval systems.</li>
+                <li>Reset stale state instead of letting it pile up.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="accordion" data-group="stack">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="stack-integration">
+              <span class="accordion__title">
+                <span class="accordion__index">06</span>
+                <span>Integrations and tool layer</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="stack-integration">
+              <p>
+                This is where the system touches the outside world: files, APIs, databases, search, GitHub, terminals, and optional protocol adapters.
+              </p>
+              <ul>
+                <li>Prefer simple local interfaces first.</li>
+                <li>Use MCP or similar adapters when they reduce integration work, not as the foundation of the stack.</li>
+                <li>Keep tool access explicit so it is easy to audit and replace.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="accordion" data-group="stack">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="stack-eval">
+              <span class="accordion__title">
+                <span class="accordion__index">07</span>
+                <span>Evaluation and rollout</span>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion__panel" id="stack-eval">
+              <p>
+                You need a way to know whether the system is improving or drifting. This layer covers evals, observability, rollout rules, and team adoption.
+              </p>
+              <ul>
+                <li>Use eval sets and approval gates before high-impact changes.</li>
+                <li>Track cost, quality, and failures in the open.</li>
+                <li>Make rollout, rollback, and team training part of the stack, not an afterthought.</li>
+              </ul>
             </div>
           </article>
         </div>
