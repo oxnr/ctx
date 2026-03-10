@@ -7,10 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="apple-mobile-web-app-title" content="ctx" />
     <link rel="canonical" href="https://ctx.earth/learn" />
   </head>
   <body class="subpage">
@@ -21,9 +23,8 @@
           <span>Menu</span>
         </button>
         <nav id="site-nav" class="top-nav">
-          <a class="nav-link" href="/practice">Practice</a>
+          <a class="nav-link" href="/thesis">Thesis</a>
           <a class="nav-link" href="/learn">Learn</a>
-          <a class="nav-link" href="/glossary">Glossary</a>
         </nav>
         <a
           class="repo-link"
@@ -296,7 +297,7 @@
             <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-06">
               <span class="accordion__title">
                 <span class="accordion__index">06</span>
-                <span>Orchestration</span>
+                <span>Orchestration &amp; Human Oversight</span>
               </span>
               <span aria-hidden="true">&#x25BE;</span>
             </button>
@@ -399,7 +400,7 @@
             </button>
             <div class="accordion__panel" id="learn-08">
               <div class="panel-block">
-                <p>Integrations connect AI systems to the tools and data sources they need to be useful. MCP is the emerging standard, coding agents are the most mature category, and function calling is the interface that makes it all work. This layer determines what actions the model can take beyond generating text.</p>
+                <p>Integrations connect AI systems to the tools, APIs, and data sources they need to be useful. Function calling is the core interface — models emit structured tool invocations, and the integration layer routes them to the right target. This spans REST APIs, database connectors, file systems, CI/CD pipelines, IDE plugins, and emerging standards like MCP. This layer determines what actions the model can take beyond generating text.</p>
                 <div class="learn__diagram">
                   <svg class="learn__svg" viewBox="0 0 400 140" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="150" y="52" width="80" height="36" rx="4" stroke="#e8e6e3" stroke-width="2"/>
@@ -420,15 +421,15 @@
                 </div>
                 <p><strong>Key concepts</strong></p>
                 <ul>
-                  <li>MCP (Model Context Protocol) standardizes tool discovery and invocation</li>
-                  <li>Function calling turns model outputs into structured tool invocations</li>
-                  <li>Coding agents (Cursor, Windsurf, Aider) are the most mature integration pattern</li>
+                  <li>Function calling turns model outputs into structured tool invocations — the universal interface</li>
+                  <li>Integration surfaces: REST APIs, webhooks, databases, file systems, IDEs, CI/CD pipelines</li>
+                  <li>Standards like MCP help with tool discovery, but the integration layer is wider than any single protocol</li>
                   <li>Tool permissions and audit trails are critical for production safety</li>
                 </ul>
                 <p><strong>Practical skills</strong></p>
                 <ul class="learn__skills">
-                  <li>Set up an MCP server for a specific tool integration</li>
                   <li>Implement function calling with structured output validation</li>
+                  <li>Connect an AI workflow to external APIs, databases, or file systems</li>
                   <li>Audit and restrict tool permissions in a production deployment</li>
                 </ul>
                 <p class="learn__xref">See this layer in the value chain → <a href="/#vc-integrations">L08 Integrations</a></p>
@@ -537,7 +538,8 @@
     </main>
 
     <footer class="site-footer">
-      <p>Knowledge is free. Time isn't. <a href="/faq">FAQ</a></p>
+      <p>Knowledge is free. Time isn't.</p>
+      <div class="site-footer__links"><a href="/glossary">Glossary</a></div>
     </footer>
 
     <script src="/script.js" defer></script>

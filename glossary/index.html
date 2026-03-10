@@ -6,8 +6,10 @@
     <title>Glossary — ctx</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="apple-mobile-web-app-title" content="ctx" />
     <link rel="canonical" href="https://ctx.earth/glossary" />
   </head>
   <body class="subpage">
@@ -18,9 +20,8 @@
           <span>Menu</span>
         </button>
         <nav id="site-nav" class="top-nav">
-          <a class="nav-link" href="/practice">Practice</a>
+          <a class="nav-link" href="/thesis">Thesis</a>
           <a class="nav-link" href="/learn">Learn</a>
-          <a class="nav-link" href="/glossary">Glossary</a>
         </nav>
         <a class="repo-link" href="https://github.com/oxnr/ctx" target="_blank" rel="noreferrer" aria-label="View ctx on GitHub" title="View source on GitHub">
           <svg viewBox="0 0 16 16" aria-hidden="true">
@@ -50,6 +51,10 @@
               <dd>A system that uses an LLM to plan, take actions, observe results, and iterate toward a goal. Agents combine reasoning with tool use to complete multi-step tasks autonomously. Value chain layer: L06 Orchestration.</dd>
             </div>
             <div class="glossary__entry">
+              <dt id="ai-fluency">AI Fluency</dt>
+              <dd>The ability to work with AI systems effectively, efficiently, ethically, and safely. Goes beyond knowing how to prompt — includes understanding model capabilities, limitations, appropriate use cases, and responsible deployment.</dd>
+            </div>
+            <div class="glossary__entry">
               <dt id="alignment">Alignment</dt>
               <dd>The practice of making AI systems behave according to human intentions and values. Includes techniques like RLHF and constitutional AI applied during post-training.</dd>
             </div>
@@ -65,6 +70,10 @@
               <dt id="autoregressive-model">Autoregressive model</dt>
               <dd>A model that generates output one token at a time, where each new token depends on all previously generated tokens. GPT, Claude, and Llama are all autoregressive.</dd>
             </div>
+            <div class="glossary__entry">
+              <dt id="automation-augmentation-agency">Automation / Augmentation / Agency</dt>
+              <dd>Three modes of human-AI interaction. Automation: AI executes instructions with minimal oversight. Augmentation: human and AI collaborate, with the human making final decisions. Agency: AI works independently within configured boundaries, escalating when uncertain.</dd>
+            </div>
           </dl>
 
           <h2 class="glossary__letter" id="letter-B">B</h2>
@@ -76,6 +85,10 @@
             <div class="glossary__entry">
               <dt id="benchmarking">Benchmarking</dt>
               <dd>Standardized evaluation of model performance on specific tasks. Common benchmarks include MMLU, HumanEval, MATH, and arena-style human preference rankings.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="bias-ai">Bias (AI)</dt>
+              <dd>Systematic patterns in AI outputs that unfairly favor or disadvantage certain groups, often reflecting biases present in training data, labeling decisions, or evaluation criteria.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="bert">BERT</dt>
@@ -238,6 +251,10 @@
           <h2 class="glossary__letter" id="letter-K">K</h2>
           <dl class="glossary__list">
             <div class="glossary__entry">
+              <dt id="knowledge-cutoff">Knowledge cutoff</dt>
+              <dd>The date after which a model has no built-in knowledge, determined by the recency of its training data. Information after this date requires retrieval augmentation or tool use.</dd>
+            </div>
+            <div class="glossary__entry">
               <dt id="knowledge-graph">Knowledge graph</dt>
               <dd>A structured representation of entities and their relationships. Used to provide factual context to models and reduce hallucination.</dd>
             </div>
@@ -370,6 +387,10 @@
           <h2 class="glossary__letter" id="letter-R">R</h2>
           <dl class="glossary__list">
             <div class="glossary__entry">
+              <dt id="reasoning-model">Reasoning model</dt>
+              <dd>AI models designed to think step-by-step through complex problems, showing improved logical, mathematical, and scientific reasoning. Examples include OpenAI o1/o3 and DeepSeek-R1.</dd>
+            </div>
+            <div class="glossary__entry">
               <dt id="rag">RAG (Retrieval-Augmented Generation)</dt>
               <dd>A technique that retrieves relevant documents from an external knowledge base and includes them in the model's context before generation. Reduces hallucination and provides up-to-date information. Value chain layer: L07 Context.</dd>
             </div>
@@ -479,35 +500,75 @@
             </div>
           </dl>
 
+          <p class="glossary__empty" id="glossary-no-results" hidden>No terms match your search right now.</p>
         </div>
       </section>
     </main>
     <footer class="site-footer">
-      <p>Knowledge is free. Time isn't. <a href="/faq">FAQ</a></p>
+      <p>Knowledge is free. Time isn't.</p>
+      <div class="site-footer__links"><a href="/glossary">Glossary</a></div>
     </footer>
     <script>
 document.addEventListener('DOMContentLoaded', function() {
-  var input = document.getElementById('glossary-filter');
+  var input = document.getElementById("glossary-filter");
   if (!input) return;
-  input.addEventListener('input', function() {
-    var q = this.value.toLowerCase().trim();
-    var entries = document.querySelectorAll('.glossary__entry');
-    var letters = document.querySelectorAll('.glossary__letter');
-    entries.forEach(function(entry) {
-      var dt = entry.querySelector('dt');
-      var dd = entry.querySelector('dd');
-      var text = (dt ? dt.textContent : '') + ' ' + (dd ? dd.textContent : '');
-      entry.style.display = text.toLowerCase().indexOf(q) !== -1 ? '' : 'none';
-    });
-    letters.forEach(function(h) {
-      var dl = h.nextElementSibling;
-      if (!dl) return;
-      var anyVisible = false;
-      dl.querySelectorAll('.glossary__entry').forEach(function(e) { if (e.style.display !== 'none') anyVisible = true; });
-      h.style.display = anyVisible ? '' : 'none';
-      dl.style.display = anyVisible ? '' : 'none';
+
+  var glossary = document.querySelector(".glossary");
+  var noResults = document.getElementById("glossary-no-results");
+  var letters = glossary ? glossary.querySelectorAll(".glossary__letter") : [];
+  var entries = glossary ? glossary.querySelectorAll(".glossary__entry") : [];
+  var normalized = [];
+
+  var normalize = function(value) {
+    return (value || "")
+      .toLowerCase()
+      .trim()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  };
+
+  entries.forEach(function(entry) {
+    var dt = entry.querySelector("dt");
+    var dd = entry.querySelector("dd");
+    normalized.push({
+      entry: entry,
+      text: normalize((dt ? dt.textContent : "") + " " + (dd ? dd.textContent : ""))
     });
   });
+
+  var updateVisibility = function() {
+    var q = normalize(input.value);
+    var visibleCount = 0;
+
+    normalized.forEach(function(item) {
+      var isMatch = q === "" || item.text.indexOf(q) !== -1;
+      item.entry.style.display = isMatch ? "" : "none";
+      if (isMatch) visibleCount++;
+    });
+
+    letters.forEach(function(letter) {
+      var list = letter.nextElementSibling;
+      if (!list || !list.classList || !list.classList.contains("glossary__list")) return;
+      var hasMatch = false;
+      var listEntries = list.querySelectorAll(".glossary__entry");
+      listEntries.forEach(function(listEntry) {
+        if (listEntry.style.display !== "none") hasMatch = true;
+      });
+      list.style.display = hasMatch ? "" : "none";
+      letter.style.display = hasMatch ? "" : "none";
+    });
+
+    if (!noResults) return;
+    var hasQuery = q !== "";
+    noResults.hidden = !hasQuery || visibleCount > 0;
+    if (hasQuery && visibleCount === 0) {
+      noResults.textContent = "No terms match \"" + input.value.trim() + "\".";
+    }
+  };
+
+  input.value = new URLSearchParams(window.location.search).get("q") || "";
+  updateVisibility();
+  input.addEventListener("input", updateVisibility);
 });
     </script>
     <script src="/script.js" defer></script>

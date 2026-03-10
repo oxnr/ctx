@@ -1,11 +1,12 @@
 :root {
-  --bg: #0a0a0a;
-  --surface: #111111;
-  --border: #1a1a1a;
+  --bg: #141412;
+  --surface: #1c1a18;
+  --surface-alt: #242220;
+  --border: #2a2826;
   --text: #e8e6e3;
   --text-secondary: #999590;
   --text-dim: #666360;
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: "Instrument Sans", system-ui, -apple-system, sans-serif;
   --font-serif: "Newsreader", Georgia, serif;
   --max-w: 1080px;
   --gap: clamp(1.5rem, 4vw, 3rem);
@@ -231,6 +232,7 @@ h2 {
 
 .overview-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   gap: 1px;
   margin-top: 2rem;
   background: var(--border);
@@ -335,7 +337,8 @@ h2 {
 
 .accordion__panel > p,
 .accordion__panel ul,
-.accordion__panel > .panel-block {
+.accordion__panel > .panel-block,
+.accordion__panel > .learn__diagram {
   padding: 0 1rem 1rem;
   padding-left: 3.55rem; /* align with title text: 1rem toggle + 1.8rem index + 0.75rem gap */
 }
@@ -365,6 +368,7 @@ h2 {
 
 .info-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
   gap: 1px;
   background: var(--border);
   border: 1px solid var(--border);
@@ -489,10 +493,30 @@ html.js [data-reveal].is-visible {
   border-top: 1px solid var(--border);
   font-size: 0.78rem;
   color: var(--text-dim);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
 }
 
 .site-footer p {
   margin: 0;
+}
+
+.site-footer__links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.site-footer__links a,
+.site-footer a {
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.site-footer__links a:hover,
+.site-footer a:hover {
+  color: var(--text-secondary);
 }
 
 /* Disable reveal animations on shared pages */
@@ -613,8 +637,8 @@ body.subpage .accordion__toggle {
   background: var(--bg);
   text-decoration: none;
   color: inherit;
-  min-width: 5.5rem;
-  flex: 1;
+  min-width: 0;
+  flex: 1 1 0;
   transition: background 0.2s ease, border-color 0.2s ease;
   cursor: pointer;
 }
@@ -634,6 +658,9 @@ body.subpage .accordion__toggle {
   font-size: 0.78rem;
   font-weight: 600;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .vc-arrow {
@@ -818,6 +845,31 @@ body.subpage .accordion__toggle {
   margin-bottom: 0.5rem;
 }
 
+.explorer__detail-details {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 68ch;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.explorer__detail-section {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.explorer__detail-section-title {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.explorer__detail-section-copy {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
 .explorer__detail-meta {
   font-size: 0.78rem;
   color: var(--text-dim);
@@ -934,16 +986,6 @@ body.subpage .accordion__toggle {
 
 /* ---- RESPONSIVE ---- */
 
-@media (min-width: 768px) {
-  .overview-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .info-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 760px) {
   /* Release above-the-fold on mobile — mobile is a scroll experience */
   body.subpage {
@@ -990,7 +1032,7 @@ body.subpage .accordion__toggle {
     opacity: 0;
     overflow: hidden;
     pointer-events: none;
-    background: rgba(10, 10, 10, 0.98);
+    background: rgba(20, 20, 18, 0.98);
     border: 0;
     display: grid;
     justify-items: start;
@@ -1101,6 +1143,13 @@ body.subpage .accordion__toggle {
   padding: 0;
 }
 
+.glossary__empty {
+  margin: 1rem 0 0;
+  color: var(--text-dim);
+  font-style: italic;
+  font-size: 0.92rem;
+}
+
 .glossary__entry {
   padding: 0.5rem 0;
   border-bottom: 1px solid var(--border);
@@ -1158,17 +1207,14 @@ body.subpage .accordion__toggle {
   text-decoration-color: var(--text);
 }
 
-/* ---- FOOTER LINK ---- */
+/* ---- LAYER LEARN (inline when a layer is clicked) ---- */
 
-.site-footer a {
-  color: var(--text-dim);
-  text-decoration: none;
-  margin-left: 1rem;
-  transition: color 0.2s;
-}
-
-.site-footer a:hover {
+.layer-learn__desc {
   color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0.25rem 0 0.75rem;
+  max-width: 60ch;
 }
 
 /* ---- RESPONSIVE ADDITIONS ---- */

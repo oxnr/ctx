@@ -1,6 +1,466 @@
-<!doctype html><html lang="en"><head>
-<meta charset="UTF-8" />
-<meta http-equiv="refresh" content="0;url=/practice">
-<link rel="canonical" href="https://ctx.earth/practice" />
-<title>Redirecting to Practice — ctx</title>
-</head><body><script>window.location.replace("/practice")</script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thesis — ctx</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="apple-mobile-web-app-title" content="ctx" />
+    <link rel="canonical" href="https://ctx.earth/thesis" />
+  </head>
+  <body class="subpage">
+    <header class="site-header">
+      <a class="brand" href="/">ctx</a>
+      <div class="header-actions">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+          <span>Menu</span>
+        </button>
+        <nav id="site-nav" class="top-nav">
+          <a class="nav-link" href="/thesis">Thesis</a>
+          <a class="nav-link" href="/learn">Learn</a>
+        </nav>
+        <a
+          class="repo-link"
+          href="https://github.com/oxnr/ctx"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="View ctx on GitHub"
+          title="View source on GitHub"
+        >
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.1 0 0 .67-.21 2.2.82a7.56 7.56 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.09.16 1.9.08 2.1.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+            />
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section" data-reveal>
+        <p class="hero-kicker">Thesis</p>
+        <h1>What we believe and what we build.</h1>
+        <p class="hero-subtitle">
+          Thesis, build areas, and operating principles.
+        </p>
+      </section>
+
+      <section class="section section-compact" data-reveal>
+        <p class="section-label">Thesis</p>
+        <div class="accordion-list">
+          <article class="accordion" data-group="thesis">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="thesis-premise">
+              <span class="accordion__title">
+                <span class="accordion__index">01</span>
+                <span>Velocity is the constant</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="thesis-premise">
+              <p>
+                New models drop every other month. Code ships at record velocity. AI-assisted commits went from roughly 3% in 2023 to over 25% in 2025, and generation speed is accelerating faster than review pipelines, testing infrastructure, and deployment gates can adapt.
+              </p>
+              <p>
+                This is not incremental — it is a phase change. What should stay stable is the system around the model: how context comes in, how work gets routed, how outputs get checked, and where people step in. When everything moves this fast, the only durable advantage is the ability to absorb change without rebuilding.
+              </p>
+              <div class="learn__diagram">
+                <svg class="learn__svg" viewBox="0 0 540 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="2" y="20" width="90" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="47" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">New Model</text>
+                  <line x1="92" y1="40" x2="122" y2="40" stroke="#666360" stroke-width="1.5" marker-end="url(#arrow-thesis01)"/>
+                  <rect x="122" y="20" width="70" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="157" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Adopt</text>
+                  <line x1="192" y1="40" x2="222" y2="40" stroke="#666360" stroke-width="1.5" marker-end="url(#arrow-thesis01)"/>
+                  <rect x="222" y="20" width="90" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="267" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Deprecate</text>
+                  <line x1="312" y1="40" x2="342" y2="40" stroke="#666360" stroke-width="1.5" marker-end="url(#arrow-thesis01)"/>
+                  <rect x="342" y="20" width="70" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="377" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Swap</text>
+                  <path d="M412 50 Q412 70 270 70 Q47 70 47 60" stroke="#666360" stroke-width="1.5" fill="none" marker-end="url(#arrow-thesis01)"/>
+                  <defs>
+                    <marker id="arrow-thesis01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#666360"/>
+                    </marker>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </article>
+          <article class="accordion" data-group="thesis">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="thesis-longevity">
+              <span class="accordion__title">
+                <span class="accordion__index">02</span>
+                <span>Build for change</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="thesis-longevity">
+              <p>
+                You should be able to change providers, swap models, rewrite prompts, and restructure workflows without tearing everything down. This applies to more than code — processes, evaluation criteria, team roles, and documentation should all be designed to evolve.
+              </p>
+              <p>
+                If a better model shows up next month, a new paradigm emerges next quarter, or your requirements shift overnight, the system should absorb the change without a rewrite. That is a design choice, not luck.
+              </p>
+            </div>
+          </article>
+          <article class="accordion" data-group="thesis">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="thesis-context">
+              <span class="accordion__title">
+                <span class="accordion__index">03</span>
+                <span>Harness is the real asset</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="thesis-context">
+              <p>
+                The expensive part is not the model or the API bill. It is the system around the model — context, workflows, evaluation, integrations, and the decisions that shaped them. Context sits at the center: what the system knows about your team, your work, your constraints, and your history. But the harness is more than context. It includes how work gets routed, how outputs get checked, how failures get caught, and how humans stay in control.
+              </p>
+              <p>
+                Good harness is small, explicit, versioned, and portable. Bad harness is tangled with a single provider and collapses when you swap models.
+              </p>
+              <div class="learn__diagram">
+                <svg class="learn__svg" viewBox="0 0 540 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="90" y="2" width="360" height="136" rx="8" stroke="#e8e6e3" stroke-width="2" stroke-dasharray="6 3"/>
+                  <text x="270" y="20" text-anchor="middle" fill="#666360" font-family="Inter,sans-serif" font-size="10">Harness</text>
+                  <rect x="195" y="45" width="150" height="50" rx="4" stroke="#e8e6e3" stroke-width="2"/>
+                  <text x="270" y="75" text-anchor="middle" fill="#e8e6e3" font-family="Inter,sans-serif" font-size="12" font-weight="600">Context</text>
+                  <rect x="105" y="30" width="80" height="30" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="145" y="50" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Workflows</text>
+                  <rect x="105" y="80" width="80" height="30" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="145" y="100" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Evals</text>
+                  <rect x="355" y="30" width="80" height="30" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="395" y="50" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Integrations</text>
+                  <rect x="355" y="80" width="80" height="30" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="395" y="100" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Decisions</text>
+                  <line x1="185" y1="45" x2="200" y2="52" stroke="#666360" stroke-width="1"/>
+                  <line x1="185" y1="95" x2="200" y2="88" stroke="#666360" stroke-width="1"/>
+                  <line x1="355" y1="45" x2="340" y2="52" stroke="#666360" stroke-width="1"/>
+                  <line x1="355" y1="95" x2="340" y2="88" stroke="#666360" stroke-width="1"/>
+                  <line x1="450" y1="70" x2="490" y2="70" stroke="#666360" stroke-width="1.5" marker-end="url(#arrow-thesis03)"/>
+                  <text x="516" y="75" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Portable</text>
+                  <defs>
+                    <marker id="arrow-thesis03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#666360"/>
+                    </marker>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </article>
+          <article class="accordion" data-group="thesis">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="thesis-local">
+              <span class="accordion__title">
+                <span class="accordion__index">04</span>
+                <span>New paradigms</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="thesis-local">
+              <p>
+                The way software gets built is changing. Local-first means keeping data and execution where it matters — not anti-cloud, but a deliberate design constraint. API-first and SDK-first mean building on the interfaces that model providers expose directly, rather than wrapping everything in third-party abstractions. Agents, tool use, and structured outputs are new primitives.
+              </p>
+              <p>
+                These are not trends to watch. They are paradigms to adopt. Teams that think in these terms build systems that compose cleanly. Teams that do not end up rebuilding when the next wave arrives.
+              </p>
+            </div>
+          </article>
+          <article class="accordion" data-group="thesis">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="thesis-ownership">
+              <span class="accordion__title">
+                <span class="accordion__index">05</span>
+                <span>Human in the loop</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="thesis-ownership">
+              <p>
+                AI systems produce outputs faster than humans can review them. Without deliberate human oversight, errors compound, bad patterns propagate, and trust erodes. The solution is not to slow down — it is to design the system so humans are in the loop at the right moments.
+              </p>
+              <p>
+                Planning, execution, review, and approval are different jobs. Humans own the decisions that are irreversible, high-stakes, or ambiguous. Agents handle the repetitive, well-defined, and verifiable steps. The boundary between them should be explicit, not emergent.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-compact" data-reveal>
+        <p class="section-label">Build areas</p>
+        <div class="accordion-list">
+          <article class="accordion" data-group="work">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="work-workflow">
+              <span class="accordion__title">
+                <span class="accordion__index">01</span>
+                <span>AI Workflow Design</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="work-workflow">
+              <p>
+                We map every decision point, handoff rule, and validation gate so agents always know what to do next and humans always know where to intervene. Workflow design is not about automation for its own sake — it is about making the boundary between human judgment and machine execution explicit, auditable, and repeatable.
+              </p>
+              <ul>
+                <li>Task decomposition: break complex work into atomic agent tasks with clear input/output contracts and acceptance criteria per step.</li>
+                <li>Role definitions: assign planning, execution, review, and publish responsibilities to specific agents or humans with escalation rules for ambiguity.</li>
+                <li>Handoff contracts: structured outputs at every boundary — JSON schemas, typed responses, validation checks — so the next step never guesses what it received.</li>
+                <li>Multi-agent coordination: patterns for parallel execution, sequential chains, and review loops with conflict resolution when agents disagree.</li>
+                <li>Quality gates: automated validation between workflow stages — format checks, content verification, safety filters, and human-approval triggers for high-risk outputs.</li>
+                <li>Workflow versioning: every workflow is a versioned artifact. Changes are tracked, tested against golden sets, and rolled back when regressions appear.</li>
+              </ul>
+              <div class="learn__diagram">
+                <svg class="learn__svg" viewBox="0 0 540 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="2" y="20" width="100" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="52" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Complex Task</text>
+                  <line x1="102" y1="40" x2="122" y2="40" stroke="#666360" stroke-width="1.5" marker-end="url(#arrow-work01)"/>
+                  <rect x="122" y="20" width="60" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="152" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Plan</text>
+                  <line x1="182" y1="40" x2="202" y2="40" stroke="#666360" stroke-width="1.5" marker-end="url(#arrow-work01)"/>
+                  <rect x="202" y="20" width="68" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="236" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Execute</text>
+                  <line x1="270" y1="40" x2="290" y2="40" stroke="#666360" stroke-width="1.5" marker-end="url(#arrow-work01)"/>
+                  <rect x="290" y="20" width="66" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="323" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Review</text>
+                  <line x1="356" y1="40" x2="376" y2="40" stroke="#666360" stroke-width="1.5" marker-end="url(#arrow-work01)"/>
+                  <rect x="376" y="20" width="56" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="404" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Gate</text>
+                  <line x1="432" y1="40" x2="452" y2="40" stroke="#666360" stroke-width="1.5" marker-end="url(#arrow-work01)"/>
+                  <rect x="452" y="20" width="56" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="480" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Ship</text>
+                  <defs>
+                    <marker id="arrow-work01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#666360"/>
+                    </marker>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </article>
+          <article class="accordion" data-group="work">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="work-local">
+              <span class="accordion__title">
+                <span class="accordion__index">02</span>
+                <span>Local-First Infrastructure</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="work-local">
+              <p>
+                We keep data and execution local where it matters so control and latency stay predictable. Local-first is not anti-cloud — it is a design constraint that produces better architecture. When you control where data lives and where computation happens, you get sovereignty, auditability, and the ability to operate without dependency on external uptime.
+              </p>
+              <ul>
+                <li>Data classification: tier every data type by sensitivity — public, internal, confidential, regulated — and route each tier to infrastructure that matches its policy requirements.</li>
+                <li>Deployment options: on-device for sensitive tasks, local server for team-wide workloads, private-cloud for scale, hybrid for mixed requirements. We map each use case to the right deployment shape.</li>
+                <li>Secure routing: policy-driven controls that enforce which data goes where, with redaction pipelines for context that crosses trust boundaries.</li>
+                <li>Provider fallback: when a cloud endpoint is unavailable or a provider changes terms, the system reroutes to the next option without contract rewrites or workflow interruption.</li>
+                <li>Composable toolchain: terminal orchestration, CI integration, container workflows, and API adapters that work together without framework lock-in. Every tool is replaceable.</li>
+                <li>Compliance boundaries: data residency rules, retention policies, audit trails, and access controls that satisfy regulatory requirements without adding operational friction.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="work">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="work-context">
+              <span class="accordion__title">
+                <span class="accordion__index">03</span>
+                <span>Context Engineering</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="work-context">
+              <p>
+                We design context as small, explicit capsules that stay recoverable in production. Context is the most expensive thing in an AI system — not because of token cost, but because when it is lost, the system starts from zero. We build the architecture that prevents that.
+              </p>
+              <ul>
+                <li>Context capsules: scoped packages of state per domain, per role, per session. Each capsule has clear boundaries — what it contains, what it excludes, and when it expires.</li>
+                <li>Volatile vs durable state: separate session-specific context (conversation history, scratch state) from project truth (decisions, contracts, architecture docs). Different lifecycles, different storage, different recovery.</li>
+                <li>Versioning and rollback: every context mutation is tracked. When outputs degrade, you can trace back to the context change that caused it and recover the previous state.</li>
+                <li>Cross-project continuity: patterns that carry useful context between projects without pollution. Lessons learned, decision frameworks, and evaluation criteria transfer. Project-specific noise does not.</li>
+                <li>Token budgeting: context is finite. We design systems that fit within model limits without truncation surprises — priority ordering, progressive disclosure, and compression strategies that preserve signal.</li>
+                <li>Context hygiene: regular audits of what is in the context window. Stale information gets archived. Redundant information gets deduplicated. Every token earns its place.</li>
+              </ul>
+              <div class="learn__diagram">
+                <svg class="learn__svg" viewBox="0 0 540 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="2" y="20" width="68" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="36" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Create</text>
+                  <line x1="70" y1="40" x2="100" y2="40" stroke="#666360" stroke-width="1.5" marker-end="url(#arrow-work03)"/>
+                  <rect x="100" y="20" width="72" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="136" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Version</text>
+                  <line x1="172" y1="40" x2="202" y2="40" stroke="#666360" stroke-width="1.5" marker-end="url(#arrow-work03)"/>
+                  <rect x="202" y="20" width="66" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="235" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Query</text>
+                  <line x1="268" y1="40" x2="298" y2="40" stroke="#666360" stroke-width="1.5" marker-end="url(#arrow-work03)"/>
+                  <rect x="298" y="20" width="74" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="335" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Archive</text>
+                  <line x1="372" y1="40" x2="402" y2="40" stroke="#666360" stroke-width="1.5" marker-end="url(#arrow-work03)"/>
+                  <rect x="402" y="20" width="76" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                  <text x="440" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Recover</text>
+                  <defs>
+                    <marker id="arrow-work03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#666360"/>
+                    </marker>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </article>
+          <article class="accordion" data-group="work">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="work-learn">
+              <span class="accordion__title">
+                <span class="accordion__index">04</span>
+                <span>Team enablement and academy</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="work-learn">
+              <p>
+                Every engagement should leave the team with something they can actually run and teach. That means open artifacts, shared language, and a practical learning path.
+              </p>
+              <ul>
+                <li>Program-linked delivery: every engagement maps back to the open curriculum, so the team learns why decisions were made, not just what changed.</li>
+                <li>Repeatable onboarding: new people should be able to get up to speed from docs, templates, and decision history.</li>
+                <li>Template packs: prompt templates, workflow contracts, eval rubrics, and context structures stay in plain text and stay portable.</li>
+                <li>Review workflows: the team gets a repeatable loop for making changes, checking them, and shipping them safely.</li>
+                <li>Role-based adoption: engineering, operations, leadership, sales, and support do not need the same training, so we do not force one path on everyone.</li>
+                <li>Exit criteria: the team should be able to keep the process going with or without us.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-compact" data-reveal>
+        <p class="section-label">Operating principles</p>
+        <div class="accordion-list">
+          <article class="accordion" data-group="principles">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="principle-signal">
+              <span class="accordion__title">
+                <span class="accordion__index">01</span>
+                <span>Signal over chatter</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="principle-signal">
+              <p>
+                We want outputs that say what they mean, show what they are based on, and make the next step obvious.
+              </p>
+              <ul>
+                <li>Clear ask in, clear answer out.</li>
+                <li>Evidence beats confidence.</li>
+                <li>If there is no next action, say stop.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="principles">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="principle-context">
+              <span class="accordion__title">
+                <span class="accordion__index">02</span>
+                <span>Context efficiency</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="principle-context">
+              <p>
+                Bigger context is not automatically better. We keep only what helps the task and move the rest into durable docs and systems.
+              </p>
+              <ul>
+                <li>Keep prompts focused.</li>
+                <li>Reset stale state instead of carrying it forever.</li>
+                <li>Store durable knowledge outside the live prompt.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="principles">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="principle-roles">
+              <span class="accordion__title">
+                <span class="accordion__index">03</span>
+                <span>Role clarity — human in the loop</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="principle-roles">
+              <p>
+                Planning, execution, review, and approval are different jobs. When they blur together, quality drops fast.
+              </p>
+              <ul>
+                <li>Give each step a clear owner.</li>
+                <li>Use handoffs instead of assumptions.</li>
+                <li>Keep human approval on risky or irreversible actions.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="principles">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="principle-models">
+              <span class="accordion__title">
+                <span class="accordion__index">04</span>
+                <span>Model diversity</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="principle-models">
+              <p>
+                Different work needs different models. We choose by fit, cost, speed, and risk, not by habit.
+              </p>
+              <ul>
+                <li>Cheap models for routine work.</li>
+                <li>Stronger models for high-stakes reasoning.</li>
+                <li>Local options when data or control matters more than convenience.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="principles">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="principle-continuity">
+              <span class="accordion__title">
+                <span class="accordion__index">05</span>
+                <span>Execution continuity</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="principle-continuity">
+              <p>
+                Things fail. Good systems know how to retry, recover, pause, or stop cleanly instead of falling apart.
+              </p>
+              <ul>
+                <li>Keep checkpoints.</li>
+                <li>Make rollback normal.</li>
+                <li>Escalate early when the system is unsure.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="accordion" data-group="principles">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="principle-verification">
+              <span class="accordion__title">
+                <span class="accordion__index">06</span>
+                <span>Make no mistakes</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="principle-verification">
+              <p>
+                AI-generated output is fast but not inherently correct. Models produce code, content, and decisions that look plausible but may contain subtle errors humans miss at review speed. When generation outpaces verification, the gap compounds.
+              </p>
+              <ul>
+                <li>Formal verification: static analysis, property-based testing, and proof-carrying code at machine speed.</li>
+                <li>Automated gates: every output passes validation before it ships — format, safety, correctness.</li>
+                <li>Checks and balances: no single agent or model has unchecked authority. Critical outputs get verified by a second system or a human.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <p>Knowledge is free. Time isn't.</p>
+      <div class="site-footer__links"><a href="/glossary">Glossary</a></div>
+    </footer>
+
+    <script src="/script.js" defer></script>
+  </body>
+</html>

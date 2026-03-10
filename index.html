@@ -3,14 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ctx — AI Value Chain</title>
+    <title>ctx — Value flow in AI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="apple-mobile-web-app-title" content="ctx" />
     <link rel="canonical" href="https://ctx.earth/" />
   </head>
   <body class="subpage">
@@ -21,9 +23,8 @@
           <span>Menu</span>
         </button>
         <nav id="site-nav" class="top-nav">
-          <a class="nav-link" href="/practice">Practice</a>
+          <a class="nav-link" href="/thesis">Thesis</a>
           <a class="nav-link" href="/learn">Learn</a>
-          <a class="nav-link" href="/glossary">Glossary</a>
         </nav>
         <a
           class="repo-link"
@@ -44,9 +45,9 @@
 
     <main>
       <section class="hero section" data-reveal>
-        <h1>Value flow in AI systems.</h1>
+        <h1>Value flow in AI</h1>
         <p class="hero-subtitle">
-          A ten-layer classification for the full AI stack — from silicon to products. When you discover a new tool, company, or startup, start here and ask: where does it live?
+          Understanding the full AI stack — from silicon to products.
         </p>
       </section>
 
@@ -81,7 +82,7 @@
             <a class="vc-node" href="#vc-routing" data-layer="routing">
               <span class="vc-node__index">05</span>
               <span class="vc-node__label">Routing</span>
-              <span class="vc-node__desc">Each request to the right model</span>
+              <span class="vc-node__desc">Each request to the right model and provider</span>
             </a>
           </div>
           <div class="vc-flow__row">
@@ -118,6 +119,24 @@
         </div>
       </section>
 
+      <section id="layer-learn" class="section section-compact" style="display:none">
+        <p class="section-label" id="layer-learn__label"></p>
+        <p class="layer-learn__desc" id="layer-learn__desc"></p>
+        <div class="accordion-list">
+          <article class="accordion" id="layer-learn__accordion">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="layer-learn__panel">
+              <span class="accordion__title">
+                <span>Expand</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="layer-learn__panel">
+              <div class="panel-block" id="layer-learn__content"></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section class="explorer" id="explorer" data-reveal>
         <p class="section-label">Explorer</p>
         <div class="explorer__search">
@@ -138,6 +157,7 @@
           <button class="explorer__back">&larr; Back</button>
           <div class="explorer__detail-name"></div>
           <div class="explorer__detail-desc"></div>
+          <div class="explorer__detail-details"></div>
           <div class="explorer__detail-meta"></div>
           <div class="explorer__detail-layers"></div>
           <div class="explorer__detail-layer-details"></div>
@@ -145,466 +165,7 @@
         </div>
       </section>
 
-      <section class="section section-compact" data-reveal>
-        <p class="section-label">Layers</p>
-        <div class="accordion-list">
-
-          <!-- 01 Compute -->
-          <article class="accordion" data-group="value-chain" id="vc-compute">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="vc-panel-compute">
-              <span class="accordion__title">
-                <span class="accordion__index">01</span>
-                <span>Compute</span>
-              </span>
-              <span aria-hidden="true">&#9662;</span>
-              <span class="accordion__subtitle">GPUs, TPUs, and cloud infrastructure that execute AI workloads. Transforms electricity and silicon into the matrix operations everything else depends on.</span>
-            </button>
-            <div class="accordion__panel" id="vc-panel-compute">
-              <div class="panel-block">
-                <p>
-                  Everything in AI runs on matrix multiplications. The compute layer is the physical hardware and cloud infrastructure that executes those operations. GPU architecture, memory bandwidth, and interconnect topology determine what models can be trained, how fast inference runs, and what the floor cost is for any AI workload.
-                </p>
-                <p>
-                  The market is defined by NVIDIA's dominance in training (H100, B200, GB200 NVL72) and the emergence of alternatives for inference (AMD MI300X, Google TPU v5e, AWS Trainium2, Intel Gaudi 3). The key constraint is not raw FLOPS but memory bandwidth and interconnect — large models need to move weights between chips faster than they compute.
-                </p>
-                <p>
-                  Edge compute (Apple Neural Engine, Qualcomm Hexagon NPU) enables on-device inference for latency-sensitive or privacy-critical workloads. The gap between cloud and edge capability is shrinking — a MacBook Pro can run 70B parameter models locally via quantization.
-                </p>
-                <div class="table-wrap">
-                  <table class="data-table">
-                    <thead><tr><th>Company</th><th>What they do</th><th>Type</th></tr></thead>
-                    <tbody>
-                      <tr><td><a href="https://www.nvidia.com" target="_blank" rel="noreferrer">NVIDIA</a></td><td>GPU hardware (H100, B200, GB200), CUDA ecosystem</td><td>Hardware</td></tr>
-                      <tr><td><a href="https://www.amd.com/en/graphics/instinct" target="_blank" rel="noreferrer">AMD</a></td><td>MI300X GPUs, ROCm software stack</td><td>Hardware</td></tr>
-                      <tr><td><a href="https://cloud.google.com/tpu" target="_blank" rel="noreferrer">Google TPU</a></td><td>Custom AI accelerators (TPU v5e, v5p, Trillium)</td><td>Hardware</td></tr>
-                      <tr><td><a href="https://aws.amazon.com/machine-learning/trainium/" target="_blank" rel="noreferrer">AWS Trainium</a></td><td>Custom training chips (Trainium2), Inferentia for inference</td><td>Cloud</td></tr>
-                      <tr><td><a href="https://www.coreweave.com" target="_blank" rel="noreferrer">CoreWeave</a></td><td>GPU cloud specialized for AI workloads</td><td>Cloud</td></tr>
-                      <tr><td><a href="https://lambdalabs.com" target="_blank" rel="noreferrer">Lambda</a></td><td>GPU cloud and on-prem clusters for training</td><td>Cloud</td></tr>
-                      <tr><td><a href="https://www.together.ai" target="_blank" rel="noreferrer">Together AI</a></td><td>GPU cloud with optimized inference stack</td><td>Cloud</td></tr>
-                      <tr><td><a href="https://modal.com" target="_blank" rel="noreferrer">Modal</a></td><td>Serverless GPU compute</td><td>Cloud</td></tr>
-                      <tr><td><a href="https://www.cerebras.net" target="_blank" rel="noreferrer">Cerebras</a></td><td>Wafer-scale chips for training and inference</td><td>Hardware</td></tr>
-                      <tr><td><a href="https://groq.com" target="_blank" rel="noreferrer">Groq</a></td><td>LPU inference chips, ultra-low latency</td><td>Hardware</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p class="stack-note">
-                  <strong>When to care about this layer:</strong> If you are training models from scratch, fine-tuning at scale, or running inference where latency or cost is the binding constraint. Most application builders never touch this layer directly — they consume it through Layer 04 (Inference) APIs.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 02 Pre-Training -->
-          <article class="accordion" data-group="value-chain" id="vc-pretrain">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="vc-panel-pretrain">
-              <span class="accordion__title">
-                <span class="accordion__index">02</span>
-                <span>Pre-Training</span>
-              </span>
-              <span aria-hidden="true">&#9662;</span>
-              <span class="accordion__subtitle">Building foundation models from massive datasets. Transforms trillions of tokens into base weights that encode language and reasoning.</span>
-            </button>
-            <div class="accordion__panel" id="vc-panel-pretrain">
-              <div class="panel-block">
-                <p>
-                  Pre-training is the phase where base models learn language, code, and world knowledge from massive datasets. This is the most capital-intensive part of the stack — training a frontier model costs $50M–$500M+ in compute alone. The result is a foundation model: a set of weights that encode statistical patterns over trillions of tokens.
-                </p>
-                <p>
-                  The inputs are data (web crawls, books, code, scientific papers), tokenizers (BPE, SentencePiece), and training infrastructure (distributed training frameworks like Megatron-LM, DeepSpeed, or custom stacks). The outputs are base models that can complete text but have no instruction-following ability — that comes in Layer 03.
-                </p>
-                <p>
-                  Data quality dominates model quality. The shift from "more data" to "better data" is the defining trend — Llama 3 was trained on 15T tokens of heavily filtered data, not just raw web crawl. Synthetic data generation (using existing models to create training data) is increasingly central to pre-training pipelines.
-                </p>
-                <div class="table-wrap">
-                  <table class="data-table">
-                    <thead><tr><th>Company</th><th>What they do</th><th>Type</th></tr></thead>
-                    <tbody>
-                      <tr><td><a href="https://openai.com" target="_blank" rel="noreferrer">OpenAI</a></td><td>GPT series (GPT-4, GPT-5), closed-weight frontier models</td><td>Proprietary</td></tr>
-                      <tr><td><a href="https://www.anthropic.com" target="_blank" rel="noreferrer">Anthropic</a></td><td>Claude series (Opus, Sonnet, Haiku), safety-focused</td><td>Proprietary</td></tr>
-                      <tr><td><a href="https://deepmind.google" target="_blank" rel="noreferrer">Google DeepMind</a></td><td>Gemini series, PaLM, custom TPU training</td><td>Proprietary</td></tr>
-                      <tr><td><a href="https://ai.meta.com" target="_blank" rel="noreferrer">Meta AI</a></td><td>Llama series (open-weight), largest open model family</td><td>Open-weight</td></tr>
-                      <tr><td><a href="https://mistral.ai" target="_blank" rel="noreferrer">Mistral</a></td><td>Mistral, Mixtral (MoE), European open-weight lab</td><td>Open-weight</td></tr>
-                      <tr><td><a href="https://x.ai" target="_blank" rel="noreferrer">xAI</a></td><td>Grok series, trained on X/Twitter data</td><td>Proprietary</td></tr>
-                      <tr><td><a href="https://www.deepseek.com" target="_blank" rel="noreferrer">DeepSeek</a></td><td>DeepSeek-V3, R1 (reasoning), high efficiency from China</td><td>Open-weight</td></tr>
-                      <tr><td><a href="https://qwenlm.github.io" target="_blank" rel="noreferrer">Qwen (Alibaba)</a></td><td>Qwen series, strong multilingual open models</td><td>Open-weight</td></tr>
-                      <tr><td><a href="https://scale.com" target="_blank" rel="noreferrer">Scale AI</a></td><td>Data labeling and curation for training</td><td>Data</td></tr>
-                      <tr><td><a href="https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1" target="_blank" rel="noreferrer">FineWeb</a></td><td>Open pre-training dataset (15T tokens, curated)</td><td>Open data</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p class="stack-note">
-                  <strong>When to care about this layer:</strong> Almost never directly. Unless you are a frontier lab or training a domain-specific base model from scratch. Most teams start at Layer 03 (fine-tuning an existing base model) or Layer 04 (using an API).
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 03 Post-Training -->
-          <article class="accordion" data-group="value-chain" id="vc-posttrain">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="vc-panel-posttrain">
-              <span class="accordion__title">
-                <span class="accordion__index">03</span>
-                <span>Post-Training</span>
-              </span>
-              <span aria-hidden="true">&#9662;</span>
-              <span class="accordion__subtitle">Fine-tuning, RLHF, distillation, and adaptation. Transforms generic base models into instruction-following, task-ready specialists.</span>
-            </button>
-            <div class="accordion__panel" id="vc-panel-posttrain">
-              <div class="panel-block">
-                <p>
-                  Post-training turns a base model into something useful. It covers supervised fine-tuning (SFT), reinforcement learning from human feedback (RLHF), direct preference optimization (DPO), parameter-efficient methods (LoRA, QLoRA), knowledge distillation, and model merging. This is where a model learns to follow instructions, refuse harmful requests, and produce formatted outputs.
-                </p>
-                <p>
-                  The economics here are different from pre-training. Fine-tuning a model with LoRA can cost under $100 on a single GPU. Full fine-tuning of a 70B model might cost $5K–$50K. This layer is accessible to individual developers and small teams, making it the most democratized part of the training pipeline.
-                </p>
-                <p>
-                  Model merging (combining weights from multiple fine-tuned models without additional training) and distillation (training a smaller model to mimic a larger one) are increasingly important techniques. They let you create specialized models without the cost of full training runs.
-                </p>
-                <div class="table-wrap">
-                  <table class="data-table">
-                    <thead><tr><th>Company / Tool</th><th>What they do</th><th>Type</th></tr></thead>
-                    <tbody>
-                      <tr><td><a href="https://huggingface.co/docs/trl" target="_blank" rel="noreferrer">HuggingFace TRL</a></td><td>RLHF, DPO, SFT training library</td><td>Open source</td></tr>
-                      <tr><td><a href="https://github.com/OpenAccess-AI-Collective/axolotl" target="_blank" rel="noreferrer">Axolotl</a></td><td>Streamlined fine-tuning for multiple architectures</td><td>Open source</td></tr>
-                      <tr><td><a href="https://unsloth.ai" target="_blank" rel="noreferrer">Unsloth</a></td><td>2x faster LoRA fine-tuning, memory efficient</td><td>Open source</td></tr>
-                      <tr><td><a href="https://github.com/hiyouga/LLaMA-Factory" target="_blank" rel="noreferrer">LLaMA-Factory</a></td><td>Unified fine-tuning framework for 100+ models</td><td>Open source</td></tr>
-                      <tr><td><a href="https://predibase.com" target="_blank" rel="noreferrer">Predibase</a></td><td>Managed LoRA fine-tuning and serving</td><td>Managed</td></tr>
-                      <tr><td><a href="https://www.together.ai" target="_blank" rel="noreferrer">Together AI</a></td><td>Fine-tuning API with custom model hosting</td><td>Managed</td></tr>
-                      <tr><td><a href="https://www.anyscale.com" target="_blank" rel="noreferrer">Anyscale</a></td><td>Distributed fine-tuning on Ray</td><td>Managed</td></tr>
-                      <tr><td><a href="https://replicate.com" target="_blank" rel="noreferrer">Replicate</a></td><td>Fine-tuning and inference API for open models</td><td>Managed</td></tr>
-                      <tr><td><a href="https://platform.openai.com/docs/guides/fine-tuning" target="_blank" rel="noreferrer">OpenAI Fine-tuning</a></td><td>Fine-tuning API for GPT models</td><td>Proprietary</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p class="stack-note">
-                  <strong>When to care about this layer:</strong> When API models do not perform well enough on your specific domain, when you need to reduce inference cost by using a smaller specialized model, or when you need to control model behavior beyond what prompting allows.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 04 Inference -->
-          <article class="accordion" data-group="value-chain" id="vc-inference">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="vc-panel-inference">
-              <span class="accordion__title">
-                <span class="accordion__index">04</span>
-                <span>Inference</span>
-              </span>
-              <span aria-hidden="true">&#9662;</span>
-              <span class="accordion__subtitle">Serving models and generating responses at scale. Transforms prompts into completions through tokenization, forward passes, and decoding.</span>
-            </button>
-            <div class="accordion__panel" id="vc-panel-inference">
-              <div class="panel-block">
-                <p>
-                  Inference is running a trained model to produce outputs. This layer covers serving engines (the software that loads models and handles requests), cloud APIs (hosted endpoints), quantization (compressing models to run on smaller hardware), and the optimization techniques that make inference fast and cheap.
-                </p>
-                <p>
-                  The key metrics are tokens per second, time to first token (TTFT), cost per million tokens, and maximum concurrent requests. These vary by orders of magnitude between approaches — Groq's LPU hardware delivers 500+ tok/s, while a CPU-only llama.cpp setup might do 10 tok/s. The right choice depends on your latency requirements, volume, and budget.
-                </p>
-                <p>
-                  Quantization (GPTQ, AWQ, GGUF) reduces model size by 2-4x with minimal quality loss, enabling local inference on consumer hardware. Speculative decoding, continuous batching, and KV-cache optimization are the techniques that make serving engines competitive with each other.
-                </p>
-                <p>
-                  This layer is modality-agnostic. Text inference (LLMs), image generation (Stable Diffusion, DALL-E), video generation (Sora, Kling, Veo), text-to-speech (ElevenLabs, Bark, Coqui), and speech-to-text (Whisper, Deepgram, AssemblyAI) all live here. The models are trained at L02, but serving them to users is inference. The same cost/latency/throughput tradeoffs apply across modalities.
-                </p>
-                <div class="table-wrap">
-                  <table class="data-table">
-                    <thead><tr><th>Company / Tool</th><th>What they do</th><th>Type</th></tr></thead>
-                    <tbody>
-                      <tr><td><a href="https://docs.vllm.ai" target="_blank" rel="noreferrer">vLLM</a></td><td>High-throughput serving engine, PagedAttention</td><td>Open source</td></tr>
-                      <tr><td><a href="https://github.com/ggerganov/llama.cpp" target="_blank" rel="noreferrer">llama.cpp</a></td><td>CPU/GPU inference in C++, GGUF quantization</td><td>Open source</td></tr>
-                      <tr><td><a href="https://ollama.com" target="_blank" rel="noreferrer">Ollama</a></td><td>Local model runner, simple CLI interface</td><td>Open source</td></tr>
-                      <tr><td><a href="https://lmstudio.ai" target="_blank" rel="noreferrer">LM Studio</a></td><td>Desktop app for local model inference</td><td>Free</td></tr>
-                      <tr><td><a href="https://huggingface.co/docs/text-generation-inference" target="_blank" rel="noreferrer">TGI</a></td><td>HuggingFace serving engine, production-ready</td><td>Open source</td></tr>
-                      <tr><td><a href="https://openai.com/api/" target="_blank" rel="noreferrer">OpenAI API</a></td><td>GPT models as hosted API</td><td>Proprietary</td></tr>
-                      <tr><td><a href="https://docs.anthropic.com" target="_blank" rel="noreferrer">Anthropic API</a></td><td>Claude models as hosted API</td><td>Proprietary</td></tr>
-                      <tr><td><a href="https://cloud.google.com/vertex-ai" target="_blank" rel="noreferrer">Google Vertex AI</a></td><td>Gemini and open models via managed API</td><td>Managed</td></tr>
-                      <tr><td><a href="https://aws.amazon.com/bedrock/" target="_blank" rel="noreferrer">AWS Bedrock</a></td><td>Multi-model API (Claude, Llama, Mistral)</td><td>Managed</td></tr>
-                      <tr><td><a href="https://fireworks.ai" target="_blank" rel="noreferrer">Fireworks AI</a></td><td>Fast inference API for open models</td><td>Managed</td></tr>
-                      <tr><td><a href="https://groq.com" target="_blank" rel="noreferrer">Groq</a></td><td>Ultra-fast inference on custom LPU hardware</td><td>Managed</td></tr>
-                      <tr><td><a href="https://elevenlabs.io" target="_blank" rel="noreferrer">ElevenLabs</a></td><td>Text-to-speech, voice cloning, audio AI</td><td>Proprietary</td></tr>
-                      <tr><td><a href="https://github.com/openai/whisper" target="_blank" rel="noreferrer">Whisper</a></td><td>OpenAI open-source speech-to-text model</td><td>Open source</td></tr>
-                      <tr><td><a href="https://deepgram.com" target="_blank" rel="noreferrer">Deepgram</a></td><td>Speech-to-text and audio intelligence API</td><td>Managed</td></tr>
-                      <tr><td><a href="https://openai.com/sora" target="_blank" rel="noreferrer">Sora</a></td><td>OpenAI video generation model</td><td>Proprietary</td></tr>
-                      <tr><td><a href="https://klingai.com" target="_blank" rel="noreferrer">Kling</a></td><td>Kuaishou AI video generation</td><td>Proprietary</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p class="stack-note">
-                  <strong>When to care about this layer:</strong> Always. Every AI application consumes inference. The decision is: hosted API vs self-hosted, and if self-hosted, which engine and quantization format. Cost, latency, and data privacy are the three axes.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 05 Routing -->
-          <article class="accordion" data-group="value-chain" id="vc-routing">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="vc-panel-routing">
-              <span class="accordion__title">
-                <span class="accordion__index">05</span>
-                <span>Routing</span>
-              </span>
-              <span aria-hidden="true">&#9662;</span>
-              <span class="accordion__subtitle">Directing each request to the optimal model based on task, cost, and quality. Transforms a single API call into intelligent provider selection with fallback chains.</span>
-            </button>
-            <div class="accordion__panel" id="vc-panel-routing">
-              <div class="panel-block">
-                <p>
-                  Routing sits between your application and inference providers. It decides which model handles which request based on task type, cost constraints, latency requirements, and provider availability. Without a routing layer, you are hard-coding a single provider — and rebuilding when it changes pricing, goes down, or gets deprecated.
-                </p>
-                <p>
-                  The simplest routing is a fallback chain: try Provider A, if it fails try Provider B. More sophisticated routing classifies the incoming request (simple completion vs complex reasoning vs code generation) and dispatches to the best-fit model. Cost-aware routing tracks spend in real time and downgrades to cheaper models when budgets are tight.
-                </p>
-                <p>
-                  This layer is where model diversity becomes practical. Instead of picking one model for everything, you maintain a portfolio — cheap fast models for simple tasks, expensive capable models for hard ones, and local models for sensitive data. The router enforces this policy without the application code knowing which model it is talking to.
-                </p>
-                <div class="table-wrap">
-                  <table class="data-table">
-                    <thead><tr><th>Company / Tool</th><th>What they do</th><th>Type</th></tr></thead>
-                    <tbody>
-                      <tr><td><a href="https://openrouter.ai" target="_blank" rel="noreferrer">OpenRouter</a></td><td>Unified API across 300+ models, automatic fallback</td><td>Managed</td></tr>
-                      <tr><td><a href="https://litellm.ai" target="_blank" rel="noreferrer">LiteLLM</a></td><td>Open-source proxy for 100+ LLM providers</td><td>Open source</td></tr>
-                      <tr><td><a href="https://portkey.ai" target="_blank" rel="noreferrer">Portkey</a></td><td>AI gateway with routing, caching, guardrails</td><td>Managed</td></tr>
-                      <tr><td><a href="https://unify.ai" target="_blank" rel="noreferrer">Unify</a></td><td>Benchmark-driven model routing</td><td>Managed</td></tr>
-                      <tr><td><a href="https://withmartian.com" target="_blank" rel="noreferrer">Martian</a></td><td>Intelligent model router with quality prediction</td><td>Managed</td></tr>
-                      <tr><td><a href="https://www.helicone.ai" target="_blank" rel="noreferrer">Helicone</a></td><td>LLM proxy with observability and cost tracking</td><td>Managed</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p class="stack-note">
-                  <strong>When to care about this layer:</strong> As soon as you use more than one model or provider. Even with a single provider, a routing layer gives you fallback paths and the ability to switch without code changes.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 06 Orchestration -->
-          <article class="accordion" data-group="value-chain" id="vc-orchestration">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="vc-panel-orchestration">
-              <span class="accordion__title">
-                <span class="accordion__index">06</span>
-                <span>Orchestration</span>
-              </span>
-              <span aria-hidden="true">&#9662;</span>
-              <span class="accordion__subtitle">Coordinating multi-step agent workflows with planning, execution, and review. Transforms complex tasks into structured sequences of atomic operations.</span>
-            </button>
-            <div class="accordion__panel" id="vc-panel-orchestration">
-              <div class="panel-block">
-                <p>
-                  Orchestration is the framework layer that coordinates multi-step AI workflows. It covers agent frameworks, tool use, planning-execution-review loops, and the patterns for composing multiple model calls into reliable pipelines. This is where "prompt in, response out" becomes "task in, verified result out."
-                </p>
-                <p>
-                  The spectrum ranges from simple chain-of-calls (LangChain Expression Language, LlamaIndex pipelines) to autonomous agents that plan, execute tools, observe results, and iterate (Claude Code, OpenAI Codex CLI, AutoGen). The key design decision is how much autonomy to give the agent vs how much human oversight to require.
-                </p>
-                <p>
-                  Production orchestration needs retry logic, timeout handling, cost budgets per workflow, and structured handoffs between steps. Most framework demos skip these concerns — they matter enormously in production. The frameworks that survive are the ones that make reliability features first-class, not afterthoughts.
-                </p>
-                <div class="table-wrap">
-                  <table class="data-table">
-                    <thead><tr><th>Company / Tool</th><th>What they do</th><th>Type</th></tr></thead>
-                    <tbody>
-                      <tr><td><a href="https://www.langchain.com" target="_blank" rel="noreferrer">LangChain</a></td><td>Chain/agent framework, LangGraph for stateful workflows</td><td>Open source</td></tr>
-                      <tr><td><a href="https://www.llamaindex.ai" target="_blank" rel="noreferrer">LlamaIndex</a></td><td>Data framework for LLM apps, RAG pipelines</td><td>Open source</td></tr>
-                      <tr><td><a href="https://www.crewai.com" target="_blank" rel="noreferrer">CrewAI</a></td><td>Multi-agent orchestration framework</td><td>Open source</td></tr>
-                      <tr><td><a href="https://microsoft.github.io/autogen/" target="_blank" rel="noreferrer">AutoGen</a></td><td>Microsoft multi-agent conversation framework</td><td>Open source</td></tr>
-                      <tr><td><a href="https://docs.anthropic.com/en/docs/agents" target="_blank" rel="noreferrer">Claude Code</a></td><td>Anthropic's agentic coding tool with tool use</td><td>Proprietary</td></tr>
-                      <tr><td><a href="https://openai.com/index/introducing-codex/" target="_blank" rel="noreferrer">OpenAI Codex</a></td><td>Cloud-based coding agent with sandboxed execution</td><td>Proprietary</td></tr>
-                      <tr><td><a href="https://www.cognition.ai" target="_blank" rel="noreferrer">Devin (Cognition)</a></td><td>Autonomous software engineering agent</td><td>Proprietary</td></tr>
-                      <tr><td><a href="https://dify.ai" target="_blank" rel="noreferrer">Dify</a></td><td>Visual AI workflow builder, open source</td><td>Open source</td></tr>
-                      <tr><td><a href="https://n8n.io" target="_blank" rel="noreferrer">n8n</a></td><td>Workflow automation with AI node support</td><td>Open source</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p class="stack-note">
-                  <strong>When to care about this layer:</strong> When your use case involves more than a single prompt-response cycle. Multi-step workflows, tool use, human-in-the-loop approvals, and agent autonomy all live here.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 07 Context -->
-          <article class="accordion" data-group="value-chain" id="vc-context">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="vc-panel-context">
-              <span class="accordion__title">
-                <span class="accordion__index">07</span>
-                <span>Context &amp; Knowledge</span>
-              </span>
-              <span aria-hidden="true">&#9662;</span>
-              <span class="accordion__subtitle">Managing knowledge, memory, embeddings, and retrieval. Transforms scattered documents and decisions into structured, queryable intelligence.</span>
-            </button>
-            <div class="accordion__panel" id="vc-panel-context">
-              <div class="panel-block">
-                <p>
-                  Context is everything the model sees beyond its training data. This layer covers retrieval-augmented generation (RAG), vector databases, embedding models, memory systems, and knowledge management tools. The quality of your context determines the quality of your outputs — a perfectly capable model with bad context produces bad results.
-                </p>
-                <p>
-                  RAG pipelines chunk documents into passages, embed them into vector space, store them in a vector database, and retrieve relevant chunks at query time. The engineering challenges are chunking strategy (too small loses context, too large dilutes relevance), embedding model selection, retrieval quality measurement, and keeping the index fresh as source documents change.
-                </p>
-                <p>
-                  Memory systems (conversation memory, agent memory, long-term knowledge) are the other half of this layer. They determine what the system remembers across sessions, what it forgets, and how it retrieves past interactions. CLAUDE.md files, memory plugins, and structured knowledge bases all live here.
-                </p>
-                <p>
-                  <strong>Where Obsidian fits:</strong> Obsidian, Notion, Logseq, and Roam are personal knowledge management tools that sit at this layer. Your notes become retrievable context — structured knowledge files (like CLAUDE.md), markdown documents for RAG pipelines, or direct input to agent memory systems. They are the human-authored knowledge layer that AI systems consume.
-                </p>
-                <div class="table-wrap">
-                  <table class="data-table">
-                    <thead><tr><th>Company / Tool</th><th>What they do</th><th>Type</th></tr></thead>
-                    <tbody>
-                      <tr><td><a href="https://www.pinecone.io" target="_blank" rel="noreferrer">Pinecone</a></td><td>Managed vector database, serverless option</td><td>Managed</td></tr>
-                      <tr><td><a href="https://weaviate.io" target="_blank" rel="noreferrer">Weaviate</a></td><td>Open-source vector database with hybrid search</td><td>Open source</td></tr>
-                      <tr><td><a href="https://www.trychroma.com" target="_blank" rel="noreferrer">Chroma</a></td><td>Open-source embedding database</td><td>Open source</td></tr>
-                      <tr><td><a href="https://qdrant.tech" target="_blank" rel="noreferrer">Qdrant</a></td><td>Vector search engine, Rust-based</td><td>Open source</td></tr>
-                      <tr><td><a href="https://milvus.io" target="_blank" rel="noreferrer">Milvus</a></td><td>Distributed vector database for scale</td><td>Open source</td></tr>
-                      <tr><td><a href="https://www.voyageai.com" target="_blank" rel="noreferrer">Voyage AI</a></td><td>Embedding models optimized for retrieval</td><td>Managed</td></tr>
-                      <tr><td><a href="https://jina.ai" target="_blank" rel="noreferrer">Jina AI</a></td><td>Embedding models and rerankers</td><td>Open source</td></tr>
-                      <tr><td><a href="https://obsidian.md" target="_blank" rel="noreferrer">Obsidian</a></td><td>Local-first knowledge management, markdown-based</td><td>Free / paid</td></tr>
-                      <tr><td><a href="https://www.notion.com" target="_blank" rel="noreferrer">Notion</a></td><td>Connected workspace with AI features</td><td>Managed</td></tr>
-                      <tr><td><a href="https://mem.ai" target="_blank" rel="noreferrer">Mem</a></td><td>AI-native knowledge base</td><td>Managed</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p class="stack-note">
-                  <strong>When to care about this layer:</strong> Whenever the model needs information it was not trained on — your company docs, your codebase, your user data, your notes. RAG is the most common way to make AI systems useful for domain-specific work.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 08 Integrations -->
-          <article class="accordion" data-group="value-chain" id="vc-integrations">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="vc-panel-integrations">
-              <span class="accordion__title">
-                <span class="accordion__index">08</span>
-                <span>Integrations</span>
-              </span>
-              <span aria-hidden="true">&#9662;</span>
-              <span class="accordion__subtitle">Connecting AI to external tools, APIs, IDEs, and databases. Transforms model outputs into real-world actions through standardized interfaces like MCP.</span>
-            </button>
-            <div class="accordion__panel" id="vc-panel-integrations">
-              <div class="panel-block">
-                <p>
-                  Integrations connect AI systems to the tools and data sources they need to be useful. This includes protocol adapters (MCP — Model Context Protocol), coding agents embedded in IDEs, function calling interfaces, and connectors to external services (GitHub, Slack, databases, file systems, APIs).
-                </p>
-                <p>
-                  MCP is emerging as a standard protocol for tool integration — it defines how AI models discover, authenticate with, and call external tools. Before MCP, every tool integration was custom-built. MCP provides a shared interface that lets any model use any tool without provider-specific adapter code.
-                </p>
-                <p>
-                  Coding agents (Claude Code, Cursor, Windsurf, Continue, Aider) are the most mature integration category. They connect models to file systems, terminals, git, and language servers — turning a model that can reason about code into one that can write, test, and ship code. The quality of the integration determines how much context the model sees and how effectively it can take action.
-                </p>
-                <div class="table-wrap">
-                  <table class="data-table">
-                    <thead><tr><th>Company / Tool</th><th>What they do</th><th>Type</th></tr></thead>
-                    <tbody>
-                      <tr><td><a href="https://modelcontextprotocol.io" target="_blank" rel="noreferrer">MCP</a></td><td>Model Context Protocol — standard for tool integration</td><td>Open standard</td></tr>
-                      <tr><td><a href="https://cursor.com" target="_blank" rel="noreferrer">Cursor</a></td><td>AI-first code editor, multi-model support</td><td>Proprietary</td></tr>
-                      <tr><td><a href="https://windsurf.com" target="_blank" rel="noreferrer">Windsurf</a></td><td>AI code editor with Cascade agent</td><td>Proprietary</td></tr>
-                      <tr><td><a href="https://www.continue.dev" target="_blank" rel="noreferrer">Continue</a></td><td>Open-source AI coding assistant for VS Code/JetBrains</td><td>Open source</td></tr>
-                      <tr><td><a href="https://aider.chat" target="_blank" rel="noreferrer">Aider</a></td><td>Terminal-based AI pair programming</td><td>Open source</td></tr>
-                      <tr><td><a href="https://www.all-hands.dev" target="_blank" rel="noreferrer">OpenHands</a></td><td>Open-source AI software development agent</td><td>Open source</td></tr>
-                      <tr><td><a href="https://www.composio.dev" target="_blank" rel="noreferrer">Composio</a></td><td>Tool integrations for AI agents</td><td>Managed</td></tr>
-                      <tr><td><a href="https://zapier.com/platform/ai-actions" target="_blank" rel="noreferrer">Zapier AI Actions</a></td><td>Connect AI to 6000+ apps via natural language</td><td>Managed</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p class="stack-note">
-                  <strong>When to care about this layer:</strong> When your AI needs to do things beyond generating text — reading files, calling APIs, querying databases, posting to Slack, creating pull requests. The integration layer determines what actions the model can take.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 09 Eval & Safety -->
-          <article class="accordion" data-group="value-chain" id="vc-eval">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="vc-panel-eval">
-              <span class="accordion__title">
-                <span class="accordion__index">09</span>
-                <span>Eval &amp; Safety</span>
-              </span>
-              <span aria-hidden="true">&#9662;</span>
-              <span class="accordion__subtitle">Testing, monitoring, guardrails, and observability. Transforms raw model outputs into validated, trusted results with quality guarantees.</span>
-            </button>
-            <div class="accordion__panel" id="vc-panel-eval">
-              <div class="panel-block">
-                <p>
-                  Eval and safety determine whether your AI system actually works and whether it fails safely. This layer covers evaluation frameworks (golden test sets, scoring rubrics, regression testing), observability (logging, tracing, cost tracking), guardrails (content filtering, output validation), and monitoring (quality dashboards, alerting).
-                </p>
-                <p>
-                  Without evals, you are guessing. Every prompt change, model upgrade, or context modification can silently degrade output quality. Eval sets are versioned test suites that catch regressions before they reach users. The best teams run evals in CI — a prompt change that degrades quality does not ship.
-                </p>
-                <p>
-                  Guardrails are runtime safety checks — they validate model outputs against rules before the output reaches the user. Content filters catch harmful outputs, format validators ensure structured outputs match schemas, and business logic checks enforce domain-specific constraints. They are the last line of defense between the model and the user.
-                </p>
-                <div class="table-wrap">
-                  <table class="data-table">
-                    <thead><tr><th>Company / Tool</th><th>What they do</th><th>Type</th></tr></thead>
-                    <tbody>
-                      <tr><td><a href="https://www.braintrust.dev" target="_blank" rel="noreferrer">Braintrust</a></td><td>Eval framework with logging and datasets</td><td>Managed</td></tr>
-                      <tr><td><a href="https://www.langfuse.com" target="_blank" rel="noreferrer">Langfuse</a></td><td>Open-source LLM observability and tracing</td><td>Open source</td></tr>
-                      <tr><td><a href="https://www.promptfoo.dev" target="_blank" rel="noreferrer">Promptfoo</a></td><td>CLI for testing and evaluating prompts</td><td>Open source</td></tr>
-                      <tr><td><a href="https://smith.langchain.com" target="_blank" rel="noreferrer">LangSmith</a></td><td>LangChain observability and evaluation platform</td><td>Managed</td></tr>
-                      <tr><td><a href="https://www.guardrailsai.com" target="_blank" rel="noreferrer">Guardrails AI</a></td><td>Output validation and guardrail framework</td><td>Open source</td></tr>
-                      <tr><td><a href="https://github.com/NVIDIA/NeMo-Guardrails" target="_blank" rel="noreferrer">NeMo Guardrails</a></td><td>NVIDIA programmable guardrails toolkit</td><td>Open source</td></tr>
-                      <tr><td><a href="https://www.helicone.ai" target="_blank" rel="noreferrer">Helicone</a></td><td>LLM observability, cost tracking</td><td>Managed</td></tr>
-                      <tr><td><a href="https://humanloop.com" target="_blank" rel="noreferrer">Humanloop</a></td><td>Evaluation and prompt management platform</td><td>Managed</td></tr>
-                      <tr><td><a href="https://ai.meta.com/blog/purple-llama-project/" target="_blank" rel="noreferrer">Llama Guard</a></td><td>Meta safety classifier for content filtering</td><td>Open-weight</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p class="stack-note">
-                  <strong>When to care about this layer:</strong> Before shipping anything to users. Evals should be the first thing you build, not the last. Guardrails are non-negotiable for user-facing applications. Observability is how you debug production issues.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 10 Products -->
-          <article class="accordion" data-group="value-chain" id="vc-products">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="vc-panel-products">
-              <span class="accordion__title">
-                <span class="accordion__index">10</span>
-                <span>Products</span>
-              </span>
-              <span aria-hidden="true">&#9662;</span>
-              <span class="accordion__subtitle">End-user applications built on the stack below. Transforms AI capabilities into user-facing value through chatbots, copilots, agents, and vertical tools.</span>
-            </button>
-            <div class="accordion__panel" id="vc-panel-products">
-              <div class="panel-block">
-                <p>
-                  The product layer is where all the infrastructure below becomes useful to end users. Products are built on top of the other nine layers, combining inference, routing, orchestration, context, and integrations into something people actually use. This is the most crowded and fastest-moving layer.
-                </p>
-                <p>
-                  Product archetypes: <strong>Chatbots</strong> (ChatGPT, Claude, Gemini) — general-purpose conversational AI. <strong>Copilots</strong> (GitHub Copilot, Cursor, Windsurf) — AI assistants embedded in workflows. <strong>Agents</strong> (Devin, 11x, Bland AI) — autonomous AI that takes actions. <strong>Search</strong> (Perplexity, Glean) — AI-native information retrieval. <strong>Creative tools</strong> (Midjourney, Runway, Sora) — generative media. <strong>Vertical SaaS</strong> (Harvey, Abridge, Sierra) — domain-specific AI products.
-                </p>
-                <p>
-                  The defensibility question at this layer is critical. If your product is a thin wrapper over an API with no proprietary context, workflow, or data moat, you are competing on UX alone — and the model provider will likely build your feature natively. The products that survive have deep domain context, proprietary data, or workflow integration that cannot be replicated by a generic model.
-                </p>
-                <div class="table-wrap">
-                  <table class="data-table">
-                    <thead><tr><th>Company</th><th>What they do</th><th>Category</th></tr></thead>
-                    <tbody>
-                      <tr><td><a href="https://chat.openai.com" target="_blank" rel="noreferrer">ChatGPT</a></td><td>General-purpose AI assistant</td><td>Chatbot</td></tr>
-                      <tr><td><a href="https://claude.ai" target="_blank" rel="noreferrer">Claude</a></td><td>AI assistant with long context and tool use</td><td>Chatbot</td></tr>
-                      <tr><td><a href="https://gemini.google.com" target="_blank" rel="noreferrer">Gemini</a></td><td>Google AI assistant, integrated with Workspace</td><td>Chatbot</td></tr>
-                      <tr><td><a href="https://www.perplexity.ai" target="_blank" rel="noreferrer">Perplexity</a></td><td>AI search engine with citations</td><td>Search</td></tr>
-                      <tr><td><a href="https://www.harvey.ai" target="_blank" rel="noreferrer">Harvey</a></td><td>AI for legal professionals</td><td>Vertical</td></tr>
-                      <tr><td><a href="https://www.abridge.com" target="_blank" rel="noreferrer">Abridge</a></td><td>AI medical documentation</td><td>Vertical</td></tr>
-                      <tr><td><a href="https://writer.com" target="_blank" rel="noreferrer">Writer</a></td><td>Enterprise AI writing platform</td><td>Vertical</td></tr>
-                      <tr><td><a href="https://www.sierra.ai" target="_blank" rel="noreferrer">Sierra</a></td><td>Conversational AI for customer experience</td><td>Agent</td></tr>
-                      <tr><td><a href="https://www.11x.ai" target="_blank" rel="noreferrer">11x</a></td><td>AI sales development agents</td><td>Agent</td></tr>
-                      <tr><td><a href="https://midjourney.com" target="_blank" rel="noreferrer">Midjourney</a></td><td>AI image generation</td><td>Creative</td></tr>
-                      <tr><td><a href="https://runwayml.com" target="_blank" rel="noreferrer">Runway</a></td><td>AI video generation and editing</td><td>Creative</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p class="stack-note">
-                  <strong>When to care about this layer:</strong> If you are building an end-user product. The key question is: what is your moat? Data, workflow integration, domain expertise, or distribution. "Uses AI" is not a moat.
-                </p>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </section>
+      <!-- Layer detail content now appears inline via learn-content.js when a layer is clicked -->
 
       <section class="section section-compact" data-reveal>
         <p class="section-label">Provider landscape</p>
@@ -613,7 +174,7 @@
             <button class="accordion__toggle" aria-expanded="false" aria-controls="providers-registry">
               <span class="accordion__title">
                 <span class="accordion__index">01</span>
-                <span>Provider registry</span>
+                <span>Text models</span>
               </span>
               <span aria-hidden="true">&#9662;</span>
             </button>
@@ -630,7 +191,7 @@
             <button class="accordion__toggle" aria-expanded="false" aria-controls="providers-images">
               <span class="accordion__title">
                 <span class="accordion__index">02</span>
-                <span>Image-capable models</span>
+                <span>Image models</span>
               </span>
               <span aria-hidden="true">&#9662;</span>
             </button>
@@ -643,36 +204,37 @@
               </div>
             </div>
           </article>
+          <article class="accordion" data-group="providers">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="providers-audio">
+              <span class="accordion__title">
+                <span class="accordion__index">03</span>
+                <span>Audio models</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="providers-audio">
+              <div class="panel-block">
+                <p class="stack-note">
+                  Speech-to-text, text-to-speech, voice cloning, and audio generation models across providers.
+                </p>
+                <div class="table-wrap"><table class="data-table"><thead><tr><th>Provider</th><th>Model / Product</th><th>Capability</th><th>Type</th></tr></thead><tbody><tr><td><a href="https://elevenlabs.io" target="_blank" rel="noreferrer">ElevenLabs</a></td><td>Multilingual v2, Turbo v2.5</td><td>TTS, voice cloning, dubbing</td><td>Proprietary</td></tr><tr><td><a href="https://platform.openai.com/docs/guides/text-to-speech" target="_blank" rel="noreferrer">OpenAI</a></td><td>TTS-1, TTS-1-HD, Whisper</td><td>TTS + STT</td><td>Proprietary / Open</td></tr><tr><td><a href="https://deepgram.com" target="_blank" rel="noreferrer">Deepgram</a></td><td>Nova-2, Aura</td><td>STT + TTS</td><td>Managed</td></tr><tr><td><a href="https://www.assemblyai.com" target="_blank" rel="noreferrer">AssemblyAI</a></td><td>Universal-2</td><td>STT, speaker diarization</td><td>Managed</td></tr><tr><td><a href="https://cloud.google.com/text-to-speech" target="_blank" rel="noreferrer">Google Cloud</a></td><td>Cloud TTS, Chirp</td><td>TTS + STT</td><td>Managed</td></tr><tr><td><a href="https://github.com/coqui-ai/TTS" target="_blank" rel="noreferrer">Coqui TTS</a></td><td>XTTS v2</td><td>TTS, voice cloning</td><td>Open source</td></tr><tr><td><a href="https://github.com/suno-ai/bark" target="_blank" rel="noreferrer">Bark (Suno)</a></td><td>Bark</td><td>TTS with non-speech audio</td><td>Open source</td></tr><tr><td><a href="https://cartesia.ai" target="_blank" rel="noreferrer">Cartesia</a></td><td>Sonic</td><td>Ultra-low latency TTS</td><td>Managed</td></tr></tbody></table></div>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section class="section section-compact" data-reveal>
-        <p class="section-label">What is inside</p>
-        <div class="overview-grid">
-          <a class="micro-card" href="/practice">
-            <p class="micro-card__label">Practice</p>
-            <h3>What we believe and build</h3>
-            <p>Thesis, build areas, principles, and the code explosion.</p>
-          </a>
-          <a class="micro-card" href="/learn">
-            <p class="micro-card__label">Learn</p>
-            <h3>Understanding the full stack</h3>
-            <p>Ten modules mapped to the value chain layers.</p>
-          </a>
-          <a class="micro-card" href="/glossary">
-            <p class="micro-card__label">Glossary</p>
-            <h3>AI terms, defined</h3>
-            <p>Plain-language definitions for the AI ecosystem.</p>
-          </a>
-        </div>
-      </section>
     </main>
 
     <footer class="site-footer">
-      <p>Knowledge is free. Time isn't. <a href="/faq">FAQ</a></p>
+      <p>Knowledge is free. Time isn't.</p>
+      <div class="site-footer__links">
+        <a href="/glossary">Glossary</a>
+      </div>
     </footer>
 
     <script src="/value-chain/data.js"></script>
+    <script src="/value-chain/learn-content.js"></script>
     <script src="/value-chain/explorer.js"></script>
     <script src="/script.js" defer></script>
   </body>

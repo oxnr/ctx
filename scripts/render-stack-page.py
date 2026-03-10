@@ -113,6 +113,7 @@ def main() -> None:
           <a class="nav-link" href="/practice">Practice</a>
           <a class="nav-link" href="/stack">Stack</a>
           <a class="nav-link" href="/learn">Learn</a>
+          <a class="nav-link" href="/value-chain">Value Chain</a>
         </nav>
         <a
           class="repo-link"

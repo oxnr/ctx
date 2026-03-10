@@ -144,6 +144,8 @@
     const panel = accordion.querySelector(".accordion__panel");
 
     if (!toggle || !panel) return;
+    // Layer-learn accordion is managed by explorer.js
+    if (accordion.id === "layer-learn__accordion") return;
 
     const group = normalize(accordion);
     panel.setAttribute("aria-hidden", "true");

@@ -1,133 +1,133 @@
 You are helping with ctx.
 
 CTX POSITIONING
-- AI transformation practice, not a traditional consultancy or agency.
-- We help organizations adopt AI across engineering, operations, product, and strategy — with local-first architecture as the default.
-- Every engagement includes a free, open academy layer. No separate academy product.
-- Target: organizations that need sovereign, portable AI infrastructure — regulated environments, data-sensitive teams, and anyone who refuses vendor lock-in.
-- Core approach: local-first deployment, portable context artifacts, broad AI adoption across functions.
+- `ctx` is an AI operating architecture practice with a public learning layer.
+- It is not a product company and not just a content site. It combines public education, repo-native operating artifacts, and engagement-ready delivery patterns.
+- The public site currently has four primary surfaces:
+  - `/` = Value flow in AI — value-chain map, explorer, and provider landscape snapshot
+  - `/thesis` = thesis page
+  - `/learn` = academy mapped to the value chain
+  - `/glossary` = shared vocabulary
+- `/practice`, `/stack`, and `/value-chain` are compatibility routes in the current iteration and may redirect.
+- The repo is meant to stay legible to both humans and agents: plain text first, explicit scripts, minimal hidden behavior.
 
 THESIS
-- The first wave of enterprise AI was cloud-first by default. Organizations traded control for convenience. That era is ending.
-- Context is the durable asset. Portable, reusable context artifacts — prompt libraries, workflow specs, evaluation sets — survive each generation of models and tools.
-- The organizations that own their infrastructure and their context will outperform those that rent both.
-- AI adoption spans engineering, operations, product, strategy, and culture. The common thread is architecture: local-first by default, cloud when justified, never locked to a single provider.
+- Velocity is the constant. New models drop every other month and code ships at record velocity. The durable advantage is the ability to absorb change without rebuilding.
+- Build for change. Providers, models, prompts, workflows, processes, and team roles should all be designed to evolve — not just code.
+- Harness is the real asset. The system around the model — context, workflows, evaluation, integrations, and decisions — is the expensive part. Context sits at the center, but the harness is broader.
+- New paradigms. Local-first, API-first, SDK-first, agents, tool use, and structured outputs are not trends to watch — they are paradigms to adopt.
+- Human in the loop. Humans own decisions that are irreversible, high-stakes, or ambiguous. The boundary between human judgment and machine execution should be explicit, not emergent.
+
+VALUE-CHAIN MODEL
+- The 10-layer value chain is a teaching and comparison model, not a strict ontology.
+- Many entities span multiple layers; do not force false precision when categorizing tools or companies.
+- The layers are:
+  - L01 Compute
+  - L02 Pre-Training
+  - L03 Post-Training
+  - L04 Inference
+  - L05 Routing
+  - L06 Orchestration
+  - L07 Context
+  - L08 Integrations
+  - L09 Eval and Safety
+  - L10 Products
+- In practice, layers 06 through 09 behave like the operating control plane around generation.
+
+PROJECT SHAPE
+- Public site:
+  - `index.html` is the value-chain homepage.
+  - `thesis/index.html` is the thesis page.
+  - `learn/index.html` is the academy page.
+  - `glossary/index.html` is the glossary page.
+- Curriculum and playbooks:
+  - `academy/` holds the canonical curriculum source.
+  - `skills/` holds reusable operating playbooks.
+- Operating data:
+  - `provider-catalog/` is the canonical provider/model snapshot source.
+  - `agent-library/` is the local specialist role and workflow reference set.
+  - `value-chain/` holds layer data, explorer assets, and related catalog content.
+- Automation and checks:
+  - `scripts/` contains explicit sync, render, indexing, and quality scripts.
+  - `reports/quality-audit/` holds generated local artifacts.
 
 PRINCIPLES
-- Local-first by default: prefer on-premise and self-hosted deployment unless cloud is explicitly justified.
-- Broad adoption surface: AI is not an engineering-only tool — design for every function.
-- Context is the durable asset: deliver portable, reusable artifacts that survive tool generations.
-- Start with high-impact use cases, then automate repeatable work.
-- Everything is designed for reuse: prompts, skills, workflows, and context layers.
-- Keep a local specialist agent library to reduce reinvented prompts and to preserve role-specific operating standards.
-- Read less with each iteration: prioritize systems that make wrong outputs obvious and fixable quickly over exhaustive manual review.
-- Keep planning at a chunk level: epics/decision blocks over overloaded ticket granularity, especially for fast-moving AI work.
-- Treat issues as explicit context commitments, not a queue to become a bottleneck.
-- Treat provider/model selection as a versioned infrastructure decision, not a preference.
-- Keep a stable provider registry for context, so tool migrations are adapter changes, not methodology changes.
-- Separate decision layers: provider sources, routing policies, terminal/agent tools, and governance/observability.
-- Keep sessions contract-first: define scope, acceptance, and rollback before execution; split discovery and implementation phases.
-- Use anti-sycophancy review loops for risky work: find assumptions, challenge them, then decide with minimal-rework rollback criteria.
-- Treat context compaction/summarization as an operational optimization only. Keep canonical raw context where decisions can be audited, and pin compaction semantics/version in policy.
-- Treat skills as measurable components, not only instruction bundles. New or changed skills should include a trigger test plan (positive + negative cases).
+- Keep context durable, scoped, and recoverable.
+- Keep workflows contract-first: define scope, acceptance, and rollback before execution.
+- Keep public claims sourceable, dated, and easy to refresh.
+- Prefer explicit routing and fallback rules over provider loyalty.
+- Separate planning, execution, review, and approval.
+- Keep volatile state out of durable project truth.
+- Treat skills as repeatable operating components, not decorative prompts.
+- Prefer repository-local artifacts over hidden platform state.
+- Use adapters such as MCP when useful, but keep CLI, filesystem, markdown, and git as the stable portability layer.
 
-EXECUTION PRINCIPLES (How we run AI systems)
-- We do not make code review a virtue. We make it a signal: small, high-confidence checks before larger releases.
-- For every run, prove the change by outputs and contracts first, then review only what matters for risk.
-- Design guardrails so teams can spend less time reading code and more time shaping architecture, intent, and assumptions.
-- Build every stack in three layers:
-  - provider + model layer
-  - agent + workflow layer
-  - terminal + delivery + observability layer
+PUBLIC PRESENTATION RULES
+- Write as an expert practice, not as hype.
+- Use the value chain to explain the field, then connect it to the practice thesis.
+- Do not present the taxonomy as universal truth; present it as the repo's explanatory model.
+- Do not lead client-facing copy with vendor names or model names.
+- When facts are volatile, date them and point back to the source artifact.
+- Distinguish stable claims from time-sensitive snapshots.
 
-HARNESS-FIRST ENGINEERING PRINCIPLES
-- Humans should optimize for design and control; agents execute implementation and iteration.
-- The system should be legible to agents: repository-local, versioned, and self-contained.
-- Start with minimal working scope and grow depth-first (goal -> decomposition -> next block).
-- Keep boundaries explicit with contracts, not inferred assumptions.
-- Build and test in a loop: execute -> validate -> recover -> retry.
-- Treat docs like code: linked, versioned, and mechanically checkable.
-- Keep a recurring cleanup loop for stale context, broken links, and old assumptions.
-- Treat skills as controlled automation: track trigger quality and avoid accidental over-triggering.
-- Start each run with context preload (`/recall`) before tool execution to reduce rework and reset drift.
+CANONICAL FILES
+- `academy/syllabus.md` is the single active syllabus for engagements.
+- `provider-catalog/index.md` is the canonical provider/model snapshot.
+- `agent-library/sources.md` and `agent-library/sync-log.md` are the provenance records for the local agent library.
+- `llm-full.txt` is the machine-readable project intent file.
+- `README.md` is the human-readable repo overview.
 
 MANDATES
-- Provider layer is a first-class operating artifact. Keep provider metadata current and versioned.
-- `stack/index.html` is generated from `provider-catalog/index.md` via `scripts/render-stack-page.py`; do not hand-edit pinned model/version claims on the public stack page.
-- Confirm high-impact model/provider updates through `/internet-research` before production adoption.
-- Always reference this file as project intent when onboarding new agents.
-- Run a recurring release-quality gate via `/quality-cycle` (default weekly) when publishing web-facing assets.
-- Use files in skills/ as canonical playbooks for execution.
-- Keep the open-academy layer public by default, unless explicitly marked private.
-- All outputs are markdown or plain text only. No PDFs.
-- Do not lead with specific tool names in client-facing materials. Tool names (Claude Code, Codex, GPT, open-weight models) appear in body text as examples, not in headlines or hero copy.
-- Keep the curriculum source synchronized with `academy/handbook-catalog.md`.
-- `academy/syllabus.md` is the canonical sequence for every engagement.
-- Prefer preloading local context (`/recall`) over re-explaining state in every new session.
-- Keep `AGENTS.md` concise as a map of execution rules; push detail into markdown artifacts.
-- Maintain a repo-level operating log of plans, decisions, and known cleanup debt.
-- New skills and high-change skill updates require trigger tests:
-  - 3 positive inputs that should invoke the skill.
-  - 3 negative inputs that should not invoke the skill.
-- Agent library policy:
-  - Prefer local markdown-first agent definitions.
-  - Track library sources and sync history for every update.
-  - If a source repo changes, refresh it before client-facing rollouts.
-  - Include implementation-reference repositories (for example `superset-sh/superset`) for proven workspace/command patterns, not just role profiles.
-- Quality policy:
-  - Use `/web-quality-audit` before public-facing release points.
-  - Treat quality findings as commitments in decisions and follow-up tickets.
-- Deployment policy:
-  - `ctx.earth` should use GitHub Pages-compatible direct DNS.
-  - Apex uses only the four GitHub Pages A records.
-  - `www` uses a CNAME to `oxnr.github.io`.
-  - Do not use registrar URL redirect records for the live production host.
+- Treat `provider-catalog/index.md` as the source of truth for provider/model snapshot claims.
+- Do not hand-edit volatile provider/model claims in derived public HTML artifacts.
+- `scripts/sync-provider-catalog.sh` refreshes the provider catalog and currently also updates derived stack artifacts kept in the repo.
+- Use files in `skills/` as canonical execution playbooks.
+- Keep the academy public by default unless a specific artifact is marked private.
+- Keep outputs in markdown, plain text, HTML, CSS, JavaScript, shell, or small Python utilities already consistent with the repo.
+- Run `/quality-cycle` for recurring release-quality checks when publishing web-facing assets.
+- Run `/web-quality-audit` before public-facing release points.
+- Keep `AGENTS.md` concise; push detail into markdown artifacts.
+- Maintain provenance for synced external libraries and catalogs.
 
-OFFERS
-- AI Workflow Design — design and deploy AI workflows across engineering, operations, product, and support
-- Local-First Infrastructure — architecture and deployment for on-premise, private-cloud, and air-gapped environments
-- Context Engineering — build the durable context layer: prompt libraries, workflow specs, evaluation sets, knowledge artifacts
-- Open Academy — free, public learning content shipped with every engagement
+ENGAGEMENT SHAPE
+- The practice currently presents four public build areas on the thesis page:
+  - AI workflow design
+  - Local-first infrastructure
+  - Context engineering
+  - Team enablement and academy
+- Treat these as the main delivery lanes when describing what `ctx` does.
+- The academy is not a detached side project; it is part of the delivery model.
+- Favor advisory and implementation language grounded in durable operating artifacts, not one-off prompt work.
 
-Reference influence:
-- OpenAI, "Harness engineering" (`https://openai.com/index/harness-engineering/`) and related operational playbooks.
-- Anthropic Academy (Skilljar) course structure for high-signal onboarding and agent workflow sequencing.
+PROVIDER AND CATALOG RULES
+- Provider/model inventories are time-sensitive. Keep sync dates explicit.
+- The provider catalog is a normalized snapshot source for the repo, not a claim to universal market completeness.
+- Separate provider truth, routing policy, workflow design, and governance decisions.
+- Prefer fallback and replacement planning over single-provider assumptions.
 
-Anthropic Academy incorporation rule:
-- Use public catalog tracks as curriculum shape only; execution, governance, and portability stay in repo-local `skills/`, `scripts/`, and markdown artifacts.
-- Keep this stack in local-first terms:
-  - Module-to-track mapping in `academy/anthropic-academy.md`
-  - Course adaptation in `skills/anthropic-academy.md`
-  - Open module publication in `academy/syllabus.md` + `/open-academy`
+INTERFACING PRINCIPLES
+- Protocols such as MCP are adapters, not the foundation of the architecture.
+- Prefer deterministic CLI and filesystem contracts first.
+- Add protocol adapters when they materially reduce adoption or integration cost.
+- Keep tool permissions, access boundaries, and audit trails explicit.
 
 RESOURCE PHILOSOPHY
 - Treat open external resources as accelerants, not doctrine.
-- Prefer proven examples over theoretical catalogs.
-- Primary references: AI Engineering Handbook-style practical tracks, field labs, and prompt engineering playbooks.
-- Addy Osmani web-quality references were reviewed and adapted for practical static quality checks (`https://github.com/addyosmani/web-quality-skills`).
-- `blader/humanizer` is optional for publishing polish only; it is not a validation layer.
-- Update syllabus modules when external practice evidence changes or client demands require new sequence.
-
-INTERFACING PRINCIPLES
-- Protocols like MCP, platform-specific plugins, and similar interfaces are treated as adapters, not the core architecture.
-- CLI + local artifacts (markdown, scripts, git) remain the stable layer for portability.
-- Prefer deterministic CLI contracts first; add protocol adapters only where they simplify adoption.
+- Prefer practical references that change execution quality, not broad trend summaries.
+- Use public curricula and field references for shape; keep execution and governance repo-local.
+- External role libraries are starter corpora, not authoritative operating truth.
 
 REQUIRED OUTPUT STYLE
 - Concise, decisive, implementation-oriented.
-- Default to practical next steps and concrete command names.
-- Keep recommendations testable and measurable.
+- Default to practical next steps and concrete artifact names.
+- Keep recommendations testable and source-aware.
+- Distinguish clearly between durable repo truth and volatile market facts.
 
 REPEATED OPERATING LOOP
 1. State intent and constraints in one short brief.
 2. Define one narrow deliverable with one acceptance check.
-3. Execute the relevant skill with complete context attachments.
-4. Capture validation artifacts (results, logs, assumptions, risks).
+3. Execute the relevant skill or script with complete context.
+4. Capture validation artifacts, assumptions, and risks.
 5. Fix the root cause, not only the symptom.
-6. Update decisions and plans before closing.
-7. Add one cleanup action to reduce future agent ambiguity.
-8. Include a minimal preview pass before escalation:
-   - show a short proposed diff summary
-   - highlight the highest-risk file/decision
-   - require a stop/review gate only for high-impact failures
-9. If a skill changed, include a quick trigger smoke check (true-positive and true-negative cases).
+6. Update canonical docs or decisions before closing.
+7. Add one cleanup action that reduces future ambiguity.
