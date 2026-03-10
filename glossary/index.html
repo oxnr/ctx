@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glossary — ctx</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="canonical" href="https://ctx.earth/glossary" />
+  </head>
+  <body class="subpage">
+    <header class="site-header">
+      <a class="brand" href="/">ctx</a>
+      <div class="header-actions">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+          <span>Menu</span>
+        </button>
+        <nav id="site-nav" class="top-nav">
+          <a class="nav-link" href="/practice">Practice</a>
+          <a class="nav-link" href="/learn">Learn</a>
+          <a class="nav-link" href="/glossary">Glossary</a>
+        </nav>
+        <a class="repo-link" href="https://github.com/oxnr/ctx" target="_blank" rel="noreferrer" aria-label="View ctx on GitHub" title="View source on GitHub">
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.1 0 0 .67-.21 2.2.82a7.56 7.56 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.09.16 1.9.08 2.1.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+          </svg>
+        </a>
+      </div>
+    </header>
+    <main>
+      <section class="hero section" data-reveal>
+        <p class="hero-kicker">Glossary</p>
+        <h1>AI terms, defined.</h1>
+        <p class="hero-subtitle">Plain-language definitions for the terminology used across ctx and the broader AI ecosystem.</p>
+      </section>
+
+      <section class="section section-compact" data-reveal>
+        <div class="glossary__search">
+          <input class="glossary__input" type="text" placeholder="Filter terms..." aria-label="Filter glossary terms" id="glossary-filter" />
+        </div>
+
+        <div class="glossary">
+
+          <h2 class="glossary__letter" id="letter-A">A</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="agent">Agent</dt>
+              <dd>A system that uses an LLM to plan, take actions, observe results, and iterate toward a goal. Agents combine reasoning with tool use to complete multi-step tasks autonomously. Value chain layer: L06 Orchestration.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="alignment">Alignment</dt>
+              <dd>The practice of making AI systems behave according to human intentions and values. Includes techniques like RLHF and constitutional AI applied during post-training.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="api-gateway">API gateway</dt>
+              <dd>A proxy layer that sits between applications and AI providers. Handles routing, rate limiting, caching, and fallback logic. Value chain layer: L05 Routing.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="attention">Attention</dt>
+              <dd>The mechanism in transformer models that lets each token consider every other token in the input. Self-attention is what gives LLMs their ability to understand context across long sequences.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="autoregressive-model">Autoregressive model</dt>
+              <dd>A model that generates output one token at a time, where each new token depends on all previously generated tokens. GPT, Claude, and Llama are all autoregressive.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-B">B</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="batch-processing">Batch processing</dt>
+              <dd>Running multiple inference requests together to maximize GPU utilization. Continuous batching dynamically adds new requests to an active batch without waiting for all current requests to finish.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="benchmarking">Benchmarking</dt>
+              <dd>Standardized evaluation of model performance on specific tasks. Common benchmarks include MMLU, HumanEval, MATH, and arena-style human preference rankings.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="bert">BERT</dt>
+              <dd>Bidirectional Encoder Representations from Transformers. An encoder-only model architecture used primarily for embeddings, classification, and search — not text generation.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-C">C</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="chain-of-thought">Chain-of-thought</dt>
+              <dd>A prompting technique where the model is asked to show its reasoning step by step before giving a final answer. Improves accuracy on complex reasoning tasks.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="chunking">Chunking</dt>
+              <dd>Splitting documents into smaller pieces for embedding and retrieval. Chunk size, overlap, and boundary strategy directly affect RAG quality. Value chain layer: L07 Context.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="claude">Claude</dt>
+              <dd>Anthropic's family of AI models (Opus, Sonnet, Haiku). Known for long context windows, strong instruction following, and tool use capabilities.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="completion">Completion</dt>
+              <dd>The text generated by a model in response to a prompt. Also called a response or generation.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="context-window">Context window</dt>
+              <dd>The maximum number of tokens a model can process in a single request, including both input and output. Ranges from 4K tokens to 2M+ tokens depending on the model.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="context-engineering">Context engineering</dt>
+              <dd>The discipline of designing what information enters the context window, how it is structured, and when it is refreshed. Value chain layer: L07 Context.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="copilot">Copilot</dt>
+              <dd>An AI assistant embedded in an existing workflow — typically an IDE, editor, or productivity tool. The AI suggests, the human accepts or rejects. Value chain layer: L10 Products.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="cuda">CUDA</dt>
+              <dd>NVIDIA's parallel computing platform. The dominant software ecosystem for GPU-accelerated AI workloads. Most training and inference frameworks depend on CUDA.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-D">D</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="diffusion-model">Diffusion model</dt>
+              <dd>A generative model that creates images, video, or audio by starting from noise and iteratively removing it. Stable Diffusion, DALL-E 3, and Midjourney use diffusion-based architectures.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="distillation">Distillation</dt>
+              <dd>Training a smaller model to replicate the behavior of a larger model. Produces cheaper, faster models that retain most of the teacher model's capability. Value chain layer: L03 Post-Training.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="dpo">DPO (Direct Preference Optimization)</dt>
+              <dd>A post-training technique that aligns models with human preferences without needing a separate reward model. Simpler alternative to RLHF.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-E">E</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="embedding">Embedding</dt>
+              <dd>A numerical vector representation of text, images, or other data. Embeddings capture semantic meaning — similar concepts have similar vectors. Used for search, RAG, and classification.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="eval">Eval (evaluation)</dt>
+              <dd>Systematic testing of AI system outputs against defined criteria. Includes golden test sets, scoring rubrics, and regression testing. Value chain layer: L09 Eval and Safety.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="edge-inference">Edge inference</dt>
+              <dd>Running models on local devices (phones, laptops, edge servers) rather than cloud APIs. Offers lower latency and data privacy at the cost of model size constraints.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="encoder-decoder">Encoder-decoder</dt>
+              <dd>A model architecture with two parts — an encoder that processes input and a decoder that generates output. T5 and BART are encoder-decoder models. Most modern LLMs are decoder-only.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-F">F</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="few-shot-learning">Few-shot learning</dt>
+              <dd>Providing a model with a small number of examples in the prompt to demonstrate the desired task format and behavior. No model weight changes — it is purely in-context.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="fine-tuning">Fine-tuning</dt>
+              <dd>Continuing the training of a pre-trained model on a specific dataset to adapt it for a particular task or domain. Value chain layer: L03 Post-Training.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="foundation-model">Foundation model</dt>
+              <dd>A large model trained on broad data that can be adapted to many downstream tasks. GPT-4, Claude, Llama, and Gemini are foundation models.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="function-calling">Function calling</dt>
+              <dd>A model capability where the model outputs structured JSON to invoke external functions or tools, rather than generating free-form text. Also called tool use.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-G">G</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="gpu">GPU</dt>
+              <dd>Graphics Processing Unit. The primary hardware for AI training and inference due to its massive parallelism. NVIDIA dominates with the H100 and B200 series. Value chain layer: L01 Compute.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="guardrails">Guardrails</dt>
+              <dd>Runtime safety checks that validate model outputs before they reach users. Can filter harmful content, enforce format constraints, or apply business logic. Value chain layer: L09 Eval and Safety.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="grounding">Grounding</dt>
+              <dd>Connecting model outputs to verifiable sources of truth. A grounded response cites specific documents, data, or evidence rather than relying solely on the model's training.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="gguf">GGUF</dt>
+              <dd>A file format for quantized models used by llama.cpp. Stores model weights in compressed formats (Q4, Q5, Q8) that run on consumer hardware.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-H">H</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="hallucination">Hallucination</dt>
+              <dd>When a model generates confident but factually incorrect information. A fundamental challenge with autoregressive models that produce statistically plausible text regardless of truth.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="hitl">HITL (human-in-the-loop)</dt>
+              <dd>A workflow design where human judgment is required at specific decision points. Used for high-stakes actions, quality review, and safety-critical outputs.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="hyperparameter">Hyperparameter</dt>
+              <dd>A configuration value set before training that affects how the model learns — learning rate, batch size, number of training steps, temperature. Not learned from data.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-I">I</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="inference">Inference</dt>
+              <dd>The process of running a trained model to generate outputs. The primary cost driver for AI applications in production. Value chain layer: L04 Inference.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="in-context-learning">In-context learning</dt>
+              <dd>A model's ability to perform new tasks based on examples and instructions provided in the prompt, without any weight updates. The basis for few-shot and zero-shot prompting.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="instruction-tuning">Instruction tuning</dt>
+              <dd>A form of fine-tuning where a model is trained on instruction-response pairs to follow human directions. What makes a base model into a chat model.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-J">J</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="json-mode">JSON mode</dt>
+              <dd>A model output setting that constrains generation to valid JSON. Supported by OpenAI, Anthropic, and most inference providers. Essential for structured tool use and API integration.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-K">K</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="knowledge-graph">Knowledge graph</dt>
+              <dd>A structured representation of entities and their relationships. Used to provide factual context to models and reduce hallucination.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="kv-cache">KV cache</dt>
+              <dd>Key-Value cache. During inference, the model caches computed attention keys and values so they don't need to be recomputed for each new token. Critical for fast autoregressive generation.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-L">L</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="lora">LoRA (Low-Rank Adaptation)</dt>
+              <dd>A parameter-efficient fine-tuning technique that trains small adapter matrices instead of modifying all model weights. Drastically reduces memory and compute requirements for fine-tuning. Value chain layer: L03 Post-Training.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="llm">LLM (Large Language Model)</dt>
+              <dd>A neural network with billions of parameters trained on text data to generate and understand language. The core technology behind modern AI assistants and tools.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="latency">Latency</dt>
+              <dd>The time between sending a request and receiving the first token of the response (time to first token, TTFT) or the complete response. A key metric for user-facing AI applications.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="local-first">Local-first</dt>
+              <dd>A design philosophy that keeps data and computation on local infrastructure by default, using cloud services as an option rather than a dependency.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-M">M</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="mcp">MCP (Model Context Protocol)</dt>
+              <dd>An open standard for connecting AI models to external tools and data sources. Defines how models discover, authenticate with, and call tools through a standardized interface. Value chain layer: L08 Integrations.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="mixture-of-experts">Mixture of experts (MoE)</dt>
+              <dd>A model architecture where only a subset of parameters is active for each input. Routes tokens to specialized "expert" sub-networks, allowing larger total model size without proportional compute cost. Mixtral and DeepSeek V3 use MoE.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="multimodal">Multimodal</dt>
+              <dd>A model or system that processes multiple input types — text, images, audio, video. GPT-4V, Gemini, and Claude 3+ are multimodal models.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="model-routing">Model routing</dt>
+              <dd>The practice of directing inference requests to different models based on task type, cost, quality requirements, or provider availability. Value chain layer: L05 Routing.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-N">N</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="neural-network">Neural network</dt>
+              <dd>A computational model inspired by biological neurons. Composed of layers of connected nodes that learn patterns from data through training.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="nvidia-nim">NVIDIA NIM</dt>
+              <dd>NVIDIA's inference microservice platform for deploying optimized AI models. Packages models as containerized services with GPU acceleration.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-O">O</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="observability">Observability</dt>
+              <dd>Monitoring and tracing AI system behavior in production — request logs, latency metrics, cost tracking, error rates, and quality scores. Value chain layer: L09 Eval and Safety.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="ollama">Ollama</dt>
+              <dd>An open-source tool for running LLMs locally. Provides a simple CLI and API for downloading and serving models on consumer hardware. Value chain layer: L04 Inference.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="open-source-vs-open-weight">Open-source vs open-weight</dt>
+              <dd>Open-source AI means the full training code, data, and weights are available. Open-weight means only the trained model weights are released — you can run the model but cannot reproduce the training.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="orchestration">Orchestration</dt>
+              <dd>Coordinating multi-step AI workflows — planning, executing, reviewing, and iterating. Includes agent frameworks, tool use, and structured pipelines. Value chain layer: L06 Orchestration.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="overfitting">Overfitting</dt>
+              <dd>When a model memorizes training data patterns too specifically and performs poorly on new inputs. A common risk during fine-tuning, mitigated by regularization and validation.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-P">P</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="parameter">Parameter</dt>
+              <dd>A single learnable value in a neural network (a weight or bias). Model size is measured in parameters — GPT-4 has an estimated 1.76 trillion parameters.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="pre-training">Pre-training</dt>
+              <dd>The initial phase of training where a model learns from massive datasets. Produces a base model with broad knowledge but no instruction-following ability. Value chain layer: L02 Pre-Training.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="post-training">Post-training</dt>
+              <dd>All training done after pre-training — SFT, RLHF, DPO, distillation. Shapes the base model into an instruction-following, safe, useful assistant. Value chain layer: L03 Post-Training.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="prompt-engineering">Prompt engineering</dt>
+              <dd>The practice of crafting inputs to get desired outputs from a model. Includes system prompts, few-shot examples, chain-of-thought instructions, and structured output formatting.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="product-layer">Product layer</dt>
+              <dd>The top of the value chain where AI capabilities become user-facing applications — chatbots, copilots, agents, search, creative tools. Value chain layer: L10 Products.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="pruning">Pruning</dt>
+              <dd>Removing unnecessary parameters from a trained model to reduce size and increase inference speed while preserving most of the model's capability.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-Q">Q</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="quantization">Quantization</dt>
+              <dd>Reducing the precision of model weights (e.g., from 16-bit to 4-bit) to decrease memory usage and increase inference speed. Enables large models to run on consumer hardware with minimal quality loss.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="qlora">QLoRA</dt>
+              <dd>Quantized LoRA — fine-tuning a quantized model using LoRA adapters. Enables fine-tuning of large models on a single consumer GPU. Value chain layer: L03 Post-Training.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="query">Query (in attention)</dt>
+              <dd>In the transformer attention mechanism, the query is the representation of the current token looking for relevant information across all other tokens (keys) in the sequence.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-R">R</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="rag">RAG (Retrieval-Augmented Generation)</dt>
+              <dd>A technique that retrieves relevant documents from an external knowledge base and includes them in the model's context before generation. Reduces hallucination and provides up-to-date information. Value chain layer: L07 Context.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="rlhf">RLHF (Reinforcement Learning from Human Feedback)</dt>
+              <dd>A post-training technique where human preference judgments train a reward model, which then guides the LLM toward preferred outputs. Value chain layer: L03 Post-Training.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="routing">Routing</dt>
+              <dd>See Model routing.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="re-ranking">Re-ranking</dt>
+              <dd>A second-stage retrieval step that scores and reorders search results by relevance before they enter the model's context. Improves RAG quality by filtering out low-relevance chunks.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-S">S</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="serving">Serving</dt>
+              <dd>Running models in production to handle user requests. Includes the infrastructure for loading models, managing GPU memory, batching requests, and scaling with demand. Value chain layer: L04 Inference.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="system-prompt">System prompt</dt>
+              <dd>Instructions provided to a model at the start of a conversation that define its behavior, constraints, and persona. Persists across all user messages in the session.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="structured-output">Structured output</dt>
+              <dd>Model outputs constrained to a specific format — JSON, XML, typed schemas. Enables reliable parsing and integration with downstream systems.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="safety-layer">Safety layer</dt>
+              <dd>The combination of guardrails, content filters, and validation checks that prevent harmful or incorrect model outputs from reaching users. Value chain layer: L09 Eval and Safety.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="scaling-law">Scaling law</dt>
+              <dd>Empirical relationships between model size, training data volume, compute budget, and model performance. Larger models trained on more data generally perform better, with predictable returns.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-T">T</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="token">Token</dt>
+              <dd>The basic unit of text that models process. A token is roughly 3-4 characters in English. Models have limits on total tokens (context window) and are priced per token.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="tokenizer">Tokenizer</dt>
+              <dd>The algorithm that converts text into tokens and back. Different model families use different tokenizers (BPE, SentencePiece). The tokenizer determines what the model "sees."</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="temperature">Temperature</dt>
+              <dd>A parameter that controls randomness in model output. Low temperature (0-0.3) produces deterministic, focused responses. High temperature (0.7-1.0) produces more creative, varied output.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="tool-use">Tool use</dt>
+              <dd>See Function calling.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="transformer">Transformer</dt>
+              <dd>The neural network architecture behind all modern LLMs. Uses self-attention mechanisms to process sequences in parallel. Introduced in the 2017 paper "Attention Is All You Need."</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="tpu">TPU</dt>
+              <dd>Tensor Processing Unit. Google's custom AI accelerator chip, designed for both training and inference. Used internally at Google and available via Google Cloud. Value chain layer: L01 Compute.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-V">V</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="vector-database">Vector database</dt>
+              <dd>A database optimized for storing and searching high-dimensional vectors (embeddings). Used in RAG pipelines for semantic search. Pinecone, Weaviate, Chroma, and Qdrant are vector databases. Value chain layer: L07 Context.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="vllm">vLLM</dt>
+              <dd>An open-source high-throughput LLM serving engine that uses PagedAttention for efficient memory management. A leading choice for self-hosted inference. Value chain layer: L04 Inference.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="validation-gate">Validation gate</dt>
+              <dd>A checkpoint in a workflow where outputs must pass automated checks before proceeding. Format validation, safety filtering, and quality scoring are common validation gates.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-W">W</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="weight">Weight</dt>
+              <dd>A single numerical value in a neural network that is learned during training. The collection of all weights defines what a model knows and how it behaves.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="workflow">Workflow</dt>
+              <dd>A structured sequence of steps — planning, execution, review, approval — that coordinates human and AI actions toward a goal. Value chain layer: L06 Orchestration.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="window-context">Window (context)</dt>
+              <dd>See Context window.</dd>
+            </div>
+          </dl>
+
+          <h2 class="glossary__letter" id="letter-Z">Z</h2>
+          <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="zero-shot-learning">Zero-shot learning</dt>
+              <dd>Asking a model to perform a task without any examples — relying entirely on the model's pre-trained knowledge and the instruction itself.</dd>
+            </div>
+          </dl>
+
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>Knowledge is free. Time isn't. <a href="/faq">FAQ</a></p>
+    </footer>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+  var input = document.getElementById('glossary-filter');
+  if (!input) return;
+  input.addEventListener('input', function() {
+    var q = this.value.toLowerCase().trim();
+    var entries = document.querySelectorAll('.glossary__entry');
+    var letters = document.querySelectorAll('.glossary__letter');
+    entries.forEach(function(entry) {
+      var dt = entry.querySelector('dt');
+      var dd = entry.querySelector('dd');
+      var text = (dt ? dt.textContent : '') + ' ' + (dd ? dd.textContent : '');
+      entry.style.display = text.toLowerCase().indexOf(q) !== -1 ? '' : 'none';
+    });
+    letters.forEach(function(h) {
+      var dl = h.nextElementSibling;
+      if (!dl) return;
+      var anyVisible = false;
+      dl.querySelectorAll('.glossary__entry').forEach(function(e) { if (e.style.display !== 'none') anyVisible = true; });
+      h.style.display = anyVisible ? '' : 'none';
+      dl.style.display = anyVisible ? '' : 'none';
+    });
+  });
+});
+    </script>
+    <script src="/script.js" defer></script>
+  </body>
+</html>

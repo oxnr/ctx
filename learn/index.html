@@ -21,10 +21,9 @@
           <span>Menu</span>
         </button>
         <nav id="site-nav" class="top-nav">
-          <a class="nav-link" href="/thesis">Thesis</a>
           <a class="nav-link" href="/practice">Practice</a>
-          <a class="nav-link" href="/stack">Stack</a>
           <a class="nav-link" href="/learn">Learn</a>
+          <a class="nav-link" href="/glossary">Glossary</a>
         </nav>
         <a
           class="repo-link"
@@ -45,350 +44,491 @@
 
     <main>
       <section class="hero section" data-reveal>
-        <p class="hero-kicker">Academy</p>
-        <h1>Open curriculum for teams that scale.</h1>
+        <p class="hero-kicker">Learn</p>
+        <h1>Understanding the full stack.</h1>
         <p class="hero-subtitle">
-          Open program for teams building with AI. Practical, portable, and built to be reused.
+          Ten modules mapped to the AI value chain. Each module covers one layer — what it does, why it matters, and how to work with it.
         </p>
       </section>
 
       <section class="section section-compact" data-reveal>
         <p class="section-label">Modules</p>
         <div class="accordion-list">
-          <article class="accordion" data-group="curriculum">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="curr-01">
+
+          <article class="accordion" data-group="learn">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-01">
               <span class="accordion__title">
                 <span class="accordion__index">01</span>
-                <span>Foundations</span>
+                <span>Compute</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#x25BE;</span>
             </button>
-            <div class="accordion__panel" id="curr-01">
-              <p>
-                AI in production is not a research project — it is a systems problem. This module builds the baseline: what models exist, what they are good at, where they fail, and how to think about AI as infrastructure rather than magic. Teams leave with a shared vocabulary and a clear picture of the landscape they are operating in.
-              </p>
-              <ul>
-                <li>Model categories: completion models, chat models, embedding models, image models, audio models, and multimodal models. What each category does, what it costs, and where it fits in a production stack.</li>
-                <li>Context window mechanics: how tokens work, what fits in a context window, how truncation happens, and why token budgeting is a core engineering skill — not an afterthought.</li>
-                <li>Local-first vs cloud-first: when to keep data and computation local, when to use cloud endpoints, and how to make that decision based on sensitivity, latency, cost, and reliability requirements.</li>
-                <li>Tooling survey: IDEs (VS Code, Cursor, Windsurf), terminals (iTerm2, Warp), orchestration frameworks (LangChain, LlamaIndex, custom), and agent runners (Claude Code, Codex, OpenHands). What each tool does and when to use it.</li>
-                <li>Production vs prototype: the gap between a demo that works and a system that works reliably at scale. Error rates, latency budgets, cost projections, and failure mode analysis.</li>
-              </ul>
-              <p>
-                Deliverables: AI foundations decision document, glossary of terms the team will use consistently, and baseline prompt templates for common tasks.
-              </p>
+            <div class="accordion__panel" id="learn-01">
+              <div class="panel-block">
+                <p>Everything in AI runs on matrix math, and compute is the hardware that executes it. Understanding GPU architecture, cloud vs on-prem tradeoffs, and cost structures is the foundation. You do not need to buy GPUs to understand this layer — but you need to know what drives the cost of every layer above it.</p>
+                <div class="learn__diagram">
+                  <svg class="learn__svg" viewBox="0 0 480 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="20" width="70" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="37" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Chip</text>
+                    <line x1="76" y1="40" x2="110" y2="40" stroke="#666360" stroke-width="1"/>
+                    <polygon points="108,37 114,40 108,43" fill="#666360"/>
+                    <rect x="118" y="20" width="70" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="153" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Server</text>
+                    <line x1="192" y1="40" x2="226" y2="40" stroke="#666360" stroke-width="1"/>
+                    <polygon points="224,37 230,40 224,43" fill="#666360"/>
+                    <rect x="234" y="20" width="70" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="269" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Cluster</text>
+                    <line x1="308" y1="40" x2="342" y2="40" stroke="#666360" stroke-width="1"/>
+                    <polygon points="340,37 346,40 340,43" fill="#666360"/>
+                    <rect x="350" y="20" width="70" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="385" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Cloud</text>
+                  </svg>
+                </div>
+                <p><strong>Key concepts</strong></p>
+                <ul>
+                  <li>GPU vs TPU vs custom silicon — different hardware for different workloads</li>
+                  <li>Memory bandwidth is the bottleneck, not raw FLOPS</li>
+                  <li>Quantization lets large models run on smaller hardware</li>
+                  <li>Cloud GPU (CoreWeave, Lambda) vs hyperscaler (AWS, GCP, Azure) pricing</li>
+                </ul>
+                <p><strong>Practical skills</strong></p>
+                <ul class="learn__skills">
+                  <li>Estimate GPU requirements for a given model size</li>
+                  <li>Compare cloud GPU pricing across providers</li>
+                  <li>Decide when local inference makes sense vs cloud APIs</li>
+                </ul>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-compute">L01 Compute</a></p>
+              </div>
             </div>
           </article>
 
-          <article class="accordion" data-group="curriculum">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="curr-02">
+          <article class="accordion" data-group="learn">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-02">
               <span class="accordion__title">
                 <span class="accordion__index">02</span>
-                <span>Prompting &amp; Context Quality</span>
+                <span>Pre-Training</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#x25BE;</span>
             </button>
-            <div class="accordion__panel" id="curr-02">
-              <p>
-                Most teams treat prompts as informal text. This module moves prompts from ad-hoc instructions to versioned contracts with predictable behavior. The goal is to reduce variance in outputs, standardize formats, and build prompt libraries that teams can share, test, and improve over time.
-              </p>
-              <ul>
-                <li>Prompt design patterns: system prompts, user prompts, few-shot examples, chain-of-thought reasoning, and structured output instructions. When to use each pattern and how to combine them for complex tasks.</li>
-                <li>Template versioning: prompts are code. They get version-controlled, tested against golden sets, and reviewed before deployment. A prompt change is a behavior change — treat it with the same rigor as a code change.</li>
-                <li>Structured output formats: JSON schemas, XML structures, typed responses, and validation rules that ensure model outputs are machine-parseable and contract-compliant.</li>
-                <li>Context hygiene: what to include in context, what to omit, when to reset. Stale context produces stale outputs. Redundant context wastes tokens.</li>
-                <li>4D fluency framework: Delegation (what to ask), Description (how to ask), Discernment (how to evaluate), and Diligence (how to improve).</li>
-                <li>Acceptance checks: every prompt has pass/fail criteria. Measure, iterate, and set minimum quality bars.</li>
-              </ul>
-              <p>
-                Deliverables: context contracts document, test prompt suite with acceptance checks, and prompt template library.
-              </p>
+            <div class="accordion__panel" id="learn-02">
+              <div class="panel-block">
+                <p>Pre-training builds foundation models from massive datasets — trillions of tokens of text, code, and multimodal data. This is the most capital-intensive layer ($50M-$500M+ per frontier model). Most teams never touch pre-training directly, but understanding how base models are made explains their capabilities and limitations.</p>
+                <div class="learn__diagram">
+                  <svg class="learn__svg" viewBox="0 0 480 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="20" width="70" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="37" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Data</text>
+                    <line x1="76" y1="40" x2="110" y2="40" stroke="#666360" stroke-width="1"/>
+                    <polygon points="108,37 114,40 108,43" fill="#666360"/>
+                    <rect x="118" y="20" width="80" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="158" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Tokenize</text>
+                    <line x1="202" y1="40" x2="236" y2="40" stroke="#666360" stroke-width="1"/>
+                    <polygon points="234,37 240,40 234,43" fill="#666360"/>
+                    <rect x="244" y="20" width="70" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="279" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Train</text>
+                    <line x1="318" y1="40" x2="352" y2="40" stroke="#666360" stroke-width="1"/>
+                    <polygon points="350,37 356,40 350,43" fill="#666360"/>
+                    <rect x="360" y="20" width="90" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="405" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Checkpoint</text>
+                  </svg>
+                </div>
+                <p><strong>Key concepts</strong></p>
+                <ul>
+                  <li>Data quality dominates model quality — the shift from "more data" to "better data"</li>
+                  <li>Scaling laws predict performance from compute budget, data size, and model size</li>
+                  <li>Synthetic data generation is increasingly central to training pipelines</li>
+                  <li>Base models can complete text but do not follow instructions — that comes at L03</li>
+                </ul>
+                <p><strong>Practical skills</strong></p>
+                <ul class="learn__skills">
+                  <li>Evaluate base model capabilities from training data and benchmark results</li>
+                  <li>Understand what a model learned vs what it was trained to do</li>
+                  <li>Read a model card and understand its limitations</li>
+                </ul>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-pretrain">L02 Pre-Training</a></p>
+              </div>
             </div>
           </article>
 
-          <article class="accordion" data-group="curriculum">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="curr-03">
+          <article class="accordion" data-group="learn">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-03">
               <span class="accordion__title">
                 <span class="accordion__index">03</span>
-                <span>Agentic Thinking &amp; Workflow Design</span>
+                <span>Post-Training</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#x25BE;</span>
             </button>
-            <div class="accordion__panel" id="curr-03">
-              <p>
-                Breaking work into reliable agent tasks is the core skill of AI-native teams. This module teaches task decomposition that works in production — not toy examples from blog posts. The focus is on boundaries: where planning ends and execution begins, where machine autonomy stops and human judgment takes over.
-              </p>
-              <ul>
-                <li>Task decomposition: take a complex workflow and break it into atomic agent tasks. Each task has one owner, clear inputs, defined outputs, and acceptance criteria.</li>
-                <li>Planning, execution, and review boundaries: separate roles with separate context — never combined.</li>
-                <li>Delegation rules: what can be delegated to an agent, what stays with a human. Risk level, reversibility, and cost of error are the deciding factors.</li>
-                <li>Multi-agent coordination: patterns for running agents in parallel, sequencing agent chains, and handling conflicts.</li>
-                <li>Validation gates: automated checks between workflow stages. Format validation, content verification, safety filters, and business logic checks.</li>
-                <li>Escalation contracts: when an agent cannot complete a task, it escalates with full context — what it tried, why it failed, and what it recommends.</li>
-              </ul>
-              <p>
-                Deliverables: workflow map for one high-value use case, handoff checklist, and validation gate definitions.
-              </p>
+            <div class="accordion__panel" id="learn-03">
+              <div class="panel-block">
+                <p>Post-training transforms base models into useful tools. SFT teaches instruction following, RLHF and DPO align outputs with human preferences, LoRA enables efficient adaptation, and distillation creates smaller specialized models. This is where most teams first interact with the training pipeline — fine-tuning a 70B model with LoRA can cost under $100.</p>
+                <div class="learn__diagram">
+                  <svg class="learn__svg" viewBox="0 0 480 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="170" y="2" width="100" height="36" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="220" y="25" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Base Model</text>
+                    <line x1="195" y1="38" x2="60" y2="75" stroke="#666360" stroke-width="1"/>
+                    <line x1="210" y1="38" x2="170" y2="75" stroke="#666360" stroke-width="1"/>
+                    <line x1="230" y1="38" x2="290" y2="75" stroke="#666360" stroke-width="1"/>
+                    <line x1="245" y1="38" x2="410" y2="75" stroke="#666360" stroke-width="1"/>
+                    <rect x="20" y="78" width="80" height="36" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="60" y="101" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">SFT</text>
+                    <rect x="130" y="78" width="90" height="36" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="175" y="101" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">RLHF / DPO</text>
+                    <rect x="252" y="78" width="76" height="36" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="290" y="101" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">LoRA</text>
+                    <rect x="360" y="78" width="100" height="36" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="410" y="101" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Distillation</text>
+                  </svg>
+                </div>
+                <p><strong>Key concepts</strong></p>
+                <ul>
+                  <li>SFT (Supervised Fine-Tuning) teaches models to follow instructions</li>
+                  <li>RLHF and DPO align models with human preferences</li>
+                  <li>LoRA and QLoRA enable fine-tuning on a single consumer GPU</li>
+                  <li>Model merging combines multiple fine-tuned models without additional training</li>
+                </ul>
+                <p><strong>Practical skills</strong></p>
+                <ul class="learn__skills">
+                  <li>Run a LoRA fine-tuning job on a specific dataset</li>
+                  <li>Evaluate fine-tuned model quality against the base model</li>
+                  <li>Decide between fine-tuning, few-shot prompting, and RAG for a given use case</li>
+                </ul>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-posttrain">L03 Post-Training</a></p>
+              </div>
             </div>
           </article>
 
-          <article class="accordion" data-group="curriculum">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="curr-04">
+          <article class="accordion" data-group="learn">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-04">
               <span class="accordion__title">
                 <span class="accordion__index">04</span>
-                <span>Local-First Architecture</span>
+                <span>Inference</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#x25BE;</span>
             </button>
-            <div class="accordion__panel" id="curr-04">
-              <p>
-                When control and sensitivity matter, architecture choices get real. This module covers the full spectrum from on-device models to hybrid cloud-local deployments. The goal is to make deployment decisions based on data classification, latency needs, and compliance requirements rather than defaults.
-              </p>
-              <ul>
-                <li>Security boundaries: classify data into tiers (public, internal, confidential, regulated) and map each tier to infrastructure that matches its policy.</li>
-                <li>Deployment options: on-device, local server, private-cloud, and hybrid. Each option has trade-offs in cost, latency, capability, and operational complexity.</li>
-                <li>Private model integration: running local models via llama.cpp, vLLM, or Ollama for tasks that cannot leave controlled infrastructure.</li>
-                <li>Fallback patterns: when a local model cannot handle a task, how to route it to a cloud model with appropriate redaction.</li>
-                <li>Redaction pipelines: automated removal of sensitive information before context crosses trust boundaries.</li>
-                <li>Compliance boundaries: data residency, retention policies, audit trails, and access controls.</li>
-              </ul>
-              <p>
-                Deliverables: local architecture decision document, deployment option matrix, and security posture decision table.
-              </p>
+            <div class="accordion__panel" id="learn-04">
+              <div class="panel-block">
+                <p>Inference is running trained models to produce outputs — every AI application consumes it. The engineering challenges are latency, throughput, cost, and hardware utilization. The choice between cloud APIs, self-hosted engines, and local runners determines your cost structure, data privacy posture, and scaling ceiling.</p>
+                <div class="learn__diagram">
+                  <svg class="learn__svg" viewBox="0 0 540 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="20" width="72" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="38" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Prompt</text>
+                    <line x1="78" y1="40" x2="100" y2="40" stroke="#666360" stroke-width="1"/>
+                    <polygon points="98,37 104,40 98,43" fill="#666360"/>
+                    <rect x="108" y="20" width="80" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="148" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Tokenize</text>
+                    <line x1="192" y1="40" x2="214" y2="40" stroke="#666360" stroke-width="1"/>
+                    <polygon points="212,37 218,40 212,43" fill="#666360"/>
+                    <rect x="222" y="20" width="100" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="272" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Forward Pass</text>
+                    <line x1="326" y1="40" x2="348" y2="40" stroke="#666360" stroke-width="1"/>
+                    <polygon points="346,37 352,40 346,43" fill="#666360"/>
+                    <rect x="356" y="20" width="74" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="393" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Decode</text>
+                    <line x1="434" y1="40" x2="456" y2="40" stroke="#666360" stroke-width="1"/>
+                    <polygon points="454,37 460,40 454,43" fill="#666360"/>
+                    <rect x="464" y="20" width="74" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="501" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Response</text>
+                  </svg>
+                </div>
+                <p><strong>Key concepts</strong></p>
+                <ul>
+                  <li>Time to first token (TTFT) vs throughput (tokens/second) — different metrics for different use cases</li>
+                  <li>Quantization (GPTQ, AWQ, GGUF) reduces model size 2-4x with minimal quality loss</li>
+                  <li>Continuous batching and KV-cache optimization drive serving engine performance</li>
+                  <li>Inference is modality-agnostic — text, image, video, audio all follow similar patterns</li>
+                </ul>
+                <p><strong>Practical skills</strong></p>
+                <ul class="learn__skills">
+                  <li>Choose between cloud API, self-hosted, and local inference for a given use case</li>
+                  <li>Set up Ollama or llama.cpp for local model inference</li>
+                  <li>Compare inference cost across providers for a given workload</li>
+                </ul>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-inference">L04 Inference</a></p>
+              </div>
             </div>
           </article>
 
-          <article class="accordion" data-group="curriculum">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="curr-05">
+          <article class="accordion" data-group="learn">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-05">
               <span class="accordion__title">
                 <span class="accordion__index">05</span>
-                <span>Context Engineering</span>
+                <span>Routing</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#x25BE;</span>
             </button>
-            <div class="accordion__panel" id="curr-05">
-              <p>
-                Context is what the system knows. When context is wrong, every output is wrong — confidently. This module builds the discipline of treating context as a product with its own lifecycle, versioning, and quality standards.
-              </p>
-              <ul>
-                <li>Context capsules: scoped packages of state — per domain, per role, per session. Each capsule defines what it contains, what it excludes, how long it lives.</li>
-                <li>Volatile vs durable state: conversation history is volatile. Decisions and architecture docs are durable. Mixing these is the most common context bug.</li>
-                <li>Versioning and rollback: every context mutation is tracked. When outputs degrade, trace back and recover.</li>
-                <li>Cross-project continuity: lessons and frameworks transfer between projects. Project-specific noise does not.</li>
-                <li>State lifecycle: creation, mutation, archival, and deletion. Every piece of context has a defined lifecycle.</li>
-                <li>Context auditing: regular review of what is in the context window. What contributes to output quality? What is noise?</li>
-              </ul>
-              <p>
-                Deliverables: context index, decision history page structure, and context capsule templates.
-              </p>
+            <div class="accordion__panel" id="learn-05">
+              <div class="panel-block">
+                <p>Routing decides which model handles which request. Without it, you are locked to a single provider. With it, you can optimize for cost, latency, and quality per task. The simplest routing is a fallback chain; the most sophisticated classifies requests and dispatches to the best-fit model automatically.</p>
+                <div class="learn__diagram">
+                  <svg class="learn__svg" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="140" y="2" width="100" height="36" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="190" y="25" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Request</text>
+                    <line x1="190" y1="38" x2="190" y2="55" stroke="#666360" stroke-width="1"/>
+                    <polygon points="187,53 190,59 193,53" fill="#666360"/>
+                    <rect x="140" y="62" width="100" height="36" rx="4" stroke="#e8e6e3" stroke-width="2"/>
+                    <text x="190" y="85" text-anchor="middle" fill="#e8e6e3" font-family="Inter,sans-serif" font-size="11" font-weight="600">Router</text>
+                    <line x1="155" y1="98" x2="60" y2="108" stroke="#666360" stroke-width="1"/>
+                    <line x1="190" y1="98" x2="190" y2="108" stroke="#666360" stroke-width="1"/>
+                    <line x1="225" y1="98" x2="330" y2="108" stroke="#666360" stroke-width="1"/>
+                    <text x="50" y="118" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Model A</text>
+                    <text x="190" y="118" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Model B</text>
+                    <text x="340" y="118" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Model C</text>
+                  </svg>
+                </div>
+                <p><strong>Key concepts</strong></p>
+                <ul>
+                  <li>Fallback chains provide reliability when a provider goes down</li>
+                  <li>Task-type routing dispatches simple vs complex vs code requests to different models</li>
+                  <li>Cost-aware routing tracks spend and downgrades models when budgets are tight</li>
+                  <li>Routing makes model diversity practical — cheap models for routine, expensive for hard</li>
+                </ul>
+                <p><strong>Practical skills</strong></p>
+                <ul class="learn__skills">
+                  <li>Set up a basic routing proxy with LiteLLM or OpenRouter</li>
+                  <li>Define fallback chains for production reliability</li>
+                  <li>Implement cost-based routing rules</li>
+                </ul>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-routing">L05 Routing</a></p>
+              </div>
             </div>
           </article>
 
-          <article class="accordion" data-group="curriculum">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="curr-06">
+          <article class="accordion" data-group="learn">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-06">
               <span class="accordion__title">
                 <span class="accordion__index">06</span>
-                <span>RAG &amp; Knowledge Systems</span>
+                <span>Orchestration</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#x25BE;</span>
             </button>
-            <div class="accordion__panel" id="curr-06">
-              <p>
-                Retrieval-augmented generation turns internal documents, code, emails, and tickets into queryable knowledge. The challenge is keeping retrieval quality high, auditable, and deterministic in production.
-              </p>
-              <ul>
-                <li>Embedding pipelines: converting documents and code into vector representations. Chunking strategies and embedding model selection.</li>
-                <li>Vector store selection: Pinecone, Weaviate, Chroma, pgvector, and local options. Performance, hosting, and cost trade-offs.</li>
-                <li>Retrieval strategies: keyword search, semantic search, hybrid search, and re-ranking. When to use each approach.</li>
-                <li>Quality gates: every retrieved context gets a relevance score. Low-relevance results get filtered before entering the model's context.</li>
-                <li>Knowledge base maintenance: update cycles that keep the index fresh without full rebuilds.</li>
-                <li>Audit trails: every retrieval query is logged with results, scores, and usage. The foundation for debugging and improvement.</li>
-              </ul>
-              <p>
-                Deliverables: retrieval pipeline specification, query quality checks, and embedding strategy document.
-              </p>
+            <div class="accordion__panel" id="learn-06">
+              <div class="panel-block">
+                <p>Orchestration coordinates multi-step AI workflows — plan, execute, review, iterate. This is where single prompt-response interactions become reliable pipelines. Agent frameworks, tool use, structured handoffs, and retry logic all live here. The key design decision is how much autonomy to give agents vs how much human oversight to require.</p>
+                <div class="learn__diagram">
+                  <svg class="learn__svg" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="140" y="4" width="80" height="34" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="180" y="26" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Plan</text>
+                    <line x1="220" y1="21" x2="270" y2="21" stroke="#666360" stroke-width="1"/>
+                    <polygon points="268,18 274,21 268,24" fill="#666360"/>
+                    <rect x="278" y="4" width="80" height="34" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="318" y="26" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Execute</text>
+                    <line x1="318" y1="38" x2="318" y2="60" stroke="#666360" stroke-width="1"/>
+                    <polygon points="315,58 318,64 321,58" fill="#666360"/>
+                    <rect x="278" y="68" width="80" height="34" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="318" y="90" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Review</text>
+                    <line x1="278" y1="85" x2="220" y2="85" stroke="#666360" stroke-width="1"/>
+                    <polygon points="222,82 216,85 222,88" fill="#666360"/>
+                    <line x1="180" y1="85" x2="180" y2="42" stroke="#666360" stroke-width="1"/>
+                    <polygon points="177,44 180,38 183,44" fill="#666360"/>
+                    <rect x="140" y="68" width="80" height="34" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="180" y="90" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Iterate / Ship</text>
+                  </svg>
+                </div>
+                <p><strong>Key concepts</strong></p>
+                <ul>
+                  <li>Agent loops: plan, execute tools, observe results, iterate until done</li>
+                  <li>Task decomposition breaks complex work into atomic steps with clear contracts</li>
+                  <li>Validation gates between steps catch errors before they propagate</li>
+                  <li>Retry logic, timeout handling, and cost budgets are production essentials</li>
+                </ul>
+                <p><strong>Practical skills</strong></p>
+                <ul class="learn__skills">
+                  <li>Design a multi-step agent workflow for a specific use case</li>
+                  <li>Define handoff contracts between workflow stages</li>
+                  <li>Set up human-in-the-loop approval gates</li>
+                </ul>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-orchestration">L06 Orchestration</a></p>
+              </div>
             </div>
           </article>
 
-          <article class="accordion" data-group="curriculum">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="curr-07">
+          <article class="accordion" data-group="learn">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-07">
               <span class="accordion__title">
                 <span class="accordion__index">07</span>
-                <span>Safety &amp; Reliability</span>
+                <span>Context</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#x25BE;</span>
             </button>
-            <div class="accordion__panel" id="curr-07">
-              <p>
-                Every AI system fails. The question is whether failures are designed for or discovered in production. This module builds safety infrastructure: failure taxonomies, validation chains, escalation paths, and human-approval gates.
-              </p>
-              <ul>
-                <li>Failure taxonomy: silent failures, hallucinations, drift, and cascading failures. Each type requires different detection and response.</li>
-                <li>Validation chains: multi-step verification — format, accuracy, safety, business logic. Validation is layered, not single-point.</li>
-                <li>Human-in-the-loop escalation: defined triggers for when a task must be reviewed by a human before proceeding.</li>
-                <li>Incident response: detect, contain, communicate, fix, and prevent recurrence. Same discipline as software incident response.</li>
-                <li>Rollback policies: every automated action is reversible until explicitly committed.</li>
-                <li>Safety boundaries: content that should never be generated, actions that should never be automated. Hard limits, not suggestions.</li>
-              </ul>
-              <p>
-                Deliverables: safety matrix, rollback policy document, and incident response playbook.
-              </p>
+            <div class="accordion__panel" id="learn-07">
+              <div class="panel-block">
+                <p>Context is everything the model sees beyond training data. RAG pipelines, vector databases, embeddings, memory systems, and knowledge management all live here. The quality of your context determines the quality of your outputs — a capable model with bad context produces bad results. Context engineering is the discipline of designing what enters the window.</p>
+                <div class="learn__diagram">
+                  <svg class="learn__svg" viewBox="0 0 480 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="4" width="90" height="30" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="47" y="24" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Documents</text>
+                    <rect x="2" y="44" width="90" height="30" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="47" y="64" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">History</text>
+                    <rect x="2" y="84" width="90" height="30" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="47" y="104" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Instructions</text>
+                    <line x1="96" y1="19" x2="170" y2="55" stroke="#666360" stroke-width="1"/>
+                    <line x1="96" y1="59" x2="170" y2="59" stroke="#666360" stroke-width="1"/>
+                    <line x1="96" y1="99" x2="170" y2="63" stroke="#666360" stroke-width="1"/>
+                    <rect x="174" y="38" width="130" height="42" rx="4" stroke="#e8e6e3" stroke-width="2"/>
+                    <text x="239" y="64" text-anchor="middle" fill="#e8e6e3" font-family="Inter,sans-serif" font-size="11" font-weight="600">Context Window</text>
+                    <line x1="308" y1="59" x2="350" y2="59" stroke="#666360" stroke-width="1"/>
+                    <polygon points="348,56 354,59 348,62" fill="#666360"/>
+                    <rect x="358" y="38" width="80" height="42" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="398" y="64" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Model</text>
+                  </svg>
+                </div>
+                <p><strong>Key concepts</strong></p>
+                <ul>
+                  <li>RAG: chunk documents, embed them, store in vector DB, retrieve at query time</li>
+                  <li>Chunking strategy directly affects retrieval quality — size, overlap, boundaries</li>
+                  <li>Volatile state (conversation) vs durable state (decisions, docs) need different storage</li>
+                  <li>Context hygiene: audit what is in the window, remove noise, deduplicate</li>
+                </ul>
+                <p><strong>Practical skills</strong></p>
+                <ul class="learn__skills">
+                  <li>Build a basic RAG pipeline with embedding, storage, and retrieval</li>
+                  <li>Design a chunking strategy for a specific document type</li>
+                  <li>Implement context lifecycle management — creation, mutation, archival</li>
+                </ul>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-context">L07 Context</a></p>
+              </div>
             </div>
           </article>
 
-          <article class="accordion" data-group="curriculum">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="curr-08">
+          <article class="accordion" data-group="learn">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-08">
               <span class="accordion__title">
                 <span class="accordion__index">08</span>
-                <span>Evaluation &amp; Observability</span>
+                <span>Integrations</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#x25BE;</span>
             </button>
-            <div class="accordion__panel" id="curr-08">
-              <p>
-                If you cannot measure it, you cannot improve it. This module builds evaluation and observability infrastructure that turns AI operations from guesswork into engineering.
-              </p>
-              <ul>
-                <li>Golden test sets: curated input-output pairs that represent expected behavior. Every change is evaluated against golden sets before deployment.</li>
-                <li>Scoring rubrics: multi-dimensional evaluation across accuracy, relevance, safety, format compliance, and cost efficiency.</li>
-                <li>Dashboard design: real-time visibility into request volume, error rates, latency, cost per task, and quality scores.</li>
-                <li>Regression detection: automated comparison of current performance against historical baselines. Alert before users notice.</li>
-                <li>A/B evaluation: side-by-side comparison of models, prompts, and routing rules against production configuration.</li>
-                <li>Cost tracking: per-task, per-team, per-model cost attribution. Teams see exactly what they spend and where.</li>
-              </ul>
-              <p>
-                Deliverables: evaluation set, quality dashboard specification, and regression alerting configuration.
-              </p>
+            <div class="accordion__panel" id="learn-08">
+              <div class="panel-block">
+                <p>Integrations connect AI systems to the tools and data sources they need to be useful. MCP is the emerging standard, coding agents are the most mature category, and function calling is the interface that makes it all work. This layer determines what actions the model can take beyond generating text.</p>
+                <div class="learn__diagram">
+                  <svg class="learn__svg" viewBox="0 0 400 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="150" y="52" width="80" height="36" rx="4" stroke="#e8e6e3" stroke-width="2"/>
+                    <text x="190" y="75" text-anchor="middle" fill="#e8e6e3" font-family="Inter,sans-serif" font-size="11" font-weight="600">Model</text>
+                    <line x1="175" y1="52" x2="80" y2="18" stroke="#666360" stroke-width="1"/>
+                    <line x1="205" y1="52" x2="310" y2="18" stroke="#666360" stroke-width="1"/>
+                    <line x1="150" y1="70" x2="40" y2="70" stroke="#666360" stroke-width="1"/>
+                    <line x1="230" y1="70" x2="340" y2="70" stroke="#666360" stroke-width="1"/>
+                    <line x1="175" y1="88" x2="80" y2="122" stroke="#666360" stroke-width="1"/>
+                    <line x1="205" y1="88" x2="310" y2="122" stroke="#666360" stroke-width="1"/>
+                    <text x="68" y="14" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Files</text>
+                    <text x="322" y="14" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">APIs</text>
+                    <text x="26" y="74" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">IDEs</text>
+                    <text x="360" y="74" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Databases</text>
+                    <text x="68" y="132" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Git</text>
+                    <text x="322" y="132" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Tools</text>
+                  </svg>
+                </div>
+                <p><strong>Key concepts</strong></p>
+                <ul>
+                  <li>MCP (Model Context Protocol) standardizes tool discovery and invocation</li>
+                  <li>Function calling turns model outputs into structured tool invocations</li>
+                  <li>Coding agents (Cursor, Windsurf, Aider) are the most mature integration pattern</li>
+                  <li>Tool permissions and audit trails are critical for production safety</li>
+                </ul>
+                <p><strong>Practical skills</strong></p>
+                <ul class="learn__skills">
+                  <li>Set up an MCP server for a specific tool integration</li>
+                  <li>Implement function calling with structured output validation</li>
+                  <li>Audit and restrict tool permissions in a production deployment</li>
+                </ul>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-integrations">L08 Integrations</a></p>
+              </div>
             </div>
           </article>
 
-          <article class="accordion" data-group="curriculum">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="curr-09">
+          <article class="accordion" data-group="learn">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-09">
               <span class="accordion__title">
                 <span class="accordion__index">09</span>
-                <span>Data &amp; Integrations</span>
+                <span>Eval &amp; Safety</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#x25BE;</span>
             </button>
-            <div class="accordion__panel" id="curr-09">
-              <p>
-                AI systems connect to codebases, CRMs, ticketing systems, communication platforms, databases, and file systems. This module builds the connector architecture with standardized patterns and audit trails.
-              </p>
-              <ul>
-                <li>Connector design: standardized patterns for API, database, and file system connectors. Defined schema, error handling, rate limiting, retry logic.</li>
-                <li>Sync contracts: explicit rules for frequency, conflict resolution, and idempotency. No silent data loss, no duplicate processing.</li>
-                <li>Audit trails: every data movement is logged with source, destination, timestamp, and outcome.</li>
-                <li>Adapter patterns: isolate source system changes so the rest of the system does not need to know when APIs update.</li>
-                <li>Legacy system integration: wrapping older systems behind modern interfaces without requiring the legacy system to change.</li>
-                <li>Data quality enforcement: validation rules at ingestion boundaries. Bad data in means bad outputs out — catch it at the boundary.</li>
-              </ul>
-              <p>
-                Deliverables: connector map, sync contract document, and adapter specification for priority integrations.
-              </p>
+            <div class="accordion__panel" id="learn-09">
+              <div class="panel-block">
+                <p>Eval determines whether the system works. Safety determines whether it fails safely. Without evals, every prompt change is a blind experiment. Without guardrails, harmful or incorrect outputs reach users unchecked. This layer should be the first thing built, not the last.</p>
+                <div class="learn__diagram">
+                  <svg class="learn__svg" viewBox="0 0 540 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="20" width="70" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="37" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Output</text>
+                    <line x1="76" y1="40" x2="96" y2="40" stroke="#666360" stroke-width="1"/>
+                    <polygon points="94,37 100,40 94,43" fill="#666360"/>
+                    <rect x="104" y="20" width="84" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="146" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Format</text>
+                    <line x1="192" y1="40" x2="212" y2="40" stroke="#666360" stroke-width="1"/>
+                    <polygon points="210,37 216,40 210,43" fill="#666360"/>
+                    <rect x="220" y="20" width="84" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="262" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Safety</text>
+                    <line x1="308" y1="40" x2="328" y2="40" stroke="#666360" stroke-width="1"/>
+                    <polygon points="326,37 332,40 326,43" fill="#666360"/>
+                    <rect x="336" y="20" width="84" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="378" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Quality</text>
+                    <line x1="424" y1="40" x2="444" y2="40" stroke="#666360" stroke-width="1"/>
+                    <polygon points="442,37 448,40 442,43" fill="#666360"/>
+                    <rect x="452" y="20" width="84" height="40" rx="20" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="494" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Pass / Fail</text>
+                  </svg>
+                </div>
+                <p><strong>Key concepts</strong></p>
+                <ul>
+                  <li>Golden test sets catch regressions before they reach users</li>
+                  <li>Guardrails validate outputs at runtime — format, safety, business logic</li>
+                  <li>Observability tracks cost, latency, error rates, and quality in production</li>
+                  <li>Evals should run in CI — a prompt change that degrades quality does not ship</li>
+                </ul>
+                <p><strong>Practical skills</strong></p>
+                <ul class="learn__skills">
+                  <li>Build a golden test set for a specific AI workflow</li>
+                  <li>Set up Promptfoo or Braintrust for automated evaluation</li>
+                  <li>Implement runtime guardrails with output validation</li>
+                </ul>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-eval">L09 Eval &amp; Safety</a></p>
+              </div>
             </div>
           </article>
 
-          <article class="accordion" data-group="curriculum">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="curr-10">
+          <article class="accordion" data-group="learn">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-10">
               <span class="accordion__title">
                 <span class="accordion__index">10</span>
-                <span>Team Operating Model</span>
+                <span>Products</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#x25BE;</span>
             </button>
-            <div class="accordion__panel" id="curr-10">
-              <p>
-                Technology without a team operating model is shelf-ware. This module defines how teams adopt, operate, and improve AI systems over time.
-              </p>
-              <ul>
-                <li>Role-based adoption paths: engineering, operations, leadership, sales, and support each have different entry points and learning priorities.</li>
-                <li>Capability ladders: defined progression from basic prompt use to advanced workflow design. Skill-based checkpoints, not time-based milestones.</li>
-                <li>Handoff standards: when work passes between human and AI, the handoff includes context, status, decision history, and next steps.</li>
-                <li>Ownership cadence: weekly cycles — who reviews outputs, who ships, who escalates, who updates context.</li>
-                <li>Shared context documents: living documents that keep the team aligned on decisions and priorities.</li>
-                <li>Measurement and feedback: regular reviews of AI system performance against team goals.</li>
-              </ul>
-              <p>
-                Deliverables: role matrix, runbook v1 with ownership cadence, and capability ladder.
-              </p>
-            </div>
-          </article>
-
-          <article class="accordion" data-group="curriculum">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="curr-11">
-              <span class="accordion__title">
-                <span class="accordion__index">11</span>
-                <span>Productive Publishing</span>
-              </span>
-              <span aria-hidden="true">▾</span>
-            </button>
-            <div class="accordion__panel" id="curr-11">
-              <p>
-                Every engagement produces artifacts that can help other teams. This module builds the pipeline from internal work product to public, reusable learning material while keeping proprietary information isolated.
-              </p>
-              <ul>
-                <li>Skill authoring: turning internal processes into reusable skill definitions with clear triggers, inputs, steps, and outputs.</li>
-                <li>Template design: creating prompt, workflow, and evaluation templates that work across projects.</li>
-                <li>Redaction pipelines: automated separation of public and private content. The boundary is explicit and enforced.</li>
-                <li>Open academy contribution: published artifacts follow the open academy format — module structure, skill companion, and validation checklist.</li>
-                <li>Quality review: published artifacts go through the same validation gates as production outputs.</li>
-                <li>Maintenance commitments: published artifacts have owners who keep them current.</li>
-              </ul>
-              <p>
-                Deliverables: one public skill, one public module contribution, and a de-risked template pack.
-              </p>
-            </div>
-          </article>
-
-          <article class="accordion" data-group="curriculum">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="curr-12">
-              <span class="accordion__title">
-                <span class="accordion__index">12</span>
-                <span>Scale &amp; Maintain</span>
-              </span>
-              <span aria-hidden="true">▾</span>
-            </button>
-            <div class="accordion__panel" id="curr-12">
-              <p>
-                Building the system is the first quarter. Keeping it running and improving it over time is every quarter after that. This module creates the patterns for sustainable operation.
-              </p>
-              <ul>
-                <li>Monitoring loops: automated checks on output quality, cost, latency, and error rates. Alert on anomalies, not user complaints.</li>
-                <li>Upgrade cadence: scheduled evaluation of new model versions, tool updates, and prompt improvements. Test-in-staging, evaluate, deploy-with-rollback.</li>
-                <li>Context drift detection: flag context that has not been reviewed recently. Trigger maintenance cycles.</li>
-                <li>Operational playbooks: documented procedures for model regression, cost spikes, quality drops, and new use case adoption.</li>
-                <li>Quarterly reviews: structured assessment of performance, capability growth, and alignment with goals.</li>
-                <li>Scale planning: patterns for expanding to new teams and use cases. Assess, pilot, measure, expand.</li>
-              </ul>
-              <p>
-                Deliverables: scale plan, context drift policy, and operational playbook for top three scenarios.
-              </p>
-            </div>
-          </article>
-
-          <article class="accordion" data-group="curriculum">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="curr-13">
-              <span class="accordion__title">
-                <span class="accordion__index">13</span>
-                <span>Provider Stack Depth</span>
-              </span>
-              <span aria-hidden="true">▾</span>
-            </button>
-            <div class="accordion__panel" id="curr-13">
-              <p>
-                The final module maps the entire provider ecosystem end-to-end. Not just which models to use, but how to connect providers, routing layers, terminals, coding agents, and observability tooling into a coherent stack.
-              </p>
-              <ul>
-                <li>Provider comparison: Claude, GPT, Gemini, Grok, Llama, Mistral, Qwen evaluated on capabilities, pricing, rate limits, and API stability.</li>
-                <li>Routing policy implementation: OpenRouter, LiteLLM, or custom routing layers that enforce task-type routing, cost limits, and fallback chains.</li>
-                <li>Agent integration: Claude Code, Codex CLI, Cursor, Windsurf wired into the workflow system with defined permissions and tool capabilities.</li>
-                <li>Multimodal coverage: image generation, vision analysis, audio transcription, and document processing across providers.</li>
-                <li>Observability implementation: logs, traces, metrics, and cost tracking wired into dashboards.</li>
-                <li>Migration planning: when providers change terms or deprecate models, the stack has a migration path. Provider lock-in is minimized through abstraction.</li>
-              </ul>
-              <p>
-                Deliverables: full provider catalog, terminal and agent command map by role, and multimodal fallback playbook.
-              </p>
+            <div class="accordion__panel" id="learn-10">
+              <div class="panel-block">
+                <p>The product layer is where infrastructure becomes useful to people. Products combine inference, routing, orchestration, context, and integrations into something humans interact with. The key question at this layer is defensibility — if your product is a thin API wrapper, the model provider will build your feature natively.</p>
+                <div class="learn__diagram">
+                  <svg class="learn__svg" viewBox="0 0 400 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="4" width="120" height="36" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="62" y="27" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Chatbot</text>
+                    <rect x="132" y="4" width="120" height="36" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="192" y="27" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Copilot</text>
+                    <rect x="262" y="4" width="120" height="36" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="322" y="27" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Agent</text>
+                    <rect x="2" y="52" width="120" height="36" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="62" y="75" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Search</text>
+                    <rect x="132" y="52" width="120" height="36" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="192" y="75" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Creative</text>
+                    <rect x="262" y="52" width="120" height="36" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+                    <text x="322" y="75" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Vertical</text>
+                  </svg>
+                </div>
+                <p><strong>Key concepts</strong></p>
+                <ul>
+                  <li>Product archetypes: chatbot, copilot, agent, search, creative, platform, vertical</li>
+                  <li>Defensibility comes from domain context, proprietary data, or deep workflow integration</li>
+                  <li>"Uses AI" is not a moat — the model provider will likely build your feature</li>
+                  <li>Thin wrappers over APIs compete on UX alone, which is fragile</li>
+                </ul>
+                <p><strong>Practical skills</strong></p>
+                <ul class="learn__skills">
+                  <li>Classify a product by its archetype and identify its moat</li>
+                  <li>Design a product integration that creates lock-in through context and workflow</li>
+                  <li>Evaluate build-vs-buy decisions for AI capabilities</li>
+                </ul>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-products">L10 Products</a></p>
+              </div>
             </div>
           </article>
 
@@ -397,7 +537,7 @@
     </main>
 
     <footer class="site-footer">
-      <p>Knowledge is free. Time isn't.</p>
+      <p>Knowledge is free. Time isn't. <a href="/faq">FAQ</a></p>
     </footer>
 
     <script src="/script.js" defer></script>

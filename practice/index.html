@@ -21,10 +21,9 @@
           <span>Menu</span>
         </button>
         <nav id="site-nav" class="top-nav">
-          <a class="nav-link" href="/thesis">Thesis</a>
           <a class="nav-link" href="/practice">Practice</a>
-          <a class="nav-link" href="/stack">Stack</a>
           <a class="nav-link" href="/learn">Learn</a>
+          <a class="nav-link" href="/glossary">Glossary</a>
         </nav>
         <a
           class="repo-link"
@@ -46,10 +45,101 @@
     <main>
       <section class="hero section" data-reveal>
         <p class="hero-kicker">Practice</p>
-        <h1>What we build and how we decide.</h1>
+        <h1>What we believe and what we build.</h1>
         <p class="hero-subtitle">
-          Four build areas and five operating principles. Open any section for scope, examples, and deliverables.
+          Thesis, build areas, operating principles, and the code explosion challenge.
         </p>
+      </section>
+
+      <section class="section section-compact" data-reveal>
+        <p class="section-label">Thesis</p>
+        <div class="accordion-list">
+          <article class="accordion" data-group="thesis">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="thesis-premise">
+              <span class="accordion__title">
+                <span class="accordion__index">01</span>
+                <span>Models move fast</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="thesis-premise">
+              <p>
+                Models get better, cheaper, renamed, and deprecated all the time. If your whole setup depends on one provider or one version, you end up rebuilding every few months.
+              </p>
+              <p>
+                What should stay stable is the system around the model: how context comes in, how work gets routed, how outputs get checked, and where people step in.
+              </p>
+            </div>
+          </article>
+          <article class="accordion" data-group="thesis">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="thesis-longevity">
+              <span class="accordion__title">
+                <span class="accordion__index">02</span>
+                <span>Build so you can swap</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="thesis-longevity">
+              <p>
+                You should be able to change providers without rewriting the whole thing. Prompts, workflows, evals, and docs should last longer than the model they started on.
+              </p>
+              <p>
+                If a better option shows up next month, you should be able to switch it in and keep going. That is a design choice, not luck.
+              </p>
+            </div>
+          </article>
+          <article class="accordion" data-group="thesis">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="thesis-context">
+              <span class="accordion__title">
+                <span class="accordion__index">03</span>
+                <span>Context is the real asset</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="thesis-context">
+              <p>
+                The expensive part is not the API bill. It is losing what the system knows about your team, your work, your constraints, and your decisions.
+              </p>
+              <p>
+                Good context is small, clear, versioned, and easy to recover. Bad context is bloated, stale, and hard to trust.
+              </p>
+            </div>
+          </article>
+          <article class="accordion" data-group="thesis">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="thesis-local">
+              <span class="accordion__title">
+                <span class="accordion__index">04</span>
+                <span>Local first when it matters</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="thesis-local">
+              <p>
+                If the work touches sensitive data, needs predictable latency, or has to keep running on your terms, start local. Keep cloud as an option, not a dependency.
+              </p>
+              <p>
+                This is not anti-cloud. It is just a more honest default for teams that care about control.
+              </p>
+            </div>
+          </article>
+          <article class="accordion" data-group="thesis">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="thesis-ownership">
+              <span class="accordion__title">
+                <span class="accordion__index">05</span>
+                <span>The team has to own it</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="thesis-ownership">
+              <p>
+                If the system only works because someone external keeps steering it, then it is not really installed yet.
+              </p>
+              <p>
+                The end state is simple: your team can run it, change it, and keep improving it without needing us in the loop every week.
+              </p>
+            </div>
+          </article>
+        </div>
       </section>
 
       <section class="section section-compact" data-reveal>
@@ -61,7 +151,7 @@
                 <span class="accordion__index">01</span>
                 <span>AI Workflow Design</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#9662;</span>
             </button>
             <div class="accordion__panel" id="work-workflow">
               <p>
@@ -83,7 +173,7 @@
                 <span class="accordion__index">02</span>
                 <span>Local-First Infrastructure</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#9662;</span>
             </button>
             <div class="accordion__panel" id="work-local">
               <p>
@@ -105,7 +195,7 @@
                 <span class="accordion__index">03</span>
                 <span>Context Engineering</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#9662;</span>
             </button>
             <div class="accordion__panel" id="work-context">
               <p>
@@ -127,7 +217,7 @@
                 <span class="accordion__index">04</span>
                 <span>Team enablement and academy</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#9662;</span>
             </button>
             <div class="accordion__panel" id="work-learn">
               <p>
@@ -155,7 +245,7 @@
                 <span class="accordion__index">01</span>
                 <span>Signal over chatter</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#9662;</span>
             </button>
             <div class="accordion__panel" id="principle-signal">
               <p>
@@ -174,7 +264,7 @@
                 <span class="accordion__index">02</span>
                 <span>Context efficiency</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#9662;</span>
             </button>
             <div class="accordion__panel" id="principle-context">
               <p>
@@ -193,7 +283,7 @@
                 <span class="accordion__index">03</span>
                 <span>Role clarity</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#9662;</span>
             </button>
             <div class="accordion__panel" id="principle-roles">
               <p>
@@ -212,7 +302,7 @@
                 <span class="accordion__index">04</span>
                 <span>Model diversity</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#9662;</span>
             </button>
             <div class="accordion__panel" id="principle-models">
               <p>
@@ -231,7 +321,7 @@
                 <span class="accordion__index">05</span>
                 <span>Execution continuity</span>
               </span>
-              <span aria-hidden="true">▾</span>
+              <span aria-hidden="true">&#9662;</span>
             </button>
             <div class="accordion__panel" id="principle-continuity">
               <p>
@@ -246,10 +336,72 @@
           </article>
         </div>
       </section>
+
+      <section class="section section-compact" data-reveal>
+        <p class="section-label">The code explosion</p>
+        <div class="accordion-list">
+          <article class="accordion" data-group="explosion">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="explosion-scale">
+              <span class="accordion__title">
+                <span class="accordion__index">01</span>
+                <span>The scale of change</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="explosion-scale">
+              <p>
+                AI code volume is growing exponentially. GitClear data shows AI-assisted commits went from roughly 3% of all commits in 2023 to over 25% in 2025. Code churn — code changed within two weeks of being written — is up 39% in the same period. GitHub reports that 46% of code in Copilot-enabled files is AI-generated. This is not incremental. It is a phase change in how software gets written.
+              </p>
+            </div>
+          </article>
+          <article class="accordion" data-group="explosion">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="explosion-quality">
+              <span class="accordion__title">
+                <span class="accordion__index">02</span>
+                <span>Quality gap</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="explosion-quality">
+              <p>
+                More code does not mean better code. Snyk research shows 2.74x more vulnerabilities in AI-generated code compared to human-written code. Churn code — code changed within two weeks of being written — is rising, a signal that AI-generated code often needs immediate rework. The review and testing infrastructure has not scaled with the code volume.
+              </p>
+            </div>
+          </article>
+          <article class="accordion" data-group="explosion">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="explosion-gap">
+              <span class="accordion__title">
+                <span class="accordion__index">03</span>
+                <span>The infrastructure gap</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="explosion-gap">
+              <p>
+                The value chain layers 06 through 09 — orchestration, context, integrations, and eval — are where the gap is most acute. We generate code faster but do not orchestrate it better, do not manage context for it, and do not evaluate it more rigorously. The bottleneck shifted from writing code to everything around writing code.
+              </p>
+            </div>
+          </article>
+          <article class="accordion" data-group="explosion">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="explosion-practice">
+              <span class="accordion__title">
+                <span class="accordion__index">04</span>
+                <span>What this means for practice</span>
+              </span>
+              <span aria-hidden="true">&#9662;</span>
+            </button>
+            <div class="accordion__panel" id="explosion-practice">
+              <p>
+                Teams need to invest disproportionately in the layers around code generation: context engineering (L07) to feed AI the right information, evaluation (L09) to catch quality issues, orchestration (L06) to coordinate multi-step workflows, and integrations (L08) to connect all the pieces. The code writes itself — the system around it is the hard part.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
-      <p>Knowledge is free. Time isn't.</p>
+      <p>Knowledge is free. Time isn't. <a href="/faq">FAQ</a></p>
     </footer>
 
     <script src="/script.js" defer></script>
