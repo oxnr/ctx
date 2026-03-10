@@ -8,8 +8,8 @@
   --text-dim: #666360;
   --font-sans: "Instrument Sans", system-ui, -apple-system, sans-serif;
   --font-serif: "Newsreader", Georgia, serif;
-  --max-w: 1080px;
-  --gap: clamp(1.5rem, 4vw, 3rem);
+  --max-w: 1340px;
+  --gap: clamp(1.25rem, 3.2vw, 2.4rem);
 }
 
 *,
@@ -21,6 +21,7 @@
 }
 
 html {
+  font-size: 125%;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
 }
@@ -987,6 +988,7 @@ body.subpage .accordion__toggle {
 /* ---- RESPONSIVE ---- */
 
 @media (max-width: 760px) {
+  html { font-size: 100%; }
   /* Release above-the-fold on mobile — mobile is a scroll experience */
   body.subpage {
     height: auto;
@@ -1206,6 +1208,41 @@ body.subpage .accordion__toggle {
   color: var(--text);
   text-decoration-color: var(--text);
 }
+
+/* ---- SUBCATEGORY SECTIONS (learn pages) ---- */
+
+.learn__subcategory {
+  margin: 0.75rem 0 0;
+  padding: 0.75rem 0 0;
+  border-top: 1px solid var(--border);
+}
+
+.learn__subcategory:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.learn__subcategory-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 0.35rem;
+}
+
+/* ---- EXPLORER SUBCATEGORY LABELS ---- */
+
+.explorer__subcat-label {
+  display: block;
+  padding: 0.45rem 0.75rem 0.2rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-alt);
+  cursor: default;
+}
+
 
 /* ---- LAYER LEARN (inline when a layer is clicked) ---- */
 

@@ -85,19 +85,52 @@
                     <text x="385" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Cloud</text>
                   </svg>
                 </div>
-                <p><strong>Key concepts</strong></p>
-                <ul>
-                  <li>GPU vs TPU vs custom silicon — different hardware for different workloads</li>
-                  <li>Memory bandwidth is the bottleneck, not raw FLOPS</li>
-                  <li>Quantization lets large models run on smaller hardware</li>
-                  <li>Cloud GPU (CoreWeave, Lambda) vs hyperscaler (AWS, GCP, Azure) pricing</li>
-                </ul>
-                <p><strong>Practical skills</strong></p>
-                <ul class="learn__skills">
-                  <li>Estimate GPU requirements for a given model size</li>
-                  <li>Compare cloud GPU pricing across providers</li>
-                  <li>Decide when local inference makes sense vs cloud APIs</li>
-                </ul>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Silicon</h4>
+                  <p>GPU vs TPU vs custom silicon. Memory bandwidth is the bottleneck, not FLOPS. CUDA dominates.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Hardware tradeoffs</li>
+                    <li>Memory bandwidth</li>
+                    <li>CUDA lock-in</li>
+                    <li>Chip generations</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Read GPU specs</li>
+                    <li>Compare silicon options</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">GPU Clouds</h4>
+                  <p>CoreWeave, Lambda, RunPod, Modal. Reserved vs on-demand vs spot pricing.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>GPU cloud vs hyperscaler</li>
+                    <li>Serverless GPU</li>
+                    <li>Marketplace models</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Compare cloud GPU pricing</li>
+                    <li>Estimate compute costs</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Training Infra</h4>
+                  <p>Distributed training software. Data/model/pipeline parallelism.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Parallelism strategies</li>
+                    <li>NCCL</li>
+                    <li>Distributed frameworks</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Set up multi-GPU training</li>
+                    <li>Choose parallelism strategy</li>
+                  </ul>
+                </div>
                 <p class="learn__xref">See this layer in the value chain → <a href="/#vc-compute">L01 Compute</a></p>
               </div>
             </div>
@@ -132,19 +165,51 @@
                     <text x="405" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Checkpoint</text>
                   </svg>
                 </div>
-                <p><strong>Key concepts</strong></p>
-                <ul>
-                  <li>Data quality dominates model quality — the shift from "more data" to "better data"</li>
-                  <li>Scaling laws predict performance from compute budget, data size, and model size</li>
-                  <li>Synthetic data generation is increasingly central to training pipelines</li>
-                  <li>Base models can complete text but do not follow instructions — that comes at L03</li>
-                </ul>
-                <p><strong>Practical skills</strong></p>
-                <ul class="learn__skills">
-                  <li>Evaluate base model capabilities from training data and benchmark results</li>
-                  <li>Understand what a model learned vs what it was trained to do</li>
-                  <li>Read a model card and understand its limitations</li>
-                </ul>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Foundation Models</h4>
+                  <p>Labs building base models. Closed-weight vs open-weight.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Model families and architectures</li>
+                    <li>MoE vs dense</li>
+                    <li>Scaling laws</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Compare models by capability and openness</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Training Data</h4>
+                  <p>Quality over quantity. Web crawls, annotation, synthetic data.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Data quality shift</li>
+                    <li>Deduplication</li>
+                    <li>Programmatic labeling</li>
+                    <li>Synthetic generation</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Evaluate training datasets</li>
+                    <li>Understand data-behavior link</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Training Frameworks</h4>
+                  <p>HF Transformers, nanoGPT. Training loop implementations.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Tokenizer design</li>
+                    <li>Checkpoint management</li>
+                    <li>Mixed precision</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Read model implementations</li>
+                    <li>Interpret training curves</li>
+                  </ul>
+                </div>
                 <p class="learn__xref">See this layer in the value chain → <a href="/#vc-pretrain">L02 Pre-Training</a></p>
               </div>
             </div>
@@ -179,19 +244,53 @@
                     <text x="410" y="101" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Distillation</text>
                   </svg>
                 </div>
-                <p><strong>Key concepts</strong></p>
-                <ul>
-                  <li>SFT (Supervised Fine-Tuning) teaches models to follow instructions</li>
-                  <li>RLHF and DPO align models with human preferences</li>
-                  <li>LoRA and QLoRA enable fine-tuning on a single consumer GPU</li>
-                  <li>Model merging combines multiple fine-tuned models without additional training</li>
-                </ul>
-                <p><strong>Practical skills</strong></p>
-                <ul class="learn__skills">
-                  <li>Run a LoRA fine-tuning job on a specific dataset</li>
-                  <li>Evaluate fine-tuned model quality against the base model</li>
-                  <li>Decide between fine-tuning, few-shot prompting, and RAG for a given use case</li>
-                </ul>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Alignment</h4>
+                  <p>SFT, RLHF, DPO. Making models useful and safe.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>SFT as foundation</li>
+                    <li>RLHF vs DPO</li>
+                    <li>Constitutional AI</li>
+                    <li>Preference data quality</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Prepare SFT datasets</li>
+                    <li>Choose alignment technique</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Efficient Adaptation</h4>
+                  <p>LoRA, QLoRA, distillation, merging.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Parameter-efficient fine-tuning</li>
+                    <li>Distillation</li>
+                    <li>Model merging</li>
+                    <li>Adapter composition</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Run LoRA jobs</li>
+                    <li>Evaluate fine-tuned quality</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Managed Fine-Tuning</h4>
+                  <p>Predibase, Together AI, Replicate. Upload and tune.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Managed vs self-hosted tradeoffs</li>
+                    <li>Cost comparison</li>
+                    <li>Data privacy</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Fine-tune via API</li>
+                    <li>Compare platforms</li>
+                  </ul>
+                </div>
                 <p class="learn__xref">See this layer in the value chain → <a href="/#vc-posttrain">L03 Post-Training</a></p>
               </div>
             </div>
@@ -230,19 +329,69 @@
                     <text x="501" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Response</text>
                   </svg>
                 </div>
-                <p><strong>Key concepts</strong></p>
-                <ul>
-                  <li>Time to first token (TTFT) vs throughput (tokens/second) — different metrics for different use cases</li>
-                  <li>Quantization (GPTQ, AWQ, GGUF) reduces model size 2-4x with minimal quality loss</li>
-                  <li>Continuous batching and KV-cache optimization drive serving engine performance</li>
-                  <li>Inference is modality-agnostic — text, image, video, audio all follow similar patterns</li>
-                </ul>
-                <p><strong>Practical skills</strong></p>
-                <ul class="learn__skills">
-                  <li>Choose between cloud API, self-hosted, and local inference for a given use case</li>
-                  <li>Set up Ollama or llama.cpp for local model inference</li>
-                  <li>Compare inference cost across providers for a given workload</li>
-                </ul>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Serving Engines</h4>
+                  <p>vLLM, llama.cpp, TGI, SGLang. Self-hosted runtimes.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>PagedAttention</li>
+                    <li>Continuous batching</li>
+                    <li>Quantization formats</li>
+                    <li>Speculative decoding</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Deploy vLLM</li>
+                    <li>Quantize models</li>
+                    <li>Benchmark performance</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Provider APIs</h4>
+                  <p>OpenAI, Anthropic, Vertex, Bedrock. Hosted endpoints.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Token pricing</li>
+                    <li>Rate limits</li>
+                    <li>Data privacy</li>
+                    <li>Multi-provider strategy</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Estimate API costs</li>
+                    <li>Implement retry logic</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Local Runners</h4>
+                  <p>Ollama, LM Studio, MLX. Desktop/edge inference.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Hardware requirements</li>
+                    <li>Quantization tradeoffs</li>
+                    <li>Apple Silicon vs NVIDIA</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Set up Ollama</li>
+                    <li>Choose quantization levels</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Multimodal</h4>
+                  <p>Voice, image, video. ElevenLabs, Whisper, Sora.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>STT/TTS pipelines</li>
+                    <li>Diffusion architectures</li>
+                    <li>Real-time latency requirements</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Integrate TTS APIs</li>
+                    <li>Choose multimodal providers</li>
+                  </ul>
+                </div>
                 <p class="learn__xref">See this layer in the value chain → <a href="/#vc-inference">L04 Inference</a></p>
               </div>
             </div>
@@ -275,19 +424,52 @@
                     <text x="340" y="118" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Model C</text>
                   </svg>
                 </div>
-                <p><strong>Key concepts</strong></p>
-                <ul>
-                  <li>Fallback chains provide reliability when a provider goes down</li>
-                  <li>Task-type routing dispatches simple vs complex vs code requests to different models</li>
-                  <li>Cost-aware routing tracks spend and downgrades models when budgets are tight</li>
-                  <li>Routing makes model diversity practical — cheap models for routine, expensive for hard</li>
-                </ul>
-                <p><strong>Practical skills</strong></p>
-                <ul class="learn__skills">
-                  <li>Set up a basic routing proxy with LiteLLM or OpenRouter</li>
-                  <li>Define fallback chains for production reliability</li>
-                  <li>Implement cost-based routing rules</li>
-                </ul>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Gateways &amp; Proxies</h4>
+                  <p>OpenRouter, LiteLLM, Portkey. Unified API access.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>OpenAI-compatible format</li>
+                    <li>Caching</li>
+                    <li>Load balancing</li>
+                    <li>Format translation</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Set up LiteLLM proxy</li>
+                    <li>Configure multi-provider access</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Intelligent Routing</h4>
+                  <p>Martian, Not Diamond, Unify. Quality/cost optimization.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Task classification</li>
+                    <li>Quality prediction</li>
+                    <li>Benchmark-driven routing</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Implement task-type routing</li>
+                    <li>Set cost-based rules</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Observability Proxies</h4>
+                  <p>Helicone, Keywords AI. Routing with monitoring.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Request logging</li>
+                    <li>Cost tracking</li>
+                    <li>Latency monitoring</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Set up cost tracking</li>
+                    <li>Build usage dashboards</li>
+                  </ul>
+                </div>
                 <p class="learn__xref">See this layer in the value chain → <a href="/#vc-routing">L05 Routing</a></p>
               </div>
             </div>
@@ -297,7 +479,7 @@
             <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-06">
               <span class="accordion__title">
                 <span class="accordion__index">06</span>
-                <span>Orchestration &amp; Human Oversight</span>
+                <span>Orchestration</span>
               </span>
               <span aria-hidden="true">&#x25BE;</span>
             </button>
@@ -324,19 +506,69 @@
                     <text x="180" y="90" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Iterate / Ship</text>
                   </svg>
                 </div>
-                <p><strong>Key concepts</strong></p>
-                <ul>
-                  <li>Agent loops: plan, execute tools, observe results, iterate until done</li>
-                  <li>Task decomposition breaks complex work into atomic steps with clear contracts</li>
-                  <li>Validation gates between steps catch errors before they propagate</li>
-                  <li>Retry logic, timeout handling, and cost budgets are production essentials</li>
-                </ul>
-                <p><strong>Practical skills</strong></p>
-                <ul class="learn__skills">
-                  <li>Design a multi-step agent workflow for a specific use case</li>
-                  <li>Define handoff contracts between workflow stages</li>
-                  <li>Set up human-in-the-loop approval gates</li>
-                </ul>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Agent Patterns</h4>
+                  <p>LangGraph, CrewAI, Anthropic SDK. The agent loop.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Plan-act-observe-iterate</li>
+                    <li>Single vs multi-agent</li>
+                    <li>First-party vs third-party</li>
+                    <li>Framework vs raw SDK</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Build agent loop with SDK</li>
+                    <li>Design multi-agent handoffs</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Workflow Design</h4>
+                  <p>Dify, n8n, Trigger.dev. Pipelines and DAGs.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Task decomposition</li>
+                    <li>Chain/branch/loop patterns</li>
+                    <li>Cost budgets</li>
+                    <li>Handoff contracts</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Design multi-step workflows</li>
+                    <li>Implement cost budgets</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Human Oversight</h4>
+                  <p>The control spectrum. Approval gates and escalation.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Human-in-the-loop vs human-on-the-loop vs bounded autonomy</li>
+                    <li>Reversibility/stakes/confidence</li>
+                    <li>Trust boundaries</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Design approval gates</li>
+                    <li>Implement escalation rules</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Execution Environments</h4>
+                  <p>E2B, containers. Where agents run code.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Sandboxing</li>
+                    <li>Cloud vs local execution</li>
+                    <li>Resource limits</li>
+                    <li>Cold start latency</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Set up E2B sandboxes</li>
+                    <li>Configure resource limits</li>
+                  </ul>
+                </div>
                 <p class="learn__xref">See this layer in the value chain → <a href="/#vc-orchestration">L06 Orchestration</a></p>
               </div>
             </div>
@@ -372,19 +604,70 @@
                     <text x="398" y="64" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Model</text>
                   </svg>
                 </div>
-                <p><strong>Key concepts</strong></p>
-                <ul>
-                  <li>RAG: chunk documents, embed them, store in vector DB, retrieve at query time</li>
-                  <li>Chunking strategy directly affects retrieval quality — size, overlap, boundaries</li>
-                  <li>Volatile state (conversation) vs durable state (decisions, docs) need different storage</li>
-                  <li>Context hygiene: audit what is in the window, remove noise, deduplicate</li>
-                </ul>
-                <p><strong>Practical skills</strong></p>
-                <ul class="learn__skills">
-                  <li>Build a basic RAG pipeline with embedding, storage, and retrieval</li>
-                  <li>Design a chunking strategy for a specific document type</li>
-                  <li>Implement context lifecycle management — creation, mutation, archival</li>
-                </ul>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Vector Storage</h4>
+                  <p>Pinecone, Weaviate, Chroma, Qdrant, pgvector.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>ANN search algorithms</li>
+                    <li>Managed vs self-hosted</li>
+                    <li>pgvector</li>
+                    <li>Index tuning</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Set up vector DB</li>
+                    <li>Tune index parameters</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Retrieval &amp; Search</h4>
+                  <p>RAG pipelines, parsing, reranking.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Document parsing quality</li>
+                    <li>Chunking strategy</li>
+                    <li>Hybrid search</li>
+                    <li>Reranking</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Build RAG pipeline</li>
+                    <li>Design chunking</li>
+                    <li>Add reranking</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Memory Systems</h4>
+                  <p>Conversation and long-term memory.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Volatile vs durable memory</li>
+                    <li>Sliding window/summarization</li>
+                    <li>Cross-session persistence</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Implement conversation memory</li>
+                    <li>Design long-term memory</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Embeddings</h4>
+                  <p>Voyage AI, Jina, HF TEI, Sentence Transformers.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Model quality variation</li>
+                    <li>Domain-specific embeddings</li>
+                    <li>Dimensions</li>
+                    <li>Batch embedding</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Choose embedding model</li>
+                    <li>Set up TEI serving</li>
+                  </ul>
+                </div>
                 <p class="learn__xref">See this layer in the value chain → <a href="/#vc-context">L07 Context</a></p>
               </div>
             </div>
@@ -419,19 +702,52 @@
                     <text x="322" y="132" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Tools</text>
                   </svg>
                 </div>
-                <p><strong>Key concepts</strong></p>
-                <ul>
-                  <li>Function calling turns model outputs into structured tool invocations — the universal interface</li>
-                  <li>Integration surfaces: REST APIs, webhooks, databases, file systems, IDEs, CI/CD pipelines</li>
-                  <li>Standards like MCP help with tool discovery, but the integration layer is wider than any single protocol</li>
-                  <li>Tool permissions and audit trails are critical for production safety</li>
-                </ul>
-                <p><strong>Practical skills</strong></p>
-                <ul class="learn__skills">
-                  <li>Implement function calling with structured output validation</li>
-                  <li>Connect an AI workflow to external APIs, databases, or file systems</li>
-                  <li>Audit and restrict tool permissions in a production deployment</li>
-                </ul>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Protocols &amp; Standards</h4>
+                  <p>MCP, function calling, structured outputs, A2A.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>MCP standardization</li>
+                    <li>Function calling as universal interface</li>
+                    <li>JSON mode</li>
+                    <li>Agent interoperability</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Build MCP server</li>
+                    <li>Implement function calling</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Code &amp; Dev Tools</h4>
+                  <p>Cursor, Windsurf, Aider, Copilot.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Completion vs chat vs agent depth</li>
+                    <li>Editor vs terminal tools</li>
+                    <li>Codebase context</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Set up coding assistant</li>
+                    <li>Configure context</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Connectors</h4>
+                  <p>Composio, Zapier AI, Vercel AI SDK.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Pre-built vs custom integrations</li>
+                    <li>OAuth management</li>
+                    <li>SDK vs platform</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Connect via connector platform</li>
+                    <li>Implement streaming</li>
+                  </ul>
+                </div>
                 <p class="learn__xref">See this layer in the value chain → <a href="/#vc-integrations">L08 Integrations</a></p>
               </div>
             </div>
@@ -470,19 +786,56 @@
                     <text x="494" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Pass / Fail</text>
                   </svg>
                 </div>
-                <p><strong>Key concepts</strong></p>
-                <ul>
-                  <li>Golden test sets catch regressions before they reach users</li>
-                  <li>Guardrails validate outputs at runtime — format, safety, business logic</li>
-                  <li>Observability tracks cost, latency, error rates, and quality in production</li>
-                  <li>Evals should run in CI — a prompt change that degrades quality does not ship</li>
-                </ul>
-                <p><strong>Practical skills</strong></p>
-                <ul class="learn__skills">
-                  <li>Build a golden test set for a specific AI workflow</li>
-                  <li>Set up Promptfoo or Braintrust for automated evaluation</li>
-                  <li>Implement runtime guardrails with output validation</li>
-                </ul>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Evaluation</h4>
+                  <p>Promptfoo, Braintrust, DeepEval. Test suites and CI eval.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Golden test sets</li>
+                    <li>Benchmark suites</li>
+                    <li>CI-integrated evals</li>
+                    <li>Model-as-judge</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Build golden test set</li>
+                    <li>Set up Promptfoo</li>
+                    <li>CI integration</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Observability</h4>
+                  <p>Langfuse, LangSmith, Phoenix. Production monitoring.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Request tracing</li>
+                    <li>Cost tracking</li>
+                    <li>Latency monitoring</li>
+                    <li>Quality trending</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Set up Langfuse</li>
+                    <li>Build dashboards</li>
+                    <li>Alerting</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Guardrails &amp; Security</h4>
+                  <p>Guardrails AI, Llama Guard, Lakera.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Content safety classification</li>
+                    <li>Prompt injection detection</li>
+                    <li>Format validation</li>
+                    <li>Layered defense</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Implement output validation</li>
+                    <li>Prompt injection detection</li>
+                  </ul>
+                </div>
                 <p class="learn__xref">See this layer in the value chain → <a href="/#vc-eval">L09 Eval &amp; Safety</a></p>
               </div>
             </div>
@@ -515,19 +868,68 @@
                     <text x="322" y="75" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Vertical</text>
                   </svg>
                 </div>
-                <p><strong>Key concepts</strong></p>
-                <ul>
-                  <li>Product archetypes: chatbot, copilot, agent, search, creative, platform, vertical</li>
-                  <li>Defensibility comes from domain context, proprietary data, or deep workflow integration</li>
-                  <li>"Uses AI" is not a moat — the model provider will likely build your feature</li>
-                  <li>Thin wrappers over APIs compete on UX alone, which is fragile</li>
-                </ul>
-                <p><strong>Practical skills</strong></p>
-                <ul class="learn__skills">
-                  <li>Classify a product by its archetype and identify its moat</li>
-                  <li>Design a product integration that creates lock-in through context and workflow</li>
-                  <li>Evaluate build-vs-buy decisions for AI capabilities</li>
-                </ul>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Assistants &amp; Copilots</h4>
+                  <p>ChatGPT, Claude, Gemini, GitHub Copilot.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Assistant vs copilot</li>
+                    <li>General vs domain-specific</li>
+                    <li>Context and tools as differentiators</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Evaluate products for workflow</li>
+                    <li>Design copilot integration</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Autonomous Agents</h4>
+                  <p>Devin, Claude Code, Codex.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Agent-as-product vs agent-as-feature</li>
+                    <li>Trust verification</li>
+                    <li>Escalation</li>
+                    <li>Pricing</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Evaluate agent reliability</li>
+                    <li>Design human oversight</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Creative Tools</h4>
+                  <p>Midjourney, Runway, Suno, Lovable.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Image/video/music/code generation categories</li>
+                    <li>Quality vs control</li>
+                    <li>Iterative refinement</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Use creative tools effectively</li>
+                    <li>Design AI+human workflows</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">Vertical AI</h4>
+                  <p>Harvey, Abridge, Writer, Glean.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Domain context as moat</li>
+                    <li>Regulatory barriers</li>
+                    <li>Workflow integration depth</li>
+                    <li>Thin wrapper risk</li>
+                  </ul>
+                  <p><strong>Practical skills</strong></p>
+                  <ul class="learn__skills">
+                    <li>Identify vertical moats</li>
+                    <li>Evaluate build-vs-buy</li>
+                  </ul>
+                </div>
                 <p class="learn__xref">See this layer in the value chain → <a href="/#vc-products">L10 Products</a></p>
               </div>
             </div>

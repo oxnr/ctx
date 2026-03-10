@@ -10,6 +10,7 @@
   let activeTool = null;
   let searchQuery = "";
 
+
   // ── DOM refs ──
   const flowNodes = document.querySelectorAll(".vc-node[data-layer]");
   const explorer = document.getElementById("explorer");
@@ -162,13 +163,57 @@
     if (prompt) prompt.style.display = "none";
     resultArea.style.display = "";
 
-    openTools
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .forEach(t => colOpen.appendChild(makeToolItem(t)));
+    // Get subcategories for active layer
+    const layer = activeLayer ? layerMap[activeLayer] : null;
+    const subcats = layer && layer.subcategories ? layer.subcategories : null;
 
-    commercialTools
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .forEach(t => colCommercial.appendChild(makeToolItem(t)));
+    if (subcats && activeLayer) {
+      renderGroupedTools(colOpen, openTools, subcats);
+      renderGroupedTools(colCommercial, commercialTools, subcats);
+    } else {
+      openTools.sort((a, b) => a.name.localeCompare(b.name)).forEach(t => colOpen.appendChild(makeToolItem(t)));
+      commercialTools.sort((a, b) => a.name.localeCompare(b.name)).forEach(t => colCommercial.appendChild(makeToolItem(t)));
+    }
+  }
+
+  function renderGroupedTools(container, toolList, subcats) {
+    // Group tools by subcategory
+    const groups = new Map();
+    subcats.forEach(sc => groups.set(sc.id, []));
+    const ungrouped = [];
+
+    toolList.forEach(tool => {
+      const toolSubcats = tool.subcategories || [];
+      let placed = false;
+      subcats.forEach(sc => {
+        if (toolSubcats.includes(sc.id)) {
+          groups.get(sc.id).push(tool);
+          placed = true;
+        }
+      });
+      if (!placed) ungrouped.push(tool);
+    });
+
+    subcats.forEach(sc => {
+      const tools = groups.get(sc.id);
+      // Add ungrouped tools to every subcategory
+      const combined = [...tools, ...ungrouped];
+      if (combined.length === 0) return;
+
+      const label = document.createElement("li");
+      label.className = "explorer__subcat-label";
+      label.textContent = sc.label;
+      container.appendChild(label);
+
+      // De-duplicate (ungrouped tools that were also explicitly placed)
+      const seen = new Set();
+      combined.sort((a, b) => a.name.localeCompare(b.name)).forEach(t => {
+        if (!seen.has(t.id)) {
+          seen.add(t.id);
+          container.appendChild(makeToolItem(t));
+        }
+      });
+    });
   }
 
   function showDetail(tool) {

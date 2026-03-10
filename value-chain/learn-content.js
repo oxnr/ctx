@@ -24,19 +24,54 @@ window.VC_LEARN = {
           <text x="385" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Cloud</text>
         </svg>
       </div>
-      <p><strong>Key concepts</strong></p>
-      <ul>
-        <li>GPU vs TPU vs custom silicon — different hardware for different workloads</li>
-        <li>Memory bandwidth is the bottleneck, not raw FLOPS</li>
-        <li>Quantization lets large models run on smaller hardware</li>
-        <li>Cloud GPU (CoreWeave, Lambda) vs hyperscaler (AWS, GCP, Azure) pricing</li>
-      </ul>
-      <p><strong>Practical skills</strong></p>
-      <ul class="learn__skills">
-        <li>Estimate GPU requirements for a given model size</li>
-        <li>Compare cloud GPU pricing across providers</li>
-        <li>Decide when local inference makes sense vs cloud APIs</li>
-      </ul>`
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Silicon</h4>
+        <p>The physical hardware that executes AI workloads. GPU architecture (NVIDIA H100/B200), custom silicon (Google TPU, AWS Trainium, Cerebras wafer-scale), and the CUDA software ecosystem that dominates. Memory bandwidth — not raw FLOPS — is the key bottleneck for transformer inference.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>GPU vs TPU vs custom silicon tradeoffs</li>
+          <li>Memory bandwidth as the real bottleneck</li>
+          <li>CUDA lock-in and alternatives (ROCm, Metal)</li>
+          <li>Chip generations and how they affect model feasibility</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Read a GPU spec sheet and identify the inference-relevant metrics</li>
+          <li>Compare silicon options for a given workload profile</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">GPU Clouds</h4>
+        <p>Cloud providers specializing in GPU access for AI workloads. Ranges from bare-metal clusters for training (CoreWeave, Lambda) to serverless GPU functions (Modal). Pricing models vary: reserved, on-demand, spot, and marketplace.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Reserved vs on-demand vs spot GPU pricing</li>
+          <li>GPU cloud specialists vs hyperscalers (AWS, GCP, Azure)</li>
+          <li>Serverless GPU (Modal) vs persistent clusters</li>
+          <li>Marketplace models (Vast.ai, RunPod)</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Compare cloud GPU pricing for a given workload</li>
+          <li>Choose between GPU cloud and hyperscaler for a project</li>
+          <li>Estimate monthly compute costs</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Training Infra</h4>
+        <p>Software that coordinates training across multiple GPUs and machines. Data parallelism, model parallelism, pipeline parallelism, and the communication libraries (NCCL) that make them work.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Data parallelism vs model parallelism vs pipeline parallelism</li>
+          <li>NCCL and inter-GPU communication overhead</li>
+          <li>Distributed training frameworks (HF Accelerate, DeepSpeed, Ray Train)</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Set up multi-GPU training with HF Accelerate</li>
+          <li>Understand parallelism strategy tradeoffs</li>
+        </ul>
+      </div>`
   },
   pretrain: {
     index: "02",
@@ -62,19 +97,54 @@ window.VC_LEARN = {
           <text x="405" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Checkpoint</text>
         </svg>
       </div>
-      <p><strong>Key concepts</strong></p>
-      <ul>
-        <li>Data quality dominates model quality — the shift from "more data" to "better data"</li>
-        <li>Scaling laws predict performance from compute budget, data size, and model size</li>
-        <li>Synthetic data generation is increasingly central to training pipelines</li>
-        <li>Base models can complete text but do not follow instructions — that comes at L03</li>
-      </ul>
-      <p><strong>Practical skills</strong></p>
-      <ul class="learn__skills">
-        <li>Evaluate base model capabilities from training data and benchmark results</li>
-        <li>Understand what a model learned vs what it was trained to do</li>
-        <li>Read a model card and understand its limitations</li>
-      </ul>`
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Foundation Models</h4>
+        <p>The organizations that build foundation models and the models themselves. Closed-weight labs (OpenAI, Anthropic, Google) vs open-weight labs (Meta, Mistral, DeepSeek). Each lab's research direction shapes what capabilities exist downstream.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Closed-weight vs open-weight tradeoffs</li>
+          <li>Model families and their architectures (GPT, Claude, Llama, Gemini)</li>
+          <li>MoE (Mixture of Experts) vs dense architectures</li>
+          <li>Scaling laws and diminishing returns</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Compare foundation models by capability, cost, and openness</li>
+          <li>Track model releases and understand what changed</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Training Data</h4>
+        <p>The data that models learn from. Data quality has become more important than data quantity. Includes web crawls (Common Crawl), curated datasets (FineWeb), human annotation (Scale AI, Labelbox), and synthetic data generation.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Data quality over data quantity — the shift driving current gains</li>
+          <li>Web crawl curation and deduplication</li>
+          <li>Human annotation vs programmatic labeling (Snorkel)</li>
+          <li>Synthetic data generation for training</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Evaluate a training dataset for quality and coverage</li>
+          <li>Understand how training data choices affect model behavior</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Training Frameworks</h4>
+        <p>The software that implements model architectures and training loops. From minimal implementations (nanoGPT) to production libraries (HF Transformers) to distributed frameworks (Megatron-LM).</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Transformer implementation details matter for training efficiency</li>
+          <li>Tokenizer design affects model capability</li>
+          <li>Checkpoint management and training resumption</li>
+          <li>Mixed precision training (FP16, BF16)</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Read a model architecture implementation</li>
+          <li>Understand training loss curves and what they indicate</li>
+        </ul>
+      </div>`
   },
   posttrain: {
     index: "03",
@@ -100,19 +170,54 @@ window.VC_LEARN = {
           <text x="410" y="101" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Distillation</text>
         </svg>
       </div>
-      <p><strong>Key concepts</strong></p>
-      <ul>
-        <li>SFT (Supervised Fine-Tuning) teaches models to follow instructions</li>
-        <li>RLHF and DPO align models with human preferences</li>
-        <li>LoRA and QLoRA enable fine-tuning on a single consumer GPU</li>
-        <li>Model merging combines multiple fine-tuned models without additional training</li>
-      </ul>
-      <p><strong>Practical skills</strong></p>
-      <ul class="learn__skills">
-        <li>Run a LoRA fine-tuning job on a specific dataset</li>
-        <li>Evaluate fine-tuned model quality against the base model</li>
-        <li>Decide between fine-tuning, few-shot prompting, and RAG for a given use case</li>
-      </ul>`
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Alignment</h4>
+        <p>Techniques that shape a base model into something useful and safe. SFT teaches instruction following, RLHF uses human preference to train a reward model, and DPO optimizes preferences directly without a separate reward model. This is where safety behavior is primarily instilled.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>SFT (Supervised Fine-Tuning) as the foundation step</li>
+          <li>RLHF vs DPO — reward model vs direct optimization</li>
+          <li>Constitutional AI and self-alignment</li>
+          <li>Preference data quality determines alignment quality</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Prepare an SFT dataset with instruction-response pairs</li>
+          <li>Understand when RLHF vs DPO is appropriate for a use case</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Efficient Adaptation</h4>
+        <p>Methods that adapt models without full retraining. LoRA trains small adapter matrices. QLoRA quantizes the base model first. Distillation trains a smaller student model from a larger teacher. Model merging combines multiple fine-tuned checkpoints.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>LoRA and QLoRA — parameter-efficient fine-tuning that runs on consumer hardware</li>
+          <li>Distillation for creating smaller, faster specialist models</li>
+          <li>Model merging as zero-cost ensembling</li>
+          <li>Adapter composition — stacking multiple LoRAs</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Run a LoRA fine-tuning job on a specific dataset</li>
+          <li>Choose rank and target modules for a LoRA adapter</li>
+          <li>Evaluate fine-tuned vs base model quality</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Managed Fine-Tuning</h4>
+        <p>Hosted services that handle the infrastructure for fine-tuning. Upload a dataset, configure parameters, get a fine-tuned model endpoint. Reduces the barrier from GPU management to API call.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Managed vs self-hosted fine-tuning tradeoffs</li>
+          <li>Cost comparison across managed platforms</li>
+          <li>Data privacy implications of uploading training data</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Fine-tune a model through a managed platform API</li>
+          <li>Compare managed fine-tuning offerings for a specific use case</li>
+        </ul>
+      </div>`
   },
   inference: {
     index: "04",
@@ -142,19 +247,71 @@ window.VC_LEARN = {
           <text x="501" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Response</text>
         </svg>
       </div>
-      <p><strong>Key concepts</strong></p>
-      <ul>
-        <li>Time to first token (TTFT) vs throughput (tokens/second) — different metrics for different use cases</li>
-        <li>Quantization (GPTQ, AWQ, GGUF) reduces model size 2–4x with minimal quality loss</li>
-        <li>Continuous batching and KV-cache optimization drive serving engine performance</li>
-        <li>Inference is modality-agnostic — text, image, video, audio all follow similar patterns</li>
-      </ul>
-      <p><strong>Practical skills</strong></p>
-      <ul class="learn__skills">
-        <li>Choose between cloud API, self-hosted, and local inference for a given use case</li>
-        <li>Set up Ollama or llama.cpp for local model inference</li>
-        <li>Compare inference cost across providers for a given workload</li>
-      </ul>`
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Serving Engines</h4>
+        <p>Software for running models on your own infrastructure. vLLM (PagedAttention, continuous batching), llama.cpp (CPU/GPU C++ inference with GGUF quantization), TGI (HuggingFace production serving), SGLang (structured generation). Each optimizes for different tradeoffs.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>PagedAttention and KV-cache management for throughput</li>
+          <li>Continuous batching for GPU utilization</li>
+          <li>Quantization formats (GGUF, GPTQ, AWQ) and quality tradeoffs</li>
+          <li>Speculative decoding for latency reduction</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Deploy vLLM for a production workload</li>
+          <li>Quantize a model with llama.cpp for local use</li>
+          <li>Benchmark throughput and latency for a serving setup</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Provider APIs</h4>
+        <p>Cloud-hosted model inference accessed through API calls. The simplest path to production — no GPU management, no model loading, no scaling. Tradeoffs are cost, latency, data privacy, and vendor lock-in.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Input/output token pricing and cost estimation</li>
+          <li>Rate limits, quotas, and capacity planning</li>
+          <li>Data processing agreements and privacy compliance</li>
+          <li>Multi-provider strategies for redundancy</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Estimate API costs for a given workload</li>
+          <li>Implement retry logic and error handling for provider APIs</li>
+          <li>Compare latency across providers</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Local Runners</h4>
+        <p>Tools for running models on personal hardware. Ollama (CLI), LM Studio (desktop app), MLX (Apple Silicon framework). Useful for development, privacy-sensitive use cases, and offline scenarios.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Model size vs hardware requirements — what runs on a laptop</li>
+          <li>Quantization enables local inference at the cost of some quality</li>
+          <li>Apple Silicon (MLX) vs NVIDIA GPU for local inference</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Set up Ollama for local development</li>
+          <li>Choose the right quantization level for available hardware</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Multimodal</h4>
+        <p>Inference beyond text — speech-to-text (Whisper), text-to-speech (ElevenLabs), image generation (DALL-E, Midjourney), video generation (Sora, Runway). Each modality has distinct latency, quality, and cost characteristics.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>STT vs TTS pipelines and their latency profiles</li>
+          <li>Image generation architectures (diffusion, autoregressive)</li>
+          <li>Video generation is still early — quality and cost are rapidly changing</li>
+          <li>Real-time voice requires sub-200ms latency</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Integrate a text-to-speech API into a workflow</li>
+          <li>Choose between multimodal providers for a given use case</li>
+        </ul>
+      </div>`
   },
   routing: {
     index: "05",
@@ -178,19 +335,54 @@ window.VC_LEARN = {
           <text x="340" y="118" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Model C</text>
         </svg>
       </div>
-      <p><strong>Key concepts</strong></p>
-      <ul>
-        <li>Fallback chains provide reliability when a provider goes down</li>
-        <li>Task-type routing dispatches simple vs complex vs code requests to different models</li>
-        <li>Cost-aware routing tracks spend and downgrades models when budgets are tight</li>
-        <li>Routing makes model diversity practical — cheap models for routine, expensive for hard</li>
-      </ul>
-      <p><strong>Practical skills</strong></p>
-      <ul class="learn__skills">
-        <li>Set up a basic routing proxy with LiteLLM or OpenRouter</li>
-        <li>Define fallback chains for production reliability</li>
-        <li>Implement cost-based routing rules</li>
-      </ul>`
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Gateways & Proxies</h4>
+        <p>Middleware that provides a single API interface to multiple model providers. Handles authentication, format translation, caching, and rate limiting. The simplest routing: call one endpoint, reach many models.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Unified API format across providers (OpenAI-compatible)</li>
+          <li>Caching for repeated queries reduces cost</li>
+          <li>Load balancing and rate limit management</li>
+          <li>Format translation between provider-specific APIs</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Set up LiteLLM as a local proxy</li>
+          <li>Configure OpenRouter for multi-provider access</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Intelligent Routing</h4>
+        <p>Systems that choose the best model for each request based on task type, difficulty, cost budget, or quality requirements. Goes beyond fallback chains into predictive model selection.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Task classification for model selection</li>
+          <li>Quality prediction vs cost optimization tradeoffs</li>
+          <li>Benchmark-driven routing</li>
+          <li>Dynamic routing based on real-time provider performance</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Implement task-type routing that dispatches simple vs complex requests to different models</li>
+          <li>Set up cost-based routing rules</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Observability Proxies</h4>
+        <p>Routing layers that also capture telemetry — request/response logs, latency, cost tracking, quality metrics. Useful when you need both routing and visibility into what is happening.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Request logging for debugging and audit</li>
+          <li>Cost tracking per model, per user, per feature</li>
+          <li>Latency monitoring across providers</li>
+          <li>Combining routing with observability in one layer</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Set up Helicone for cost and latency tracking</li>
+          <li>Build dashboards for model usage patterns</li>
+        </ul>
+      </div>`
   },
   orchestration: {
     index: "06",
@@ -218,19 +410,73 @@ window.VC_LEARN = {
           <text x="180" y="90" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Iterate / Ship</text>
         </svg>
       </div>
-      <p><strong>Key concepts</strong></p>
-      <ul>
-        <li>Agent loops: plan, execute tools, observe results, iterate until done</li>
-        <li>Task decomposition breaks complex work into atomic steps with clear contracts</li>
-        <li>Agent SDKs (Anthropic Agent SDK, OpenAI Agents API) provide first-party orchestration primitives</li>
-        <li>Retry logic, timeout handling, and cost budgets are production essentials</li>
-      </ul>
-      <p><strong>Practical skills</strong></p>
-      <ul class="learn__skills">
-        <li>Design a multi-step agent workflow for a specific use case</li>
-        <li>Define handoff contracts between workflow stages</li>
-        <li>Set up human-in-the-loop approval gates</li>
-      </ul>`
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Agent Patterns</h4>
+        <p>What an agent loop actually is: plan, tool call, observe, iterate. The core architectural choices are single-agent vs multi-agent, first-party SDKs (Anthropic Agent SDK, OpenAI Agents API) vs third-party frameworks (LangGraph, CrewAI). When a framework helps vs when raw SDK calls are better depends on workflow complexity and the need for state management.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>The agent loop — plan, act, observe, iterate until done</li>
+          <li>Single-agent vs multi-agent architectures</li>
+          <li>First-party SDKs (Anthropic, OpenAI) vs third-party frameworks (LangGraph, CrewAI)</li>
+          <li>When a framework helps vs when raw SDK is simpler and better</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Build a single-agent loop with the Anthropic SDK</li>
+          <li>Design a multi-agent system with handoff contracts</li>
+          <li>Choose between framework and raw SDK for a given use case</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Workflow Design</h4>
+        <p>Structuring AI work into repeatable pipelines with typed contracts between stages. Common shapes: chain (sequential steps), branch/merge (parallel paths), loop-until-done, hierarchical delegation. Cost budgets and timeout handling are first-class constraints, not afterthoughts.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Task decomposition into atomic operations with typed contracts</li>
+          <li>Common workflow shapes — chain, branch/merge, loop, hierarchical delegation</li>
+          <li>Cost budgets and timeout handling as first-class design constraints</li>
+          <li>Handoff contracts (JSON schemas, validation) between stages</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Design a multi-step workflow with clear stage boundaries</li>
+          <li>Implement cost and timeout budgets for a pipeline</li>
+          <li>Build a DAG-based workflow in Dify or n8n</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Human Oversight</h4>
+        <p>The spectrum of human involvement in AI workflows. Human-in-the-loop: human approves every significant action. Human-on-the-loop: agent executes, human monitors and can intervene. Bounded autonomy: agent acts within pre-defined boundaries, escalates edge cases. The right position on this spectrum depends on reversibility, stakes, and confidence.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>The oversight spectrum — human-in-the-loop, human-on-the-loop, bounded autonomy</li>
+          <li>Placing a task on the spectrum — reversibility, stakes, confidence</li>
+          <li>Approval gates and escalation rules as architectural primitives</li>
+          <li>Trust boundaries — what the agent can do without asking</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Design an approval gate for a high-stakes agent action</li>
+          <li>Implement escalation rules based on confidence thresholds</li>
+          <li>Choose the right oversight level for a given use case</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Execution Environments</h4>
+        <p>Where agent code actually runs. Sandboxed execution for code-generating agents, containerized environments, cloud sandboxes (E2B), and the resource limits, network policies, and data access controls that make agent execution safe.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Sandboxing for code-executing agents — why it matters</li>
+          <li>Cloud sandbox (E2B) vs local execution vs containers</li>
+          <li>Resource limits, network policies, data access controls</li>
+          <li>Cold start latency and its impact on agent responsiveness</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Set up E2B sandboxes for an agent workflow</li>
+          <li>Configure resource limits and network policies for agent execution</li>
+        </ul>
+      </div>`
   },
   context: {
     index: "07",
@@ -257,19 +503,74 @@ window.VC_LEARN = {
           <text x="398" y="64" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Model</text>
         </svg>
       </div>
-      <p><strong>Key concepts</strong></p>
-      <ul>
-        <li>RAG: chunk documents, embed them, store in vector DB, retrieve at query time</li>
-        <li>Chunking strategy directly affects retrieval quality — size, overlap, boundaries</li>
-        <li>Volatile state (conversation) vs durable state (decisions, docs) need different storage</li>
-        <li>Context hygiene: audit what is in the window, remove noise, deduplicate</li>
-      </ul>
-      <p><strong>Practical skills</strong></p>
-      <ul class="learn__skills">
-        <li>Build a basic RAG pipeline with embedding, storage, and retrieval</li>
-        <li>Design a chunking strategy for a specific document type</li>
-        <li>Implement context lifecycle management — creation, mutation, archival</li>
-      </ul>`
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Vector Storage</h4>
+        <p>Purpose-built databases for storing and searching high-dimensional vectors. Range from managed services (Pinecone) to self-hosted engines (Qdrant, Weaviate) to database extensions (pgvector). The choice depends on scale, operational complexity tolerance, and existing infrastructure.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Approximate nearest neighbor (ANN) search algorithms (HNSW, IVF)</li>
+          <li>Managed vs self-hosted vector databases</li>
+          <li>pgvector — vector search inside existing Postgres</li>
+          <li>Indexing strategies and their impact on recall and latency</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Set up a vector database and load embeddings</li>
+          <li>Choose between managed and self-hosted for a given scale</li>
+          <li>Tune index parameters for recall vs latency</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Retrieval & Search</h4>
+        <p>The full retrieval pipeline: document parsing (PDF, DOCX to text), chunking, embedding, search, and reranking. Reranking is a second-stage step that scores and reorders search results before they enter the context window, dramatically improving relevance.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Document parsing quality directly affects downstream retrieval</li>
+          <li>Chunking strategy — size, overlap, boundaries</li>
+          <li>Hybrid search — combining vector similarity with keyword matching</li>
+          <li>Reranking as a critical quality improvement step</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Build an end-to-end RAG pipeline</li>
+          <li>Design a chunking strategy for a specific document type</li>
+          <li>Add reranking to an existing retrieval pipeline</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Memory Systems</h4>
+        <p>How AI systems maintain state across interactions. Conversation memory (within a session), long-term memory (across sessions), and knowledge management (structured, durable knowledge). The distinction between volatile state (conversation) and durable state (decisions, docs) is fundamental.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Volatile vs durable memory — different storage for different purposes</li>
+          <li>Conversation memory strategies — sliding window, summarization, compaction</li>
+          <li>Long-term memory systems for cross-session persistence</li>
+          <li>Knowledge management as a human-AI discipline</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Implement conversation memory with summarization</li>
+          <li>Design a long-term memory system for an agent</li>
+          <li>Set up a knowledge management workflow</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Embeddings</h4>
+        <p>The models that convert text (and other data) into numerical vectors. Embedding quality determines retrieval quality. Dedicated embedding models (Voyage AI, Jina) often outperform general-purpose LLM embeddings for retrieval tasks. Serving at scale requires specialized infrastructure (HF TEI).</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Embedding model quality varies significantly — benchmarks matter</li>
+          <li>Domain-specific vs general-purpose embeddings</li>
+          <li>Embedding dimensions and their impact on storage and search</li>
+          <li>Batch embedding for large document collections</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Choose an embedding model for a specific retrieval use case</li>
+          <li>Set up HF TEI for production embedding serving</li>
+          <li>Evaluate embedding quality with retrieval benchmarks</li>
+        </ul>
+      </div>`
   },
   integrations: {
     index: "08",
@@ -295,19 +596,57 @@ window.VC_LEARN = {
           <text x="322" y="132" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Tools</text>
         </svg>
       </div>
-      <p><strong>Key concepts</strong></p>
-      <ul>
-        <li>MCP (Model Context Protocol) standardizes tool discovery and invocation</li>
-        <li>Function calling turns model outputs into structured tool invocations</li>
-        <li>Marketplace models (ChatGPT plugins, GPT Store) commoditize tool access</li>
-        <li>Tool permissions and audit trails are critical for production safety</li>
-      </ul>
-      <p><strong>Practical skills</strong></p>
-      <ul class="learn__skills">
-        <li>Set up an MCP server for a specific tool integration</li>
-        <li>Implement function calling with structured output validation</li>
-        <li>Audit and restrict tool permissions in a production deployment</li>
-      </ul>`
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Protocols & Standards</h4>
+        <p>The interfaces through which AI systems connect to external capabilities. MCP (Model Context Protocol) standardizes tool discovery and invocation. Function calling is how models emit structured tool requests. Structured outputs constrain generation to valid schemas. A2A (Agent-to-Agent) is an emerging protocol for agent interoperability.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>MCP as a standard for tool discovery and invocation</li>
+          <li>Function calling as the universal model-to-tool interface</li>
+          <li>Structured outputs (JSON mode, schemas) for reliable parsing</li>
+          <li>A2A and agent interoperability standards</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Build an MCP server for a specific tool</li>
+          <li>Implement function calling with structured output validation</li>
+          <li>Design a tool interface with clear schemas</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Code & Dev Tools</h4>
+        <p>AI tools embedded in the development workflow. Ranges from code completion (GitHub Copilot, Supermaven) to AI-first editors (Cursor, Windsurf) to terminal agents (Aider, Claude Code). The integration depth — from autocomplete to full agent — determines how much of the development cycle the tool can handle.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Code completion vs chat vs agent — three levels of integration depth</li>
+          <li>Editor-native vs terminal-native coding tools</li>
+          <li>Codebase context and its impact on suggestion quality</li>
+          <li>Multi-file editing and the agent mode transition</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Set up an AI coding assistant for a specific workflow</li>
+          <li>Configure codebase context for better suggestions</li>
+          <li>Compare coding tools for a given development style</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Connectors</h4>
+        <p>Pre-built bridges between AI systems and external services. Ranges from enterprise integration platforms (Zapier AI Actions) to developer SDKs (Vercel AI SDK) to agent tool platforms (Composio). Reduces the bespoke integration work for common connections.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Pre-built vs custom integrations — when each makes sense</li>
+          <li>OAuth and authentication management for tool access</li>
+          <li>SDK-level integrations (Vercel AI SDK) vs platform-level (Zapier)</li>
+          <li>Tool permission scoping and security</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Connect an AI workflow to external APIs through a connector platform</li>
+          <li>Implement streaming responses with Vercel AI SDK</li>
+          <li>Set up tool authentication and permission scoping</li>
+        </ul>
+      </div>`
   },
   eval: {
     index: "09",
@@ -337,19 +676,57 @@ window.VC_LEARN = {
           <text x="494" y="45" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Pass / Fail</text>
         </svg>
       </div>
-      <p><strong>Key concepts</strong></p>
-      <ul>
-        <li>Golden test sets catch regressions before they reach users</li>
-        <li>Guardrails validate outputs at runtime — format, safety, business logic</li>
-        <li>Static analysis, property-based testing, and other automated verification methods matter more as code volume explodes</li>
-        <li>Evals should run in CI — a prompt change that degrades quality does not ship</li>
-      </ul>
-      <p><strong>Practical skills</strong></p>
-      <ul class="learn__skills">
-        <li>Build a golden test set for a specific AI workflow</li>
-        <li>Set up Promptfoo or Braintrust for automated evaluation</li>
-        <li>Implement runtime guardrails with output validation</li>
-      </ul>`
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Evaluation</h4>
+        <p>Systematic testing of AI system outputs. Golden test sets catch regressions, benchmark suites measure capability, and CI-integrated evals prevent quality degradation from shipping. Evals should run automatically on every prompt or pipeline change.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Golden test sets for regression testing</li>
+          <li>Benchmark suites for capability measurement</li>
+          <li>CI-integrated evals — a prompt change that degrades quality does not ship</li>
+          <li>Model-as-judge for scalable evaluation</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Build a golden test set for a specific AI workflow</li>
+          <li>Set up Promptfoo or Braintrust for automated evaluation</li>
+          <li>Integrate evals into a CI pipeline</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Observability</h4>
+        <p>Monitoring AI systems in production. Request-level tracing, latency metrics, cost tracking, error rates, and quality scores. Without observability, you cannot know whether your system is degrading until users complain.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Request-level tracing for debugging multi-step workflows</li>
+          <li>Cost tracking per model, per user, per feature</li>
+          <li>Latency monitoring and SLA compliance</li>
+          <li>Quality score trending over time</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Set up Langfuse for LLM observability</li>
+          <li>Build cost and quality dashboards</li>
+          <li>Implement alerting for quality degradation</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Guardrails & Security</h4>
+        <p>Runtime checks that validate model outputs before they reach users. Content safety classifiers (Llama Guard), output format validation (Guardrails AI), prompt injection detection (Lakera), and business logic constraints. These are the last line of defense.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Content safety classification — blocking harmful outputs at runtime</li>
+          <li>Prompt injection detection and prevention</li>
+          <li>Output format validation and business logic constraints</li>
+          <li>Layered defense — multiple guardrails in sequence</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Implement runtime output validation with Guardrails AI</li>
+          <li>Set up prompt injection detection</li>
+          <li>Design a layered guardrail pipeline</li>
+        </ul>
+      </div>`
   },
   products: {
     index: "10",
@@ -373,18 +750,69 @@ window.VC_LEARN = {
           <text x="322" y="75" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Vertical</text>
         </svg>
       </div>
-      <p><strong>Key concepts</strong></p>
-      <ul>
-        <li>Product archetypes: chatbot, copilot, agent, search, creative, platform, vertical</li>
-        <li>Defensibility comes from domain context, proprietary data, or deep workflow integration</li>
-        <li>"Uses AI" is not a moat — the model provider will likely build your feature</li>
-        <li>Thin wrappers over APIs compete on UX alone, which is fragile</li>
-      </ul>
-      <p><strong>Practical skills</strong></p>
-      <ul class="learn__skills">
-        <li>Classify a product by its archetype and identify its moat</li>
-        <li>Design a product integration that creates lock-in through context and workflow</li>
-        <li>Evaluate build-vs-buy decisions for AI capabilities</li>
-      </ul>`
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Assistants & Copilots</h4>
+        <p>AI products that augment human work through conversation or embedded assistance. General-purpose assistants (ChatGPT, Claude, Gemini) handle broad tasks. Copilots (GitHub Copilot, M365 Copilot) embed AI into existing workflows. The human remains in control, making final decisions.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Assistant vs copilot — standalone vs embedded in workflow</li>
+          <li>General-purpose vs domain-specific assistants</li>
+          <li>Context window and tool access as differentiators</li>
+          <li>The user interaction pattern — chat, suggest, complete</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Evaluate assistant products for a specific workflow</li>
+          <li>Design copilot integration points in an existing product</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Autonomous Agents</h4>
+        <p>Products where the AI operates with significant autonomy toward a goal. Coding agents (Devin, Claude Code, Codex), sales agents (11x), customer service agents (Sierra). The key differentiator from copilots: the agent takes actions, not just suggestions.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Agent-as-product vs agent-as-feature</li>
+          <li>Trust and verification for autonomous outputs</li>
+          <li>The handoff problem — when should the agent escalate to a human</li>
+          <li>Pricing models for agent products (per-task, per-seat, per-outcome)</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Evaluate autonomous agent products for reliability and trust</li>
+          <li>Design human oversight for an agent product</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Creative Tools</h4>
+        <p>AI products for generating creative content — images (Midjourney, Ideogram), video (Runway, Pika), music (Suno), and code/apps (Lovable, Bolt.new, v0). The fastest-evolving product category, with quality improving monthly.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Image, video, music, and code generation as distinct product categories</li>
+          <li>Quality vs control tradeoffs in creative tools</li>
+          <li>Prompt engineering for creative outputs</li>
+          <li>Iterative refinement workflows</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Use creative AI tools effectively for a specific output type</li>
+          <li>Design a creative workflow that combines AI generation with human refinement</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">Vertical AI</h4>
+        <p>AI products built for specific industries or functions. Legal (Harvey), healthcare (Abridge), marketing (Jasper, Writer), enterprise search (Glean), finance (Hebbia). Defensibility comes from domain context, proprietary data, regulatory compliance, and deep workflow integration — not from the model itself.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Domain context and proprietary data as moats</li>
+          <li>Regulatory compliance as a barrier to entry (healthcare, legal, finance)</li>
+          <li>Workflow integration depth determines stickiness</li>
+          <li>The "thin wrapper" risk — if your product is just a UI on an API, the provider will build it</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Identify the moat in a vertical AI product</li>
+          <li>Evaluate build-vs-buy for domain-specific AI capabilities</li>
+        </ul>
+      </div>`
   }
 };

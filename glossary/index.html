@@ -48,7 +48,7 @@
           <dl class="glossary__list">
             <div class="glossary__entry">
               <dt id="agent">Agent</dt>
-              <dd>A system that uses an LLM to plan, take actions, observe results, and iterate toward a goal. Agents combine reasoning with tool use to complete multi-step tasks autonomously. Value chain layer: L06 Orchestration.</dd>
+              <dd>A system that uses an LLM to plan, take actions, observe results, and iterate toward a goal. Agents combine a control loop with tool use, memory, and safety checks to complete multi-step tasks autonomously or with human oversight. See also: <a href="/#vc-orchestration">L06 Orchestration</a>.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="ai-fluency">AI Fluency</dt>
@@ -215,8 +215,16 @@
               <dd>When a model generates confident but factually incorrect information. A fundamental challenge with autoregressive models that produce statistically plausible text regardless of truth.</dd>
             </div>
             <div class="glossary__entry">
+              <dt id="harness">Harness</dt>
+              <dd>The system built around the model — context pipelines, workflows, evaluations, integrations, and routing. The model is a commodity that changes monthly; the harness is the durable asset that absorbs change without rebuilding. Good harness is small, explicit, versioned, and portable. Bad harness is tangled with a single provider.</dd>
+            </div>
+            <div class="glossary__entry">
               <dt id="hitl">HITL (human-in-the-loop)</dt>
               <dd>A workflow design where human judgment is required at specific decision points. Used for high-stakes actions, quality review, and safety-critical outputs.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="human-oversight-spectrum">Human oversight spectrum</dt>
+              <dd>The range of human involvement in AI workflows. Human-in-the-loop: human approves every significant action. Human-on-the-loop: agent executes, human monitors and can intervene. Bounded autonomy: agent acts within pre-defined boundaries, escalates edge cases. The right position depends on reversibility, stakes, and confidence. Value chain layer: L06 Orchestration.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="hyperparameter">Hyperparameter</dt>
