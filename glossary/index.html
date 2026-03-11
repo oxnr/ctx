@@ -84,7 +84,7 @@
             </div>
             <div class="glossary__entry">
               <dt id="benchmarking">Benchmarking</dt>
-              <dd>Standardized evaluation of model performance on specific tasks. Common benchmarks include MMLU, HumanEval, MATH, and arena-style human preference rankings.</dd>
+              <dd>Standardized evaluation of model performance on specific tasks. Common benchmarks include MMLU, HumanEval, MATH, and arena-style human preference rankings. In a post-training workflow, benchmarking confirms that a fine-tuned model improves on the target task without regressing on general capability. Value chain layer: L03 Post-Training, L09 Eval and Safety.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="bias-ai">Bias (AI)</dt>
@@ -363,6 +363,10 @@
               <dd>All training done after pre-training — SFT, RLHF, DPO, distillation. Shapes the base model into an instruction-following, safe, useful assistant. Value chain layer: L03 Post-Training.</dd>
             </div>
             <div class="glossary__entry">
+              <dt id="prompt-caching">Prompt caching</dt>
+              <dd>Reusing computed KV states for repeated prefixes so the model skips redundant computation on the shared portion of a prompt. Supported natively by Anthropic, OpenAI, and inference gateways like Cloudflare AI Gateway and Portkey. Value chain layer: L04 Inference.</dd>
+            </div>
+            <div class="glossary__entry">
               <dt id="prompt-engineering">Prompt engineering</dt>
               <dd>The practice of crafting inputs to get desired outputs from a model. Includes system prompts, few-shot examples, chain-of-thought instructions, and structured output formatting.</dd>
             </div>
@@ -419,6 +423,10 @@
           <h2 class="glossary__letter" id="letter-S">S</h2>
           <dl class="glossary__list">
             <div class="glossary__entry">
+              <dt id="semantic-caching">Semantic caching</dt>
+              <dd>Caching model responses by meaning similarity rather than exact string match. When a new prompt is semantically close to a previously cached one, the cached response is returned without running inference. Reduces cost and latency for repeated or near-duplicate queries. Value chain layer: L04 Inference.</dd>
+            </div>
+            <div class="glossary__entry">
               <dt id="serving">Serving</dt>
               <dd>Running models in production to handle user requests. Includes the infrastructure for loading models, managing GPU memory, batching requests, and scaling with demand. Value chain layer: L04 Inference.</dd>
             </div>
@@ -442,6 +450,10 @@
 
           <h2 class="glossary__letter" id="letter-T">T</h2>
           <dl class="glossary__list">
+            <div class="glossary__entry">
+              <dt id="token-optimization">Token optimization</dt>
+              <dd>Umbrella term for techniques that reduce token usage without sacrificing output quality. Includes prompt caching, semantic caching, prompt compression, structured output constraints, and KV cache management. Value chain layer: L04 Inference.</dd>
+            </div>
             <div class="glossary__entry">
               <dt id="token">Token</dt>
               <dd>The basic unit of text that models process. A token is roughly 3-4 characters in English. Models have limits on total tokens (context window) and are priced per token.</dd>

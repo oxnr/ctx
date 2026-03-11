@@ -13,13 +13,15 @@ window.VC_DATA = {
     { id: "posttrain", index: "03", label: "Post-Training", shortDesc: "Fine-tuning, RLHF, LoRA, model merging", subcategories: [
       { id: "alignment", label: "Alignment", desc: "RLHF, DPO, SFT, preference tuning" },
       { id: "efficient-adaptation", label: "Efficient Adaptation", desc: "LoRA, QLoRA, distillation, merging" },
-      { id: "managed-finetuning", label: "Managed Fine-Tuning", desc: "Platforms" }
+      { id: "managed-finetuning", label: "Managed Fine-Tuning", desc: "Platforms" },
+      { id: "benchmarking", label: "Benchmarking", desc: "Evaluating fine-tuned model quality" }
     ]},
     { id: "inference", index: "04", label: "Inference", shortDesc: "Serving engines, APIs, quantization", subcategories: [
       { id: "serving-engines", label: "Serving Engines", desc: "Self-hosted runtimes" },
       { id: "provider-apis", label: "Provider APIs", desc: "Hosted endpoints" },
       { id: "local-runners", label: "Local Runners", desc: "Desktop & edge" },
-      { id: "multimodal", label: "Multimodal", desc: "Voice, image, video" }
+      { id: "multimodal", label: "Multimodal", desc: "Voice, image, video" },
+      { id: "optimization", label: "Optimization", desc: "Caching, compression, token efficiency" }
     ]},
     { id: "routing", index: "05", label: "Routing", shortDesc: "Model routers, gateways, proxies", subcategories: [
       { id: "gateways-proxies", label: "Gateways & Proxies", desc: "Unified APIs" },
@@ -104,10 +106,10 @@ window.VC_DATA = {
     { id: "anyscale", name: "Anyscale", desc: "Distributed fine-tuning on Ray", type: "managed", url: "https://www.anyscale.com", github: null, directLayers: ["posttrain"], indirectLayers: [], yc: null, subcategories: ["managed-finetuning"]},
     { id: "replicate", name: "Replicate", desc: "Fine-tuning and inference API for open models", type: "managed", url: "https://replicate.com", github: null, directLayers: ["posttrain", "inference"], indirectLayers: [], yc: null, subcategories: ["managed-finetuning"]},
     { id: "openai-finetuning", name: "OpenAI Fine-tuning", desc: "Fine-tuning API for GPT models", type: "proprietary", url: "https://platform.openai.com/docs/guides/fine-tuning", github: null, directLayers: ["posttrain"], indirectLayers: [], yc: null, subcategories: ["managed-finetuning"]},
-    { id: "openlayer", name: "Openlayer", desc: "Fine-tuning evaluation and data quality", type: "managed", url: "https://openlayer.com", github: null, directLayers: ["posttrain", "eval"], indirectLayers: [], yc: null, subcategories: ["managed-finetuning"]},
+    { id: "openlayer", name: "Openlayer", desc: "Fine-tuning evaluation and data quality", type: "managed", url: "https://openlayer.com", github: null, directLayers: ["posttrain", "eval"], indirectLayers: [], yc: null, subcategories: ["managed-finetuning", "benchmarking"]},
     { id: "oxen-ai", name: "Oxen.ai", desc: "Dataset versioning for training pipelines", type: "open-source", url: "https://oxen.ai", github: "https://github.com/Oxen-AI/Oxen", directLayers: ["posttrain"], indirectLayers: [], yc: "W24", subcategories: ["training-data"]},
     { id: "hf-peft", name: "HuggingFace PEFT", desc: "LoRA, QLoRA, parameter-efficient fine-tuning", type: "open-source", url: "https://huggingface.co/docs/peft", github: "https://github.com/huggingface/peft", directLayers: ["posttrain"], indirectLayers: [], yc: null, subcategories: ["efficient-adaptation"]},
-    { id: "openpipe", name: "OpenPipe", desc: "Fine-tuning and evaluation platform for LLMs", type: "managed", url: "https://openpipe.ai", github: null, directLayers: ["posttrain", "eval"], indirectLayers: ["inference"], yc: "S23", subcategories: ["managed-finetuning"]},
+    { id: "openpipe", name: "OpenPipe", desc: "Fine-tuning and evaluation platform for LLMs", type: "managed", url: "https://openpipe.ai", github: null, directLayers: ["posttrain", "eval"], indirectLayers: ["inference"], yc: "S23", subcategories: ["managed-finetuning", "benchmarking"]},
 
     // ── L04 Inference ──
     { id: "vllm", name: "vLLM", desc: "High-throughput serving engine, PagedAttention", type: "open-source", url: "https://docs.vllm.ai", github: "https://github.com/vllm-project/vllm", directLayers: ["inference"], indirectLayers: [], yc: null, subcategories: ["serving-engines"]},
@@ -145,7 +147,7 @@ window.VC_DATA = {
     // ── L05 Routing ──
     { id: "openrouter", name: "OpenRouter", desc: "Unified API across 300+ models, automatic fallback", type: "managed", url: "https://openrouter.ai", github: null, directLayers: ["routing"], indirectLayers: [], yc: null, subcategories: ["gateways-proxies"]},
     { id: "litellm", name: "LiteLLM", desc: "Open-source LLM proxy for 100+ providers", type: "open-source", url: "https://litellm.ai", github: "https://github.com/BerriAI/litellm", directLayers: ["routing"], indirectLayers: [], yc: null, subcategories: ["gateways-proxies"]},
-    { id: "portkey", name: "Portkey", desc: "AI gateway with routing, caching, guardrails", type: "managed", url: "https://portkey.ai", github: null, directLayers: ["routing"], indirectLayers: [], yc: "W24", subcategories: ["gateways-proxies"]},
+    { id: "portkey", name: "Portkey", desc: "AI gateway with routing, caching, guardrails", type: "managed", url: "https://portkey.ai", github: null, directLayers: ["routing", "inference"], indirectLayers: [], yc: "W24", subcategories: ["gateways-proxies", "optimization"]},
     { id: "unify", name: "Unify", desc: "Benchmark-driven model routing", type: "managed", url: "https://unify.ai", github: null, directLayers: ["routing"], indirectLayers: [], yc: null, subcategories: ["intelligent-routing"]},
     { id: "martian", name: "Martian", desc: "Intelligent model router with quality prediction", type: "managed", url: "https://withmartian.com", github: null, directLayers: ["routing"], indirectLayers: [], yc: null, subcategories: ["intelligent-routing"]},
     { id: "helicone", name: "Helicone", desc: "LLM proxy with observability and cost tracking", type: "managed", url: "https://www.helicone.ai", github: null, directLayers: ["routing", "eval"], indirectLayers: [], yc: "W23", subcategories: ["observability-proxies"]},
@@ -216,7 +218,7 @@ window.VC_DATA = {
     { id: "athina-ai", name: "Athina AI", desc: "Production AI monitoring and evaluation", type: "managed", url: "https://athina.ai", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["observability"]},
     { id: "galileo", name: "Galileo", desc: "Data intelligence for LLMs", type: "managed", url: "https://www.rungalileo.io", github: null, directLayers: ["eval"], indirectLayers: [], yc: "W22", subcategories: ["observability"]},
     { id: "freeplay", name: "Freeplay", desc: "Prompt testing and evaluation platform", type: "managed", url: "https://freeplay.ai", github: null, directLayers: ["eval"], indirectLayers: [], yc: "W24", subcategories: ["evaluation"]},
-    { id: "hf-evaluate", name: "HuggingFace Evaluate", desc: "Model evaluation metrics library", type: "open-source", url: "https://huggingface.co/docs/evaluate", github: "https://github.com/huggingface/evaluate", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["evaluation"]},
+    { id: "hf-evaluate", name: "HuggingFace Evaluate", desc: "Model evaluation metrics library", type: "open-source", url: "https://huggingface.co/docs/evaluate", github: "https://github.com/huggingface/evaluate", directLayers: ["eval", "posttrain"], indirectLayers: [], yc: null, subcategories: ["evaluation", "benchmarking"]},
     { id: "weights-biases", name: "Weights & Biases", desc: "ML experiment tracking and evaluation", type: "managed", url: "https://wandb.ai", github: null, directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
     { id: "mlflow", name: "MLflow", desc: "Open-source ML lifecycle management", type: "open-source", url: "https://mlflow.org", github: "https://github.com/mlflow/mlflow", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
     { id: "ragas", name: "RAGAS", desc: "RAG evaluation framework", type: "open-source", url: "https://docs.ragas.io", github: "https://github.com/explodinggradients/ragas", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["evaluation"]},
@@ -295,7 +297,7 @@ window.VC_DATA = {
 
     // ── Additional Eval ──
     { id: "traceloop", name: "Traceloop (OpenLLMetry)", desc: "Vendor-neutral LLM tracing via OpenTelemetry", type: "open-source", url: "https://www.traceloop.com", github: "https://github.com/traceloop/openllmetry", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
-    { id: "lmsys", name: "LMSYS Chatbot Arena", desc: "Crowdsourced LLM evaluation via blind comparisons", type: "open-source", url: "https://chat.lmsys.org", github: "https://github.com/lm-sys/FastChat", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["evaluation"]},
+    { id: "lmsys", name: "LMSYS Chatbot Arena", desc: "Crowdsourced LLM evaluation via blind comparisons", type: "open-source", url: "https://chat.lmsys.org", github: "https://github.com/lm-sys/FastChat", directLayers: ["eval", "posttrain"], indirectLayers: [], yc: null, subcategories: ["evaluation", "benchmarking"]},
     { id: "deepchecks", name: "Deepchecks", desc: "ML and LLM validation and testing framework", type: "open-source", url: "https://deepchecks.com", github: "https://github.com/deepchecks/deepchecks", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["evaluation"]},
 
     // ── Cloud Provider AI Offerings ──
@@ -339,7 +341,7 @@ window.VC_DATA = {
 
     // ── New: Routing ──
     { id: "venice-ai", name: "Venice AI", desc: "Privacy-focused AI platform with uncensored model access", type: "managed", url: "https://venice.ai", github: null, directLayers: ["routing"], indirectLayers: ["inference"], yc: null, subcategories: ["gateways-proxies"]},
-    { id: "cloudflare-ai-gateway", name: "Cloudflare AI Gateway", desc: "Proxy layer for AI APIs with caching, rate limiting, and fallback routing", type: "managed", url: "https://developers.cloudflare.com/ai-gateway/", github: null, directLayers: ["routing"], indirectLayers: [], yc: null, subcategories: ["gateways-proxies"]},
+    { id: "cloudflare-ai-gateway", name: "Cloudflare AI Gateway", desc: "Proxy layer for AI APIs with caching, rate limiting, and fallback routing", type: "managed", url: "https://developers.cloudflare.com/ai-gateway/", github: null, directLayers: ["routing", "inference"], indirectLayers: [], yc: null, subcategories: ["gateways-proxies", "optimization"]},
 
     // ── New: Orchestration (expanded — this is where most innovation is happening) ──
     { id: "mastra", name: "Mastra", desc: "Open-source TypeScript framework for building AI agents with workflows, RAG, and evals", type: "open-source", url: "https://mastra.ai", github: "https://github.com/mastra-ai/mastra", directLayers: ["orchestration"], indirectLayers: ["context", "eval"], yc: "W25", subcategories: ["agent-patterns"]},
