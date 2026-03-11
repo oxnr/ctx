@@ -561,6 +561,7 @@ window.VC_LEARN = {
           <li>Chunking strategy — size, overlap, boundaries</li>
           <li>Hybrid search — combining vector similarity with keyword matching</li>
           <li>Reranking as a critical quality improvement step</li>
+          <li>Documentation-as-context — injecting current library docs into prompts to prevent API hallucination</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">

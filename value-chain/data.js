@@ -365,6 +365,7 @@ window.VC_DATA = {
     { id: "morphik", name: "Morphik", desc: "Open-source document search for LLMs with unified knowledge storage API", type: "open-source", url: "https://morphik.ai", github: null, directLayers: ["context"], indirectLayers: [], yc: "S25", subcategories: ["retrieval-search"]},
     { id: "helixdb", name: "HelixDB", desc: "Unified graph-vector database for faster and more relevant AI context", type: "open-source", url: "https://helixdb.com", github: null, directLayers: ["context"], indirectLayers: [], yc: "S25", subcategories: ["vector-storage"]},
     { id: "quivr", name: "Quivr", desc: "Open-source RAG framework and chat interface for enterprise tools", type: "open-source", url: "https://quivr.com", github: "https://github.com/QuivrHQ/quivr", directLayers: ["context"], indirectLayers: [], yc: "W24", subcategories: ["retrieval-search"]},
+    { id: "context7", name: "Context7", desc: "MCP server that injects up-to-date library documentation into LLM prompts", type: "open-source", url: "https://context7.com", github: "https://github.com/upstash/context7", directLayers: ["context"], indirectLayers: ["integrations"], yc: null, subcategories: ["retrieval-search"]},
 
     // ── New: Integrations ──
     { id: "greptile", name: "Greptile", desc: "AI code review agent with full codebase context", type: "managed", url: "https://greptile.com", github: null, directLayers: ["integrations", "eval"], indirectLayers: [], yc: "W24", subcategories: ["code-dev-tools"]},
@@ -559,6 +560,15 @@ const VC_TOOL_NARRATIVES = {
     role: "In this map, MCP belongs in integrations because it standardizes how models and agents discover and invoke external tools. It is an adapter layer, not the foundation of the whole architecture.",
     layerDetails: {
       integrations: "MCP's role is to standardize the contract between an AI runtime and external capabilities such as files, APIs, databases, or application-specific tools."
+    }
+  },
+  "context7": {
+    what: "Context7 is an MCP server that retrieves current, version-specific library documentation and injects it into LLM prompts. It solves the problem of models hallucinating outdated or nonexistent APIs by providing real documentation as context at query time.",
+    impact: "Its impact is on context quality for code generation. When an LLM has actual current API documentation instead of stale training data, code suggestions are more accurate and require less manual correction.",
+    role: "In this map, Context7 sits in the context layer because its primary job is documentation retrieval — fetching the right knowledge and making it available in the prompt. It touches integrations indirectly because it delivers this capability through the MCP protocol.",
+    layerDetails: {
+      context: "Context7 retrieves version-specific library documentation and injects it into the model's context window, replacing the need for the model to rely on potentially outdated training knowledge.",
+      integrations: "Context7 is delivered as an MCP server, so any MCP-compatible client (Cursor, Claude Code, etc.) can use it without custom integration code."
     }
   },
   "qmd": {
