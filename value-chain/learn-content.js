@@ -776,6 +776,24 @@ window.VC_LEARN = {
           <li>Write a simple property specification in Dafny</li>
           <li>Evaluate when formal verification is worth the cost vs testing</li>
         </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">09.5 Performance Optimization</h4>
+        <p>Agentic systems that generate candidate solutions and iteratively optimize them against objective, measurable benchmarks. The universal pattern: <strong>generate</strong> (LLM produces a candidate) → <strong>evaluate</strong> (automated benchmark scores it) → <strong>select</strong> (evolutionary, RL, or Bayesian selection) → <strong>feedback</strong> (scores returned to LLM) → <strong>iterate</strong>. This pattern works wherever three prerequisites hold: a clear correctness oracle, a quantitative performance metric, and a fast evaluation loop.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Generate-evaluate-iterate loop — the universal pattern behind AlphaEvolve, BitsEvolve, DSPy, and kernel agents</li>
+          <li>Three prerequisites: correctness oracle (can you verify it works?), quantitative metric (TFLOPS, Sharpe ratio, pass rate), fast eval loop (seconds to minutes)</li>
+          <li>Evolutionary lineage: FunSearch (2023) → AlphaEvolve (2025) → OpenEvolve (open-source) — programs evolving programs</li>
+          <li>GPU kernel optimization — the most active area, with ~15 major projects (AutoKernel, KernelAgent, KernelBench as the standard eval)</li>
+          <li>Production deployments: AlphaEvolve (0.7% of Google's compute recovered), BitsEvolve (541% throughput at Datadog), DSPy (widely adopted prompt optimization)</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Define a fitness function with a correctness check and a performance metric for a concrete optimization task</li>
+          <li>Run OpenEvolve or KernelBench to optimize a candidate against an automated benchmark</li>
+          <li>Use DSPy to optimize prompts against an evaluation set instead of tuning them by hand</li>
+        </ul>
       </div>`
   },
   products: {

@@ -50,7 +50,8 @@ window.VC_DATA = {
       { id: "evaluation", label: "Evaluation", desc: "Test suites, benchmarks, CI eval" },
       { id: "observability", label: "Observability", desc: "Tracing, logging, cost tracking" },
       { id: "guardrails-security", label: "Guardrails & Security", desc: "Runtime validation, safety classifiers" },
-      { id: "formal-verification", label: "Formal Verification", desc: "Theorem provers, proof-carrying code, verified generation" }
+      { id: "formal-verification", label: "Formal Verification", desc: "Theorem provers, proof-carrying code, verified generation" },
+      { id: "performance-optimization", label: "Performance Optimization", desc: "Agentic loops that optimize against objective benchmarks" }
     ]},
     { id: "products", index: "10", label: "Products", shortDesc: "End-user AI applications", subcategories: [
       { id: "assistants-copilots", label: "Assistants & Copilots", desc: "General-purpose chat & copilot" },
@@ -276,7 +277,7 @@ window.VC_DATA = {
     { id: "tensorzero", name: "TensorZero", desc: "Open-source LLM gateway with optimization and experimentation", type: "open-source", url: "https://www.tensorzero.com", github: "https://github.com/tensorzero/tensorzero", directLayers: ["routing"], indirectLayers: [], yc: null, subcategories: ["gateways-proxies"]},
 
     // ── Additional Orchestration ──
-    { id: "dspy", name: "DSPy", desc: "Declarative framework for optimizing LLM pipelines as code", type: "open-source", url: "https://dspy.ai", github: "https://github.com/stanfordnlp/dspy", directLayers: ["orchestration"], indirectLayers: [], yc: null, subcategories: ["workflow-design"]},
+    { id: "dspy", name: "DSPy", desc: "Framework for programming LMs with automatic prompt and weight optimization", type: "open-source", url: "https://dspy.ai", github: "https://github.com/stanfordnlp/dspy", directLayers: ["posttrain", "eval", "orchestration"], indirectLayers: [], yc: null, subcategories: ["workflow-design", "benchmarking", "evaluation", "performance-optimization"]},
     { id: "agno", name: "Agno", desc: "Model-agnostic agent framework with memory and multimodal", type: "open-source", url: "https://github.com/agno-agi/agno", github: "https://github.com/agno-agi/agno", directLayers: ["orchestration"], indirectLayers: [], yc: null, subcategories: ["agent-patterns"]},
     { id: "smolagents", name: "Smolagents", desc: "HuggingFace minimal code-centric agent framework", type: "open-source", url: "https://huggingface.co/docs/smolagents", github: "https://github.com/huggingface/smolagents", directLayers: ["orchestration"], indirectLayers: [], yc: null, subcategories: ["agent-patterns"]},
     { id: "pi-mono", name: "pi-mono", desc: "Full-stack TypeScript monorepo for AI coding agents — inference, routing, orchestration, context, and integrations", type: "open-source", url: "https://github.com/badlogic/pi-mono", github: "https://github.com/badlogic/pi-mono", directLayers: ["orchestration"], indirectLayers: ["inference", "routing", "context", "integrations"], yc: null, layerDetails: { orchestration: "pi-agent-core: plan-execute loops, task decomposition, multi-step coding workflows", inference: "pi-ai: unified inference client across 20+ providers, pi-pods for self-hosted GPU serving", routing: "Cross-provider model handoffs and fallback chains via pi-ai configuration", context: "Session management, context compaction, and persistent memory across agent runs", integrations: "Slack integration, IDE bridges, and tool connectors for coding workflows" }, subcategories: ["agent-patterns"]},
@@ -388,6 +389,18 @@ window.VC_DATA = {
     { id: "lean4", name: "Lean 4", desc: "Open-source theorem prover and programming language for formal verification", type: "open-source", url: "https://lean-lang.org", github: "https://github.com/leanprover/lean4", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["formal-verification"]},
     { id: "dafny", name: "Dafny", desc: "Verification-aware programming language with integrated specs and proofs", type: "open-source", url: "https://dafny.org", github: "https://github.com/dafny-lang/dafny", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["formal-verification"]},
     { id: "deepseek-prover-v2", name: "DeepSeek-Prover-V2", desc: "Open-source LLM for formal theorem proving in Lean 4", type: "open-source", url: "https://github.com/deepseek-ai/DeepSeek-Prover-V2", github: "https://github.com/deepseek-ai/DeepSeek-Prover-V2", directLayers: ["eval"], indirectLayers: ["pretrain"], yc: null, subcategories: ["formal-verification"]},
+
+    // ── New: Performance Optimization ──
+    { id: "autokernel", name: "AutoKernel", desc: "Autonomous GPU kernel optimization via edit-benchmark-iterate loops", type: "open-source", url: "https://github.com/RightNow-AI/autokernel", github: "https://github.com/RightNow-AI/autokernel", directLayers: ["compute", "eval"], indirectLayers: [], yc: null, subcategories: ["performance-optimization"]},
+    { id: "kernelagent", name: "KernelAgent", desc: "Multi-agent GPU kernel optimization with hardware profiling feedback", type: "open-source", url: "https://pytorch.org/blog/kernelagent-hardware-guided-gpu-kernel-optimization-via-multi-agent-orchestration/", github: null, directLayers: ["compute", "eval"], indirectLayers: [], yc: null, subcategories: ["performance-optimization"]},
+    { id: "kernelbench", name: "KernelBench", desc: "Benchmark for evaluating LLM-generated GPU kernels (250 tasks)", type: "open-source", url: "https://github.com/ScalingIntelligence/KernelBench", github: "https://github.com/ScalingIntelligence/KernelBench", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["benchmarking", "performance-optimization"]},
+    { id: "alphaevolve", name: "AlphaEvolve", desc: "Evolutionary coding agent for algorithm discovery using Gemini ensemble", type: "proprietary", url: "https://deepmind.google/blog/alphaevolve/", github: null, directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["performance-optimization"]},
+    { id: "openevolve", name: "OpenEvolve", desc: "Open-source evolutionary code optimization framework", type: "open-source", url: "https://github.com/algorithmicsuperintelligence/openevolve", github: "https://github.com/algorithmicsuperintelligence/openevolve", directLayers: ["eval", "orchestration"], indirectLayers: [], yc: null, subcategories: ["performance-optimization", "agent-patterns"]},
+    { id: "funsearch", name: "FunSearch", desc: "LLM-driven evolutionary search for mathematical discovery", type: "open-source", url: "https://github.com/google-deepmind/funsearch", github: "https://github.com/google-deepmind/funsearch", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["performance-optimization"]},
+    { id: "alphacodium", name: "AlphaCodium", desc: "Test-based iterative flow for code generation against benchmarks", type: "open-source", url: "https://github.com/codium-ai/alphacodium", github: "https://github.com/codium-ai/alphacodium", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["evaluation", "performance-optimization"]},
+    { id: "eureka", name: "Eureka", desc: "LLM evolutionary reward function design for robotics", type: "open-source", url: "https://github.com/eureka-research/Eureka", github: "https://github.com/eureka-research/Eureka", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["performance-optimization"]},
+    { id: "compilergym", name: "CompilerGym", desc: "RL environment for compiler optimization pass selection", type: "open-source", url: "https://github.com/facebookresearch/CompilerGym", github: "https://github.com/facebookresearch/CompilerGym", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["performance-optimization"]},
+    { id: "bitsevolve", name: "BitsEvolve", desc: "Production evolutionary optimization with formal verification and WASM hot-swap", type: "proprietary", url: "https://www.datadoghq.com/blog/ai/fully-autonomous-optimization/", github: null, directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["performance-optimization"]},
 
     // ── New: Products ──
     { id: "le-chat", name: "Le Chat", desc: "Mistral AI assistant with Deep Research, voice, MCP connectors", type: "proprietary", url: "https://mistral.ai/products/le-chat", github: null, directLayers: ["products"], indirectLayers: ["integrations"], yc: null, category: "chatbot", subcategories: ["assistants-copilots"]},
@@ -584,6 +597,50 @@ const VC_TOOL_NARRATIVES = {
     role: "In this map, QMD sits in the context layer as a memory architecture component. It matters when teams want AI memory to behave more like a governed knowledge system than a pile of chat logs.",
     layerDetails: {
       context: "QMD's role is durable memory management: storing knowledge in a structured way so later retrieval and context assembly are deliberate, queryable, and auditable."
+    }
+  },
+  "alphaevolve": {
+    what: "AlphaEvolve is Google DeepMind's evolutionary coding agent. It uses a Gemini Flash+Pro ensemble to generate candidate programs, evaluates them against objective metrics, and evolves populations toward optimal solutions — discovering improvements to algorithms that have stood for decades.",
+    impact: "Its impact is on algorithmic discovery at scale. It recovered 0.7% of Google's worldwide compute through kernel optimization and improved on Strassen's 1969 matrix multiplication algorithm. It demonstrates that agentic optimization loops can find solutions humans miss.",
+    role: "In this map, AlphaEvolve sits in the eval layer because the core value is the automated benchmark loop — generate, evaluate, select, iterate. Without objective scoring the system cannot evolve.",
+    layerDetails: {
+      eval: "AlphaEvolve's evolution depends entirely on automated evaluation: each candidate program is scored against objective benchmarks, and only top performers survive to seed the next generation."
+    }
+  },
+  "openevolve": {
+    what: "OpenEvolve is an open-source implementation of the AlphaEvolve pattern. It provides the evolutionary code optimization framework — population management, fitness evaluation, LLM-driven mutation — so teams can run agentic optimization loops on their own problems.",
+    impact: "Its impact is on accessibility of evolutionary optimization. It brings the generate-evaluate-iterate pattern to any team with a clear benchmark, without requiring Google-scale infrastructure.",
+    role: "In this map, OpenEvolve spans eval and orchestration. The eval layer provides the fitness function that drives evolution; orchestration provides the multi-agent loop that manages populations and coordinates LLM calls.",
+    layerDetails: {
+      eval: "The fitness evaluation loop is the engine: each candidate is scored against user-defined benchmarks, and scores drive selection and mutation.",
+      orchestration: "The evolutionary framework coordinates population management, LLM-driven code generation, and multi-step iteration across generations."
+    }
+  },
+  "dspy": {
+    what: "DSPy is a framework for programming (not prompting) language models. Instead of writing prompts by hand, teams define modules with typed signatures and let DSPy's optimizers — hill-climbing, Bayesian, or joint prompt+weight — automatically find the best prompts, few-shot examples, and fine-tuning configurations.",
+    impact: "Its impact is on prompt engineering economics. It replaces manual prompt iteration with automated optimization against measurable benchmarks, which means prompt quality scales with compute rather than human effort.",
+    role: "In this map, DSPy spans post-training, eval, and orchestration. It touches post-training through weight optimization, eval through its benchmark-driven optimization loop, and orchestration through its module composition system.",
+    layerDetails: {
+      posttrain: "DSPy's BetterTogether optimizer jointly tunes prompts and model weights, making it a lightweight fine-tuning tool as well as a prompt optimizer.",
+      eval: "Every DSPy optimization run requires a metric function and evaluation set — the optimizer is benchmark-driven by design.",
+      orchestration: "DSPy modules compose into pipelines where each step has typed inputs and outputs, providing structured workflow control."
+    }
+  },
+  "autokernel": {
+    what: "AutoKernel profiles PyTorch models, identifies bottleneck GPU kernels, and iteratively optimizes them through an edit-benchmark-iterate loop. It uses roofline analysis to find the gap between actual and theoretical performance, then generates optimized CUDA or Triton kernels to close it.",
+    impact: "Its impact is on GPU utilization. Most production models leave significant performance on the table in their kernel implementations. AutoKernel automates the expert-level work of profiling and kernel engineering.",
+    role: "In this map, AutoKernel spans compute and eval. It targets compute performance directly but relies on the eval layer's benchmark loop to drive optimization.",
+    layerDetails: {
+      compute: "AutoKernel's optimized kernels directly improve GPU throughput (TFLOPS) and memory bandwidth utilization on production hardware.",
+      eval: "The edit-benchmark-iterate loop is the core mechanism: each kernel variant is profiled against hardware roofline metrics, and results feed back into the next optimization attempt."
+    }
+  },
+  "bitsevolve": {
+    what: "BitsEvolve is Datadog's production evolutionary optimization system. It generates candidate code in safe languages (verified with Verus), compiles to WASM for sandboxed execution, and hot-swaps optimized modules against live traffic — achieving a 541% throughput improvement on production bitstream parsing.",
+    impact: "Its impact is proof that agentic optimization works in production, not just research. The combination of formal verification for correctness, WASM for safe deployment, and evolutionary search for performance creates a system that can autonomously improve production code.",
+    role: "In this map, BitsEvolve sits in the eval layer because the automated benchmark loop against live traffic is what makes the system work. Formal verification ensures candidates are correct before they compete on performance.",
+    layerDetails: {
+      eval: "BitsEvolve's eval loop runs candidates against production traffic with objective throughput metrics. Formal verification (Verus) provides the correctness oracle; benchmarking provides the performance metric."
     }
   },
   "lean4": {
