@@ -183,12 +183,16 @@
               <dd>Continuing the training of a pre-trained model on a specific dataset to adapt it for a particular task or domain. Value chain layer: L03 Post-Training.</dd>
             </div>
             <div class="glossary__entry">
+              <dt id="formal-verification">Formal verification</dt>
+              <dd>Using mathematical proof to guarantee that code or a system satisfies its specification. Unlike testing, which samples behavior, a formal proof covers all possible inputs. Theorem provers like Lean 4 and verification-aware languages like Dafny check proofs mechanically. LLMs are changing the economics by drafting proofs that proof checkers accept or reject. Value chain layer: L09 Eval and Safety.</dd>
+            </div>
+            <div class="glossary__entry">
               <dt id="foundation-model">Foundation model</dt>
               <dd>A large model trained on broad data that can be adapted to many downstream tasks. GPT-4, Claude, Llama, and Gemini are foundation models.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="function-calling">Function calling</dt>
-              <dd>A model capability where the model outputs structured JSON to invoke external functions or tools, rather than generating free-form text. Also called tool use.</dd>
+              <dd>A model capability where the model outputs structured JSON to invoke external functions or tools, rather than generating free-form text. The protocol side of tool use — how models express intent to act. See also: <a href="#tool-use">Tool use</a>.</dd>
             </div>
           </dl>
 
@@ -472,7 +476,7 @@
             </div>
             <div class="glossary__entry">
               <dt id="tool-use">Tool use</dt>
-              <dd>See Function calling.</dd>
+              <dd>The ability of an AI model to call external tools — APIs, databases, code interpreters, file systems, web browsers — to take actions beyond text generation. Function calling is the protocol; tool use is the broader capability. Effective tool use requires the model to decide which tool to call, construct valid arguments, interpret results, and decide whether to call another tool or return a final answer. The protocol layer lives in L08 Integrations (MCP, function calling specs); the execution and decision-making layer lives in L06 Orchestration (agent loops, tool selection, error handling). Value chain layers: L06 Orchestration, L08 Integrations.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="transformer">Transformer</dt>

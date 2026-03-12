@@ -759,6 +759,23 @@ window.VC_LEARN = {
           <li>Set up prompt injection detection</li>
           <li>Design a layered guardrail pipeline</li>
         </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">09.4 Formal Verification</h4>
+        <p>Mathematical proof that code satisfies its specification — not testing, but proof. Theorem provers (Lean 4) check proofs mechanically; verification-aware languages (Dafny) integrate specs into code. LLMs are changing the economics: models like DeepSeek-Prover-V2 draft proofs that proof checkers accept or reject, so hallucinated proofs fail cleanly. When AI generates code faster than humans can review, formal verification becomes the verification mechanism that scales.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Theorem provers vs verification-aware languages</li>
+          <li>Proof-carrying code — the proof ships with the artifact</li>
+          <li>LLM-assisted proof generation — AI writes proofs, proof checkers verify</li>
+          <li>Vericoding — generating formally verified code from formal specifications</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Read a Lean 4 proof to understand what it guarantees</li>
+          <li>Write a simple property specification in Dafny</li>
+          <li>Evaluate when formal verification is worth the cost vs testing</li>
+        </ul>
       </div>`
   },
   products: {

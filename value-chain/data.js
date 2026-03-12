@@ -32,7 +32,8 @@ window.VC_DATA = {
       { id: "agent-patterns", label: "Agent Patterns", desc: "Frameworks & architectures" },
       { id: "workflow-design", label: "Workflow Design", desc: "Pipelines, DAGs, task decomposition" },
       { id: "human-oversight", label: "Human Oversight", desc: "Approval gates, escalation, control spectrum" },
-      { id: "execution-environments", label: "Execution Environments", desc: "Sandboxes & runtimes" }
+      { id: "execution-environments", label: "Execution Environments", desc: "Sandboxes & runtimes" },
+      { id: "tool-use", label: "Tool Use", desc: "Tool selection, execution, error handling" }
     ]},
     { id: "context", index: "07", label: "Context", shortDesc: "Vector DBs, RAG, embeddings, memory", subcategories: [
       { id: "vector-storage", label: "Vector Storage", desc: "Embedding databases" },
@@ -48,7 +49,8 @@ window.VC_DATA = {
     { id: "eval", index: "09", label: "Eval & Safety", shortDesc: "Evals, observability, guardrails", subcategories: [
       { id: "evaluation", label: "Evaluation", desc: "Test suites, benchmarks, CI eval" },
       { id: "observability", label: "Observability", desc: "Tracing, logging, cost tracking" },
-      { id: "guardrails-security", label: "Guardrails & Security", desc: "Runtime validation, safety classifiers" }
+      { id: "guardrails-security", label: "Guardrails & Security", desc: "Runtime validation, safety classifiers" },
+      { id: "formal-verification", label: "Formal Verification", desc: "Theorem provers, proof-carrying code, verified generation" }
     ]},
     { id: "products", index: "10", label: "Products", shortDesc: "End-user AI applications", subcategories: [
       { id: "assistants-copilots", label: "Assistants & Copilots", desc: "General-purpose chat & copilot" },
@@ -382,6 +384,11 @@ window.VC_DATA = {
     { id: "lakera", name: "Lakera", desc: "AI security — prompt injection detection and LLM firewalls", type: "managed", url: "https://www.lakera.ai", github: null, directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["guardrails-security"]},
     { id: "roborev", name: "RoboRev", desc: "CLI daemon that continuously reviews AI-agent commits via git hooks", type: "open-source", url: "https://www.roborev.io", github: null, directLayers: ["eval"], indirectLayers: ["integrations"], yc: null, subcategories: ["evaluation"]},
 
+    // ── New: Formal Verification ──
+    { id: "lean4", name: "Lean 4", desc: "Open-source theorem prover and programming language for formal verification", type: "open-source", url: "https://lean-lang.org", github: "https://github.com/leanprover/lean4", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["formal-verification"]},
+    { id: "dafny", name: "Dafny", desc: "Verification-aware programming language with integrated specs and proofs", type: "open-source", url: "https://dafny.org", github: "https://github.com/dafny-lang/dafny", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["formal-verification"]},
+    { id: "deepseek-prover-v2", name: "DeepSeek-Prover-V2", desc: "Open-source LLM for formal theorem proving in Lean 4", type: "open-source", url: "https://github.com/deepseek-ai/DeepSeek-Prover-V2", github: "https://github.com/deepseek-ai/DeepSeek-Prover-V2", directLayers: ["eval"], indirectLayers: ["pretrain"], yc: null, subcategories: ["formal-verification"]},
+
     // ── New: Products ──
     { id: "le-chat", name: "Le Chat", desc: "Mistral AI assistant with Deep Research, voice, MCP connectors", type: "proprietary", url: "https://mistral.ai/products/le-chat", github: null, directLayers: ["products"], indirectLayers: ["integrations"], yc: null, category: "chatbot", subcategories: ["assistants-copilots"]},
     { id: "kiro", name: "Kiro", desc: "AWS spec-driven agentic IDE (VS Code fork) that turns prompts into code", type: "proprietary", url: "https://kiro.dev", github: null, directLayers: ["products", "integrations"], indirectLayers: [], yc: null, category: "copilot", subcategories: ["autonomous-agents"]},
@@ -577,6 +584,14 @@ const VC_TOOL_NARRATIVES = {
     role: "In this map, QMD sits in the context layer as a memory architecture component. It matters when teams want AI memory to behave more like a governed knowledge system than a pile of chat logs.",
     layerDetails: {
       context: "QMD's role is durable memory management: storing knowledge in a structured way so later retrieval and context assembly are deliberate, queryable, and auditable."
+    }
+  },
+  "lean4": {
+    what: "Lean 4 is an open-source theorem prover and programming language. Teams use it to write mathematical proofs that a machine checks, making it possible to formally verify that code does what its specification requires rather than relying on tests alone.",
+    impact: "Its impact is on verification confidence. When AI generates code at a pace humans cannot review, Lean-verified proofs provide a deterministic guarantee that no amount of testing can match. The economics are changing because LLMs can now draft proofs that Lean's kernel accepts or rejects — hallucinated proofs fail cleanly.",
+    role: "In this map, Lean 4 sits in the eval layer because its job is verification — confirming that code or mathematical claims are correct. It is not a runtime guardrail or an observability tool; it is a static proof system that runs before deployment.",
+    layerDetails: {
+      eval: "Lean 4 provides formal verification: machine-checked proofs that code satisfies its specification. Unlike testing, which samples behavior, a verified proof covers all possible inputs."
     }
   }
 };
