@@ -1265,6 +1265,88 @@ body.subpage .accordion__toggle {
     font-size: 0.75rem;
     padding-left: 2.55rem;
   }
+
+  /* VC Flow: replace cramped 5-across flex with 2-column grid */
+  .vc-flow__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+  }
+
+  .vc-arrow {
+    display: none;
+  }
+
+  .vc-node {
+    padding: 0.65rem 0.6rem;
+  }
+
+  .vc-node__label {
+    font-size: 0.75rem;
+  }
+
+  /* Accordion: reduce indent that wastes ~30% of mobile width */
+  .accordion__panel > p,
+  .accordion__panel ul,
+  .accordion__panel > .panel-block,
+  .accordion__panel > .learn__diagram {
+    padding-left: 1rem;
+  }
+
+  .accordion__panel ul {
+    padding-left: 2.25rem;
+  }
+
+  /* Explorer: larger touch targets, full-width detail */
+  .explorer__item {
+    padding: 0.55rem 0.75rem;
+  }
+
+  .explorer__detail {
+    padding: 0.85rem 1rem;
+  }
+
+  .explorer__detail-details {
+    max-width: 100%;
+  }
+
+  .layer-learn__desc {
+    max-width: 100%;
+  }
+
+  /* Learn subcategory content */
+  .learn__subcategory p,
+  .learn__subcategory ul {
+    font-size: 0.85rem;
+  }
+
+  .learn__skills {
+    padding-left: 1.25rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .vc-node__label {
+    font-size: 0.7rem;
+  }
+
+  .vc-node__index {
+    font-size: 0.6rem;
+  }
+
+  .explorer__item-meta {
+    display: none;
+  }
+
+  .data-table {
+    min-width: 28rem;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
