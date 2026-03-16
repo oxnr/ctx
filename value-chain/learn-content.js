@@ -433,6 +433,19 @@ window.VC_LEARN = {
     subtitle: "Agent runtime infrastructure that turns a model API call into a functioning agent. Sandboxes, state, tools, verification, and constraints.",
     html: `
       <p>Agent = Model + Harness. The harness is everything that is NOT the model — the infrastructure that makes a single agent effective. Multiple independent teams converged on this finding: the bottleneck is infrastructure, not model intelligence. Better models amplify the need for better harnesses. The harness is the durable asset; the model is a commodity that changes monthly.</p>
+      <p><strong>The progressive anatomy of an agent</strong></p>
+      <p>Every AI agent starts from the same minimal pattern and layers mechanisms one at a time. Understanding this progression is how you go from "using agents" to "building agents":</p>
+      <ol>
+        <li><strong>The Loop</strong> — one while loop + one tool (bash) = an agent. The model generates, checks stop_reason, executes tools, appends results, repeats</li>
+        <li><strong>Tool dispatch</strong> — the loop stays the same; new tools register into a name→handler map. Adding a capability means adding one handler</li>
+        <li><strong>Planning</strong> — an agent without a plan drifts. TodoWrite-style planning lists steps first, then executes. Completion rates double</li>
+        <li><strong>Subagents</strong> — big tasks get broken into subtasks, each running in a fresh context (clean messages[]). Keeps the main conversation clean</li>
+        <li><strong>Skill loading</strong> — inject knowledge via tool_result when needed, not upfront in the system prompt. Keeps context lean</li>
+        <li><strong>Context compression</strong> — context will fill up. Three-layer compression (summary → key facts → full) enables infinite sessions</li>
+        <li><strong>Persistence</strong> — file-based task graphs with dependencies, persisted to disk. Background daemon threads for slow operations</li>
+        <li><strong>Teams</strong> — when one agent isn't enough: persistent teammates, async mailboxes, autonomous task claiming, worktree isolation for parallel execution</li>
+      </ol>
+      <p>Mechanisms 1–7 are harness (L06). Mechanism 8 crosses into orchestration (L07). See <a href="https://github.com/shareAI-lab/learn-claude-code">Learn Claude Code</a> for a hands-on walkthrough of all 12 sessions.</p>
       <div class="learn__diagram">
         <svg class="learn__svg" viewBox="0 0 480 100" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="2" y="30" width="70" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
@@ -638,11 +651,20 @@ window.VC_LEARN = {
           <li>Shared state vs message-passing between agents</li>
           <li>Conflict resolution when agents disagree</li>
         </ul>
+        <p><strong>The multi-agent progression</strong></p>
+        <p>Teams emerge in stages, each solving a specific coordination problem:</p>
+        <ul>
+          <li><strong>Persistent teammates + async mailboxes</strong> — agents communicate through durable message queues, not shared context. Each agent runs its own loop</li>
+          <li><strong>Team protocols</strong> — a single request-response pattern drives all negotiation. Shared communication rules prevent chaos</li>
+          <li><strong>Autonomous task claiming</strong> — instead of the lead assigning every task, teammates scan the board and claim work. Eliminates the delegation bottleneck</li>
+          <li><strong>Worktree isolation</strong> — each agent works in its own git worktree directory. Tasks manage goals, worktrees manage directories, bound by ID. No interference between concurrent agents</li>
+        </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Design a multi-agent system with handoff contracts</li>
           <li>Implement agent specialization for a complex workflow</li>
           <li>Build a supervisor agent that delegates and reviews</li>
+          <li>Set up worktree-based isolation for parallel agent execution</li>
         </ul>
       </div>`
   },
