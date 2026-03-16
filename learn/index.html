@@ -511,97 +511,75 @@
             <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-06">
               <span class="accordion__title">
                 <span class="accordion__index">06</span>
-                <span>Orchestration</span>
+                <span>Harness</span>
               </span>
               <span aria-hidden="true">&#x25BE;</span>
             </button>
             <div class="accordion__panel" id="learn-06">
               <div class="panel-block">
-                <p>Orchestration coordinates multi-step AI workflows — plan, execute, review, iterate. This is where single prompt-response interactions become reliable pipelines. Agent frameworks, tool use, structured handoffs, and retry logic all live here. The key design decision is how much autonomy to give agents vs how much human oversight to require.</p>
-                <div class="learn__diagram">
-                  <svg class="learn__svg" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="140" y="4" width="80" height="34" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
-                    <text x="180" y="26" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Plan</text>
-                    <line x1="220" y1="21" x2="270" y2="21" stroke="#666360" stroke-width="1"/>
-                    <polygon points="268,18 274,21 268,24" fill="#666360"/>
-                    <rect x="278" y="4" width="80" height="34" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
-                    <text x="318" y="26" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Execute</text>
-                    <line x1="318" y1="38" x2="318" y2="60" stroke="#666360" stroke-width="1"/>
-                    <polygon points="315,58 318,64 321,58" fill="#666360"/>
-                    <rect x="278" y="68" width="80" height="34" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
-                    <text x="318" y="90" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Review</text>
-                    <line x1="278" y1="85" x2="220" y2="85" stroke="#666360" stroke-width="1"/>
-                    <polygon points="222,82 216,85 222,88" fill="#666360"/>
-                    <line x1="180" y1="85" x2="180" y2="42" stroke="#666360" stroke-width="1"/>
-                    <polygon points="177,44 180,38 183,44" fill="#666360"/>
-                    <rect x="140" y="68" width="80" height="34" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
-                    <text x="180" y="90" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="10">Iterate / Ship</text>
-                  </svg>
-                </div>
+                <p>Agent = Model + Harness. The harness is everything that is NOT the model — the infrastructure that makes a single agent effective. Sandboxes, state, tools, verification, and constraints. The model is a commodity; the harness is the durable asset.</p>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">06.1 Agent Patterns</h4>
-                  <p>LangGraph, CrewAI, Anthropic SDK. The agent loop.</p>
+                  <h4 class="learn__subcategory-title">06.1 Execution Environments</h4>
+                  <p>E2B, Castari, Kernel AI. Sandboxes and containers for agent code.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
-                    <li>Plan-act-observe-iterate</li>
-                    <li>Single vs multi-agent</li>
-                    <li>First-party vs third-party</li>
-                    <li>Framework vs raw SDK</li>
-                  </ul>
-                  <p><strong>Practical skills</strong></p>
-                  <ul class="learn__skills">
-                    <li>Build agent loop with SDK</li>
-                    <li>Design multi-agent handoffs</li>
-                  </ul>
-                </div>
-                <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">06.2 Workflow Design</h4>
-                  <p>Dify, n8n, Trigger.dev. Pipelines and DAGs.</p>
-                  <p><strong>Key concepts</strong></p>
-                  <ul>
-                    <li>Task decomposition</li>
-                    <li>Chain/branch/loop patterns</li>
-                    <li>Cost budgets</li>
-                    <li>Handoff contracts</li>
-                  </ul>
-                  <p><strong>Practical skills</strong></p>
-                  <ul class="learn__skills">
-                    <li>Design multi-step workflows</li>
-                    <li>Implement cost budgets</li>
-                  </ul>
-                </div>
-                <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">06.3 Human Oversight</h4>
-                  <p>The control spectrum. Approval gates and escalation.</p>
-                  <p><strong>Key concepts</strong></p>
-                  <ul>
-                    <li>Human-in-the-loop vs human-on-the-loop vs bounded autonomy</li>
-                    <li>Reversibility/stakes/confidence</li>
-                    <li>Trust boundaries</li>
-                  </ul>
-                  <p><strong>Practical skills</strong></p>
-                  <ul class="learn__skills">
-                    <li>Design approval gates</li>
-                    <li>Implement escalation rules</li>
-                  </ul>
-                </div>
-                <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">06.4 Execution Environments</h4>
-                  <p>E2B, containers. Where agents run code.</p>
-                  <p><strong>Key concepts</strong></p>
-                  <ul>
-                    <li>Sandboxing</li>
-                    <li>Cloud vs local execution</li>
-                    <li>Resource limits</li>
+                    <li>Sandboxing for code-executing agents</li>
+                    <li>Cloud sandbox vs local vs unikernels</li>
+                    <li>Resource limits and network policies</li>
                     <li>Cold start latency</li>
                   </ul>
-                  <p><strong>Practical skills</strong></p>
-                  <ul class="learn__skills">
-                    <li>Set up E2B sandboxes</li>
-                    <li>Configure resource limits</li>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">06.2 State & Continuity</h4>
+                  <p>File-driven state machines, crash recovery, session bridging.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>File-driven state vs in-memory state</li>
+                    <li>Crash recovery and checkpointing</li>
+                    <li>Git-tracked task files</li>
                   </ul>
                 </div>
-                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-orchestration">L06 Orchestration</a></p>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">06.3 Tool Infrastructure</h4>
+                  <p>Tool registries, code execution, MCP runtime, file system access.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Tool registries and discovery</li>
+                    <li>Code execution infrastructure</li>
+                    <li>Browser automation for verification</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">06.4 Verification Loops</h4>
+                  <p>Write-test-fix cycles, self-verification, quality gates.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Write-test-fix as core agent pattern</li>
+                    <li>Automated test execution as oracle</li>
+                    <li>Must-have verification</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">06.5 Context Management</h4>
+                  <p>Compaction, progressive disclosure, smart zone optimization.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>~40% context utilization sweet spot</li>
+                    <li>Pre-inlining vs discovery</li>
+                    <li>AGENTS.md / CLAUDE.md as static context</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">06.6 Constraints & Linting</h4>
+                  <p>Architectural linters, structural tests, dependency enforcement.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Constraints multiply agent effectiveness</li>
+                    <li>Dependency layering</li>
+                    <li>Error messages as remediation instructions</li>
+                  </ul>
+                </div>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-harness">L06 Harness</a></p>
               </div>
             </div>
           </article>
@@ -610,11 +588,70 @@
             <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-07">
               <span class="accordion__title">
                 <span class="accordion__index">07</span>
-                <span>Context</span>
+                <span>Orchestration</span>
               </span>
               <span aria-hidden="true">&#x25BE;</span>
             </button>
             <div class="accordion__panel" id="learn-07">
+              <div class="panel-block">
+                <p>Orchestration coordinates multiple agents and multi-step workflows. While the harness (L06) makes a single agent effective, orchestration is how agents work together — delegation, handoffs, human oversight gates, and structured pipelines.</p>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">07.1 Agent Patterns</h4>
+                  <p>LangGraph, CrewAI, Anthropic SDK. The agent loop.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Plan-act-observe-iterate</li>
+                    <li>Single vs multi-agent</li>
+                    <li>First-party vs third-party</li>
+                    <li>Framework vs raw SDK</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">07.2 Workflow Design</h4>
+                  <p>Dify, n8n, Trigger.dev. Pipelines and DAGs.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Task decomposition</li>
+                    <li>Chain/branch/loop patterns</li>
+                    <li>Cost budgets</li>
+                    <li>Handoff contracts</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">07.3 Human Oversight</h4>
+                  <p>The control spectrum. Approval gates and escalation.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Human-in-the-loop vs human-on-the-loop vs bounded autonomy</li>
+                    <li>Reversibility/stakes/confidence</li>
+                    <li>Trust boundaries</li>
+                  </ul>
+                </div>
+                <div class="learn__subcategory">
+                  <h4 class="learn__subcategory-title">07.4 Multi-Agent</h4>
+                  <p>Agent teams, delegation, handoffs, specialization.</p>
+                  <p><strong>Key concepts</strong></p>
+                  <ul>
+                    <li>Agent specialization — planner, researcher, coder, reviewer</li>
+                    <li>Delegation patterns and handoff contracts</li>
+                    <li>Shared state vs message-passing</li>
+                    <li>Conflict resolution</li>
+                  </ul>
+                </div>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-orchestration">L07 Orchestration</a></p>
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion" data-group="learn">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-08">
+              <span class="accordion__title">
+                <span class="accordion__index">08</span>
+                <span>Context</span>
+              </span>
+              <span aria-hidden="true">&#x25BE;</span>
+            </button>
+            <div class="accordion__panel" id="learn-08">
               <div class="panel-block">
                 <p>Context is everything the model sees beyond training data. RAG pipelines, vector databases, embeddings, memory systems, and knowledge management all live here. The quality of your context determines the quality of your outputs — a capable model with bad context produces bad results. Context engineering is the discipline of designing what enters the window.</p>
                 <div class="learn__diagram">
@@ -637,7 +674,7 @@
                   </svg>
                 </div>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">07.1 Vector Storage</h4>
+                  <h4 class="learn__subcategory-title">08.1 Vector Storage</h4>
                   <p>Pinecone, Weaviate, Chroma, Qdrant, pgvector.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
@@ -653,7 +690,7 @@
                   </ul>
                 </div>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">07.2 Retrieval &amp; Search</h4>
+                  <h4 class="learn__subcategory-title">08.2 Retrieval &amp; Search</h4>
                   <p>RAG pipelines, parsing, reranking.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
@@ -671,7 +708,7 @@
                   </ul>
                 </div>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">07.3 Memory Systems</h4>
+                  <h4 class="learn__subcategory-title">08.3 Memory Systems</h4>
                   <p>Conversation and long-term memory.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
@@ -686,7 +723,7 @@
                   </ul>
                 </div>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">07.4 Embeddings</h4>
+                  <h4 class="learn__subcategory-title">08.4 Embeddings</h4>
                   <p>Voyage AI, Jina, HF TEI, Sentence Transformers.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
@@ -701,20 +738,20 @@
                     <li>Set up TEI serving</li>
                   </ul>
                 </div>
-                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-context">L07 Context</a></p>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-context">L08 Context</a></p>
               </div>
             </div>
           </article>
 
           <article class="accordion" data-group="learn">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-08">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-09">
               <span class="accordion__title">
-                <span class="accordion__index">08</span>
+                <span class="accordion__index">09</span>
                 <span>Integrations</span>
               </span>
               <span aria-hidden="true">&#x25BE;</span>
             </button>
-            <div class="accordion__panel" id="learn-08">
+            <div class="accordion__panel" id="learn-09">
               <div class="panel-block">
                 <p>Integrations connect AI systems to the tools, APIs, and data sources they need to be useful. Function calling is the core interface — models emit structured tool invocations, and the integration layer routes them to the right target. This spans REST APIs, database connectors, file systems, CI/CD pipelines, IDE plugins, and emerging standards like MCP. This layer determines what actions the model can take beyond generating text.</p>
                 <div class="learn__diagram">
@@ -736,7 +773,7 @@
                   </svg>
                 </div>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">08.1 Protocols &amp; Standards</h4>
+                  <h4 class="learn__subcategory-title">09.1 Protocols &amp; Standards</h4>
                   <p>MCP, function calling, structured outputs, A2A.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
@@ -752,7 +789,7 @@
                   </ul>
                 </div>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">08.2 Code &amp; Dev Tools</h4>
+                  <h4 class="learn__subcategory-title">09.2 Code &amp; Dev Tools</h4>
                   <p>Cursor, Windsurf, Aider, Copilot.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
@@ -767,7 +804,7 @@
                   </ul>
                 </div>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">08.3 Connectors</h4>
+                  <h4 class="learn__subcategory-title">09.3 Connectors</h4>
                   <p>Composio, Zapier AI, Vercel AI SDK.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
@@ -781,20 +818,20 @@
                     <li>Implement streaming</li>
                   </ul>
                 </div>
-                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-integrations">L08 Integrations</a></p>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-integrations">L09 Integrations</a></p>
               </div>
             </div>
           </article>
 
           <article class="accordion" data-group="learn">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-09">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-10">
               <span class="accordion__title">
-                <span class="accordion__index">09</span>
+                <span class="accordion__index">10</span>
                 <span>Eval &amp; Safety</span>
               </span>
               <span aria-hidden="true">&#x25BE;</span>
             </button>
-            <div class="accordion__panel" id="learn-09">
+            <div class="accordion__panel" id="learn-10">
               <div class="panel-block">
                 <p>Eval determines whether the system works. Safety determines whether it fails safely. Without evals, every prompt change is a blind experiment. Without guardrails, harmful or incorrect outputs reach users unchecked. This layer should be the first thing built, not the last.</p>
                 <div class="learn__diagram">
@@ -820,7 +857,7 @@
                   </svg>
                 </div>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">09.1 Evaluation</h4>
+                  <h4 class="learn__subcategory-title">10.1 Evaluation</h4>
                   <p>Promptfoo, Braintrust, DeepEval. Test suites and CI eval.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
@@ -837,7 +874,7 @@
                   </ul>
                 </div>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">09.2 Observability</h4>
+                  <h4 class="learn__subcategory-title">10.2 Observability</h4>
                   <p>Langfuse, LangSmith, Phoenix. Production monitoring.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
@@ -854,7 +891,7 @@
                   </ul>
                 </div>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">09.3 Guardrails &amp; Security</h4>
+                  <h4 class="learn__subcategory-title">10.3 Guardrails &amp; Security</h4>
                   <p>Guardrails AI, Llama Guard, Lakera.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
@@ -870,7 +907,7 @@
                   </ul>
                 </div>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">09.4 Formal Verification</h4>
+                  <h4 class="learn__subcategory-title">10.4 Formal Verification</h4>
                   <p>Lean 4, Dafny, DeepSeek-Prover-V2. Proof, not testing.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
@@ -886,20 +923,20 @@
                     <li>Evaluate proof vs test tradeoffs</li>
                   </ul>
                 </div>
-                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-eval">L09 Eval &amp; Safety</a></p>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-eval">L10 Eval &amp; Safety</a></p>
               </div>
             </div>
           </article>
 
           <article class="accordion" data-group="learn">
-            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-10">
+            <button class="accordion__toggle" aria-expanded="false" aria-controls="learn-11">
               <span class="accordion__title">
-                <span class="accordion__index">10</span>
+                <span class="accordion__index">11</span>
                 <span>Products</span>
               </span>
               <span aria-hidden="true">&#x25BE;</span>
             </button>
-            <div class="accordion__panel" id="learn-10">
+            <div class="accordion__panel" id="learn-11">
               <div class="panel-block">
                 <p>The product layer is where infrastructure becomes useful to people. Products combine inference, routing, orchestration, context, and integrations into something humans interact with. The key question at this layer is defensibility — if your product is a thin API wrapper, the model provider will build your feature natively.</p>
                 <div class="learn__diagram">
@@ -919,7 +956,7 @@
                   </svg>
                 </div>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">10.1 Assistants &amp; Copilots</h4>
+                  <h4 class="learn__subcategory-title">11.1 Assistants &amp; Copilots</h4>
                   <p>ChatGPT, Claude, Gemini, GitHub Copilot.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
@@ -934,7 +971,7 @@
                   </ul>
                 </div>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">10.2 Autonomous Agents</h4>
+                  <h4 class="learn__subcategory-title">11.2 Autonomous Agents</h4>
                   <p>Devin, Claude Code, Codex.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
@@ -950,7 +987,7 @@
                   </ul>
                 </div>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">10.3 Creative Tools</h4>
+                  <h4 class="learn__subcategory-title">11.3 Creative Tools</h4>
                   <p>Midjourney, Runway, Suno, Lovable.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
@@ -965,7 +1002,7 @@
                   </ul>
                 </div>
                 <div class="learn__subcategory">
-                  <h4 class="learn__subcategory-title">10.4 Vertical AI</h4>
+                  <h4 class="learn__subcategory-title">11.4 Vertical AI</h4>
                   <p>Harvey, Abridge, Writer, Glean.</p>
                   <p><strong>Key concepts</strong></p>
                   <ul>
@@ -980,7 +1017,7 @@
                     <li>Evaluate build-vs-buy</li>
                   </ul>
                 </div>
-                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-products">L10 Products</a></p>
+                <p class="learn__xref">See this layer in the value chain → <a href="/#vc-products">L11 Products</a></p>
               </div>
             </div>
           </article>

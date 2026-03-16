@@ -48,7 +48,7 @@
           <dl class="glossary__list">
             <div class="glossary__entry">
               <dt id="agent">Agent</dt>
-              <dd>A system that uses an LLM to plan, take actions, observe results, and iterate toward a goal. Agents combine a control loop with tool use, memory, and safety checks to complete multi-step tasks autonomously or with human oversight. See also: <a href="/#vc-orchestration">L06 Orchestration</a>.</dd>
+              <dd>A system that uses an LLM to plan, take actions, observe results, and iterate toward a goal. Agents combine a control loop with tool use, memory, and safety checks to complete multi-step tasks autonomously or with human oversight. See also: <a href="/#vc-orchestration">L07 Orchestration</a>.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="ai-fluency">AI Fluency</dt>
@@ -57,6 +57,10 @@
             <div class="glossary__entry">
               <dt id="alignment">Alignment</dt>
               <dd>The practice of making AI systems behave according to human intentions and values. Includes techniques like RLHF and constitutional AI applied during post-training.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="ai-red-teaming">AI red teaming</dt>
+              <dd>Adversarial testing of AI systems using autonomous AI agents that reason iteratively about novel attack surfaces — RAG poisoning, prompt extraction, vector store exfiltration — rather than matching known vulnerability signatures. Value chain layer: L10 Eval and Safety.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="api-gateway">API gateway</dt>
@@ -84,7 +88,7 @@
             </div>
             <div class="glossary__entry">
               <dt id="benchmarking">Benchmarking</dt>
-              <dd>Standardized evaluation of model performance on specific tasks. Common benchmarks include MMLU, HumanEval, MATH, and arena-style human preference rankings. In a post-training workflow, benchmarking confirms that a fine-tuned model improves on the target task without regressing on general capability. Value chain layer: L03 Post-Training, L09 Eval and Safety.</dd>
+              <dd>Standardized evaluation of model performance on specific tasks. Common benchmarks include MMLU, HumanEval, MATH, and arena-style human preference rankings. In a post-training workflow, benchmarking confirms that a fine-tuned model improves on the target task without regressing on general capability. Value chain layer: L03 Post-Training, L10 Eval and Safety.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="bias-ai">Bias (AI)</dt>
@@ -104,7 +108,11 @@
             </div>
             <div class="glossary__entry">
               <dt id="chunking">Chunking</dt>
-              <dd>Splitting documents into smaller pieces for embedding and retrieval. Chunk size, overlap, and boundary strategy directly affect RAG quality. Value chain layer: L07 Context.</dd>
+              <dd>Splitting documents into smaller pieces for embedding and retrieval. Chunk size, overlap, and boundary strategy directly affect RAG quality. Value chain layer: L08 Context.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="citation-grounding">Citation grounding</dt>
+              <dd>Attaching specific source passages to each claim in an AI-generated response so users can verify accuracy. Turns opaque summaries into auditable, traceable answers. NotebookLM's core mechanism. See also: <a href="#grounding">Grounding</a>, <a href="#rag">RAG</a>.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="claude">Claude</dt>
@@ -120,15 +128,15 @@
             </div>
             <div class="glossary__entry">
               <dt id="context-engineering">Context engineering</dt>
-              <dd>The discipline of designing what information enters the context window, how it is structured, and when it is refreshed. Value chain layer: L07 Context.</dd>
+              <dd>The discipline of designing what information enters the context window, how it is structured, and when it is refreshed. Value chain layer: L08 Context.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="context-injection">Context injection</dt>
-              <dd>Retrieving external knowledge — documentation, search results, database records, or memory — and inserting it into a model's prompt at query time. Reduces hallucination by grounding responses in current, authoritative sources rather than relying solely on training data. RAG is the most common form. Value chain layer: L07 Context.</dd>
+              <dd>Retrieving external knowledge — documentation, search results, database records, or memory — and inserting it into a model's prompt at query time. Reduces hallucination by grounding responses in current, authoritative sources rather than relying solely on training data. RAG is the most common form. Value chain layer: L08 Context.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="copilot">Copilot</dt>
-              <dd>An AI assistant embedded in an existing workflow — typically an IDE, editor, or productivity tool. The AI suggests, the human accepts or rejects. Value chain layer: L10 Products.</dd>
+              <dd>An AI assistant embedded in an existing workflow — typically an IDE, editor, or productivity tool. The AI suggests, the human accepts or rejects. Value chain layer: L11 Products.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="cuda">CUDA</dt>
@@ -160,7 +168,7 @@
             </div>
             <div class="glossary__entry">
               <dt id="eval">Eval (evaluation)</dt>
-              <dd>Systematic testing of AI system outputs against defined criteria. Includes golden test sets, scoring rubrics, and regression testing. Value chain layer: L09 Eval and Safety.</dd>
+              <dd>Systematic testing of AI system outputs against defined criteria. Includes golden test sets, scoring rubrics, and regression testing. Value chain layer: L10 Eval and Safety.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="edge-inference">Edge inference</dt>
@@ -184,7 +192,7 @@
             </div>
             <div class="glossary__entry">
               <dt id="formal-verification">Formal verification</dt>
-              <dd>Using mathematical proof to guarantee that code or a system satisfies its specification. Unlike testing, which samples behavior, a formal proof covers all possible inputs. Theorem provers like Lean 4 and verification-aware languages like Dafny check proofs mechanically. LLMs are changing the economics by drafting proofs that proof checkers accept or reject. Value chain layer: L09 Eval and Safety.</dd>
+              <dd>Using mathematical proof to guarantee that code or a system satisfies its specification. Unlike testing, which samples behavior, a formal proof covers all possible inputs. Theorem provers like Lean 4 and verification-aware languages like Dafny check proofs mechanically. LLMs are changing the economics by drafting proofs that proof checkers accept or reject. Value chain layer: L10 Eval and Safety.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="foundation-model">Foundation model</dt>
@@ -204,7 +212,11 @@
             </div>
             <div class="glossary__entry">
               <dt id="guardrails">Guardrails</dt>
-              <dd>Runtime safety checks that validate model outputs before they reach users. Can filter harmful content, enforce format constraints, or apply business logic. Value chain layer: L09 Eval and Safety.</dd>
+              <dd>Runtime safety checks that validate model outputs before they reach users. Can filter harmful content, enforce format constraints, or apply business logic. Value chain layer: L10 Eval and Safety.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="gqa">GQA (Grouped-Query Attention)</dt>
+              <dd>An attention variant that shares key-value heads across groups of query heads, reducing KV cache size and accelerating inference with minimal quality loss. Used in Llama 3, Mistral, and most modern open-weight models. Sits between full multi-head attention (MHA) and multi-query attention (MQA) on the efficiency–quality spectrum. Value chain layer: L02 Pre-Training.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="grounding">Grounding</dt>
@@ -224,7 +236,11 @@
             </div>
             <div class="glossary__entry">
               <dt id="harness">Harness</dt>
-              <dd>The system built around the model — context pipelines, workflows, evaluations, integrations, and routing. The model is a commodity that changes monthly; the harness is the durable asset that absorbs change without rebuilding. Good harness is small, explicit, versioned, and portable. Bad harness is tangled with a single provider.</dd>
+              <dd>Everything that is NOT the model — the runtime infrastructure that makes a single agent effective. Includes execution environments (sandboxes), state and continuity (crash recovery, session bridging), tool infrastructure (MCP, code execution), verification loops (write-test-fix), context management (compaction, progressive disclosure), and constraints (linters, structural tests). Agent = Model + Harness. The model is a commodity; the harness is the durable asset. Value chain layer: <a href="/#vc-harness">L06 Harness</a>.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="harness-engineering">Harness engineering</dt>
+              <dd>The discipline of designing, building, and maintaining agent harnesses — the runtime infrastructure that turns a model API call into a functioning agent. Distinct from prompt engineering (single interaction), context engineering (context window), and agent engineering (internal agent design). Catalyzed by OpenAI's Codex team building a 1M-line codebase with 3 engineers using only agents, proving the bottleneck is infrastructure, not model intelligence. Key insight: better models amplify the need for better harnesses. Value chain layer: <a href="/#vc-harness">L06 Harness</a>.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="hitl">HITL (human-in-the-loop)</dt>
@@ -232,7 +248,7 @@
             </div>
             <div class="glossary__entry">
               <dt id="human-oversight-spectrum">Human oversight spectrum</dt>
-              <dd>The range of human involvement in AI workflows. Human-in-the-loop: human approves every significant action. Human-on-the-loop: agent executes, human monitors and can intervene. Bounded autonomy: agent acts within pre-defined boundaries, escalates edge cases. The right position depends on reversibility, stakes, and confidence. Value chain layer: L06 Orchestration.</dd>
+              <dd>The range of human involvement in AI workflows. Human-in-the-loop: human approves every significant action. Human-on-the-loop: agent executes, human monitors and can intervene. Bounded autonomy: agent acts within pre-defined boundaries, escalates edge cases. The right position depends on reversibility, stakes, and confidence. Value chain layer: L07 Orchestration.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="hyperparameter">Hyperparameter</dt>
@@ -304,11 +320,19 @@
           <dl class="glossary__list">
             <div class="glossary__entry">
               <dt id="mcp">MCP (Model Context Protocol)</dt>
-              <dd>An open standard for connecting AI models to external tools and data sources. Defines how models discover, authenticate with, and call tools through a standardized interface. Value chain layer: L08 Integrations.</dd>
+              <dd>An open standard for connecting AI models to external tools and data sources. Defines how models discover, authenticate with, and call tools through a standardized interface. Value chain layer: L09 Integrations.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="mixture-of-experts">Mixture of experts (MoE)</dt>
               <dd>A model architecture where only a subset of parameters is active for each input. Routes tokens to specialized "expert" sub-networks, allowing larger total model size without proportional compute cost. Mixtral and DeepSeek V3 use MoE.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="mla">MLA (Multi-Head Latent Attention)</dt>
+              <dd>An attention mechanism that compresses key-value representations into a low-rank latent space, dramatically reducing KV cache memory during inference. Introduced by DeepSeek-V2 and used in DeepSeek-V3. Achieves similar quality to standard multi-head attention at a fraction of the memory cost. Value chain layer: L02 Pre-Training.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="multi-token-prediction">Multi-token prediction</dt>
+              <dd>A training objective where the model predicts several future tokens simultaneously rather than just the next one. Improves training efficiency and can accelerate inference via speculative decoding. Used in Meta's Llama training and other modern architectures. Value chain layer: L02 Pre-Training.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="multimodal">Multimodal</dt>
@@ -336,7 +360,7 @@
           <dl class="glossary__list">
             <div class="glossary__entry">
               <dt id="observability">Observability</dt>
-              <dd>Monitoring and tracing AI system behavior in production — request logs, latency metrics, cost tracking, error rates, and quality scores. Value chain layer: L09 Eval and Safety.</dd>
+              <dd>Monitoring and tracing AI system behavior in production — request logs, latency metrics, cost tracking, error rates, and quality scores. Value chain layer: L10 Eval and Safety.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="ollama">Ollama</dt>
@@ -348,7 +372,7 @@
             </div>
             <div class="glossary__entry">
               <dt id="orchestration">Orchestration</dt>
-              <dd>Coordinating multi-step AI workflows — planning, executing, reviewing, and iterating. Includes agent frameworks, tool use, and structured pipelines. Value chain layer: L06 Orchestration.</dd>
+              <dd>Coordinating multiple agents and multi-step workflows — delegation, handoffs, human oversight gates, and structured pipelines. Distinct from harness engineering (L06), which makes a single agent effective. Orchestration assumes capable agents exist and focuses on how they work together. Value chain layer: <a href="/#vc-orchestration">L07 Orchestration</a>. See also: <a href="#harness">Harness</a>.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="overfitting">Overfitting</dt>
@@ -375,12 +399,16 @@
               <dd>Reusing computed KV states for repeated prefixes so the model skips redundant computation on the shared portion of a prompt. Supported natively by Anthropic, OpenAI, and inference gateways like Cloudflare AI Gateway and Portkey. Value chain layer: L04 Inference.</dd>
             </div>
             <div class="glossary__entry">
+              <dt id="prompt-injection">Prompt injection</dt>
+              <dd>An attack that manipulates model behavior by inserting adversarial instructions through user input, retrieved context, or tool outputs. Direct injection targets the prompt itself; indirect injection hides instructions in data the model retrieves. A primary security concern for any AI system that processes untrusted input. See also: <a href="#ai-red-teaming">AI red teaming</a>.</dd>
+            </div>
+            <div class="glossary__entry">
               <dt id="prompt-engineering">Prompt engineering</dt>
               <dd>The practice of crafting inputs to get desired outputs from a model. Includes system prompts, few-shot examples, chain-of-thought instructions, and structured output formatting.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="product-layer">Product layer</dt>
-              <dd>The top of the value chain where AI capabilities become user-facing applications — chatbots, copilots, agents, search, creative tools. Value chain layer: L10 Products.</dd>
+              <dd>The top of the value chain where AI capabilities become user-facing applications — chatbots, copilots, agents, search, creative tools. Value chain layer: L11 Products.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="pruning">Pruning</dt>
@@ -407,12 +435,20 @@
           <h2 class="glossary__letter" id="letter-R">R</h2>
           <dl class="glossary__list">
             <div class="glossary__entry">
+              <dt id="rope">RoPE (Rotary Position Embedding)</dt>
+              <dd>A positional encoding method that encodes absolute position using rotation matrices, enabling the model to learn relative position relationships. The dominant positional encoding in modern LLMs (Llama, Mistral, Qwen). Extended by YaRN to support longer context windows without retraining. Value chain layer: L02 Pre-Training.</dd>
+            </div>
+            <div class="glossary__entry">
               <dt id="reasoning-model">Reasoning model</dt>
               <dd>AI models designed to think step-by-step through complex problems, showing improved logical, mathematical, and scientific reasoning. Examples include OpenAI o1/o3 and DeepSeek-R1.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="rag">RAG (Retrieval-Augmented Generation)</dt>
-              <dd>A technique that retrieves relevant documents from an external knowledge base and includes them in the model's context before generation. Reduces hallucination and provides up-to-date information. Value chain layer: L07 Context.</dd>
+              <dd>A technique that retrieves relevant documents from an external knowledge base and includes them in the model's context before generation. Reduces hallucination and provides up-to-date information. Value chain layer: L08 Context.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="rag-poisoning">RAG poisoning</dt>
+              <dd>An attack that inserts adversarial content into a knowledge base so the model retrieves and trusts it during generation. Effective because RAG pipelines treat retrieved documents as authoritative context. Defenses include input validation, provenance tracking, and retrieval-time anomaly detection. See also: <a href="#rag">RAG</a>, <a href="#prompt-injection">Prompt injection</a>.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="rlhf">RLHF (Reinforcement Learning from Human Feedback)</dt>
@@ -448,7 +484,11 @@
             </div>
             <div class="glossary__entry">
               <dt id="safety-layer">Safety layer</dt>
-              <dd>The combination of guardrails, content filters, and validation checks that prevent harmful or incorrect model outputs from reaching users. Value chain layer: L09 Eval and Safety.</dd>
+              <dd>The combination of guardrails, content filters, and validation checks that prevent harmful or incorrect model outputs from reaching users. Value chain layer: L10 Eval and Safety.</dd>
+            </div>
+            <div class="glossary__entry">
+              <dt id="sliding-window-attention">Sliding-window attention</dt>
+              <dd>An attention pattern that restricts each token to attending only within a fixed window of nearby tokens in lower layers, while upper layers retain full attention. Reduces compute and memory for long sequences. Used in Mistral and other efficiency-focused architectures. Value chain layer: L02 Pre-Training.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="scaling-law">Scaling law</dt>
@@ -476,7 +516,7 @@
             </div>
             <div class="glossary__entry">
               <dt id="tool-use">Tool use</dt>
-              <dd>The ability of an AI model to call external tools — APIs, databases, code interpreters, file systems, web browsers — to take actions beyond text generation. Function calling is the protocol; tool use is the broader capability. Effective tool use requires the model to decide which tool to call, construct valid arguments, interpret results, and decide whether to call another tool or return a final answer. The protocol layer lives in L08 Integrations (MCP, function calling specs); the execution and decision-making layer lives in L06 Orchestration (agent loops, tool selection, error handling). Value chain layers: L06 Orchestration, L08 Integrations.</dd>
+              <dd>The ability of an AI model to call external tools — APIs, databases, code interpreters, file systems, web browsers — to take actions beyond text generation. Function calling is the protocol; tool use is the broader capability. Effective tool use requires the model to decide which tool to call, construct valid arguments, interpret results, and decide whether to call another tool or return a final answer. The protocol layer lives in L09 Integrations (MCP, function calling specs); the tool infrastructure and execution layer lives in L06 Harness (tool registries, sandboxed execution); the coordination layer lives in L07 Orchestration (agent loops, tool selection, error handling). Value chain layers: L06 Harness, L07 Orchestration, L09 Integrations.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="transformer">Transformer</dt>
@@ -492,7 +532,7 @@
           <dl class="glossary__list">
             <div class="glossary__entry">
               <dt id="vector-database">Vector database</dt>
-              <dd>A database optimized for storing and searching high-dimensional vectors (embeddings). Used in RAG pipelines for semantic search. Pinecone, Weaviate, Chroma, and Qdrant are vector databases. Value chain layer: L07 Context.</dd>
+              <dd>A database optimized for storing and searching high-dimensional vectors (embeddings). Used in RAG pipelines for semantic search. Pinecone, Weaviate, Chroma, and Qdrant are vector databases. Value chain layer: L08 Context.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="vllm">vLLM</dt>
@@ -512,7 +552,7 @@
             </div>
             <div class="glossary__entry">
               <dt id="workflow">Workflow</dt>
-              <dd>A structured sequence of steps — planning, execution, review, approval — that coordinates human and AI actions toward a goal. Value chain layer: L06 Orchestration.</dd>
+              <dd>A structured sequence of steps — planning, execution, review, approval — that coordinates human and AI actions toward a goal. Value chain layer: L07 Orchestration.</dd>
             </div>
             <div class="glossary__entry">
               <dt id="window-context">Window (context)</dt>

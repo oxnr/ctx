@@ -107,10 +107,21 @@ window.VC_LEARN = {
           <li>MoE (Mixture of Experts) vs dense architectures</li>
           <li>Scaling laws and diminishing returns</li>
         </ul>
+        <p><strong>Architecture literacy</strong></p>
+        <p>Knowing which lab built a model is table stakes — understanding <em>how</em> it is built lets you predict its strengths, weaknesses, and cost profile. Modern LLMs vary across several architectural axes:</p>
+        <ul>
+          <li><strong>Decoder type</strong> — Dense (every parameter fires on every token, e.g. Llama, GPT-4), Sparse MoE (router activates a subset of expert sub-networks per token, e.g. Mixtral, DeepSeek-V3), or Hybrid (mixing attention with state-space layers, e.g. Jamba)</li>
+          <li><strong>Attention evolution</strong> — Multi-Head Attention (MHA) → Grouped-Query Attention (GQA, shares KV heads across query groups for faster inference) → Multi-Head Latent Attention (MLA, compresses KV into a low-rank latent space, used by DeepSeek)</li>
+          <li><strong>Positional encoding</strong> — RoPE (Rotary Position Embedding, the current default), NoPE (No Position Embedding, relies on causal mask alone), YaRN (extends RoPE to longer contexts without retraining)</li>
+          <li><strong>Active vs total parameters</strong> — In MoE models only a fraction of total parameters activate per token. DeepSeek-V3 has 671B total but ~37B active. This is why "parameter count" alone is misleading for cost and speed</li>
+          <li><strong>Modern features</strong> — QK-Norm (stabilizes attention logits at scale), sliding-window attention (limits attention span in lower layers for efficiency), multi-token prediction (trains the model to predict several tokens ahead simultaneously)</li>
+        </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Compare foundation models by capability, cost, and openness</li>
           <li>Track model releases and understand what changed</li>
+          <li>Read an architecture spec sheet and understand the tradeoffs (attention type, parameter count, context length, positional encoding)</li>
+          <li>Compare models by architecture family, not just benchmark scores</li>
         </ul>
       </div>
       <div class="learn__subcategory">
@@ -416,12 +427,137 @@ window.VC_LEARN = {
         </ul>
       </div>`
   },
-  orchestration: {
+  harness: {
     index: "06",
-    title: "Orchestration",
-    subtitle: "Coordinating multi-step agent workflows with planning, execution, and review. Transforms complex tasks into structured sequences of atomic operations.",
+    title: "Harness",
+    subtitle: "Agent runtime infrastructure that turns a model API call into a functioning agent. Sandboxes, state, tools, verification, and constraints.",
     html: `
-      <p>Orchestration coordinates multi-step AI workflows — plan, execute, review, iterate. This is where single prompt-response interactions become reliable pipelines. Agent frameworks (LangGraph, CrewAI, Anthropic Agent SDK, OpenAI Agents API), tool use, structured handoffs, and retry logic all live here. The key design decision is how much autonomy to give agents vs how much human oversight to require.</p>
+      <p>Agent = Model + Harness. The harness is everything that is NOT the model — the infrastructure that makes a single agent effective. Multiple independent teams converged on this finding: the bottleneck is infrastructure, not model intelligence. Better models amplify the need for better harnesses. The harness is the durable asset; the model is a commodity that changes monthly.</p>
+      <div class="learn__diagram">
+        <svg class="learn__svg" viewBox="0 0 480 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="30" width="70" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+          <text x="37" y="55" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Model</text>
+          <line x1="76" y1="50" x2="110" y2="50" stroke="#666360" stroke-width="1"/>
+          <polygon points="108,47 114,50 108,53" fill="#666360"/>
+          <rect x="118" y="10" width="240" height="80" rx="6" stroke="#e8e6e3" stroke-width="2"/>
+          <text x="238" y="30" text-anchor="middle" fill="#e8e6e3" font-family="Inter,sans-serif" font-size="11" font-weight="600">Harness</text>
+          <rect x="132" y="40" width="60" height="24" rx="3" stroke="#666360" stroke-width="1"/>
+          <text x="162" y="56" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="8">Sandbox</text>
+          <rect x="200" y="40" width="50" height="24" rx="3" stroke="#666360" stroke-width="1"/>
+          <text x="225" y="56" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="8">Tools</text>
+          <rect x="258" y="40" width="50" height="24" rx="3" stroke="#666360" stroke-width="1"/>
+          <text x="283" y="56" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="8">Verify</text>
+          <rect x="316" y="40" width="30" height="24" rx="3" stroke="#666360" stroke-width="1"/>
+          <text x="331" y="56" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="8">State</text>
+          <line x1="362" y1="50" x2="396" y2="50" stroke="#666360" stroke-width="1"/>
+          <polygon points="394,47 400,50 394,53" fill="#666360"/>
+          <rect x="404" y="30" width="70" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
+          <text x="439" y="55" text-anchor="middle" fill="#999590" font-family="Inter,sans-serif" font-size="11">Agent</text>
+        </svg>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">06.1 Execution Environments</h4>
+        <p>Where agent code actually runs. Sandboxed execution for code-generating agents, containerized environments, cloud sandboxes (E2B, Castari), unikernel runtimes (Kernel AI), and the resource limits, network policies, and data access controls that make agent execution safe.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Sandboxing for code-executing agents — why it matters</li>
+          <li>Cloud sandbox (E2B) vs local execution vs containers vs unikernels</li>
+          <li>Resource limits, network policies, data access controls</li>
+          <li>Cold start latency and its impact on agent responsiveness</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Set up E2B sandboxes for an agent workflow</li>
+          <li>Configure resource limits and network policies for agent execution</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">06.2 State & Continuity</h4>
+        <p>How agents persist progress across sessions, recover from crashes, and bridge context between task boundaries. File-driven state machines, git-tracked task files, progress checkpointing, and durable execution patterns. Without this, agents lose all context when a session ends or crashes.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>File-driven state machines vs in-memory state</li>
+          <li>Crash recovery and progress checkpointing</li>
+          <li>Session bridging — carrying state across fresh context windows</li>
+          <li>Git-tracked task files as durable agent memory</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Design a file-based state machine for multi-session agent work</li>
+          <li>Implement crash recovery for long-running agent tasks</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">06.3 Tool Infrastructure</h4>
+        <p>The tool layer that makes agents capable: tool registries, bash/code execution, MCP runtime, file system access, and browser automation. This is the "hands" of the agent — without tool infrastructure, a model can only generate text.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Tool registries and discovery (MCP, function calling)</li>
+          <li>Code execution infrastructure (interpreters, terminals)</li>
+          <li>File system and git access patterns</li>
+          <li>Browser automation for verification (Playwright, Puppeteer)</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Configure MCP servers for an agent runtime</li>
+          <li>Set up code execution tools with appropriate sandboxing</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">06.4 Verification Loops</h4>
+        <p>Write-test-fix cycles, self-verification, and automated quality gates built into the agent runtime. The pattern: generate code, run tests, observe failures, fix, repeat. Without verification loops, agents produce plausible but untested output.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Write-test-fix as a core agent loop pattern</li>
+          <li>Automated test execution as a verification oracle</li>
+          <li>Browser-based visual verification</li>
+          <li>Must-have verification — ensuring tasks produce required artifacts</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Build a write-test-fix loop into an agent workflow</li>
+          <li>Design verification criteria for agent-generated code</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">06.5 Context Management</h4>
+        <p>How harnesses manage what enters the context window: compaction, progressive disclosure, smart zone optimization. Performance degrades beyond ~40% context utilization. The best harnesses pre-inline exactly what the agent needs so it never wastes tool calls on orientation.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>The ~40% context utilization sweet spot</li>
+          <li>Context compaction and progressive disclosure</li>
+          <li>Pre-inlining task context vs letting agents discover it</li>
+          <li>AGENTS.md / CLAUDE.md as static context engineering</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Design a context injection strategy for a coding agent</li>
+          <li>Write effective AGENTS.md files for agent-operated repositories</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">06.6 Constraints & Linting</h4>
+        <p>Architectural constraints that multiply agent effectiveness by narrowing solution spaces. Custom linters, structural tests, dependency enforcement, and pre-commit hooks — all mechanically enforced. The paradox: more constraints make agents more effective, not less.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Constraints multiply agent effectiveness — the narrower the solution space, the better the output</li>
+          <li>Dependency layering (Types → Config → Repo → Service → Runtime → UI)</li>
+          <li>Custom linters as agent guardrails (often themselves agent-generated)</li>
+          <li>Error messages as remediation instructions — teaching agents through linter output</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Design architectural constraints for an agent-operated codebase</li>
+          <li>Write linter rules that guide agent behavior</li>
+        </ul>
+      </div>`
+  },
+  orchestration: {
+    index: "07",
+    title: "Orchestration",
+    subtitle: "Coordinating multiple agents, workflows, and human oversight. Transforms independent agents into coordinated systems.",
+    html: `
+      <p>Orchestration coordinates multiple agents and multi-step workflows. While the harness (L06) makes a single agent effective, orchestration is how agents work together — delegation, handoffs, human oversight gates, and structured pipelines. Agent frameworks (LangGraph, CrewAI, Anthropic Agent SDK, OpenAI Agents API), workflow design, and human oversight patterns all live here.</p>
       <div class="learn__diagram">
         <svg class="learn__svg" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="140" y="4" width="80" height="34" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
@@ -443,7 +579,7 @@ window.VC_LEARN = {
         </svg>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">06.1 Agent Patterns</h4>
+        <h4 class="learn__subcategory-title">07.1 Agent Patterns</h4>
         <p>What an agent loop actually is: plan, tool call, observe, iterate. The core architectural choices are single-agent vs multi-agent, first-party SDKs (Anthropic Agent SDK, OpenAI Agents API) vs third-party frameworks (LangGraph, CrewAI). When a framework helps vs when raw SDK calls are better depends on workflow complexity and the need for state management.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -455,12 +591,11 @@ window.VC_LEARN = {
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Build a single-agent loop with the Anthropic SDK</li>
-          <li>Design a multi-agent system with handoff contracts</li>
           <li>Choose between framework and raw SDK for a given use case</li>
         </ul>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">06.2 Workflow Design</h4>
+        <h4 class="learn__subcategory-title">07.2 Workflow Design</h4>
         <p>Structuring AI work into repeatable pipelines with typed contracts between stages. Common shapes: chain (sequential steps), branch/merge (parallel paths), loop-until-done, hierarchical delegation. Cost budgets and timeout handling are first-class constraints, not afterthoughts.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -477,7 +612,7 @@ window.VC_LEARN = {
         </ul>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">06.3 Human Oversight</h4>
+        <h4 class="learn__subcategory-title">07.3 Human Oversight</h4>
         <p>The spectrum of human involvement in AI workflows. Human-in-the-loop: human approves every significant action. Human-on-the-loop: agent executes, human monitors and can intervene. Bounded autonomy: agent acts within pre-defined boundaries, escalates edge cases. The right position on this spectrum depends on reversibility, stakes, and confidence.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -494,24 +629,25 @@ window.VC_LEARN = {
         </ul>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">06.4 Execution Environments</h4>
-        <p>Where agent code actually runs. Sandboxed execution for code-generating agents, containerized environments, cloud sandboxes (E2B), and the resource limits, network policies, and data access controls that make agent execution safe.</p>
+        <h4 class="learn__subcategory-title">07.4 Multi-Agent</h4>
+        <p>Coordination patterns for agent teams: delegation, specialization, handoffs, and shared state. When one agent is not enough, multi-agent systems split work by capability (planner, researcher, coder, reviewer) or by domain. The key challenges are communication protocols, conflict resolution, and avoiding redundant work.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
-          <li>Sandboxing for code-executing agents — why it matters</li>
-          <li>Cloud sandbox (E2B) vs local execution vs containers</li>
-          <li>Resource limits, network policies, data access controls</li>
-          <li>Cold start latency and its impact on agent responsiveness</li>
+          <li>Agent specialization — planner, researcher, coder, reviewer</li>
+          <li>Delegation patterns and handoff contracts</li>
+          <li>Shared state vs message-passing between agents</li>
+          <li>Conflict resolution when agents disagree</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
-          <li>Set up E2B sandboxes for an agent workflow</li>
-          <li>Configure resource limits and network policies for agent execution</li>
+          <li>Design a multi-agent system with handoff contracts</li>
+          <li>Implement agent specialization for a complex workflow</li>
+          <li>Build a supervisor agent that delegates and reviews</li>
         </ul>
       </div>`
   },
   context: {
-    index: "07",
+    index: "08",
     title: "Context & Knowledge",
     subtitle: "Managing knowledge, memory, embeddings, and retrieval. Transforms scattered documents and decisions into structured, queryable intelligence.",
     html: `
@@ -536,7 +672,7 @@ window.VC_LEARN = {
         </svg>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">07.1 Vector Storage</h4>
+        <h4 class="learn__subcategory-title">08.1 Vector Storage</h4>
         <p>Purpose-built databases for storing and searching high-dimensional vectors. Range from managed services (Pinecone) to self-hosted engines (Qdrant, Weaviate) to database extensions (pgvector). The choice depends on scale, operational complexity tolerance, and existing infrastructure.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -553,7 +689,7 @@ window.VC_LEARN = {
         </ul>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">07.2 Retrieval & Search</h4>
+        <h4 class="learn__subcategory-title">08.2 Retrieval & Search</h4>
         <p>The full retrieval pipeline: document parsing (PDF, DOCX to text), chunking, embedding, search, and reranking. Reranking is a second-stage step that scores and reorders search results before they enter the context window, dramatically improving relevance.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -571,7 +707,7 @@ window.VC_LEARN = {
         </ul>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">07.3 Memory Systems</h4>
+        <h4 class="learn__subcategory-title">08.3 Memory Systems</h4>
         <p>How AI systems maintain state across interactions. Conversation memory (within a session), long-term memory (across sessions), and knowledge management (structured, durable knowledge). The distinction between volatile state (conversation) and durable state (decisions, docs) is fundamental.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -588,7 +724,7 @@ window.VC_LEARN = {
         </ul>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">07.4 Embeddings</h4>
+        <h4 class="learn__subcategory-title">08.4 Embeddings</h4>
         <p>The models that convert text (and other data) into numerical vectors. Embedding quality determines retrieval quality. Dedicated embedding models (Voyage AI, Jina) often outperform general-purpose LLM embeddings for retrieval tasks. Serving at scale requires specialized infrastructure (HF TEI).</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -606,7 +742,7 @@ window.VC_LEARN = {
       </div>`
   },
   integrations: {
-    index: "08",
+    index: "09",
     title: "Integrations",
     subtitle: "Connecting AI to external tools, APIs, IDEs, and databases. Transforms model outputs into real-world actions through standardized interfaces.",
     html: `
@@ -630,7 +766,7 @@ window.VC_LEARN = {
         </svg>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">08.1 Protocols & Standards</h4>
+        <h4 class="learn__subcategory-title">09.1 Protocols & Standards</h4>
         <p>The interfaces through which AI systems connect to external capabilities. MCP (Model Context Protocol) standardizes tool discovery and invocation. Function calling is how models emit structured tool requests. Structured outputs constrain generation to valid schemas. A2A (Agent-to-Agent) is an emerging protocol for agent interoperability.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -647,7 +783,7 @@ window.VC_LEARN = {
         </ul>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">08.2 Code & Dev Tools</h4>
+        <h4 class="learn__subcategory-title">09.2 Code & Dev Tools</h4>
         <p>AI tools embedded in the development workflow. Ranges from code completion (GitHub Copilot, Supermaven) to AI-first editors (Cursor, Windsurf) to terminal agents (Aider, Claude Code). The integration depth — from autocomplete to full agent — determines how much of the development cycle the tool can handle.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -664,7 +800,7 @@ window.VC_LEARN = {
         </ul>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">08.3 Connectors</h4>
+        <h4 class="learn__subcategory-title">09.3 Connectors</h4>
         <p>Pre-built bridges between AI systems and external services. Ranges from enterprise integration platforms (Zapier AI Actions) to developer SDKs (Vercel AI SDK) to agent tool platforms (Composio). Reduces the bespoke integration work for common connections.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -682,7 +818,7 @@ window.VC_LEARN = {
       </div>`
   },
   eval: {
-    index: "09",
+    index: "10",
     title: "Eval & Safety",
     subtitle: "Testing, monitoring, guardrails, and observability. Transforms raw model outputs into validated, trusted results with quality guarantees.",
     html: `
@@ -710,7 +846,7 @@ window.VC_LEARN = {
         </svg>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">09.1 Evaluation</h4>
+        <h4 class="learn__subcategory-title">10.1 Evaluation</h4>
         <p>Systematic testing of AI system outputs. Golden test sets catch regressions, benchmark suites measure capability, and CI-integrated evals prevent quality degradation from shipping. Evals should run automatically on every prompt or pipeline change.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -727,7 +863,7 @@ window.VC_LEARN = {
         </ul>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">09.2 Observability</h4>
+        <h4 class="learn__subcategory-title">10.2 Observability</h4>
         <p>Monitoring AI systems in production. Request-level tracing, latency metrics, cost tracking, error rates, and quality scores. Without observability, you cannot know whether your system is degrading until users complain.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -744,7 +880,7 @@ window.VC_LEARN = {
         </ul>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">09.3 Guardrails & Security</h4>
+        <h4 class="learn__subcategory-title">10.3 Guardrails & Security</h4>
         <p>Runtime checks that validate model outputs before they reach users. Content safety classifiers (Llama Guard), output format validation (Guardrails AI), prompt injection detection (Lakera), and business logic constraints. These are the last line of defense.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -761,7 +897,7 @@ window.VC_LEARN = {
         </ul>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">09.4 Formal Verification</h4>
+        <h4 class="learn__subcategory-title">10.4 Formal Verification</h4>
         <p>Mathematical proof that code satisfies its specification — not testing, but proof. Theorem provers (Lean 4) check proofs mechanically; verification-aware languages (Dafny) integrate specs into code. LLMs are changing the economics: models like DeepSeek-Prover-V2 draft proofs that proof checkers accept or reject, so hallucinated proofs fail cleanly. When AI generates code faster than humans can review, formal verification becomes the verification mechanism that scales.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -778,7 +914,7 @@ window.VC_LEARN = {
         </ul>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">09.5 Performance Optimization</h4>
+        <h4 class="learn__subcategory-title">10.5 Performance Optimization</h4>
         <p>Agentic systems that generate candidate solutions and iteratively optimize them against objective, measurable benchmarks. The universal pattern: <strong>generate</strong> (LLM produces a candidate) → <strong>evaluate</strong> (automated benchmark scores it) → <strong>select</strong> (evolutionary, RL, or Bayesian selection) → <strong>feedback</strong> (scores returned to LLM) → <strong>iterate</strong>. This pattern works wherever three prerequisites hold: a clear correctness oracle, a quantitative performance metric, and a fast evaluation loop.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -794,10 +930,27 @@ window.VC_LEARN = {
           <li>Run OpenEvolve or KernelBench to optimize a candidate against an automated benchmark</li>
           <li>Use DSPy to optimize prompts against an evaluation set instead of tuning them by hand</li>
         </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">10.6 AI Red Teaming</h4>
+        <p>Adversarial testing of AI systems by autonomous AI agents. Traditional security scanners use signature-based detection — they check for known vulnerability patterns. AI red teaming uses an agent that reasons iteratively about novel attack surfaces specific to AI systems: RAG pipelines, prompt storage, vector stores, and API sprawl created by rapid AI deployment. The McKinsey Lilli case proved the gap: CodeWall AI found 22 zero-auth endpoints and 46.5 million exposed records in two hours; every commercial scanner missed them.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>AI-specific attack surfaces — RAG poisoning, prompt extraction, vector store exfiltration, embedding injection</li>
+          <li>Iterative reasoning vs signatures — agents explore and chain findings, scanners match known patterns</li>
+          <li>Prompt injection — manipulating model behavior by injecting instructions through user input or retrieved context</li>
+          <li>RAG poisoning — inserting adversarial content into knowledge bases so the model retrieves and trusts it</li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Audit an AI application's API surface for unauthenticated endpoints</li>
+          <li>Test a RAG pipeline for poisoning by injecting adversarial documents</li>
+          <li>Verify that system prompts are not extractable through prompt injection</li>
+        </ul>
       </div>`
   },
   products: {
-    index: "10",
+    index: "11",
     title: "Products",
     subtitle: "End-user applications built on the stack below. Transforms AI capabilities into user-facing value through chatbots, copilots, agents, and vertical tools.",
     html: `
@@ -819,7 +972,7 @@ window.VC_LEARN = {
         </svg>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">10.1 Assistants & Copilots</h4>
+        <h4 class="learn__subcategory-title">11.1 Assistants & Copilots</h4>
         <p>AI products that augment human work through conversation or embedded assistance. General-purpose assistants (ChatGPT, Claude, Gemini) handle broad tasks. Copilots (GitHub Copilot, M365 Copilot) embed AI into existing workflows. The human remains in control, making final decisions.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -835,7 +988,7 @@ window.VC_LEARN = {
         </ul>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">10.2 Autonomous Agents</h4>
+        <h4 class="learn__subcategory-title">11.2 Autonomous Agents</h4>
         <p>Products where the AI operates with significant autonomy toward a goal. Coding agents (Devin, Claude Code, Codex), sales agents (11x), customer service agents (Sierra). The key differentiator from copilots: the agent takes actions, not just suggestions.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -851,7 +1004,7 @@ window.VC_LEARN = {
         </ul>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">10.3 Creative Tools</h4>
+        <h4 class="learn__subcategory-title">11.3 Creative Tools</h4>
         <p>AI products for generating creative content — images (Midjourney, Ideogram), video (Runway, Pika), music (Suno), and code/apps (Lovable, Bolt.new, v0). The fastest-evolving product category, with quality improving monthly.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
@@ -867,7 +1020,7 @@ window.VC_LEARN = {
         </ul>
       </div>
       <div class="learn__subcategory">
-        <h4 class="learn__subcategory-title">10.4 Vertical AI</h4>
+        <h4 class="learn__subcategory-title">11.4 Vertical AI</h4>
         <p>AI products built for specific industries or functions. Legal (Harvey), healthcare (Abridge), marketing (Jasper, Writer), enterprise search (Glean), finance (Hebbia). Defensibility comes from domain context, proprietary data, regulatory compliance, and deep workflow integration — not from the model itself.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
