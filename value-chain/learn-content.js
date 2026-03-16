@@ -434,18 +434,26 @@ window.VC_LEARN = {
     html: `
       <p>Agent = Model + Harness. The harness is everything that is NOT the model — the infrastructure that makes a single agent effective. Multiple independent teams converged on this finding: the bottleneck is infrastructure, not model intelligence. Better models amplify the need for better harnesses. The harness is the durable asset; the model is a commodity that changes monthly.</p>
       <p><strong>The progressive anatomy of an agent</strong></p>
-      <p>Every AI agent starts from the same minimal pattern and layers mechanisms one at a time. Understanding this progression is how you go from "using agents" to "building agents":</p>
+      <p>Every AI agent starts from the same minimal pattern and layers mechanisms one at a time. Understanding this progression is how you go from "using agents" to "building agents". The entire agent is under 30 lines of code — everything else layers on top without changing the core loop:</p>
       <ol>
-        <li><strong>The Loop</strong> — one while loop + one tool (bash) = an agent. The model generates, checks stop_reason, executes tools, appends results, repeats</li>
-        <li><strong>Tool dispatch</strong> — the loop stays the same; new tools register into a name→handler map. Adding a capability means adding one handler</li>
-        <li><strong>Planning</strong> — an agent without a plan drifts. TodoWrite-style planning lists steps first, then executes. Completion rates double</li>
-        <li><strong>Subagents</strong> — big tasks get broken into subtasks, each running in a fresh context (clean messages[]). Keeps the main conversation clean</li>
-        <li><strong>Skill loading</strong> — inject knowledge via tool_result when needed, not upfront in the system prompt. Keeps context lean</li>
-        <li><strong>Context compression</strong> — context will fill up. Three-layer compression (summary → key facts → full) enables infinite sessions</li>
-        <li><strong>Persistence</strong> — file-based task graphs with dependencies, persisted to disk. Background daemon threads for slow operations</li>
-        <li><strong>Teams</strong> — when one agent isn't enough: persistent teammates, async mailboxes, autonomous task claiming, worktree isolation for parallel execution</li>
+        <li><strong>The Loop</strong> — <code>while True</code> + <code>stop_reason</code> check + one tool (bash) = an agent. The model generates, checks if it wants to call a tool, executes the tool, appends the result, repeats. When the model stops requesting tools, the loop exits. That's the entire control flow</li>
+        <li><strong>Tool dispatch</strong> — the loop stays the same; new tools register into a <code>name→handler</code> map. Adding a capability means adding one handler function and one tool definition. The loop itself never changes</li>
+        <li><strong>Planning</strong> — an agent without a plan drifts. A TodoWrite-style tool lists steps before executing. Completion rates double. The agent nags itself when it goes off-plan</li>
+        <li><strong>Subagents</strong> — big tasks get broken into subtasks, each running with a fresh <code>messages[]</code>. The parent sends a prompt, gets back a one-paragraph summary. The child's entire message history (possibly 30+ tool calls) is discarded. Parent context stays clean; subagent context is disposable</li>
+        <li><strong>Skill loading</strong> — two-layer injection: skill <em>names</em> in the system prompt (cheap, ~100 tokens each), skill <em>bodies</em> via <code>tool_result</code> on demand (expensive, ~2000 tokens each). Ten skills at 2000 tokens each would waste 20,000 tokens if loaded upfront — most are irrelevant to any given task</li>
+        <li><strong>Context compression</strong> — three layers of increasing aggressiveness: (1) micro-compact replaces old tool results with placeholders every turn, (2) auto-compact triggers when tokens exceed threshold — saves full transcript to disk, asks the LLM to summarize, replaces all messages with the summary, (3) manual compact tool for the model to invoke explicitly. Transcripts preserve full history on disk. Nothing is truly lost — just moved out of active context</li>
+        <li><strong>Task graphs</strong> — promote flat checklists into file-based DAGs with <code>blockedBy</code> and <code>blocks</code> edges. Each task is a JSON file on disk that survives compression and restarts. The graph answers three questions: what's ready, what's blocked, what's done. Completing a task auto-unblocks its dependents. Background daemon threads run slow operations without blocking the agent loop</li>
+        <li><strong>Teams</strong> — persistent teammates with identity and lifecycle (spawn → working → idle → shutdown), async JSONL mailboxes for communication, autonomous task claiming from a shared board, and git worktree isolation so each agent works in its own directory without interference</li>
       </ol>
-      <p>Mechanisms 1–7 are harness (L06). Mechanism 8 crosses into orchestration (L07). See <a href="https://github.com/shareAI-lab/learn-claude-code">Learn Claude Code</a> for a hands-on walkthrough of all 12 sessions.</p>
+      <p>Mechanisms 1–7 are harness (L06). Mechanism 8 crosses into orchestration (L07). See <a href="https://github.com/shareAI-lab/learn-claude-code">Learn Claude Code</a> for hands-on implementations of all 12 sessions with runnable code.</p>
+      <p><strong>Architectural patterns from production agents</strong></p>
+      <p>Production coding agents like OpenCode, Claude Code, and Goose converge on several architectural patterns beyond the basic loop:</p>
+      <ul>
+        <li><strong>Client/server separation</strong> — decouple the agent runtime from the UI. The agent runs as a server process; TUI, desktop app, or mobile client connects remotely. Enables running the agent on a powerful machine while driving it from anywhere</li>
+        <li><strong>Dual-agent design</strong> — a full-access "build" agent for development work and a read-only "plan" agent for analysis and exploration. The plan agent denies file edits by default and asks permission before running commands. Switch between them with a keystroke</li>
+        <li><strong>Native LSP integration</strong> — language server protocol gives the agent rich code understanding (go-to-definition, find-references, type info) without reading entire files. Dramatically reduces context usage</li>
+        <li><strong>Provider-agnostic model layer</strong> — the agent works with any LLM provider (Claude, OpenAI, Google, local models). As models commoditize, being provider-agnostic protects the investment in harness engineering</li>
+      </ul>
       <div class="learn__diagram">
         <svg class="learn__svg" viewBox="0 0 480 100" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="2" y="30" width="70" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
@@ -489,15 +497,17 @@ window.VC_LEARN = {
         <p>How agents persist progress across sessions, recover from crashes, and bridge context between task boundaries. File-driven state machines, git-tracked task files, progress checkpointing, and durable execution patterns. Without this, agents lose all context when a session ends or crashes.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
-          <li>File-driven state machines vs in-memory state</li>
-          <li>Crash recovery and progress checkpointing</li>
-          <li>Session bridging — carrying state across fresh context windows</li>
-          <li>Git-tracked task files as durable agent memory</li>
+          <li>File-driven state machines vs in-memory state — in-memory checklists die on context compression; file-based task graphs survive restarts</li>
+          <li>Task DAGs with dependency resolution — each task is a JSON file with <code>blockedBy</code> and <code>blocks</code> edges. Completing a task auto-clears its ID from every dependent's <code>blockedBy</code> list, automatically unblocking ready work</li>
+          <li>Crash recovery and progress checkpointing — conversation memory is volatile; file state is durable. After a crash, state reconstructs from task files and worktree indexes on disk</li>
+          <li>Session bridging — carrying state across fresh context windows via compressed summaries + durable file artifacts</li>
+          <li>Background task execution — daemon threads run slow operations (builds, tests, downloads) without blocking the agent loop, injecting notifications on completion</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
-          <li>Design a file-based state machine for multi-session agent work</li>
+          <li>Design a file-based task graph with dependency resolution</li>
           <li>Implement crash recovery for long-running agent tasks</li>
+          <li>Build background task execution with completion notifications</li>
         </ul>
       </div>
       <div class="learn__subcategory">
@@ -506,14 +516,18 @@ window.VC_LEARN = {
         <p><strong>Key concepts</strong></p>
         <ul>
           <li>Tool registries and discovery (MCP, function calling)</li>
+          <li>The dispatch map pattern — <code>name→handler</code> mapping means adding a tool is adding one function. The agent loop itself never changes</li>
+          <li>Two-layer skill injection — skill names in system prompt (cheap discovery), full skill body via <code>tool_result</code> on demand (expensive but targeted)</li>
           <li>Code execution infrastructure (interpreters, terminals)</li>
           <li>File system and git access patterns</li>
+          <li>LSP integration — language server protocol gives agents go-to-definition, find-references, and type info without reading entire files</li>
           <li>Browser automation for verification (Playwright, Puppeteer)</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Configure MCP servers for an agent runtime</li>
           <li>Set up code execution tools with appropriate sandboxing</li>
+          <li>Implement a skill loading system with on-demand injection</li>
         </ul>
       </div>
       <div class="learn__subcategory">
@@ -538,13 +552,14 @@ window.VC_LEARN = {
         <p><strong>Key concepts</strong></p>
         <ul>
           <li>The ~40% context utilization sweet spot</li>
-          <li>Context compaction and progressive disclosure</li>
+          <li>Three-layer compression strategy — (1) micro-compact: replace old tool results with placeholders every turn, (2) auto-compact: when tokens exceed threshold, save full transcript to disk and replace with LLM-generated summary, (3) manual compact: tool the model invokes explicitly. Nothing is truly lost — transcripts preserve full history on disk</li>
           <li>Pre-inlining task context vs letting agents discover it</li>
           <li>AGENTS.md / CLAUDE.md as static context engineering</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Design a context injection strategy for a coding agent</li>
+          <li>Implement a three-layer compression strategy for long sessions</li>
           <li>Write effective AGENTS.md files for agent-operated repositories</li>
         </ul>
       </div>
@@ -654,10 +669,10 @@ window.VC_LEARN = {
         <p><strong>The multi-agent progression</strong></p>
         <p>Teams emerge in stages, each solving a specific coordination problem:</p>
         <ul>
-          <li><strong>Persistent teammates + async mailboxes</strong> — agents communicate through durable message queues, not shared context. Each agent runs its own loop</li>
-          <li><strong>Team protocols</strong> — a single request-response pattern drives all negotiation. Shared communication rules prevent chaos</li>
-          <li><strong>Autonomous task claiming</strong> — instead of the lead assigning every task, teammates scan the board and claim work. Eliminates the delegation bottleneck</li>
-          <li><strong>Worktree isolation</strong> — each agent works in its own git worktree directory. Tasks manage goals, worktrees manage directories, bound by ID. No interference between concurrent agents</li>
+          <li><strong>Persistent teammates + async mailboxes</strong> — unlike disposable subagents (spawn, work, die), teammates have identity, lifecycle (spawn → working → idle → shutdown), and memory between invocations. Communication uses append-only JSONL inboxes: <code>send()</code> appends a JSON line, <code>read_inbox()</code> reads all and drains. Each teammate checks its inbox before every LLM call</li>
+          <li><strong>Team protocols</strong> — a single request-response pattern drives all negotiation. Without shared rules, agents talk past each other. Protocol includes shutdown coordination (wait for in-progress work) and plan approval FSMs (propose → review → approve/reject)</li>
+          <li><strong>Autonomous task claiming</strong> — agents scan the task board in idle cycles and claim unowned work themselves. The lead no longer bottlenecks on assigning every task. Task graphs from L06 become the shared coordination backbone — same <code>blockedBy</code>/<code>blocks</code> DAG, now read and written by multiple agents</li>
+          <li><strong>Worktree isolation</strong> — two planes: the <em>control plane</em> (<code>.tasks/</code> with task JSON files) and the <em>execution plane</em> (<code>.worktrees/</code> with git worktree directories). Each task binds to a worktree by ID. Creating a worktree auto-advances the task to in_progress. Removing a worktree with <code>complete_task=true</code> handles teardown + completion in one call. Event stream (<code>events.jsonl</code>) logs every lifecycle step for crash recovery</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
