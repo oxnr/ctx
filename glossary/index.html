@@ -87,6 +87,10 @@
               <dd>Running multiple inference requests together to maximize GPU utilization. Continuous batching dynamically adds new requests to an active batch without waiting for all current requests to finish.</dd>
             </div>
             <div class="glossary__entry">
+              <dt id="bitnet">BitNet</dt>
+              <dd>A class of 1-bit language models where weights are quantized to {-1, 0, 1} during training rather than post-hoc. Uses ~78% less memory than 16-bit models, enabling billion-parameter inference and LoRA fine-tuning on consumer GPUs and smartphones. Developed by Microsoft Research, with cross-platform implementations by Tether's QVAC framework. Value chain layers: L02 Pre-Training, L04 Inference.</dd>
+            </div>
+            <div class="glossary__entry">
               <dt id="benchmarking">Benchmarking</dt>
               <dd>Standardized evaluation of model performance on specific tasks. Common benchmarks include MMLU, HumanEval, MATH, and arena-style human preference rankings. In a post-training workflow, benchmarking confirms that a fine-tuned model improves on the target task without regressing on general capability. Value chain layer: L03 Post-Training, L10 Eval and Safety.</dd>
             </div>

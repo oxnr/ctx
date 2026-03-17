@@ -114,6 +114,7 @@ window.VC_LEARN = {
           <li><strong>Attention evolution</strong> — Multi-Head Attention (MHA) → Grouped-Query Attention (GQA, shares KV heads across query groups for faster inference) → Multi-Head Latent Attention (MLA, compresses KV into a low-rank latent space, used by DeepSeek)</li>
           <li><strong>Positional encoding</strong> — RoPE (Rotary Position Embedding, the current default), NoPE (No Position Embedding, relies on causal mask alone), YaRN (extends RoPE to longer contexts without retraining)</li>
           <li><strong>Active vs total parameters</strong> — In MoE models only a fraction of total parameters activate per token. DeepSeek-V3 has 671B total but ~37B active. This is why "parameter count" alone is misleading for cost and speed</li>
+          <li><strong>1-bit models (BitNet)</strong> — weights quantized to {-1, 0, 1} during training, not post-hoc. Uses 78% less memory than 16-bit models. Enables billion-parameter inference and LoRA fine-tuning on smartphones. A fundamentally different efficiency frontier from standard quantization (Q4/Q8)</li>
           <li><strong>Modern features</strong> — QK-Norm (stabilizes attention logits at scale), sliding-window attention (limits attention span in lower layers for efficiency), multi-token prediction (trains the model to predict several tokens ahead simultaneously)</li>
         </ul>
         <p><strong>Practical skills</strong></p>
@@ -310,17 +311,20 @@ window.VC_LEARN = {
       </div>
       <div class="learn__subcategory">
         <h4 class="learn__subcategory-title">04.3 Local Runners</h4>
-        <p>Tools for running models on personal hardware. Ollama (CLI), LM Studio (desktop app), MLX (Apple Silicon framework). Useful for development, privacy-sensitive use cases, and offline scenarios.</p>
+        <p>Tools for running models on personal hardware. Ollama (CLI), LM Studio (desktop app), MLX (Apple Silicon framework). Useful for development, privacy-sensitive use cases, and offline scenarios. The frontier is moving fast — 1-bit models now enable billion-parameter inference and fine-tuning on smartphones.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
-          <li>Model size vs hardware requirements — what runs on a laptop</li>
-          <li>Quantization enables local inference at the cost of some quality</li>
-          <li>Apple Silicon (MLX) vs NVIDIA GPU for local inference</li>
+          <li>Model size vs hardware requirements — what runs on a laptop vs a phone</li>
+          <li>Quantization ladder — standard quantization (Q4, Q8) trades precision for memory. 1-bit models (BitNet) go further: weights are literally {-1, 0, 1}, using 78% less VRAM than 16-bit equivalents. A BitNet-1B runs in memory that wouldn't fit a standard 0.6B model</li>
+          <li>On-device fine-tuning — not just inference but LoRA training on consumer hardware. QVAC demonstrated a 13B model fine-tuned on an iPhone 16, and 125M fine-tuned in ~10 minutes on a Samsung S25. This breaks the "fine-tuning needs a GPU cluster" assumption</li>
+          <li>Cross-platform GPU heterogeneity — the market isn't just NVIDIA. Consumer AI runs on Intel, AMD, Apple Silicon, Qualcomm Adreno (Samsung), ARM Mali, and Apple Bionic. Frameworks that support all of them unlock billions of existing devices</li>
+          <li>Apple Silicon (MLX) vs NVIDIA GPU vs mobile GPU for local inference</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Set up Ollama for local development</li>
           <li>Choose the right quantization level for available hardware</li>
+          <li>Evaluate when on-device inference/fine-tuning beats API calls (privacy, latency, offline, cost)</li>
         </ul>
       </div>
       <div class="learn__subcategory">
