@@ -433,26 +433,25 @@ window.VC_LEARN = {
     subtitle: "Agent runtime infrastructure that turns a model API call into a functioning agent. Sandboxes, state, tools, verification, and constraints.",
     html: `
       <p>Agent = Model + Harness. The harness is everything that is NOT the model — the infrastructure that makes a single agent effective. Multiple independent teams converged on this finding: the bottleneck is infrastructure, not model intelligence. Better models amplify the need for better harnesses. The harness is the durable asset; the model is a commodity that changes monthly.</p>
-      <p><strong>The progressive anatomy of an agent</strong></p>
-      <p>Every AI agent starts from the same minimal pattern and layers mechanisms one at a time. Understanding this progression is how you go from "using agents" to "building agents". The entire agent is under 30 lines of code — everything else layers on top without changing the core loop:</p>
+      <p><strong>How agents are built: the progressive stack</strong></p>
+      <p>Every AI agent starts from the same minimal pattern — a <code>while True</code> loop that sends messages to an LLM, checks if it wants to call a tool, executes the tool, and loops back. The entire core is under 30 lines. Everything else layers on top without changing the loop. Each mechanism below maps to a subcategory below or to orchestration (L07):</p>
       <ol>
-        <li><strong>The Loop</strong> — <code>while True</code> + <code>stop_reason</code> check + one tool (bash) = an agent. The model generates, checks if it wants to call a tool, executes the tool, appends the result, repeats. When the model stops requesting tools, the loop exits. That's the entire control flow</li>
-        <li><strong>Tool dispatch</strong> — the loop stays the same; new tools register into a <code>name→handler</code> map. Adding a capability means adding one handler function and one tool definition. The loop itself never changes</li>
-        <li><strong>Planning</strong> — an agent without a plan drifts. A TodoWrite-style tool lists steps before executing — only one task can be <code>in_progress</code> at a time, forcing sequential focus. A <em>nag reminder</em> injects <code>&lt;reminder&gt;Update your todos&lt;/reminder&gt;</code> into the next tool_result if the model goes 3+ rounds without updating its plan. Completion rates double</li>
-        <li><strong>Subagents</strong> — big tasks get broken into subtasks, each running with a fresh <code>messages[]</code>. The parent sends a prompt, gets back a one-paragraph summary. The child's entire message history (possibly 30+ tool calls) is discarded. Parent context stays clean; subagent context is disposable</li>
-        <li><strong>Skill loading</strong> — two-layer injection: skill <em>names</em> in the system prompt (cheap, ~100 tokens each), skill <em>bodies</em> via <code>tool_result</code> on demand (expensive, ~2000 tokens each). Ten skills at 2000 tokens each would waste 20,000 tokens if loaded upfront — most are irrelevant to any given task</li>
-        <li><strong>Context compression</strong> — three layers of increasing aggressiveness: (1) micro-compact replaces old tool results with placeholders every turn, (2) auto-compact triggers when tokens exceed threshold — saves full transcript to disk, asks the LLM to summarize, replaces all messages with the summary, (3) manual compact tool for the model to invoke explicitly. Transcripts preserve full history on disk. Nothing is truly lost — just moved out of active context</li>
-        <li><strong>Task graphs + background execution</strong> — promote flat checklists into file-based DAGs with <code>blockedBy</code> and <code>blocks</code> edges. Each task is a JSON file on disk that survives compression and restarts. The graph answers three questions: what's ready, what's blocked, what's done. Completing a task auto-unblocks its dependents. For slow operations (builds, tests, installs), daemon threads run commands in the background while the agent keeps thinking — results are enqueued in a thread-safe notification queue and drained as <code>&lt;background-results&gt;</code> before each LLM call. The loop stays single-threaded; only subprocess I/O is parallelized</li>
-        <li><strong>Teams</strong> — persistent teammates with identity and lifecycle (spawn → working → idle → shutdown), async JSONL mailboxes for communication. Coordination uses a shared FSM (<code>pending→approved|rejected</code>) with correlation IDs (<code>request_id</code>) for both shutdown handshakes and plan approval gates. Autonomous agents enter an idle cycle when work runs out — polling every 5s for inbox messages or unclaimed tasks on the board, auto-claiming the first unblocked match. Identity re-injection after context compression prevents agents from forgetting who they are. 60s idle timeout triggers graceful auto-shutdown. Git worktree isolation gives each agent its own directory so concurrent agents never interfere</li>
+        <li><strong>Loop + tools</strong> — the core loop + a dispatch map (<code>name→handler</code>). Adding a tool means adding one function. The loop never changes. → <em>06.3 Tool Infrastructure</em></li>
+        <li><strong>Planning</strong> — a TodoWrite tool with nag reminders that inject accountability. Completion rates double. → <em>06.4 Verification Loops</em></li>
+        <li><strong>Subagents</strong> — fresh <code>messages[]</code> per child, parent gets a summary, child history is discarded. The first step toward multi-agent — still single-agent infra but bridges into orchestration. → <em>06.1 / 07.4</em></li>
+        <li><strong>Skill loading</strong> — skill names in system prompt (cheap), bodies via <code>tool_result</code> on demand (expensive). → <em>06.3 Tool Infrastructure</em></li>
+        <li><strong>Context compression</strong> — three layers: micro-compact, auto-compact, manual compact. Transcripts preserved on disk. → <em>06.5 Context Management</em></li>
+        <li><strong>Task graphs + background execution</strong> — file-based DAGs with dependency resolution + daemon threads for slow I/O. → <em>06.2 State & Continuity</em></li>
+        <li><strong>Teams</strong> — persistent teammates, async mailboxes, protocol FSMs, autonomous claiming, worktree isolation. → <em>07.4 Multi-Agent</em></li>
       </ol>
-      <p>Mechanisms 1–7 are harness (L06). Mechanism 8 crosses into orchestration (L07). See <a href="https://github.com/shareAI-lab/learn-claude-code">Learn Claude Code</a> for hands-on implementations of all 12 sessions with runnable code.</p>
-      <p><strong>Architectural patterns from production agents</strong></p>
-      <p>Production coding agents like OpenCode, Claude Code, and Goose converge on several architectural patterns beyond the basic loop:</p>
+      <p>See <a href="https://github.com/shareAI-lab/learn-claude-code">Learn Claude Code</a> for runnable implementations of all 12 sessions.</p>
+      <p><strong>Production patterns</strong></p>
+      <p>Production agents (OpenCode, Claude Code, Goose) add architectural choices on top of this stack:</p>
       <ul>
-        <li><strong>Client/server separation</strong> — decouple the agent runtime from the UI. The agent runs as a server process; TUI, desktop app, or mobile client connects remotely. Enables running the agent on a powerful machine while driving it from anywhere</li>
-        <li><strong>Dual-agent design</strong> — a full-access "build" agent for development work and a read-only "plan" agent for analysis and exploration. The plan agent denies file edits by default and asks permission before running commands. Switch between them with a keystroke</li>
-        <li><strong>Native LSP integration</strong> — language server protocol gives the agent rich code understanding (go-to-definition, find-references, type info) without reading entire files. Dramatically reduces context usage</li>
-        <li><strong>Provider-agnostic model layer</strong> — the agent works with any LLM provider (Claude, OpenAI, Google, local models). As models commoditize, being provider-agnostic protects the investment in harness engineering</li>
+        <li><strong>Client/server separation</strong> — agent runs as a server; TUI, desktop, or mobile connects remotely</li>
+        <li><strong>Dual-agent design</strong> — full-access "build" agent + read-only "plan" agent, switchable with a keystroke</li>
+        <li><strong>Native LSP integration</strong> — go-to-definition, find-references, type info without reading entire files</li>
+        <li><strong>Provider-agnostic model layer</strong> — works with any LLM; protects the harness investment as models commoditize</li>
       </ul>
       <div class="learn__diagram">
         <svg class="learn__svg" viewBox="0 0 480 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -512,16 +511,15 @@ window.VC_LEARN = {
       </div>
       <div class="learn__subcategory">
         <h4 class="learn__subcategory-title">06.3 Tool Infrastructure</h4>
-        <p>The tool layer that makes agents capable: tool registries, bash/code execution, MCP runtime, file system access, and browser automation. This is the "hands" of the agent — without tool infrastructure, a model can only generate text.</p>
+        <p>The tool layer that makes agents capable. Without tools, a model can only generate text. The core pattern is a dispatch map: <code>name→handler</code> — adding a tool means adding one function and one schema definition. The loop itself never changes.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
-          <li>Tool registries and discovery (MCP, function calling)</li>
-          <li>The dispatch map pattern — <code>name→handler</code> mapping means adding a tool is adding one function. The agent loop itself never changes</li>
-          <li>Two-layer skill injection — skill names in system prompt (cheap discovery), full skill body via <code>tool_result</code> on demand (expensive but targeted)</li>
-          <li>Code execution infrastructure (interpreters, terminals)</li>
+          <li>Tool registries and discovery — MCP for external tools, function calling for built-in tools</li>
+          <li>Two-layer skill injection — skill <em>names</em> in system prompt (~100 tokens each, cheap discovery), full skill <em>body</em> via <code>tool_result</code> on demand (~2000 tokens each, expensive but targeted). Avoids wasting 20,000 tokens loading 10 skills upfront when only one is relevant</li>
+          <li>Code execution — interpreters, terminals, sandboxed subprocess with output capture</li>
+          <li>LSP integration — go-to-definition, find-references, type info without reading entire files. Dramatically reduces context usage compared to grepping</li>
           <li>File system and git access patterns</li>
-          <li>LSP integration — language server protocol gives agents go-to-definition, find-references, and type info without reading entire files</li>
-          <li>Browser automation for verification (Playwright, Puppeteer)</li>
+          <li>Browser automation for visual verification (Playwright, Puppeteer)</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -537,24 +535,37 @@ window.VC_LEARN = {
         <ul>
           <li>Write-test-fix as a core agent loop pattern</li>
           <li>Automated test execution as a verification oracle</li>
+          <li>Plan accountability — a TodoWrite tool with one-in_progress-at-a-time constraint forces sequential focus. A nag reminder injects <code>&lt;reminder&gt;</code> if the agent goes 3+ rounds without updating its plan. Doubles completion rates on multi-step tasks</li>
           <li>Browser-based visual verification</li>
           <li>Must-have verification — ensuring tasks produce required artifacts</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Build a write-test-fix loop into an agent workflow</li>
+          <li>Implement plan tracking with nag reminders for accountability</li>
           <li>Design verification criteria for agent-generated code</li>
         </ul>
       </div>
       <div class="learn__subcategory">
         <h4 class="learn__subcategory-title">06.5 Context Management</h4>
-        <p>How harnesses manage what enters the context window: compaction, progressive disclosure, smart zone optimization. Performance degrades beyond ~40% context utilization. The best harnesses pre-inline exactly what the agent needs so it never wastes tool calls on orientation.</p>
+        <p>How harnesses manage what enters the context window. Performance degrades beyond ~40% context utilization — the best harnesses pre-inline exactly what the agent needs and compress aggressively.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
-          <li>The ~40% context utilization sweet spot</li>
-          <li>Three-layer compression strategy — (1) micro-compact: replace old tool results with placeholders every turn, (2) auto-compact: when tokens exceed threshold, save full transcript to disk and replace with LLM-generated summary, (3) manual compact: tool the model invokes explicitly. Nothing is truly lost — transcripts preserve full history on disk</li>
-          <li>Identity re-injection — after compression, agents may forget who they are (especially in multi-agent setups). If <code>messages[]</code> is very short post-compression, re-inject an identity block with name, role, and team</li>
-          <li>Nag reminders — inject <code>&lt;reminder&gt;</code> blocks into tool results when the agent drifts from its plan, creating accountability without changing the loop</li>
+          <li>The ~40% context utilization sweet spot — beyond this, model performance degrades noticeably</li>
+          <li>Three-layer compression — each layer is more aggressive than the last:
+            <ol>
+              <li><strong>Micro-compact</strong> (every turn) — replace tool results older than 3 turns with <code>[Previous: used {tool_name}]</code> placeholders</li>
+              <li><strong>Auto-compact</strong> (at token threshold) — save full transcript to disk, ask the LLM to summarize, replace all messages with the summary</li>
+              <li><strong>Manual compact</strong> (on demand) — a tool the model calls explicitly when it senses context pressure</li>
+            </ol>
+            Nothing is truly lost — transcripts preserve full history on disk for recovery</li>
+          <li>Context injection patterns:
+            <ul>
+              <li><strong>Identity re-injection</strong> — after compression, agents may forget who they are. If <code>messages[]</code> is very short, re-inject an identity block (name, role, team)</li>
+              <li><strong>Nag reminders</strong> — inject <code>&lt;reminder&gt;</code> blocks into tool results when the agent drifts from its plan (3+ rounds without updating todos)</li>
+              <li><strong>Background result injection</strong> — drain a notification queue of completed background tasks as <code>&lt;background-results&gt;</code> before each LLM call</li>
+            </ul>
+          </li>
           <li>Pre-inlining task context vs letting agents discover it</li>
           <li>AGENTS.md / CLAUDE.md as static context engineering</li>
         </ul>
@@ -610,18 +621,18 @@ window.VC_LEARN = {
       </div>
       <div class="learn__subcategory">
         <h4 class="learn__subcategory-title">07.1 Agent Patterns</h4>
-        <p>What an agent loop actually is: plan, tool call, observe, iterate. The core architectural choices are single-agent vs multi-agent, first-party SDKs (Anthropic Agent SDK, OpenAI Agents API) vs third-party frameworks (LangGraph, CrewAI). When a framework helps vs when raw SDK calls are better depends on workflow complexity and the need for state management.</p>
+        <p>The agent loop itself lives in L06 Harness. Orchestration starts when you need to coordinate beyond a single agent: choosing between single-agent with subagents vs true multi-agent teams, picking frameworks vs raw SDK calls, and deciding how much autonomy each agent gets.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
-          <li>The agent loop — plan, act, observe, iterate until done</li>
-          <li>Single-agent vs multi-agent architectures</li>
-          <li>First-party SDKs (Anthropic, OpenAI) vs third-party frameworks (LangGraph, CrewAI)</li>
-          <li>When a framework helps vs when raw SDK is simpler and better</li>
+          <li>Single-agent + subagents vs persistent multi-agent teams — when each is appropriate</li>
+          <li>First-party SDKs (Anthropic Agent SDK, OpenAI Agents API) vs third-party frameworks (LangGraph, CrewAI, Google ADK)</li>
+          <li>When a framework helps (complex state, many agents) vs when raw SDK is simpler and better (single agent, simple tools)</li>
+          <li>Graph-based orchestration as the emerging standard — agents as nodes, handoffs as edges</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
-          <li>Build a single-agent loop with the Anthropic SDK</li>
-          <li>Choose between framework and raw SDK for a given use case</li>
+          <li>Choose between single-agent subagents and multi-agent teams for a given problem</li>
+          <li>Evaluate framework vs raw SDK tradeoffs for your use case</li>
         </ul>
       </div>
       <div class="learn__subcategory">
