@@ -25,6 +25,13 @@ This folder stores local specialist agent profiles used by ctx engagements.
     - explicit environment/config layering to avoid leaking secrets and context
     - repository-local operating instructions and maintenance runbooks
 
+- `HKUDS/ClawTeam` (reference only — not synced)
+  - Repo: https://github.com/HKUDS/ClawTeam
+  - Useful patterns we reference:
+    - TOML team templates (hedge-fund, code-review, research-paper) as reusable multi-agent role compositions
+    - filesystem-based inter-agent coordination without external infrastructure
+    - leader-agent-as-orchestrator pattern (no separate orchestrator process)
+
 ## Operating rules
 - Sync only trusted repos with clear maintenance signals.
 - Keep local profiles markdown-first; no binary artifacts.
