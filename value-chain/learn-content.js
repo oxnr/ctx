@@ -191,6 +191,7 @@ window.VC_LEARN = {
           <li>RLHF vs DPO — reward model vs direct optimization</li>
           <li>Constitutional AI and self-alignment</li>
           <li>Preference data quality determines alignment quality</li>
+          <li>Tool-feedback-as-training-signal — agent tool interactions (compiler errors, test failures, linter output) become training data via hindsight relabeling. An LLM judge extracts actionable hints from tool feedback, the original prompt is augmented with hints to create an enhanced teacher distribution, and the original response tokens are scored against this distribution to produce per-token distillation targets for RL training (GRPO). Closes the loop between agent deployment and model improvement at the weight level, not just the prompt level</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -488,11 +489,16 @@ window.VC_LEARN = {
           <li>Cloud sandbox (E2B) vs local execution vs containers vs unikernels</li>
           <li>Resource limits, network policies, data access controls</li>
           <li>Cold start latency and its impact on agent responsiveness</li>
+          <li>Agent-as-untrusted-code — the agent itself (not just code it generates) needs sandboxing. An autonomous agent with network access can exfiltrate data, call unauthorized APIs, or probe internal infrastructure. Defense-in-depth: Landlock (filesystem) + seccomp (syscalls) + network namespaces + file permissions, layered so no single bypass defeats all controls</li>
+          <li>Binary-scoped network policies — within a single container, different binaries get different permissions. <code>git</code> can reach github.com but not model APIs; <code>npm</code> gets read-only registry access; the agent binary gets its designated inference endpoint only. Per-endpoint, per-HTTP-method granularity prevents data exfiltration through legitimate tools</li>
+          <li>Immutable config / mutable state split — agent configuration (auth tokens, gateway URLs, CORS settings) is read-only; workspace and task state is read-write. Prevents agents from modifying their own security boundaries. Implemented via filesystem permissions and symlinks from the read-only config to writable data directories</li>
+          <li>Inference interception — all model API calls routed through a local gateway transparently. The agent thinks it's calling <code>localhost</code>; the gateway routes to the actual provider. Enables model swapping, rate limiting, cost monitoring, and preventing unauthorized model access — all without the agent's awareness</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Set up E2B sandboxes for an agent workflow</li>
           <li>Configure resource limits and network policies for agent execution</li>
+          <li>Design a binary-scoped network policy for an autonomous agent deployment</li>
         </ul>
       </div>
       <div class="learn__subcategory">
@@ -504,6 +510,8 @@ window.VC_LEARN = {
           <li>Task DAGs with dependency resolution — each task is a JSON file with <code>blockedBy</code> and <code>blocks</code> edges. Completing a task auto-clears its ID from every dependent's <code>blockedBy</code> list, automatically unblocking ready work</li>
           <li>Crash recovery and progress checkpointing — conversation memory is volatile; file state is durable. After a crash, state reconstructs from task files and worktree indexes on disk</li>
           <li>Session bridging — carrying state across fresh context windows via compressed summaries + durable file artifacts</li>
+          <li>Cross-run meta-learning — a persistent lessons file (capped entries with time-decay consolidation) that survives across runs. Lessons extracted at three moments: after every successful keep (positive strategy), after every PIVOT (failed strategy family), and at run completion (patterns). Future runs consult lessons during hypothesis generation, preferring strategies that worked and avoiding known dead ends</li>
+          <li>Instinct-based continuous learning — deterministic hooks observe every tool call (100% capture, unlike skills which fire 50-80% based on LLM judgment). A background observer detects patterns and creates atomic instincts (YAML files with confidence 0.3→0.9). Instincts are project-scoped (git remote hash prevents React patterns leaking into Python projects). An evolution pipeline clusters instincts into skills → commands → agents — the harness generates new capabilities from its own observations. Distinct from cross-run lessons (which produce knowledge that informs prompts) — this produces new executable capabilities</li>
           <li>Background task execution — daemon threads run slow operations (builds, tests, downloads) without blocking the agent loop, injecting notifications on completion</li>
         </ul>
         <p><strong>Practical skills</strong></p>
@@ -542,12 +550,16 @@ window.VC_LEARN = {
           <li>Plan accountability — a TodoWrite tool with one-in_progress-at-a-time constraint forces sequential focus. A nag reminder injects <code>&lt;reminder&gt;</code> if the agent goes 3+ rounds without updating its plan. Doubles completion rates on multi-step tasks</li>
           <li>Browser-based visual verification</li>
           <li>Must-have verification — ensuring tasks produce required artifacts</li>
+          <li>Graduated stuck recovery — when an agent gets stuck, it needs an escalation ladder, not naive retry. The pattern: 3 consecutive failures → <strong>REFINE</strong> (vary within current strategy), 5 failures → <strong>PIVOT</strong> (abandon strategy entirely), 2 pivots without improvement → <strong>web search</strong> (escalate to external knowledge), 3 pivots → <strong>soft blocker</strong> (increasingly bold changes). A single success resets all counters. Models how a competent human researcher actually behaves</li>
+          <li>Dual-gate verification — metric verification ("did it improve?") and guard verification ("did it break anything?") are separate, sequential gates. A change can improve the metric but still be rejected if the guard fails. Marginal improvement (&lt;1%) with significant complexity increase equals discard</li>
+          <li>Noise-aware metric handling — real metrics are noisy (test coverage fluctuates, benchmarks vary with system load, latency spikes). Autonomous loops need statistical discipline to avoid false keeps/discards: multi-run median (3-5 runs), minimum improvement thresholds below the noise floor, confirmation runs before keeping, and environment pinning (fixed seeds, deterministic test ordering, cache flushing). Without this, an autonomous loop will keep random noise and discard real improvements</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Build a write-test-fix loop into an agent workflow</li>
           <li>Implement plan tracking with nag reminders for accountability</li>
           <li>Design verification criteria for agent-generated code</li>
+          <li>Implement a graduated stuck-recovery escalation ladder for long-running agent loops</li>
         </ul>
       </div>
       <div class="learn__subcategory">
@@ -572,12 +584,15 @@ window.VC_LEARN = {
           </li>
           <li>Pre-inlining task context vs letting agents discover it</li>
           <li>AGENTS.md / CLAUDE.md as static context engineering</li>
+          <li>Protocol re-anchoring — long-running sessions suffer instruction drift even after compression. A protocol fingerprint check is a zero-token self-check where the agent internally verifies N yes/no items about its own protocol knowledge. If any check fails, it re-reads its protocol documents from disk and marks the event with a <code>[RE-ANCHOR]</code> tag. Check frequency increases with observed drift: every 10 iterations normally, every 5 after one compaction, every iteration after 3+ compactions</li>
+          <li>Conversation as a typed AST (ChainAST) — treat message history as a structured data type, not a flat array. Sections contain header + body pairs, each typed (request-response, completion, summarization) with byte-level size tracking. This enables: structural validation (tool calls must have responses), force-repair of broken conversations, surgical summarization that knows which parts are safe to compress and which contain provider-specific reasoning signatures that must be preserved (Gemini thought_signature, Anthropic extended thinking). Per-section size tracking drives precise context window management</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Design a context injection strategy for a coding agent</li>
           <li>Implement a three-layer compression strategy for long sessions</li>
           <li>Write effective AGENTS.md files for agent-operated repositories</li>
+          <li>Implement a protocol re-anchoring check for long-running agent sessions</li>
         </ul>
       </div>
       <div class="learn__subcategory">
@@ -589,11 +604,16 @@ window.VC_LEARN = {
           <li>Dependency layering (Types → Config → Repo → Service → Runtime → UI)</li>
           <li>Custom linters as agent guardrails (often themselves agent-generated)</li>
           <li>Error messages as remediation instructions — teaching agents through linter output</li>
+          <li>Empirical behavioral profiling — generate N samples across diverse prompts, feed the corpus back to the LLM, extract recurring patterns with frequency counts. Produces domain-specific constraint files. Works for code style, writing, visual design — any domain with measurable output defaults</li>
+          <li>Subtractive constraints — prohibit specific patterns, never prescribe alternatives. Prescribing replacements just creates new defaults. Removing attractors forces genuine variation. The bulk of effective constraint files should be "do not" directives, not "instead do" prescriptions</li>
+          <li>Deterministic middleware around the stochastic core — <code>@before_model</code> / <code>@after_model</code> / <code>@after_agent</code> hooks that enforce invariants the LLM cannot circumvent. Tool errors are converted to messages the LLM can observe and self-heal from. Empty outputs trigger forced action calls. After-agent hooks auto-create PRs if the agent forgot. The LLM handles the creative work; the middleware ensures the contract is always fulfilled regardless of how the LLM fails</li>
+          <li>Anti-weakening constraints — agents game quality gates by lowering standards instead of raising quality. The failure mode: agent modifies linter/formatter configs to pass checks rather than fixing the code. Config protection hooks block modifications to ESLint, Prettier, Biome, Ruff configs. More broadly: any constraint the agent can circumvent by changing the constraint itself is not a real constraint. The guardrail system must be outside the agent's write surface</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Design architectural constraints for an agent-operated codebase</li>
           <li>Write linter rules that guide agent behavior</li>
+          <li>Generate a behavioral profile for a domain by sampling LLM outputs and extracting recurring patterns</li>
         </ul>
       </div>`
   },
@@ -648,6 +668,10 @@ window.VC_LEARN = {
           <li>Common workflow shapes — chain, branch/merge, loop, hierarchical delegation</li>
           <li>Cost budgets and timeout handling as first-class design constraints</li>
           <li>Handoff contracts (JSON schemas, validation) between stages</li>
+          <li>Recursive pipeline re-execution — when a late-stage verification fails, PIVOT back to an earlier phase (not just retry the current step) with versioned artifact directories. The pipeline preserves all prior artifacts and re-executes from synthesis, hypothesis generation, or experiment design. Prevents sunk-cost fallacy in multi-stage workflows where the right move is to abandon the approach, not refine it</li>
+          <li>Cost-based execution tier routing — automatically classify tasks to the cheapest adequate execution mode. A 4-tier ladder: single skill (zero overhead) → single-session orchestrator → multi-session campaign → parallel fleet. Classification biased toward under-routing because under-routing (skill fails, re-invoke) is far cheaper than over-routing (campaign spends 30 minutes on a trivial task). Distinct from L05 model routing — this is "which execution mode?" not "which model?"</li>
+          <li>Adaptive replanning after each step — a Generator decomposes the task before execution, then a Refiner revises the remaining plan after each subtask completes based on what was discovered. Distinct from PIVOT (abandon and restart from earlier phase) — this evolves the plan without discarding prior work. Each completed step can add, remove, or modify remaining steps. Mimics how expert practitioners actually work: plan loosely, then adapt as you learn</li>
+          <li>Separate implementation from cleanup (de-sloppify) — "don't do X" instructions degrade overall quality via negative instruction side effects. Two focused agents in separate context windows outperform one constrained agent: let the first agent be thorough and unconstrained, then run a separate cleanup agent in a fresh context window to remove test language features, dead code, and rough edges. Avoids the false choice between thoroughness and cleanliness</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -665,6 +689,7 @@ window.VC_LEARN = {
           <li>Placing a task on the spectrum — reversibility, stakes, confidence</li>
           <li>Approval gates and escalation rules as architectural primitives</li>
           <li>Trust boundaries — what the agent can do without asking</li>
+          <li>Two-phase interaction boundary — front-load all human interaction into a structured wizard phase (goal, scope, metric, direction, verify command), then execute fully autonomously. Hard rule: the user may be asleep. Forces upfront ambiguity resolution and makes overnight or CI/CD runs practical</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -690,6 +715,7 @@ window.VC_LEARN = {
           <li><strong>Team protocols</strong> — a single request-response pattern with correlation IDs (<code>request_id</code>) drives all negotiation. One FSM (<code>pending→approved|rejected</code>) is reused for every protocol: shutdown handshakes (lead requests, teammate approves after finishing in-progress work) and plan approval gates (teammate submits plan, lead reviews before execution begins). Without shared rules and correlation, agents talk past each other</li>
           <li><strong>Autonomous task claiming</strong> — when work runs out, agents enter an idle cycle: poll every 5s for up to 60s, checking inbox first then scanning the task board for pending + unowned + unblocked tasks. First match is auto-claimed. 60s with no work triggers graceful auto-shutdown. Identity re-injection prevents agents from forgetting who they are after context compression. The lead no longer bottlenecks on assigning every task</li>
           <li><strong>Worktree isolation</strong> — two planes: the <em>control plane</em> (<code>.tasks/</code> with task JSON files) and the <em>execution plane</em> (<code>.worktrees/</code> with git worktree directories). Each task binds to a worktree by ID. Creating a worktree auto-advances the task to in_progress. Removing a worktree with <code>complete_task=true</code> handles teardown + completion in one call. Event stream (<code>events.jsonl</code>) logs every lifecycle step for crash recovery</li>
+          <li><strong>Discovery relay between agent waves</strong> — after each wave of parallel agents completes, their outputs are compressed into ~500-token discovery briefs (what was built, what was decided, what was discovered about the codebase). These briefs are injected into the next wave's agent context. Wave 2 agents know what Wave 1 found — without reading full outputs. Prevents rediscovery and enables informed decisions. Not message passing (real-time), not cross-run learning (lessons) — it is institutional memory for ephemeral parallel agents</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -862,12 +888,15 @@ window.VC_LEARN = {
           <li>OAuth and authentication management for tool access</li>
           <li>SDK-level integrations (Vercel AI SDK) vs platform-level (Zapier)</li>
           <li>Tool permission scoping and security</li>
+          <li>Browser session parasitism — instead of managing OAuth flows and API keys per service, reuse the user's existing authenticated browser sessions. A Chrome extension + daemon architecture executes <code>fetch()</code> within the browser context with <code>credentials: "include"</code>, carrying the user's existing cookies and auth headers. Eliminates authentication management entirely for services the user already accesses</li>
+          <li>Automated tool discovery — point an agent at a URL and auto-generate tool adapters. An explore phase captures network traffic and API patterns, a synthesize phase generates candidate tool definitions, and a cascade phase probes with progressively complex auth strategies (public → cookie → header → intercept → UI) to find the simplest working approach. Agents that can create their own tools from arbitrary websites</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Connect an AI workflow to external APIs through a connector platform</li>
           <li>Implement streaming responses with Vercel AI SDK</li>
           <li>Set up tool authentication and permission scoping</li>
+          <li>Use browser session reuse to give an agent access to authenticated web services without managing API keys</li>
         </ul>
       </div>`
   },
@@ -908,12 +937,14 @@ window.VC_LEARN = {
           <li>Benchmark suites for capability measurement</li>
           <li>CI-integrated evals — a prompt change that degrades quality does not ship</li>
           <li>Model-as-judge for scalable evaluation</li>
+          <li>Ground-truth registries — whitelist every legitimate numeric value from actual computation (including rounded variants, percentage conversions, reciprocals), then verify the final agent-generated artifact contains only those values. Section-based severity: unverified numbers in results/data sections trigger rejection, in discussion/introduction sections they're warnings. Generalizes to any agent that produces reports, analyses, or dashboards with numbers — the artifact is verified, not trusted</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Build a golden test set for a specific AI workflow</li>
           <li>Set up Promptfoo or Braintrust for automated evaluation</li>
           <li>Integrate evals into a CI pipeline</li>
+          <li>Design a ground-truth registry for verifying numeric claims in agent-generated artifacts</li>
         </ul>
       </div>
       <div class="learn__subcategory">
