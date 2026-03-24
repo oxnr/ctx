@@ -33,6 +33,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | xAI | Grok series | Proprietary | — |
 | DeepSeek | DeepSeek-V3, R1 (reasoning) | Open-weight | — |
 | Qwen (Alibaba) | Qwen series, multilingual | Open-weight | — |
+| Qwen3-Coder | Agentic coding models — hybrid DeltaNet+Attention MoE, 3B active matching Sonnet 4.5 | Open-weight | — |
 | MiniMax | Open-weight MoE models (M1, M2, M2.5), multimodal API (image/video/TTS/music) | Open-weight | — |
 | Scale AI | Data labeling and curation | Data | S16 |
 | Labelbox | Training data platform | Data | — |
@@ -159,6 +160,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | pgvector | PostgreSQL vector extension | Open source | — |
 | LlamaParse | Document parsing for RAG | Managed | — |
 
+| json-render (Vercel) | Generative UI framework — LLM outputs JSON specs rendered across 10 platforms | Open source | — |
 | Collaborator | Infinite canvas workspace for agentic dev with spatial tiles | Open source | — |
 
 ## Layer 08 — Integrations

@@ -111,7 +111,7 @@ window.VC_LEARN = {
         <p>Knowing which lab built a model is table stakes — understanding <em>how</em> it is built lets you predict its strengths, weaknesses, and cost profile. Modern LLMs vary across several architectural axes:</p>
         <ul>
           <li><strong>Decoder type</strong> — Dense (every parameter fires on every token, e.g. Llama, GPT-4), Sparse MoE (router activates a subset of expert sub-networks per token, e.g. Mixtral, DeepSeek-V3), or Hybrid (mixing attention with state-space layers, e.g. Jamba)</li>
-          <li><strong>Attention evolution</strong> — Multi-Head Attention (MHA) → Grouped-Query Attention (GQA, shares KV heads across query groups for faster inference) → Multi-Head Latent Attention (MLA, compresses KV into a low-rank latent space, used by DeepSeek)</li>
+          <li><strong>Attention evolution</strong> — Multi-Head Attention (MHA) → Grouped-Query Attention (GQA, shares KV heads across query groups for faster inference) → Multi-Head Latent Attention (MLA, compresses KV into a low-rank latent space, used by DeepSeek) → Hybrid Linear+Standard Attention (Gated DeltaNet for 75% of layers at O(n) cost, standard attention for 25% at O(n²), used by Qwen3-Coder-Next — 3B active from 80B total matching Sonnet 4.5 on SWE-bench Pro)</li>
           <li><strong>Positional encoding</strong> — RoPE (Rotary Position Embedding, the current default), NoPE (No Position Embedding, relies on causal mask alone), YaRN (extends RoPE to longer contexts without retraining)</li>
           <li><strong>Active vs total parameters</strong> — In MoE models only a fraction of total parameters activate per token. DeepSeek-V3 has 671B total but ~37B active. This is why "parameter count" alone is misleading for cost and speed</li>
           <li><strong>1-bit models (BitNet)</strong> — weights quantized to {-1, 0, 1} during training, not post-hoc. Uses 78% less memory than 16-bit models. Enables billion-parameter inference and LoRA fine-tuning on smartphones. A fundamentally different efficiency frontier from standard quantization (Q4/Q8)</li>
@@ -192,6 +192,7 @@ window.VC_LEARN = {
           <li>Constitutional AI and self-alignment</li>
           <li>Preference data quality determines alignment quality</li>
           <li>Tool-feedback-as-training-signal — agent tool interactions (compiler errors, test failures, linter output) become training data via hindsight relabeling. An LLM judge extracts actionable hints from tool feedback, the original prompt is augmented with hints to create an enhanced teacher distribution, and the original response tokens are scored against this distribution to produce per-token distillation targets for RL training (GRPO). Closes the loop between agent deployment and model improvement at the weight level, not just the prompt level</li>
+          <li>Agentic RL at scale — two-stage post-training: (1) Code RL on diverse real-world coding tasks with auto-generated test cases as verifiable rewards, (2) long-horizon Agent RL where the model interacts with real execution environments (20K+ parallel sandboxes) learning planning, tool usage, feedback processing, and failure recovery from actual environment interaction. Distinct from RLHF (human preference) and tool-feedback training (hindsight relabeling) — this is end-to-end RL from multi-turn agent trajectories with execution-grounded rewards</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -206,6 +207,7 @@ window.VC_LEARN = {
         <ul>
           <li>LoRA and QLoRA — parameter-efficient fine-tuning that runs on consumer hardware</li>
           <li>Distillation for creating smaller, faster specialist models</li>
+          <li>Reasoning distillation (chain-of-thought distillation) — transferring not knowledge but reasoning STYLE from a proprietary teacher (e.g. Claude Opus) to an open-weight student (e.g. Qwen 27B) of the same or similar size. The flow: prompt the teacher to generate structured reasoning traces (&lt;think&gt; blocks), collect as synthetic dataset (~3K examples, ~$50 in API costs), strip refusals, SFT+LoRA with response-only loss masking. The student doesn't become smaller or faster — it acquires the teacher's problem decomposition and self-verification patterns. Community-driven: multiple individuals independently generate and share synthetic trace datasets on HuggingFace, which are composed by model creators. This pattern commoditizes proprietary reasoning capabilities at trivial cost</li>
           <li>Model merging as zero-cost ensembling</li>
           <li>Adapter composition — stacking multiple LoRAs</li>
         </ul>
@@ -690,6 +692,7 @@ window.VC_LEARN = {
           <li>Approval gates and escalation rules as architectural primitives</li>
           <li>Trust boundaries — what the agent can do without asking</li>
           <li>Two-phase interaction boundary — front-load all human interaction into a structured wizard phase (goal, scope, metric, direction, verify command), then execute fully autonomously. Hard rule: the user may be asleep. Forces upfront ambiguity resolution and makes overnight or CI/CD runs practical</li>
+          <li>Encoded decision heuristics — instead of asking humans 15-30 intermediate questions, encode explicit decision principles (e.g. "choose completeness," "DRY," "explicit over clever") and classify each decision as mechanical (one clearly right answer, auto-decided silently) or taste (reasonable people could disagree, surfaced at a final approval gate). The agent runs a full review pipeline autonomously, logs every auto-decision with the principle applied and what was rejected, then presents only taste decisions for human judgment. Reduces human touchpoints from dozens to one final gate while maintaining a complete audit trail</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -779,6 +782,7 @@ window.VC_LEARN = {
           <li>Chunking strategy — size, overlap, boundaries</li>
           <li>Hybrid search — combining vector similarity with keyword matching</li>
           <li>Reranking as a critical quality improvement step</li>
+          <li>Tiered progressive disclosure for plain-file retrieval — an alternative to vector/embedding pipelines for markdown-based knowledge bases. Four budget tiers: Level 0 (~200 tokens, project summary), Level 1 (~2K tokens, vault overview + keywords), Level 2 (~5K tokens, ranked search snippets), Level 3 (~20K tokens, full file content). The agent starts at the top and drills down only as the task requires — most notes never get fully loaded. Uses TF-IDF (term-frequency, no GPU, no embeddings) instead of vector search. Three independent implementations (napkin, OpenViking, and individual builders) converged on this same architecture without coordination — the constraints impose their own shape. Self-distillation: the agent writes learnings back into the vault as markdown files, so the knowledge base grows as a side effect of agent work rather than human curation</li>
           <li>Documentation-as-context — injecting current library docs into prompts to prevent API hallucination</li>
         </ul>
         <p><strong>Practical skills</strong></p>
@@ -979,6 +983,7 @@ window.VC_LEARN = {
           <li>Prompt injection detection and prevention</li>
           <li>Output format validation and business logic constraints</li>
           <li>Layered defense — multiple guardrails in sequence</li>
+          <li>Safety bypass via data curation — deliberate removal of refusals and safety-trained behaviors from synthetic training data. When distilling from proprietary models, refusal responses are filtered out before SFT, stripping safety alignment that the original lab invested heavily to instill. The trained model retains the teacher's reasoning capabilities but not its safety boundaries. A structural tension: API terms of service typically prohibit using outputs to train competing models, but enforcement is near-impossible once traces are on HuggingFace</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
