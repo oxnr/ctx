@@ -355,6 +355,7 @@ window.VC_LEARN = {
           <li>Semantic caching — caching responses by meaning similarity</li>
           <li>Prompt compression and distillation of long contexts</li>
           <li>KV cache optimization for serving efficiency</li>
+          <li>SSD-streaming inference for MoE models — running models that exceed DRAM by streaming expert weights from flash storage (Apple's "LLM in a Flash" thesis). MoE sparsity makes this viable: Qwen 397B activates only 4 of 512 experts per token (&lt;2% of weights), so the working set per token is small enough to stream from SSD. 2-bit requantization cuts storage further (209GB → 120GB). Key finding: application-level GPU caches hurt performance by competing with OS buffer caches — deleting a custom Metal LRU cache yielded 38% speedup. Theoretical ceiling is SSD bandwidth (17.5 GB/s on M3 Max → 18.6 tok/s). Enables frontier-class models on consumer hardware</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
