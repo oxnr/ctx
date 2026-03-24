@@ -98,6 +98,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | BentoML | Open-source model serving framework | Open source | — |
 | SGLang | Fast LLM serving, structured generation | Open source | — |
 | DeepInfra | Inference API for open models | Managed | — |
+| LlamaFile | Mozilla — LLM as single cross-platform executable | Open source | — |
 
 ## Layer 05 — Routing
 
@@ -124,9 +125,11 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | OpenAI Codex | Cloud coding agent | Proprietary | — |
 | Devin (Cognition) | Autonomous SW engineering agent | Proprietary | — |
 | Dify | Visual AI workflow builder | Open source | — |
+| Langflow | Visual drag-and-drop agent pipeline builder | Open source | — |
 | n8n | Workflow automation with AI | Open source | — |
 | Composio | Tool integrations for agents | Managed | W24 |
 | Agent Orchestrator (Composio) | Fleet manager for parallel coding agents — CI/review feedback routing, plugin arch | Open source | W24 |
+| claude-squad | Terminal multiplexer for parallel AI coding agents in tmux sessions | Open source | — |
 | E2B | Sandboxed code execution | Managed | W24 |
 | Trigger.dev | Background job orchestration | Managed | W23 |
 | LibreChat | Open-source multi-model chat interface | Open source | — |
@@ -174,6 +177,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | Aider | Terminal AI pair programming | Open source | — |
 | OpenHands | Open-source SW dev agent | Open source | — |
 | Composio | Agent tool integrations | Managed | W24 |
+| CopilotKit | Embed AI copilots in React apps, AG-UI protocol | Open source | — |
 | Zapier AI Actions | Connect AI to 6000+ apps | Managed | — |
 | Sweep AI | GitHub issue to PR agent | Managed | S23 |
 | Middleware | Observability integrations | Managed | W23 |
@@ -211,6 +215,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | ChatGPT | General AI assistant | Horizontal | — |
 | Claude | AI assistant with tool use | Horizontal | — |
 | Gemini | Google AI assistant | Horizontal | — |
+| Open WebUI | Self-hosted ChatGPT-like interface, multi-backend | Horizontal | — |
 | Perplexity | AI search with citations | Search | — |
 | Harvey | AI for legal | Legal | — |
 | Abridge | AI medical documentation | Healthcare | — |
