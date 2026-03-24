@@ -52,6 +52,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 
 | Company | What they do | Type | YC Batch |
 |---------|-------------|------|----------|
+| Deeptune | Training gyms for AI agents — RL environments simulating workplace software | Managed | — |
 | HuggingFace TRL | RLHF, DPO, SFT library | Open source | — |
 | Axolotl | Multi-architecture fine-tuning | Open source | — |
 | Unsloth | Fast LoRA fine-tuning | Open source | — |
