@@ -1002,6 +1002,7 @@ window.VC_LEARN = {
           <li>Proof-carrying code — the proof ships with the artifact</li>
           <li>LLM-assisted proof generation — AI writes proofs, proof checkers verify</li>
           <li>Vericoding — generating formally verified code from formal specifications</li>
+          <li>Industrial-scale autoformalization — AI agents that formalize entire research papers into machine-checked proofs (not just competition problems). Each formalization extends a verified library, which provides richer training signals, which produces more capable agents — a compounding loop. Math Inc's Gauss agent scaled from 3.5K lines to 200K lines per cycle in 8 months, autonomously formalizing a Fields Medal proof. As AI-generated code scales exponentially, verification becomes the bottleneck — autoformalization makes it possible to scale trust alongside generation</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
