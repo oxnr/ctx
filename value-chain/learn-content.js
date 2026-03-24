@@ -716,6 +716,7 @@ window.VC_LEARN = {
           <li><strong>Autonomous task claiming</strong> — when work runs out, agents enter an idle cycle: poll every 5s for up to 60s, checking inbox first then scanning the task board for pending + unowned + unblocked tasks. First match is auto-claimed. 60s with no work triggers graceful auto-shutdown. Identity re-injection prevents agents from forgetting who they are after context compression. The lead no longer bottlenecks on assigning every task</li>
           <li><strong>Worktree isolation</strong> — two planes: the <em>control plane</em> (<code>.tasks/</code> with task JSON files) and the <em>execution plane</em> (<code>.worktrees/</code> with git worktree directories). Each task binds to a worktree by ID. Creating a worktree auto-advances the task to in_progress. Removing a worktree with <code>complete_task=true</code> handles teardown + completion in one call. Event stream (<code>events.jsonl</code>) logs every lifecycle step for crash recovery</li>
           <li><strong>Discovery relay between agent waves</strong> — after each wave of parallel agents completes, their outputs are compressed into ~500-token discovery briefs (what was built, what was decided, what was discovered about the codebase). These briefs are injected into the next wave's agent context. Wave 2 agents know what Wave 1 found — without reading full outputs. Prevents rediscovery and enables informed decisions. Not message passing (real-time), not cross-run learning (lessons) — it is institutional memory for ephemeral parallel agents</li>
+          <li><strong>Agent fleet management with closed-loop feedback</strong> — a distinct category from agent frameworks. Not "how to build an agent" but "how to run 30 coding agents in parallel across issues, branches, and PRs." An orchestrator agent (itself an AI, read-only, never writes code) spawns worker agents, each in an isolated git worktree with its own tmux session. A reaction engine auto-routes external development feedback: CI failure → logs extracted → sent to responsible agent → agent fixes → pushes; PR review comments → forwarded to agent → agent addresses → pushes; merge conflicts → flagged for resolution. Humans only intervene for judgment calls (merge approval). Plugin-based architecture makes every abstraction swappable: runtime (tmux/Docker/k8s), agent (Claude Code/Codex/Aider), workspace, tracker, SCM, notifier</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -723,6 +724,7 @@ window.VC_LEARN = {
           <li>Implement agent specialization for a complex workflow</li>
           <li>Build a supervisor agent that delegates and reviews</li>
           <li>Set up worktree-based isolation for parallel agent execution</li>
+          <li>Configure a fleet manager to run multiple coding agents with CI feedback routing</li>
         </ul>
       </div>`
   },
@@ -888,6 +890,7 @@ window.VC_LEARN = {
           <li>OAuth and authentication management for tool access</li>
           <li>SDK-level integrations (Vercel AI SDK) vs platform-level (Zapier)</li>
           <li>Tool permission scoping and security</li>
+          <li>IM channel gateway — treating messaging platforms (Telegram, Slack, Feishu/Lark) as first-class agent interfaces. Auto-started connections via long-polling or WebSocket, per-channel and per-user session configuration, no public IP required. Agents become accessible wherever teams already communicate, not just through custom web UIs</li>
           <li>Browser session parasitism — instead of managing OAuth flows and API keys per service, reuse the user's existing authenticated browser sessions. A Chrome extension + daemon architecture executes <code>fetch()</code> within the browser context with <code>credentials: "include"</code>, carrying the user's existing cookies and auth headers. Eliminates authentication management entirely for services the user already accesses</li>
           <li>Automated tool discovery — point an agent at a URL and auto-generate tool adapters. An explore phase captures network traffic and API patterns, a synthesize phase generates candidate tool definitions, and a cascade phase probes with progressively complex auth strategies (public → cookie → header → intercept → UI) to find the simplest working approach. Agents that can create their own tools from arbitrary websites</li>
         </ul>
@@ -956,12 +959,15 @@ window.VC_LEARN = {
           <li>Cost tracking per model, per user, per feature</li>
           <li>Latency monitoring and SLA compliance</li>
           <li>Quality score trending over time</li>
+          <li>Decision traces vs. logs — logs capture what happened (diagnostic, transient, rotated); decision traces capture why (immutable, append-only, replayable). For agents, the reasoning chain that produced an output evaporates when the context window closes. Event-sourced decision traces preserve full agent context at every decision point: what was retrieved, what tools were available, what alternatives were evaluated, what confidence the agent had. Enables decision replay — rewind to step 22 of a 200-step workflow, see the exact context, modify one variable, re-run in sandbox. Without this, debugging agent failures means reconstructing the scene from fragments. The rule: if your system cannot answer "why did it do that?" for any agent decision at any point in history, you have a logging problem masquerading as an observability solution</li>
+          <li>Agent-generated observability — on every PR merge, an agent reads the diff and auto-generates granular monitors for the new code (e.g. 1 monitor per 75 lines). Exhaustive monitoring that would be infeasible to maintain by hand. When a monitor fires, a triage agent reproduces the issue in a sandbox, pushes a fix if real, or tunes/deletes the monitor if noise. The closed loop: code change → auto-generate monitors → alert → agent triage → fix → update monitor. State stored on the monitor itself (appended PR links) prevents duplicate agent work. The principle: detect everything, notify selectively — agents absorb the noise so humans only see real issues</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Set up Langfuse for LLM observability</li>
           <li>Build cost and quality dashboards</li>
           <li>Implement alerting for quality degradation</li>
+          <li>Design an agent-generated monitor pipeline that auto-creates observability from code diffs and triages alerts</li>
         </ul>
       </div>
       <div class="learn__subcategory">
@@ -1006,6 +1012,7 @@ window.VC_LEARN = {
           <li>Generate-evaluate-iterate loop — the universal pattern behind AlphaEvolve, BitsEvolve, DSPy, and kernel agents</li>
           <li>Three prerequisites: correctness oracle (can you verify it works?), quantitative metric (TFLOPS, Sharpe ratio, pass rate), fast eval loop (seconds to minutes)</li>
           <li>Evolutionary lineage: FunSearch (2023) → AlphaEvolve (2025) → OpenEvolve (open-source) — programs evolving programs</li>
+          <li>Metacognitive self-modification (HyperAgents) — prior evolutionary systems use fixed meta-level mechanisms (the search algorithm is frozen, only candidates evolve). Hyperagents collapse the meta-level into the program itself: a task agent + meta agent in one editable codebase, where the meta agent can modify both the task agent and its own improvement procedure. The system autonomously develops infrastructure it wasn't designed to create — performance trackers, persistent memory, evaluation pipelines — and these meta-improvements transfer across domains (strategies learned improving a paper reviewer accelerate improvement on math grading). Extends the evolutionary lineage from "programs evolving programs" to "programs evolving how they evolve programs"</li>
           <li>GPU kernel optimization — the most active area, with ~15 major projects (AutoKernel, KernelAgent, KernelBench as the standard eval)</li>
           <li>Production deployments: AlphaEvolve (0.7% of Google's compute recovered), BitsEvolve (541% throughput at Datadog), DSPy (widely adopted prompt optimization)</li>
         </ul>
@@ -1022,7 +1029,7 @@ window.VC_LEARN = {
         <p><strong>Key concepts</strong></p>
         <ul>
           <li>AI-specific attack surfaces — RAG poisoning, prompt extraction, vector store exfiltration, embedding injection</li>
-          <li>Iterative reasoning vs signatures — agents explore and chain findings, scanners match known patterns</li>
+          <li>Iterative reasoning vs signatures — agents explore and chain findings, scanners match known patterns. LLM-agent-as-pentester extends this beyond AI-specific targets to any web application: a sandboxed agent with browser, proxy, and terminal can reason about business logic flaws, auth bypass chains, and access control edge cases that signature-based scanners cannot detect. The key differentiator is validated PoC output — the agent actually executes the exploit and demonstrates it works, rather than flagging theoretical vulnerabilities</li>
           <li>Prompt injection — manipulating model behavior by injecting instructions through user input or retrieved context</li>
           <li>RAG poisoning — inserting adversarial content into knowledge bases so the model retrieves and trusts it</li>
         </ul>

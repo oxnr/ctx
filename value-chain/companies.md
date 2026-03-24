@@ -33,6 +33,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | xAI | Grok series | Proprietary | — |
 | DeepSeek | DeepSeek-V3, R1 (reasoning) | Open-weight | — |
 | Qwen (Alibaba) | Qwen series, multilingual | Open-weight | — |
+| MiniMax | Open-weight MoE models (M1, M2, M2.5), multimodal API (image/video/TTS/music) | Open-weight | — |
 | Scale AI | Data labeling and curation | Data | S16 |
 | Labelbox | Training data platform | Data | — |
 | Snorkel AI | Programmatic data labeling | Data | — |
@@ -124,6 +125,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | Dify | Visual AI workflow builder | Open source | — |
 | n8n | Workflow automation with AI | Open source | — |
 | Composio | Tool integrations for agents | Managed | W24 |
+| Agent Orchestrator (Composio) | Fleet manager for parallel coding agents — CI/review feedback routing, plugin arch | Open source | W24 |
 | E2B | Sandboxed code execution | Managed | W24 |
 | Trigger.dev | Background job orchestration | Managed | W23 |
 | LibreChat | Open-source multi-model chat interface | Open source | — |
@@ -131,6 +133,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | Langdock | Enterprise AI platform, multi-model | Proprietary | — |
 | Semantic Kernel | Microsoft AI orchestration SDK | Open source | — |
 | Haystack | Open-source RAG and NLP framework | Open source | — |
+| DeerFlow (ByteDance) | Super agent harness — Docker sandbox, middleware chain, progressive skill loading, sub-agents, IM channels | Open source | — |
 
 ## Layer 07 — Context & Knowledge
 
@@ -155,6 +158,8 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | FAISS | Facebook vector similarity search | Open source | — |
 | pgvector | PostgreSQL vector extension | Open source | — |
 | LlamaParse | Document parsing for RAG | Managed | — |
+
+| Collaborator | Infinite canvas workspace for agentic dev with spatial tiles | Open source | — |
 
 ## Layer 08 — Integrations
 
@@ -194,6 +199,8 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | RAGAS | RAG evaluation framework | Open source | — |
 | Phoenix (Arize) | LLM observability and eval | Open source | — |
 | DeepEval | Open-source LLM eval framework | Open source | — |
+
+| Strix | LLM-powered autonomous pentesting agent with validated PoC exploits | Open source | — |
 
 ## Layer 10 — Products
 
