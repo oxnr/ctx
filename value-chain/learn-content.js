@@ -288,6 +288,7 @@ window.VC_LEARN = {
           <li>Continuous batching for GPU utilization</li>
           <li>Quantization formats (GGUF, GPTQ, AWQ) and quality tradeoffs</li>
           <li>Speculative decoding for latency reduction</li>
+          <li>Weight quantization vs KV cache quantization — two distinct bottlenecks requiring different techniques. Weight quantization (GPTQ, AWQ, GGUF, bitsandbytes) compresses model parameters at load time, reducing static memory. KV cache quantization (TurboQuant, KIVI) compresses the key-value states generated during inference, reducing dynamic memory that grows with sequence length. For long-context workloads, the KV cache dominates: Llama-2-70B @ 32K uses &gt;85GB for the cache alone in FP16. The two are complementary — quantized weights + quantized KV cache stack independently. Most existing serving engines only handle weight quantization; KV cache quantization is an emerging optimization layer</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -340,11 +341,14 @@ window.VC_LEARN = {
           <li>Image generation architectures (diffusion, autoregressive)</li>
           <li>Video generation is still early — quality and cost are rapidly changing</li>
           <li>Real-time voice requires sub-200ms latency</li>
+          <li>STT optimization stacking — batched chunking (24 parallel 30s chunks) + fp16 + Flash Attention 2 yields 19x over naive Whisper. Insanely Fast Whisper transcribes 150 min audio in &lt;98s on A100. The pattern: chunk → batch → half-precision → fused attention kernels</li>
+          <li>Speaker diarization is a separate pass — run pyannote after transcription, then align segments by nearest timestamp. Joint models don't yet beat this two-pass approach in practice</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Integrate a text-to-speech API into a workflow</li>
           <li>Choose between multimodal providers for a given use case</li>
+          <li>Configure batched Whisper inference with HF Transformers pipeline (chunk_length_s, batch_size, attn_implementation)</li>
         </ul>
       </div>
       <div class="learn__subcategory">
@@ -355,13 +359,22 @@ window.VC_LEARN = {
           <li>Prompt caching — reusing computed KV states for repeated prefixes</li>
           <li>Semantic caching — caching responses by meaning similarity</li>
           <li>Prompt compression and distillation of long contexts</li>
-          <li>KV cache optimization for serving efficiency</li>
-          <li>SSD-streaming inference for MoE models — running models that exceed DRAM by streaming expert weights from flash storage (Apple's "LLM in a Flash" thesis). MoE sparsity makes this viable: Qwen 397B activates only 4 of 512 experts per token (&lt;2% of weights), so the working set per token is small enough to stream from SSD. 2-bit requantization cuts storage further (209GB → 120GB). Key finding: application-level GPU caches hurt performance by competing with OS buffer caches — deleting a custom Metal LRU cache yielded 38% speedup. Theoretical ceiling is SSD bandwidth (17.5 GB/s on M3 Max → 18.6 tok/s). Enables frontier-class models on consumer hardware</li>
+          <li>KV cache quantization (TurboQuant) — the KV cache, not model weights, is the dominant memory bottleneck for long-context inference. Google Research's TurboQuant (ICLR 2026) compresses KV caches to 3-3.5 bits with zero accuracy loss via a two-stage pipeline:
+            <ul>
+              <li><strong>Stage 1 — PolarQuant:</strong> Apply a random orthogonal rotation to the KV vector. This transforms coordinates into a concentrated Beta distribution that converges to N(0, 1/d) in high dimensions. Convert from Cartesian to polar coordinates where the angular distributions are analytically known. Apply optimal Lloyd-Max scalar quantizers per coordinate. The key innovation: because the distribution is analytically known, no per-block normalization constants (scale, zero-point) are needed — eliminating the 1-2 bits of hidden overhead that plague traditional quantization methods</li>
+              <li><strong>Stage 2 — QJL (Quantized Johnson-Lindenstrauss):</strong> Compute residual r = x - dequantize(quantize(x)), then compress to 1 sign bit per dimension via sign(S·r) where S is a random Gaussian matrix. This 1-bit correction produces a provably unbiased inner product estimator — critical because MSE-optimal quantizers are inherently biased for inner products, and attention scores are inner products</li>
+              <li><strong>Results:</strong> 6x KV memory reduction (85GB → ~14GB for Llama-2-70B @ 32K), 8x attention speedup on H100, LongBench 50.06 at 3.5 bits (matches FP16 baseline), perfect Needle-in-Haystack at 3 bits. MSE distortion within 2.7x of information-theoretic lower bounds</li>
+              <li><strong>Data-oblivious:</strong> Zero calibration required. Codebook computed analytically from the known distribution, not learned from data. Applies online, token-by-token. Fundamentally different from calibration-based methods (GPTQ needs hours, AWQ needs minutes). Complementary to weight quantization — stack both independently</li>
+            </ul>
+          </li>
+          <li>Optimization stacking pattern — individual optimizations compound multiplicatively: batching (2.4x) × fp16 (2x) × Flash Attention 2 (3x) ≈ 19x total. The lesson: audit the full inference path and layer optimizations rather than hunting for a single silver bullet. HF Transformers pipeline + the right kwargs is often enough</li>
+          <li>SSD-streaming inference for MoE models — running models that exceed DRAM by streaming expert weights from flash storage (Apple's "LLM in a Flash" thesis). MoE sparsity makes this viable: Qwen3.5-397B activates only 4 of 512 experts per token (&lt;2% of weights), so the working set per token is small enough to stream from SSD at 4.36 tok/s (4-bit) on a 48GB MacBook. The architecture is a serial GPU→SSD→GPU pipeline (not concurrent — concurrent DMA+GPU causes -73% GPU slowdown due to shared memory controller arbitration on Apple Silicon). FMA-optimized Metal dequant kernels rearrange <code>(nibble*scale+bias)*x</code> into <code>fma(nibble, scale*x, bias*x)</code> for 12% speedup. 58 failed experiments proved the central insight: trust the OS — custom Metal LRU caches, LZ4 compression, prefetch hints, temporal expert prediction, and mmap all performed worse than letting the OS page cache (~35GB, ~71% hit rate) handle caching naturally. Theoretical ceiling is SSD bandwidth (17.5 GB/s on M3 Max). Enables frontier-class models on consumer hardware</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Enable and measure prompt caching with a provider API</li>
           <li>Audit and reduce token usage across a production workload</li>
+          <li>Evaluate KV cache compression for a long-context deployment: measure memory savings vs quality degradation at different bit widths (3.5 = lossless, 2.5 = marginal), and stack with weight quantization for maximum reduction</li>
         </ul>
       </div>`
   },
@@ -461,6 +474,7 @@ window.VC_LEARN = {
         <li><strong>Dual-agent design</strong> — full-access "build" agent + read-only "plan" agent, switchable with a keystroke</li>
         <li><strong>Native LSP integration</strong> — go-to-definition, find-references, type info without reading entire files</li>
         <li><strong>Provider-agnostic model layer</strong> — works with any LLM; protects the harness investment as models commoditize</li>
+        <li><strong>Harness as encoded capability assumptions</strong> — every component in a harness encodes a bet about what the model cannot do on its own (self-evaluate, maintain coherence, manage context). These assumptions must be stress-tested when new models release. Better models don't shrink the harness design space — they move it. Components that compensate for solved weaknesses should be stripped; headroom from improved capabilities enables more sophisticated combinations. The interesting work is finding the next novel combination as the frontier shifts (Anthropic, "Harness Design for Long-Running Apps")</li>
       </ul>
       <div class="learn__diagram">
         <svg class="learn__svg" viewBox="0 0 480 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -497,6 +511,7 @@ window.VC_LEARN = {
           <li>Binary-scoped network policies — within a single container, different binaries get different permissions. <code>git</code> can reach github.com but not model APIs; <code>npm</code> gets read-only registry access; the agent binary gets its designated inference endpoint only. Per-endpoint, per-HTTP-method granularity prevents data exfiltration through legitimate tools</li>
           <li>Immutable config / mutable state split — agent configuration (auth tokens, gateway URLs, CORS settings) is read-only; workspace and task state is read-write. Prevents agents from modifying their own security boundaries. Implemented via filesystem permissions and symlinks from the read-only config to writable data directories</li>
           <li>Inference interception — all model API calls routed through a local gateway transparently. The agent thinks it's calling <code>localhost</code>; the gateway routes to the actual provider. Enables model swapping, rate limiting, cost monitoring, and preventing unauthorized model access — all without the agent's awareness</li>
+          <li>Prompt-as-infrastructure — encoding server provisioning and hardening as a structured prompt consumed by a coding agent, replacing shell scripts and Ansible/Terraform for standard setups. The agent walks the user through each step interactively (SSH keys, firewall rules, fail2ban, unattended updates, Tailscale VPN), keeping the prompt reusable across instances. Works well for one-time security baselines where the task is well-defined and idempotent. Not a replacement for IaC at scale, but eliminates boilerplate for standard VPS hardening</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -516,6 +531,7 @@ window.VC_LEARN = {
           <li>Session bridging — carrying state across fresh context windows via compressed summaries + durable file artifacts</li>
           <li>Cross-run meta-learning — a persistent lessons file (capped entries with time-decay consolidation) that survives across runs. Lessons extracted at three moments: after every successful keep (positive strategy), after every PIVOT (failed strategy family), and at run completion (patterns). Future runs consult lessons during hypothesis generation, preferring strategies that worked and avoiding known dead ends</li>
           <li>Instinct-based continuous learning — deterministic hooks observe every tool call (100% capture, unlike skills which fire 50-80% based on LLM judgment). A background observer detects patterns and creates atomic instincts (YAML files with confidence 0.3→0.9). Instincts are project-scoped (git remote hash prevents React patterns leaking into Python projects). An evolution pipeline clusters instincts into skills → commands → agents — the harness generates new capabilities from its own observations. Distinct from cross-run lessons (which produce knowledge that informs prompts) — this produces new executable capabilities</li>
+          <li>Three-mode skill evolution (OpenSpace) — a closed-loop system where agents autonomously improve their skill libraries via three triggers and three modes. Triggers: (1) post-execution LLM analysis of recorded trajectories, (2) automatic tool degradation detection when success rates drop below 40%, (3) periodic health scans every 5 executions. Modes: FIX (in-place repair, parent deactivated), DERIVED (enhanced/merged from parent skills), CAPTURED (brand-new from novel reusable patterns). Each skill carries full lineage (origin, generation, parent IDs, content diffs) and quality metrics (selection count, completion rate, fallback rate, effectiveness). Anti-loop mechanisms: addressed-degradation tracking, minimum 5 fresh data points before re-evaluation. Results: 54% token savings via skill reuse, 4.2x performance vs baseline across 44 professional occupations. The cloud community dimension creates collective intelligence — one agent's evolved skill upgrades all connected agents</li>
           <li>Background task execution — daemon threads run slow operations (builds, tests, downloads) without blocking the agent loop, injecting notifications on completion</li>
         </ul>
         <p><strong>Practical skills</strong></p>
@@ -536,6 +552,7 @@ window.VC_LEARN = {
           <li>LSP integration — go-to-definition, find-references, type info without reading entire files. Dramatically reduces context usage compared to grepping</li>
           <li>File system and git access patterns</li>
           <li>Browser automation for visual verification (Playwright, Puppeteer)</li>
+          <li>Tool quality tracking and degradation detection — per-tool execution metrics (success rate, execution time, rolling window of recent calls) with automatic penalty factors (0.2-1.0) based on failure rates. When a tool's success rate drops below a threshold (40%), the harness can auto-trigger skill evolution to create workarounds or fixes. LLM-flagged semantic failures ("HTTP 200 but wrong data") feed into penalty calculation without inflating call counts. Quality-aware tool ranking applies penalties to semantic search scores, steering agents toward reliable tools. This closes the loop: tools degrade → harness detects → skills evolve → agents adapt — without human intervention</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -557,6 +574,9 @@ window.VC_LEARN = {
           <li>Graduated stuck recovery — when an agent gets stuck, it needs an escalation ladder, not naive retry. The pattern: 3 consecutive failures → <strong>REFINE</strong> (vary within current strategy), 5 failures → <strong>PIVOT</strong> (abandon strategy entirely), 2 pivots without improvement → <strong>web search</strong> (escalate to external knowledge), 3 pivots → <strong>soft blocker</strong> (increasingly bold changes). A single success resets all counters. Models how a competent human researcher actually behaves</li>
           <li>Dual-gate verification — metric verification ("did it improve?") and guard verification ("did it break anything?") are separate, sequential gates. A change can improve the metric but still be rejected if the guard fails. Marginal improvement (&lt;1%) with significant complexity increase equals discard</li>
           <li>Noise-aware metric handling — real metrics are noisy (test coverage fluctuates, benchmarks vary with system load, latency spikes). Autonomous loops need statistical discipline to avoid false keeps/discards: multi-run median (3-5 runs), minimum improvement thresholds below the noise floor, confirmation runs before keeping, and environment pinning (fixed seeds, deterministic test ordering, cache flushing). Without this, an autonomous loop will keep random noise and discard real improvements</li>
+          <li>Generator-evaluator separation (GAN-inspired) — single agents fail at self-evaluation because they confidently praise their own mediocre work, especially on subjective tasks. The fix: separate generation from evaluation into distinct agents. A generator produces output, an evaluator judges it against explicit criteria, and a feedback loop drives 5-15 iterations. Unlike adversarial GANs, this is cooperative — the evaluator provides calibrated critique, not deception. Tuning a standalone evaluator for skepticism is more tractable than making a generator self-critical. For long-running app development (3-6 hours, $125-200), this is the difference between broken output and functional applications (Anthropic, "Harness Design for Long-Running Apps")</li>
+          <li>Evaluator leniency / self-talk-down — evaluators identify legitimate issues then rationalize them away ("this is minor, overall the work is good"). The fix: read evaluator traces on realistic problems, identify where judgment diverges from human assessment, and iteratively update QA prompts. Calibrate with few-shot examples showing the desired judgment pattern and detailed score breakdowns. Weight criteria toward known model weaknesses</li>
+          <li>Sprint contracts — before implementation, generator and evaluator negotiate what will be built and how it will be tested. Generator proposes implementation and success criteria; evaluator reviews until both agree. Keeps work faithful to the spec without over-specifying implementation too early. The contract is a file artifact that both agents reference during build and QA</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -564,6 +584,8 @@ window.VC_LEARN = {
           <li>Implement plan tracking with nag reminders for accountability</li>
           <li>Design verification criteria for agent-generated code</li>
           <li>Implement a graduated stuck-recovery escalation ladder for long-running agent loops</li>
+          <li>Set up a generator-evaluator loop with Playwright MCP for live application testing</li>
+          <li>Calibrate an evaluator agent's skepticism using few-shot judgment examples and iterative trace review</li>
         </ul>
       </div>
       <div class="learn__subcategory">
@@ -590,6 +612,8 @@ window.VC_LEARN = {
           <li>AGENTS.md / CLAUDE.md as static context engineering</li>
           <li>Protocol re-anchoring — long-running sessions suffer instruction drift even after compression. A protocol fingerprint check is a zero-token self-check where the agent internally verifies N yes/no items about its own protocol knowledge. If any check fails, it re-reads its protocol documents from disk and marks the event with a <code>[RE-ANCHOR]</code> tag. Check frequency increases with observed drift: every 10 iterations normally, every 5 after one compaction, every iteration after 3+ compactions</li>
           <li>Conversation as a typed AST (ChainAST) — treat message history as a structured data type, not a flat array. Sections contain header + body pairs, each typed (request-response, completion, summarization) with byte-level size tracking. This enables: structural validation (tool calls must have responses), force-repair of broken conversations, surgical summarization that knows which parts are safe to compress and which contain provider-specific reasoning signatures that must be preserved (Gemini thought_signature, Anthropic extended thinking). Per-section size tracking drives precise context window management</li>
+          <li>Context anxiety — models prematurely wrap up work as they approach what they believe is their context limit, even when significant capacity remains. Observed specifically in Sonnet 4.5 during multi-hour coding sessions. The agent starts "shipping" half-done work rather than continuing. In-place compaction does not fix this because the model still feels the accumulated pressure. Context resets (clearing the entire window and starting a fresh agent with a structured handoff artifact) provide a genuine clean slate and eliminate the anxiety. Opus 4.6 with SDK-level automatic compaction does not exhibit this behavior, suggesting the issue is model-specific and evolves with capability (Anthropic, "Harness Design for Long-Running Apps")</li>
+          <li>Context reset vs compaction — two distinct strategies for long-running sessions. Compaction summarizes earlier conversation in-place (cheaper, continuous). Reset clears entirely and starts a fresh agent with a structured handoff file (more expensive, disruptive, but provides genuine coherence recovery). The choice depends on the model: some models work well with continuous compaction, others need hard resets. The harness should support both and switch based on observed behavior</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -597,6 +621,7 @@ window.VC_LEARN = {
           <li>Implement a three-layer compression strategy for long sessions</li>
           <li>Write effective AGENTS.md files for agent-operated repositories</li>
           <li>Implement a protocol re-anchoring check for long-running agent sessions</li>
+          <li>Design a context reset strategy with structured handoff artifacts for multi-hour agent tasks</li>
         </ul>
       </div>
       <div class="learn__subcategory">
@@ -656,11 +681,15 @@ window.VC_LEARN = {
           <li>First-party SDKs (Anthropic Agent SDK, OpenAI Agents API) vs third-party frameworks (LangGraph, CrewAI, Google ADK)</li>
           <li>When a framework helps (complex state, many agents) vs when raw SDK is simpler and better (single agent, simple tools)</li>
           <li>Graph-based orchestration as the emerging standard — agents as nodes, handoffs as edges</li>
+          <li>Enterprise agent control plane — at scale, a governance layer sits above individual harnesses. Primitives: policies (who can use what model/harness on what repo), agent run tracking (what triggered it, what it did), handoff (engineer takes the wheel when agent gets stuck), collaboration (engineers see what agents are doing), data access controls, triggers (how agents integrate with internal/external systems), artifact management (PRs, branches, plans), metrics, sandboxing, and hosting. The control plane is harness-agnostic — it can swap Claude Code, Codex, or custom harnesses for benchmarking and cost control. A persistent memory layer above harnesses captures institutional intelligence (tribal knowledge, feedback loops) that compounds across runs regardless of which harness executed them</li>
+          <li>The agent platform MVP trap — building a web app with a prompt box + harness picker that spins up a dev environment is a few days' work. But as soon as it's live, you need handoff, audit logs, evals, integrations, private data access, and self-improvement — that is 90% of the real effort. Only build the MVP if committed to building the full stack, or plan to buy the remaining primitives. For companies with very complex dev setups and large teams (Stripe-scale), owning the full stack makes sense. For most, identify the essential parts related to your dev setup's idiosyncrasies and buy the rest. Build vs buy is not all-or-nothing — it's a spectrum of owned vs purchased primitives (Zach Lloyd / Warp, "Build vs Buy: Deploying Coding Agents at Scale")</li>
+          <li>Programming stack vs product — enterprise agent platforms should expose primitives individually, not only as a bundled product. Some companies want plug-and-play orchestration, others want to run raw agent SDKs inside existing containers with only tracking bolted on. Key enterprise requirements: self-hosting (code never flows to third parties), harness swapping for benchmarking, memory layer that self-improves, and expanding beyond developers to all knowledge workers</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Choose between single-agent subagents and multi-agent teams for a given problem</li>
           <li>Evaluate framework vs raw SDK tradeoffs for your use case</li>
+          <li>Map your organization's agent deployment needs to the build-vs-buy spectrum: which primitives to own vs purchase</li>
         </ul>
       </div>
       <div class="learn__subcategory">
@@ -767,6 +796,7 @@ window.VC_LEARN = {
           <li>Managed vs self-hosted vector databases</li>
           <li>pgvector — vector search inside existing Postgres</li>
           <li>Indexing strategies and their impact on recall and latency</li>
+          <li>Data-oblivious vector quantization — TurboQuant's PolarQuant achieves superior recall vs Product Quantization (PQ) and RabbiQ on high-dimensional vector search (GloVe, d=200), despite those methods using dataset-specific tuning and large learned codebooks. The key advantage: zero indexing time (codebook is analytical, not learned), which matters at billion-scale vector databases where reindexing after data changes is a major operational cost. Random rotation + polar coordinate quantization eliminates per-block normalization overhead that inflates compressed index size</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -900,6 +930,7 @@ window.VC_LEARN = {
           <li>IM channel gateway — treating messaging platforms (Telegram, Slack, Feishu/Lark) as first-class agent interfaces. Auto-started connections via long-polling or WebSocket, per-channel and per-user session configuration, no public IP required. Agents become accessible wherever teams already communicate, not just through custom web UIs</li>
           <li>Browser session parasitism — instead of managing OAuth flows and API keys per service, reuse the user's existing authenticated browser sessions. A Chrome extension + daemon architecture executes <code>fetch()</code> within the browser context with <code>credentials: "include"</code>, carrying the user's existing cookies and auth headers. Eliminates authentication management entirely for services the user already accesses</li>
           <li>Automated tool discovery — point an agent at a URL and auto-generate tool adapters. An explore phase captures network traffic and API patterns, a synthesize phase generates candidate tool definitions, and a cascade phase probes with progressively complex auth strategies (public → cookie → header → intercept → UI) to find the simplest working approach. Agents that can create their own tools from arbitrary websites</li>
+          <li>Agent-native infrastructure primitives — a growing ecosystem of companies building for agents as primary users, not humans. The pattern: give agents the same capabilities humans have, but via programmatic interfaces. Email (AgentMail), phone numbers (AgentPhone), WhatsApp (Kapso), compute environments (Daytona, E2B), browsers (Browserbase, Browser Use, Hyperbrowser), web crawling (Firecrawl), memory (Mem0), payments (Kite, Sponge), SaaS access (Composio), API access (Orthogonal), voice (ElevenLabs, Vapi), people/company search (Sixtyfour), web search (Exa). Stitched together, these create a "digital coworker" that operates human-facing systems programmatically. The bet: an economy where AI agents are the primary users. Each primitive is a connector (L09.3) but the aggregate is an agent identity stack — the infrastructure layer for autonomous agents to participate in human economic systems</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -968,6 +999,7 @@ window.VC_LEARN = {
           <li>Quality score trending over time</li>
           <li>Decision traces vs. logs — logs capture what happened (diagnostic, transient, rotated); decision traces capture why (immutable, append-only, replayable). For agents, the reasoning chain that produced an output evaporates when the context window closes. Event-sourced decision traces preserve full agent context at every decision point: what was retrieved, what tools were available, what alternatives were evaluated, what confidence the agent had. Enables decision replay — rewind to step 22 of a 200-step workflow, see the exact context, modify one variable, re-run in sandbox. Without this, debugging agent failures means reconstructing the scene from fragments. The rule: if your system cannot answer "why did it do that?" for any agent decision at any point in history, you have a logging problem masquerading as an observability solution</li>
           <li>Agent-generated observability — on every PR merge, an agent reads the diff and auto-generates granular monitors for the new code (e.g. 1 monitor per 75 lines). Exhaustive monitoring that would be infeasible to maintain by hand. When a monitor fires, a triage agent reproduces the issue in a sandbox, pushes a fix if real, or tunes/deletes the monitor if noise. The closed loop: code change → auto-generate monitors → alert → agent triage → fix → update monitor. State stored on the monitor itself (appended PR links) prevents duplicate agent work. The principle: detect everything, notify selectively — agents absorb the noise so humans only see real issues</li>
+          <li>Kernel-level agent behavioral monitoring — eBPF tracepoints (exec, fork, openat, fchmodat) hooked in kernel space, with a BPF hash map tracking agent PID subtrees so only agent-related syscalls reach userspace. iron-sensor demonstrates the pattern: bootstrap scan walks /proc to attach to already-running agents, adoptSubtree() recursively registers all descendants, and a first-match-wins rule engine classifies events into persistence (cron, systemd, sudoers, shell rc, git hooks), privilege escalation (sudo, su, ptrace), and sensitive file access (SSH keys, /etc/shadow, Docker socket). NDJSON output feeds into any SIEM. The architectural insight: observe-first, enforce-later — behavioral visibility is separable from policy enforcement, and you need the former to design the latter</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -975,6 +1007,7 @@ window.VC_LEARN = {
           <li>Build cost and quality dashboards</li>
           <li>Implement alerting for quality degradation</li>
           <li>Design an agent-generated monitor pipeline that auto-creates observability from code diffs and triages alerts</li>
+          <li>Deploy eBPF-based agent monitoring on a Linux host to audit what AI coding agents actually do at the syscall level</li>
         </ul>
       </div>
       <div class="learn__subcategory">
@@ -987,12 +1020,14 @@ window.VC_LEARN = {
           <li>Output format validation and business logic constraints</li>
           <li>Layered defense — multiple guardrails in sequence</li>
           <li>Safety bypass via data curation — deliberate removal of refusals and safety-trained behaviors from synthetic training data. When distilling from proprietary models, refusal responses are filtered out before SFT, stripping safety alignment that the original lab invested heavily to instill. The trained model retains the teacher's reasoning capabilities but not its safety boundaries. A structural tension: API terms of service typically prohibit using outputs to train competing models, but enforcement is near-impossible once traces are on HuggingFace</li>
+          <li>AI agents as attack surface — coding agents (Claude Code, Codex, etc.) inherit full user privileges and are effectively unsupervised shell sessions. The threat model includes both prompt injection causing adversarial behavior AND agents making dangerous mistakes autonomously. Key sensitive operations: reading SSH private keys, writing cron/systemd persistence, modifying sudoers, accessing Docker socket, writing git hooks, modifying shell rc files. Credential scoping, filesystem sandboxing, and egress control should be harness-level concerns, not afterthoughts. Network egress monitoring requires TLS-aware proxying — syscall-level observation alone cannot see exfiltrated data content</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Implement runtime output validation with Guardrails AI</li>
           <li>Set up prompt injection detection</li>
           <li>Design a layered guardrail pipeline</li>
+          <li>Audit an AI agent's actual syscall behavior against its intended permissions using kernel-level monitoring</li>
         </ul>
       </div>
       <div class="learn__subcategory">
