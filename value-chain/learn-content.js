@@ -134,11 +134,15 @@ window.VC_LEARN = {
           <li>Web crawl curation and deduplication</li>
           <li>Human annotation vs programmatic labeling (Snorkel)</li>
           <li>Synthetic data generation for training</li>
+          <li>Data ingestion pipelines — multi-format processing for building training corpora. The practical challenge is not finding data but transforming heterogeneous sources into clean, tokenizer-ready text. Common pipeline stages: (1) source acquisition (web scraping with topic-based crawlers, API harvesting, subtitle/transcript downloading, document collection), (2) format conversion (PDF→text via layout-aware extraction, DOCX→text preserving structure, HTML→text stripping boilerplate, JSON question-answer pair parsing), (3) cleaning (deduplication at document and paragraph level, language detection, quality filtering via perplexity scoring, PII removal), (4) formatting (BOS/EOS token insertion, consistent encoding, train/val splitting). Each stage is a filter — typical web crawl pipelines retain 5-15% of raw input after all cleaning stages. Batch processing architecture: topic-based scraping jobs run in parallel, each producing cleaned JSONL files that feed a central merge-and-shuffle step</li>
+          <li>Web scraping for training data — topic-directed crawling (Wikipedia API, Common Crawl segments, domain-specific sites) produces higher-quality data than undirected crawling. The pattern: define a topic taxonomy, crawl N pages per topic, extract clean text, deduplicate across topics. Coverage matters — training data should span the knowledge domains you want the model to handle (science, history, mathematics, technology, health, geography, economics, philosophy). Subtitle and transcript corpora add conversational register that web text lacks</li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Evaluate a training dataset for quality and coverage</li>
           <li>Understand how training data choices affect model behavior</li>
+          <li>Build a multi-format data ingestion pipeline that converts PDF, DOCX, HTML, and JSON sources into clean training text</li>
+          <li>Design a topic-directed web scraping strategy for training data collection</li>
         </ul>
       </div>
       <div class="learn__subcategory">
@@ -150,11 +154,33 @@ window.VC_LEARN = {
           <li>Tokenizer design affects model capability</li>
           <li>Checkpoint management and training resumption</li>
           <li>Mixed precision training (FP16, BF16)</li>
+          <li>BPE tokenizer internals — Byte Pair Encoding is the dominant tokenization algorithm and understanding its mechanics matters for debugging training issues and evaluating model behavior on different languages. The core algorithm: start with a character-level vocabulary, count all adjacent byte pairs in the corpus, merge the most frequent pair into a new token, repeat until target vocabulary size is reached. Each merge creates a new vocabulary entry and a merge rule. Implementation details that affect quality:
+            <ul>
+              <li><strong>Merge operations</strong> — the ordered list of merges IS the tokenizer. Encoding applies merges greedily in priority order. The merge table is typically 32K-100K entries. Order matters: changing merge priority changes tokenization</li>
+              <li><strong>Vocabulary building</strong> — initial vocab is byte-level (256 entries), then grows by one entry per merge. Vocabulary size directly affects embedding table size and memory. Larger vocabularies improve token efficiency (fewer tokens per word) but increase parameter count. The sweet spot depends on training data diversity and target languages</li>
+              <li><strong>Out-of-vocabulary (OOV) handling</strong> — BPE's byte-level fallback means true OOV is impossible (any byte sequence can be encoded), but rare words decompose into many small tokens, degrading model attention. Multilingual models suffer disproportionately: a word that is 1 token in English may be 5-8 tokens in Turkish or Korean, consuming context window and degrading performance</li>
+              <li><strong>Tokenizer training vs model training</strong> — the tokenizer is trained separately (on the corpus, not via gradient descent) and frozen before model training begins. A bad tokenizer cannot be compensated for by more model training. The HuggingFace Tokenizers library (Rust-based) is the standard for fast BPE training — 10-100x faster than Python implementations</li>
+              <li><strong>Cache optimization</strong> — BPE encoding is expensive (O(n²) naive, O(n log n) with priority queue). Production tokenizers pre-compute a cache of common words→token sequences. Cache hit rates of 90%+ are typical for natural language, making amortized encoding near-O(1) per word</li>
+            </ul>
+          </li>
+          <li>Training loop internals — the training loop is conceptually simple (forward pass → loss → backward pass → optimizer step) but production loops add critical mechanics that determine whether training succeeds or wastes compute:
+            <ul>
+              <li><strong>Loss function management</strong> — cross-entropy is standard but implementation details matter. Label smoothing (0.1 typical) prevents overconfident predictions and improves generalization. EOS token weighting upweights the end-of-sequence token loss to teach the model when to stop generating — without this, models tend to ramble. Loss masking ignores padding tokens so batch efficiency doesn't degrade quality</li>
+              <li><strong>Gradient management</strong> — gradient accumulation simulates larger batch sizes across multiple forward passes (essential when GPU memory limits per-step batch size). Gradient clipping (max norm 1.0 typical) prevents training instability from rare high-loss examples. Gradient checkpointing trades compute for memory by recomputing intermediate activations during backward pass instead of storing them — enables training 2-4x larger models on the same hardware at ~30% speed cost</li>
+              <li><strong>Learning rate scheduling</strong> — warmup (linear ramp over 1-5% of steps) prevents early training divergence. Cosine decay is the current standard schedule. The peak learning rate is among the most sensitive hyperparameters — too high causes divergence, too low wastes compute on slow convergence</li>
+              <li><strong>Sequence length optimization</strong> — not all training examples need the same sequence length. Short-sequence training is faster per step but teaches less long-range dependency. Progressive sequence length (start short, increase during training) gets the best of both. Finding the optimal max sequence length for a dataset requires measuring loss vs length — some datasets have negligible information beyond 2K tokens, others benefit from 8K+</li>
+              <li><strong>Forward pass auditing</strong> — diagnosing training failures requires inspecting intermediate values. Key checkpoints: attention pattern visualization (are heads attending to relevant positions?), activation statistics per layer (are any layers dead or saturated?), loss decomposition by token position (does loss concentrate on early tokens, late tokens, or specific token types?). These diagnostics catch architectural bugs that loss curves alone cannot surface</li>
+              <li><strong>Data collation and batching</strong> — how training examples are grouped into batches affects both GPU utilization and training dynamics. Dynamic batching groups sequences of similar length to minimize padding waste. Curriculum strategies (easy examples first, hard examples later) can accelerate early training but require careful scheduling to avoid catastrophic forgetting</li>
+            </ul>
+          </li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
           <li>Read a model architecture implementation</li>
           <li>Understand training loss curves and what they indicate</li>
+          <li>Train a BPE tokenizer from scratch on a custom corpus and evaluate token efficiency across languages</li>
+          <li>Debug a training run by auditing gradient norms, activation statistics, and per-position loss decomposition</li>
+          <li>Configure learning rate scheduling, gradient accumulation, and sequence length for a given hardware budget</li>
         </ul>
       </div>`
   },
@@ -1021,6 +1047,15 @@ window.VC_LEARN = {
           <li>Layered defense — multiple guardrails in sequence</li>
           <li>Safety bypass via data curation — deliberate removal of refusals and safety-trained behaviors from synthetic training data. When distilling from proprietary models, refusal responses are filtered out before SFT, stripping safety alignment that the original lab invested heavily to instill. The trained model retains the teacher's reasoning capabilities but not its safety boundaries. A structural tension: API terms of service typically prohibit using outputs to train competing models, but enforcement is near-impossible once traces are on HuggingFace</li>
           <li>AI agents as attack surface — coding agents (Claude Code, Codex, etc.) inherit full user privileges and are effectively unsupervised shell sessions. The threat model includes both prompt injection causing adversarial behavior AND agents making dangerous mistakes autonomously. Key sensitive operations: reading SSH private keys, writing cron/systemd persistence, modifying sudoers, accessing Docker socket, writing git hooks, modifying shell rc files. Credential scoping, filesystem sandboxing, and egress control should be harness-level concerns, not afterthoughts. Network egress monitoring requires TLS-aware proxying — syscall-level observation alone cannot see exfiltrated data content</li>
+          <li>Automated fact-checking pipelines — verifying factual claims in model outputs against authoritative sources before delivery. The architecture mirrors how human fact-checkers work but at machine speed: (1) claim extraction — parse model output into discrete factual assertions, (2) evidence retrieval — query knowledge bases, APIs, or vector stores for supporting/contradicting evidence, (3) verdict classification — score each claim as supported, refuted, or insufficient evidence. Implementation patterns:
+            <ul>
+              <li><strong>Knowledge-grounded verification</strong> — maintain a vector store of authoritative content (Wikipedia, domain-specific databases, internal documentation). For each claim, retrieve top-k relevant passages and use an LLM judge to assess whether the evidence supports the claim. This catches hallucinated facts, outdated information, and confident fabrications</li>
+              <li><strong>API-based fact checking</strong> — for structured claims (dates, statistics, entity attributes), query authoritative APIs directly (Wikipedia API, Wikidata, government data portals). Deterministic verification when the source of truth is structured data — no LLM judge needed, just string/number matching</li>
+              <li><strong>Multi-source triangulation</strong> — cross-reference claims against multiple independent sources. A claim supported by 3+ independent sources is more trustworthy than one supported by a single source. Disagreement between sources surfaces claims that need human review rather than automated pass/fail</li>
+              <li><strong>Confidence-gated output</strong> — rather than blocking all unverifiable claims, annotate model outputs with verification status. Verified claims pass through unchanged, unverifiable claims get flagged with "[unverified]" markers, and refuted claims are either corrected or removed. This preserves output usefulness while being transparent about reliability</li>
+            </ul>
+            Fact checking is distinct from guardrails (which check safety/format) and from ground-truth registries (which verify numbers in agent artifacts). It verifies the factual content of model-generated text against external knowledge — the missing piece between "the output is safe" and "the output is true"
+          </li>
         </ul>
         <p><strong>Practical skills</strong></p>
         <ul class="learn__skills">
@@ -1028,6 +1063,7 @@ window.VC_LEARN = {
           <li>Set up prompt injection detection</li>
           <li>Design a layered guardrail pipeline</li>
           <li>Audit an AI agent's actual syscall behavior against its intended permissions using kernel-level monitoring</li>
+          <li>Build a fact-checking pipeline that extracts claims from model output and verifies them against a knowledge base</li>
         </ul>
       </div>
       <div class="learn__subcategory">
@@ -1169,6 +1205,40 @@ window.VC_LEARN = {
         <ul class="learn__skills">
           <li>Identify the moat in a vertical AI product</li>
           <li>Evaluate build-vs-buy for domain-specific AI capabilities</li>
+        </ul>
+      </div>
+      <div class="learn__subcategory">
+        <h4 class="learn__subcategory-title">11.5 Application Backend</h4>
+        <p>The server-side infrastructure that turns a model API into a production application. Chat session management, user state persistence, API serving, and the database patterns that tie them together. Most AI tutorials stop at "call the API" — production apps require conversation history, user preferences, authentication, and versioned endpoints. These patterns are not AI-specific, but their composition with model inference creates distinct architectural challenges.</p>
+        <p><strong>Key concepts</strong></p>
+        <ul>
+          <li>Chat session management — maintaining multi-turn conversation state between a user and a model. Core components: session creation (unique ID, user binding, model configuration), message append (role, content, timestamp, token count), context assembly (selecting which messages to include in the next model call), and session lifecycle (active, archived, deleted). The non-obvious challenge is context window management: a conversation with 200 messages cannot be sent in full to the model. Implementation strategies: sliding window (last N messages), summarization (compress older messages into a summary prefix), hybrid (summary + recent window). Session metadata (total tokens used, message count, last activity) enables cost tracking and garbage collection. Store sessions in a database, not in-memory — server restarts should not lose conversations</li>
+          <li>Conversation context building — assembling the model input from multiple sources per turn. A single user message triggers: (1) load system prompt (static or dynamically assembled), (2) load conversation history (windowed or summarized), (3) inject retrieved context (RAG results if applicable), (4) inject user profile/preferences, (5) apply any active tool schemas, (6) format the complete messages array for the model API. Each step has a token budget. The context builder must fit everything within the model's context window while prioritizing the most relevant information. Token counting before submission prevents truncation errors</li>
+          <li>User memory and preferences — persistent per-user state that survives across sessions. Two categories: explicit preferences (language, response style, domain focus) and implicit memory (facts the user has shared, decisions made, topics discussed). Storage patterns: key-value store for preferences (fast lookup), structured records for facts (searchable, with timestamps and confidence scores), and priority scoring (some memories are more relevant than others). Memory retrieval at conversation start personalizes the experience — the model "remembers" the user without fine-tuning</li>
+          <li>Database persistence patterns — AI applications have specific data modeling needs that map well to established backend patterns:
+            <ul>
+              <li><strong>Repository pattern</strong> — abstract database access behind a clean interface (UserRepository, SessionRepository, MessageRepository). Each repository handles CRUD for one entity type. The AI application layer calls repositories, never raw SQL. This enables swapping databases (PostgreSQL → SQLite for testing) without changing application code</li>
+              <li><strong>Unit of Work</strong> — group related database operations into a single transaction. Creating a message involves: insert message, update session token count, update user last-active timestamp. If any step fails, all roll back. Critical for data consistency in chat applications where a single user action triggers multiple writes</li>
+              <li><strong>Schema design for chat</strong> — typical tables: users (id, preferences, created_at), sessions (id, user_id, model, system_prompt, token_count, status), messages (id, session_id, role, content, tokens, created_at), user_memory (id, user_id, fact, category, priority, expires_at). Index on (session_id, created_at) for efficient history retrieval. Partition or archive old sessions to keep active queries fast</li>
+              <li><strong>Connection pooling</strong> — AI applications have bursty database access patterns (many reads at context assembly, burst of writes on response). Connection pools (SQLAlchemy engine pool, pgBouncer) prevent connection exhaustion. Singleton pool pattern ensures one pool per application instance</li>
+            </ul>
+          </li>
+          <li>REST API serving for AI applications — wrapping model inference in a production API. Distinct from serving engines (L04) which serve raw model inference — application APIs add business logic, authentication, conversation management, and user-facing contracts:
+            <ul>
+              <li><strong>API versioning</strong> — version your endpoints (v1/chat, v2/chat) from day one. Model capabilities change frequently; you will need to evolve your API contract without breaking existing clients. URL-path versioning (/api/v1/) is the simplest and most visible approach</li>
+              <li><strong>Authentication</strong> — JWT tokens for stateless auth, API keys for service-to-service. Rate limiting per user prevents abuse and cost overruns. Token-based billing (track input/output tokens per API call) enables usage-based pricing</li>
+              <li><strong>Streaming responses</strong> — Server-Sent Events (SSE) for streaming model output token-by-token. The client opens a long-lived connection, the server writes each token as it arrives from the model. Non-negotiable for chat applications — waiting 10-30 seconds for a complete response before displaying anything is unacceptable UX</li>
+              <li><strong>Error handling</strong> — model API failures (rate limits, timeouts, content filters) must be translated into meaningful client errors. Retry with exponential backoff for transient failures. Circuit breaker pattern for sustained provider outages. Never expose raw provider errors to end users</li>
+              <li><strong>Health checks and monitoring</strong> — /health endpoint that verifies database connectivity, model API reachability, and cache availability. Latency metrics per endpoint. Token usage tracking per user and per feature for cost attribution</li>
+            </ul>
+          </li>
+        </ul>
+        <p><strong>Practical skills</strong></p>
+        <ul class="learn__skills">
+          <li>Design a database schema for a multi-user chat application with session management and user memory</li>
+          <li>Build a context assembly pipeline that combines conversation history, RAG results, and user preferences within a token budget</li>
+          <li>Implement a streaming REST API for chat with JWT auth, versioned endpoints, and provider error translation</li>
+          <li>Set up connection pooling and transaction management for bursty AI application workloads</li>
         </ul>
       </div>`
   }

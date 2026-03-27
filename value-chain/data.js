@@ -65,7 +65,8 @@ window.VC_DATA = {
       { id: "assistants-copilots", label: "Assistants & Copilots", desc: "General-purpose chat & copilot" },
       { id: "autonomous-agents", label: "Autonomous Agents", desc: "Agent-as-product" },
       { id: "creative-tools", label: "Creative Tools", desc: "Generation" },
-      { id: "vertical-ai", label: "Vertical AI", desc: "Domain-specific" }
+      { id: "vertical-ai", label: "Vertical AI", desc: "Domain-specific" },
+      { id: "application-backend", label: "Application Backend", desc: "Chat sessions, DB persistence, API serving" }
     ]}
   ],
   tools: [
