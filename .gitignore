@@ -5,5 +5,10 @@ __pycache__/
 recall/
 reports/quality-audit/
 
+# Auto-research session data (local only)
+scripts/auto-research/experiments/
+scripts/auto-research/lessons.md
+scripts/auto-research/.venv/
+
 # Large synced upstream mirrors
 agent-library/vendors/

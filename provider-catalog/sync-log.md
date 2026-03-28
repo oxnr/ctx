@@ -1,7 +1,7 @@
 # Provider Catalog Sync Log
 
 ## Sync log
-- last_sync: 2026-03-05T19:48:35Z
+- last_sync: 2026-03-27T12:33:29Z
 - source: https://openrouter.ai/api/v1/models
 
 ## 2026-03-05T14:10:27Z
@@ -25,5 +25,11 @@
 - source: https://openrouter.ai/api/v1/models
 - total_models: 346
 - total_providers: 57
+- generated_file: provider-catalog/index.md
+
+## 2026-03-27T12:33:29Z
+- source: https://openrouter.ai/api/v1/models
+- total_models: 346
+- total_providers: 56
 - generated_file: provider-catalog/index.md
 

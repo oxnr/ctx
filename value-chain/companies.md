@@ -100,6 +100,8 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | SGLang | Fast LLM serving, structured generation | Open source | — |
 | DeepInfra | Inference API for open models | Managed | — |
 | LlamaFile | Mozilla — LLM as single cross-platform executable | Open source | — |
+| TurboQuant | Google Research — KV cache quantization to 3 bits, 6x memory reduction (ICLR 2026) | Open source | — |
+| TurboQuant+ | TurboQuant extended for Apple Silicon — layer-adaptive compression, temporal decay, sparse V dequant, q8_0 speed parity | Open source | — |
 
 ## Layer 05 — Routing
 
@@ -139,6 +141,8 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | Semantic Kernel | Microsoft AI orchestration SDK | Open source | — |
 | Haystack | Open-source RAG and NLP framework | Open source | — |
 | DeerFlow (ByteDance) | Super agent harness — Docker sandbox, middleware chain, progressive skill loading, sub-agents, IM channels | Open source | — |
+| Compound Engineering | Every.to's engineering OS — Plan→Work→Review→Compound loop, 26 agents, learning capture after every task | Open source | — |
+| Bardo | Self-building Rust monorepo — mortal agent swarms, 9-layer context engine, three-layer inference cache (96.6% savings), HDC fingerprinting, Grimoire memory, USDC micropayments | Open source | — |
 
 ## Layer 07 — Context & Knowledge
 
@@ -146,7 +150,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 |---------|-------------|------|----------|
 | Pinecone | Managed vector database | Managed | — |
 | Weaviate | Open-source vector DB, hybrid search | Open source | — |
-| Chroma | Open-source embedding database | Open source | W23 |
+| Chroma | Open-source embedding database + Context-1 (20B search agent with self-editing context) | Open source | W23 |
 | Qdrant | Rust-based vector search | Open source | — |
 | Milvus | Distributed vector database | Open source | — |
 | Voyage AI | Retrieval-optimized embeddings | Managed | — |
@@ -182,6 +186,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | Zapier AI Actions | Connect AI to 6000+ apps | Managed | — |
 | Sweep AI | GitHub issue to PR agent | Managed | S23 |
 | Middleware | Observability integrations | Managed | W23 |
+| Stripe Projects | CLI for agents to provision SaaS services with unified billing | Managed | — |
 
 ## Layer 09 — Eval & Safety
 
@@ -208,6 +213,9 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | DeepEval | Open-source LLM eval framework | Open source | — |
 
 | Strix | LLM-powered autonomous pentesting agent with validated PoC exploits | Open source | — |
+| G0DM0D3 | AI safety research — multi-model racing (50+ models), consensus synthesis, perturbation engine, adaptive parameter tuning, privacy-by-construction data collection | Open source | — |
+| Math Inc | Industrial-scale autoformalization — Gauss agent, 200K lines Lean for Fields Medal proof | Managed | — |
+| OpenGauss | Open-source Gauss agent — Lean 4 orchestrator, SwarmManager, OPD RL training from agent traces | Open source | — |
 
 ## Layer 10 — Products
 
