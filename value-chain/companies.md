@@ -47,6 +47,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | HuggingFace Tokenizers | Fast tokenization (Rust) | Open source | — |
 | HuggingFace Diffusers | Image/video diffusion models | Open source | — |
 | Cohere | Enterprise NLP and embedding models | Proprietary | — |
+| MSL / Muse Spark (Meta) | Frontier model lab led by Alexandr Wang ($14.3B acquisition) — leads on data-quality-sensitive benchmarks | Proprietary | — |
 
 ## Layer 03 — Post-Training
 
@@ -132,6 +133,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | Agent Orchestrator (Composio) | Fleet manager for parallel coding agents — CI/review feedback routing, plugin arch | Open source | W24 |
 | claude-squad | Terminal multiplexer for parallel AI coding agents in tmux sessions | Open source | — |
 | E2B | Sandboxed code execution | Managed | W24 |
+| agent-browser (Vercel Labs) | Rust CLI for AI browser automation — accessibility-tree snapshots, semantic locators, daemon sessions | Open source | — |
 | Trigger.dev | Background job orchestration | Managed | W23 |
 | LibreChat | Open-source multi-model chat interface | Open source | — |
 | Hermes Agent | Agent with memory, tools, MCP gateway | Open source | — |
@@ -139,6 +141,9 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | Semantic Kernel | Microsoft AI orchestration SDK | Open source | — |
 | Haystack | Open-source RAG and NLP framework | Open source | — |
 | DeerFlow (ByteDance) | Super agent harness — Docker sandbox, middleware chain, progressive skill loading, sub-agents, IM channels | Open source | — |
+| Meta-Harness (Stanford) | Automated harness engineering — coding agent loop optimizing the wrapping code around models, +7.7pts on TerminalBench-2 | Open source | — |
+| Agno/Coda | Team coding companion — 5 specialist agents (Explorer, Planner, Researcher, Triager, Coder) coordinated by a Leader | Open source | — |
+| Dexter | Autonomous financial research agent — multi-agent stock analysis, 50K GitHub stars | Open source | — |
 
 ## Layer 07 — Context & Knowledge
 
