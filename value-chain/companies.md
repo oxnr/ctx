@@ -98,6 +98,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | Suno | AI music and song generation | Proprietary | — |
 | HuggingFace Inference Endpoints | Managed model hosting | Managed | — |
 | BentoML | Open-source model serving framework | Open source | — |
+| oMLX | macOS-native MLX server — paged SSD KV caching, continuous batching, multi-model, <5s TTFT | Open source | — |
 | SGLang | Fast LLM serving, structured generation | Open source | — |
 | DeepInfra | Inference API for open models | Managed | — |
 | LlamaFile | Mozilla — LLM as single cross-platform executable | Open source | — |
