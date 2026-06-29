@@ -102,6 +102,11 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | SGLang | Fast LLM serving, structured generation | Open source | — |
 | DeepInfra | Inference API for open models | Managed | — |
 | LlamaFile | Mozilla — LLM as single cross-platform executable | Open source | — |
+| MLX LM | Apple Silicon LLM runner built on MLX | Open source | — |
+| MLX VLM | Vision-language model inference and fine-tuning on Mac using MLX | Open source | — |
+| DFlash | Block-diffusion speculative decoding for faster generation | Open source | — |
+| DeepSpec | DeepSeek speculative decoding training and evaluation codebase | Open source | — |
+| NVIDIA VSS Blueprint | GPU-accelerated vision agents, video search, summarization, and analytics reference architecture | Open source | — |
 
 ## Layer 05 — Routing
 
@@ -126,14 +131,20 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | AutoGen | Microsoft multi-agent framework | Open source | — |
 | Claude Code | Anthropic agentic coding | Proprietary | — |
 | OpenAI Codex | Cloud coding agent | Proprietary | — |
+| AgentRC | Repo AI-readiness, instructions, and context checks | Open source | — |
+| Context Engineering Kit | Portable skills and context patterns for agent result quality | Open source | — |
 | Devin (Cognition) | Autonomous SW engineering agent | Proprietary | — |
+| Agent Scripts | Reusable operational scripts for coding agents | Open source | — |
+| NVIDIA Skills | Agent skills published by NVIDIA for repeatable domain workflows | Open source | — |
 | Dify | Visual AI workflow builder | Open source | — |
 | Langflow | Visual drag-and-drop agent pipeline builder | Open source | — |
 | n8n | Workflow automation with AI | Open source | — |
 | Composio | Tool integrations for agents | Managed | W24 |
 | Agent Orchestrator (Composio) | Fleet manager for parallel coding agents — CI/review feedback routing, plugin arch | Open source | W24 |
+| Paperclip | Open-source workplace agent management app with task/run oversight | Open source | — |
 | claude-squad | Terminal multiplexer for parallel AI coding agents in tmux sessions | Open source | — |
 | E2B | Sandboxed code execution | Managed | W24 |
+| NVIDIA OpenShell | Safe, private runtime for autonomous AI agents | Open source | — |
 | agent-browser (Vercel Labs) | Rust CLI for AI browser automation — accessibility-tree snapshots, semantic locators, daemon sessions | Open source | — |
 | Trigger.dev | Background job orchestration | Managed | W23 |
 | LibreChat | Open-source multi-model chat interface | Open source | — |
@@ -143,6 +154,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | Haystack | Open-source RAG and NLP framework | Open source | — |
 | DeerFlow (ByteDance) | Super agent harness — Docker sandbox, middleware chain, progressive skill loading, sub-agents, IM channels | Open source | — |
 | Meta-Harness (Stanford) | Automated harness engineering — coding agent loop optimizing the wrapping code around models, +7.7pts on TerminalBench-2 | Open source | — |
+| Karpathy Autoresearch | Autonomous research loops for single-GPU nanochat training | Open source | — |
 | Agno/Coda | Team coding companion — 5 specialist agents (Explorer, Planner, Researcher, Triager, Coder) coordinated by a Leader | Open source | — |
 | Dexter | Autonomous financial research agent — multi-agent stock analysis, 50K GitHub stars | Open source | — |
 
@@ -169,6 +181,15 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | FAISS | Facebook vector similarity search | Open source | — |
 | pgvector | PostgreSQL vector extension | Open source | — |
 | LlamaParse | Document parsing for RAG | Managed | — |
+| Headroom | Compresses tool outputs, logs, files, and RAG chunks before they reach the LLM | Open source | — |
+| Token Optimizer MCP | MCP token reduction through caching, compression, and tool intelligence | Open source | — |
+| Code Review Graph | Local-first code intelligence graph for agent review and large-repo workflows | Open source | — |
+| Claude Context | Code search MCP for whole-codebase agent context | Open source | — |
+| AgentMemory | Persistent memory layer for AI coding agents | Open source | — |
+| MemPalace | Open-source benchmarked AI memory system | Open source | — |
+| Claude Mem | Session capture, compression, and context reinjection across agent runs | Open source | — |
+| Obsidian Skills | Agent skills for Obsidian Markdown, Bases, JSON Canvas, and CLI | Open source | — |
+| DESIGN.md | Structured design-system context format for coding agents | Open source | — |
 
 | json-render (Vercel) | Generative UI framework — LLM outputs JSON specs rendered across 10 platforms | Open source | — |
 | Collaborator | Infinite canvas workspace for agentic dev with spatial tiles | Open source | — |
@@ -186,6 +207,7 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | Composio | Agent tool integrations | Managed | W24 |
 | CopilotKit | Embed AI copilots in React apps, AG-UI protocol | Open source | — |
 | Zapier AI Actions | Connect AI to 6000+ apps | Managed | — |
+| Vibe Figma | Figma-to-React/TypeScript/Tailwind converter | Open source | — |
 | Sweep AI | GitHub issue to PR agent | Managed | S23 |
 | Middleware | Observability integrations | Managed | W23 |
 
@@ -212,6 +234,8 @@ Living catalog of companies organized by value chain layer. Add new entries as y
 | RAGAS | RAG evaluation framework | Open source | — |
 | Phoenix (Arize) | LLM observability and eval | Open source | — |
 | DeepEval | Open-source LLM eval framework | Open source | — |
+| DeepSec | Agent-powered codebase vulnerability scanner and security harness | Open source | — |
+| SkillSpector | Security scanner for AI agent skills and malicious patterns | Open source | — |
 
 | Strix | LLM-powered autonomous pentesting agent with validated PoC exploits | Open source | — |
 

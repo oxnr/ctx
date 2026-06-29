@@ -81,9 +81,11 @@ This is the single, active syllabus for all engagements.
 - Objectives:
   - Add failure modes, validation, and escalation.
   - Define what can be automated and what must stay human-approved.
+  - Gate automatically discovered repos before they become public recommendations.
 - Deliverables:
   - safety matrix
   - rollback policy
+  - secure discovery gate for raw bookmark intake and source-driven catalog updates
 - Trigger skill:
   - `/incident-operating`
 
@@ -146,14 +148,17 @@ This is the single, active syllabus for all engagements.
 - Objectives:
   - Build a full end-to-end AI stack map for every use case.
   - Connect providers, routing, terminals, coding agents, and observability tooling.
+  - Convert raw bookmark/source intake into public-safe catalog and learning updates.
 - Deliverables:
   - provider-catalog with local registry and sync cadence
   - terminal/agent command map by role
   - image, audio, and multimodal fallback playbook
+  - `academy/raw-bookmark-intake-2026-06.md`
 - Trigger skills:
   - `/provider-stack`
   - `/provider-catalog-update`
   - `/internet-research`
+  - `/source`
 
 ## Role-to-module mapping
 
