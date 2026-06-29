@@ -78,7 +78,7 @@ Validation evidence:
 Deferred:
 
 - Provider catalog freshness is still OpenRouter-snapshot based and should become a separate provider-flow refresh.
-- `value-chain/learn-content.js` remains a handcrafted academy layer; it needs a later source-backed reconciliation pass against `value-chain/data.js`.
+- `value-chain/learn-content.js` and `/learn` remain handcrafted academy layers; broad source-backed reconciliation is still a separate editorial pass.
 - Several local-runner and research rows still need deeper source review before stronger claims should be made public.
 
 ## 2026-06-29 - Research And Agent Concepts Wave
@@ -119,3 +119,27 @@ Deferred:
 
 - Kimi K2, disaggregated MoE inference details, OpenAI GPT-5 routing, and broader provider refresh remain separate product/provider passes so the public model does not become a grab bag of launch notes.
 - The academy content still needs a focused editing pass if these research concepts should become teaching modules rather than catalog entries.
+
+## 2026-06-29 - Learn Surface Reconciliation
+
+Status: in progress.
+
+Changes incorporated:
+
+- Reconciled `/learn` and `value-chain/learn-content.js` with the research/concept wave at a teaching-outline level.
+- Added learning bullets for low-precision training, optimizer/attention research, RLVR, long-context RL, test-time scaling, effort routing, managed-agent execution/durability/oversight, agent skills, MCP-backed execution, context engineering, eval awareness, circuit tracing, and constitutional classifiers.
+- Removed stale hard-coded public cost examples from `/learn`.
+- Removed the outdated Qwen3-Coder-Next 80B/3B-active claim from inline learn content and replaced it with a more general attention-evolution explanation.
+
+Primary sources:
+
+- Same primary sources as the Research And Agent Concepts Wave above; this pass did not add new catalog claims.
+
+Validation evidence:
+
+- `./scripts/quality-cycle.sh . 0 0` passed on 2026-06-29T20:05:35Z with 420 value-chain tools, 0 value-chain errors, 0 public-site issues, and 0 public-site warnings.
+
+Deferred:
+
+- A full rewrite of `/learn` into a generated artifact remains out of scope for this pass.
+- The academy syllabus can still be expanded later into dedicated modules for test-time scaling, managed agents, and AI safety/interpretability.

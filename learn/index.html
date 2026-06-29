@@ -124,6 +124,7 @@
                     <li>Parallelism strategies</li>
                     <li>NCCL</li>
                     <li>Distributed frameworks</li>
+                    <li>Low-precision training</li>
                   </ul>
                   <p><strong>Practical skills</strong></p>
                   <ul class="learn__skills">
@@ -146,7 +147,7 @@
             </button>
             <div class="accordion__panel" id="learn-02">
               <div class="panel-block">
-                <p>Pre-training builds foundation models from massive datasets — trillions of tokens of text, code, and multimodal data. This is the most capital-intensive layer ($50M-$500M+ per frontier model). Most teams never touch pre-training directly, but understanding how base models are made explains their capabilities and limitations.</p>
+                <p>Pre-training builds foundation models from massive datasets — trillions of tokens of text, code, and multimodal data. This is generally the most capital-intensive layer, though public cost estimates vary widely by model size, hardware, and accounting method. Most teams never touch pre-training directly, but understanding how base models are made explains their capabilities and limitations.</p>
                 <div class="learn__diagram">
                   <svg class="learn__svg" viewBox="0 0 480 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="2" y="20" width="70" height="40" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
@@ -203,6 +204,7 @@
                     <li>Tokenizer design</li>
                     <li>Checkpoint management</li>
                     <li>Mixed precision</li>
+                    <li>Optimizer and attention research</li>
                   </ul>
                   <p><strong>Practical skills</strong></p>
                   <ul class="learn__skills">
@@ -225,7 +227,7 @@
             </button>
             <div class="accordion__panel" id="learn-03">
               <div class="panel-block">
-                <p>Post-training transforms base models into useful tools. SFT teaches instruction following, RLHF and DPO align outputs with human preferences, LoRA enables efficient adaptation, and distillation creates smaller specialized models. This is where most teams first interact with the training pipeline — fine-tuning a 70B model with LoRA can cost under $100.</p>
+                <p>Post-training transforms base models into useful tools. SFT teaches instruction following, RLHF and DPO align outputs with human preferences, LoRA enables efficient adaptation, and distillation creates smaller specialized models. This is where most teams first interact with the training pipeline; cost depends heavily on model size, hardware, dataset quality, and evaluation requirements.</p>
                 <div class="learn__diagram">
                   <svg class="learn__svg" viewBox="0 0 480 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="170" y="2" width="100" height="36" rx="4" stroke="#e8e6e3" stroke-width="1.5"/>
@@ -251,6 +253,8 @@
                   <ul>
                     <li>SFT as foundation</li>
                     <li>RLHF vs DPO</li>
+                    <li>RLVR and verifiable rewards</li>
+                    <li>Long-context RL</li>
                     <li>Constitutional AI</li>
                     <li>Preference data quality</li>
                   </ul>
@@ -416,6 +420,7 @@
                     <li>Prompt caching (prefix and semantic)</li>
                     <li>Prompt compression techniques</li>
                     <li>KV cache optimization</li>
+                    <li>Test-time scaling</li>
                     <li>Structured outputs for token efficiency</li>
                   </ul>
                   <p><strong>Practical skills</strong></p>
@@ -480,6 +485,7 @@
                     <li>Task classification</li>
                     <li>Quality prediction</li>
                     <li>Benchmark-driven routing</li>
+                    <li>Reasoning budget routing</li>
                   </ul>
                   <p><strong>Practical skills</strong></p>
                   <ul class="learn__skills">
@@ -527,6 +533,7 @@
                     <li>Cloud sandbox vs local vs unikernels</li>
                     <li>Resource limits and network policies</li>
                     <li>Cold start latency</li>
+                    <li>Managed-agent execution</li>
                   </ul>
                 </div>
                 <div class="learn__subcategory">
@@ -537,6 +544,7 @@
                     <li>File-driven state vs in-memory state</li>
                     <li>Crash recovery and checkpointing</li>
                     <li>Git-tracked task files</li>
+                    <li>Durable managed-agent handoff</li>
                   </ul>
                 </div>
                 <div class="learn__subcategory">
@@ -545,6 +553,8 @@
                   <p><strong>Key concepts</strong></p>
                   <ul>
                     <li>Tool registries and discovery</li>
+                    <li>Agent skills as capability packages</li>
+                    <li>MCP-backed execution</li>
                     <li>Code execution infrastructure</li>
                     <li>Browser automation for verification</li>
                   </ul>
@@ -566,6 +576,7 @@
                   <ul>
                     <li>~40% context utilization sweet spot</li>
                     <li>Pre-inlining vs discovery</li>
+                    <li>Context engineering as architecture</li>
                     <li>AGENTS.md / CLAUDE.md as static context</li>
                   </ul>
                 </div>
@@ -625,6 +636,7 @@
                     <li>Human-in-the-loop vs human-on-the-loop vs bounded autonomy</li>
                     <li>Reversibility/stakes/confidence</li>
                     <li>Trust boundaries</li>
+                    <li>Pause, resume, and audit points</li>
                   </ul>
                 </div>
                 <div class="learn__subcategory">
@@ -780,6 +792,7 @@
                     <li>MCP standardization</li>
                     <li>Function calling as universal interface</li>
                     <li>JSON mode</li>
+                    <li>MCP-backed execution surfaces</li>
                     <li>Agent interoperability</li>
                   </ul>
                   <p><strong>Practical skills</strong></p>
@@ -865,6 +878,7 @@
                     <li>Benchmark suites</li>
                     <li>CI-integrated evals</li>
                     <li>Model-as-judge</li>
+                    <li>Eval awareness</li>
                   </ul>
                   <p><strong>Practical skills</strong></p>
                   <ul class="learn__skills">
@@ -882,6 +896,7 @@
                     <li>Cost tracking</li>
                     <li>Latency monitoring</li>
                     <li>Quality trending</li>
+                    <li>Circuit tracing and interpretability</li>
                   </ul>
                   <p><strong>Practical skills</strong></p>
                   <ul class="learn__skills">
@@ -899,6 +914,7 @@
                     <li>Prompt injection detection</li>
                     <li>Format validation</li>
                     <li>Layered defense</li>
+                    <li>Constitutional classifiers</li>
                   </ul>
                   <p><strong>Practical skills</strong></p>
                   <ul class="learn__skills">
