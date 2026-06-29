@@ -80,3 +80,42 @@ Deferred:
 - Provider catalog freshness is still OpenRouter-snapshot based and should become a separate provider-flow refresh.
 - `value-chain/learn-content.js` remains a handcrafted academy layer; it needs a later source-backed reconciliation pass against `value-chain/data.js`.
 - Several local-runner and research rows still need deeper source review before stronger claims should be made public.
+
+## 2026-06-29 - Research And Agent Concepts Wave
+
+Status: in progress.
+
+Changes incorporated:
+
+- Added NVFP4 Training to capture the low-precision training direction that links compute constraints to pre-training economics.
+- Added Muon Optimizer and Native Sparse Attention as pre-training research signals that affect optimizer choice and long-context architecture, not just downstream app tooling.
+- Added RLVR Reasoning and Long-Context RL as post-training concepts because verifiable reward signals are now central to reasoning-model capability growth.
+- Added Test-Time Scaling to represent the inference/routing shift where harder prompts can buy more reasoning compute at runtime.
+- Added Anthropic Managed Agents, Agent Skills, Effective Context Engineering, and Code Execution With MCP as agent runtime concepts that clarify the harness/orchestration/integration boundary.
+- Added Constitutional Classifiers, Circuit Tracing, and Eval Awareness to the eval/safety layer because they change the safety and observability model around agent deployment.
+
+Primary sources added:
+
+- `https://arxiv.org/abs/2509.25149`
+- `https://arxiv.org/abs/2502.16982`
+- `https://arxiv.org/abs/2502.11089`
+- `https://arxiv.org/abs/2501.12948`
+- `https://arxiv.org/abs/2501.12599`
+- `https://arxiv.org/abs/2501.19393`
+- `https://www.anthropic.com/engineering/managed-agents`
+- `https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills`
+- `https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents`
+- `https://www.anthropic.com/engineering/code-execution-with-mcp`
+- `https://www.anthropic.com/research/constitutional-classifiers`
+- `https://www.anthropic.com/research/tracing-thoughts-language-model`
+- `https://arxiv.org/abs/2505.23836`
+
+Validation evidence:
+
+- `node scripts/check-value-chain.mjs` returned 11 layers, 420 tools, 0 errors. Existing multi-layer subcategory warnings remain tracked as model-quality backlog.
+- `./scripts/quality-cycle.sh . 0 0` passed on 2026-06-29T19:54:19Z with 0 public-site issues and 0 public-site warnings.
+
+Deferred:
+
+- Kimi K2, disaggregated MoE inference details, OpenAI GPT-5 routing, and broader provider refresh remain separate product/provider passes so the public model does not become a grab bag of launch notes.
+- The academy content still needs a focused editing pass if these research concepts should become teaching modules rather than catalog entries.

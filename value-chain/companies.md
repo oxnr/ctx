@@ -20,6 +20,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Groq | LPU hardware and ultra-fast inference API | managed | [groq.com](https://groq.com) | - |
 | Databricks | Unified analytics with compute, fine-tuning, and RAG | proprietary | [databricks.com](https://www.databricks.com) | - |
 | HuggingFace Accelerate | Distributed training abstraction library | open-source | [huggingface/accelerate](https://github.com/huggingface/accelerate) | - |
+| NVFP4 Training | Research direction for end-to-end FP4/NVFP4 low-precision training that reduces memory and bandwidth pressure in frontier-scale training runs | research | [arxiv.org](https://arxiv.org/abs/2509.25149) | - |
 | Vast.ai | GPU marketplace connecting suppliers and renters at low cost | managed | [vast.ai](https://vast.ai) | - |
 | Paperspace | GPU cloud for ML, acquired by DigitalOcean | managed | [paperspace.com](https://www.paperspace.com) | - |
 | SambaNova | Custom dataflow AI chips and cloud inference | proprietary | [sambanova.ai](https://sambanova.ai) | - |
@@ -32,6 +33,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 
 | Entity | What they do | Type | Source | YC Batch |
 | --- | --- | --- | --- | --- |
+| NVFP4 Training | Research direction for end-to-end FP4/NVFP4 low-precision training that reduces memory and bandwidth pressure in frontier-scale training runs | research | [arxiv.org](https://arxiv.org/abs/2509.25149) | - |
 | OpenAI | GPT series (GPT-4, GPT-5), closed-weight frontier models | proprietary | [openai.com](https://openai.com) | - |
 | Anthropic | Claude series (Opus, Sonnet, Haiku), safety-focused | proprietary | [anthropic.com](https://www.anthropic.com) | - |
 | Google DeepMind | Gemini series, PaLM, custom TPU training | proprietary | [deepmind.google](https://deepmind.google) | - |
@@ -56,6 +58,8 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | HuggingFace Datasets | Training data loading and processing library | open-source | [huggingface/datasets](https://github.com/huggingface/datasets) | - |
 | HuggingFace Tokenizers | Fast tokenization library (Rust-backed) | open-source | [huggingface/tokenizers](https://github.com/huggingface/tokenizers) | - |
 | HuggingFace Diffusers | Image and video diffusion model library | open-source | [huggingface/diffusers](https://github.com/huggingface/diffusers) | - |
+| Muon Optimizer | Orthogonalized momentum optimizer research for more efficient large-model pre-training and fine-tuning dynamics | research | [arxiv.org](https://arxiv.org/abs/2502.16982) | - |
+| Native Sparse Attention | Sparse-attention architecture research for efficient long-context training and inference without treating sparsity as only a serving trick | research | [arxiv.org](https://arxiv.org/abs/2502.11089) | - |
 | AI21 Labs | Jamba foundation models with Mamba-Transformer architecture | proprietary | [ai21.com](https://www.ai21.com) | - |
 | Black Forest Labs | Flux image generation models, most photorealistic open model | open-source | [black-forest-labs/flux](https://github.com/black-forest-labs/flux) | - |
 | Inflection AI | Pi personal AI, enterprise foundation models | proprietary | [inflection.ai](https://inflection.ai) | - |
@@ -92,6 +96,8 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Oxen.ai | Dataset versioning for training pipelines | open-source | [Oxen-AI/Oxen](https://github.com/Oxen-AI/Oxen) | W24 |
 | HuggingFace PEFT | LoRA, QLoRA, parameter-efficient fine-tuning | open-source | [huggingface/peft](https://github.com/huggingface/peft) | - |
 | OpenPipe | Fine-tuning and evaluation platform for LLMs | managed | [openpipe.ai](https://openpipe.ai) | S23 |
+| RLVR Reasoning | Reinforcement learning with verifiable rewards for reasoning models, exemplified by R1-style post-training where correctness signals come from executable or checkable tasks | research | [arxiv.org](https://arxiv.org/abs/2501.12948) | - |
+| Long-Context RL | Post-training research that teaches models to use extended context through reward signals instead of relying only on larger attention windows | research | [arxiv.org](https://arxiv.org/abs/2501.12599) | - |
 | MLX VLM | Inference and fine-tuning package for vision-language models on Mac using MLX | open-source | [Blaizzy/mlx-vlm](https://github.com/Blaizzy/mlx-vlm) | - |
 | QVAC Fabric | Tether's cross-platform BitNet LoRA framework — 1-bit LLM training and inference on consumer GPUs and smartphones (13B on iPhone) | open-source | [qvac.ai](https://qvac.ai) | - |
 | mlx-tune | Fine-tune full Gemma 4 family locally on Mac — E2B, E4B, 26B MoE, 31B Dense for text/vision/audio with unified FastVisionModel API | open-source | [ARahim3/mlx-tune](https://github.com/ARahim3/mlx-tune) | - |
@@ -114,6 +120,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Groq | LPU hardware and ultra-fast inference API | managed | [groq.com](https://groq.com) | - |
 | MiniMax | Open-weight MoE models (M1, M2, M2.5) with linear attention, multimodal API platform (image/video/TTS/music generation) | open-weight | [github.com](https://github.com/MiniMax-AI) | - |
 | Cohere | Enterprise NLP, embedding models, and Rerank API | proprietary | [cohere.com](https://cohere.com) | - |
+| Native Sparse Attention | Sparse-attention architecture research for efficient long-context training and inference without treating sparsity as only a serving trick | research | [arxiv.org](https://arxiv.org/abs/2502.11089) | - |
 | Replicate | Fine-tuning and inference API for open models | managed | [replicate.com](https://replicate.com) | - |
 | vLLM | High-throughput serving engine, PagedAttention | open-source | [vllm-project/vllm](https://github.com/vllm-project/vllm) | - |
 | llama.cpp | CPU/GPU inference in C++, GGUF quantization | open-source | [ggerganov/llama.cpp](https://github.com/ggerganov/llama.cpp) | - |
@@ -143,6 +150,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | BentoML | Open-source model serving framework | open-source | [bentoml/BentoML](https://github.com/bentoml/BentoML) | - |
 | SGLang | Fast LLM serving with structured generation | open-source | [sgl-project/sglang](https://github.com/sgl-project/sglang) | - |
 | NVIDIA Dynamo | Distributed inference framework for reasoning models — disaggregated serving, KV-cache aware routing, autoscaling, and multi-engine inference orchestration | open-source | [ai-dynamo/dynamo](https://github.com/ai-dynamo/dynamo) | - |
+| Test-Time Scaling | Inference-time reasoning strategy where systems spend more compute on harder prompts through search, self-consistency, deliberation, or budgeted thinking | research | [arxiv.org](https://arxiv.org/abs/2501.19393) | - |
 | TurboQuant | Google Research — data-oblivious KV cache quantization to 3 bits with zero accuracy loss, 6x memory reduction, 8x attention speedup on H100. Two-stage: PolarQuant (random rotation → polar coordinates → Lloyd-Max scalar quantization) + QJL (1-bit residual correction for unbiased inner products). ICLR 2026 | open-source | [amirzandieh/QJL](https://github.com/amirzandieh/QJL) | - |
 | RotorQuant | Upgraded TurboQuant — 10x KV cache compression for inference optimization | open-source | [scrya-com/rotorquant](https://github.com/scrya-com/rotorquant) | - |
 | LPM 1.0 | 17B DiT research model for real-time full-duplex conversational video generation in avatar and digital-human applications | research | [arxiv.org](https://arxiv.org/abs/2604.07823) | - |
@@ -185,6 +193,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Entity | What they do | Type | Source | YC Batch |
 | --- | --- | --- | --- | --- |
 | NVIDIA Dynamo | Distributed inference framework for reasoning models — disaggregated serving, KV-cache aware routing, autoscaling, and multi-engine inference orchestration | open-source | [ai-dynamo/dynamo](https://github.com/ai-dynamo/dynamo) | - |
+| Test-Time Scaling | Inference-time reasoning strategy where systems spend more compute on harder prompts through search, self-consistency, deliberation, or budgeted thinking | research | [arxiv.org](https://arxiv.org/abs/2501.19393) | - |
 | OpenRouter | Unified API across 300+ models, automatic fallback | managed | [openrouter.ai](https://openrouter.ai) | - |
 | LiteLLM | Open-source LLM proxy for 100+ providers | open-source | [BerriAI/litellm](https://github.com/BerriAI/litellm) | - |
 | Portkey | AI gateway with routing, caching, guardrails | managed | [portkey.ai](https://portkey.ai) | W24 |
@@ -218,6 +227,10 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | OpenSpace | Self-evolving agent skill engine — three-trigger evolution (post-analysis, tool degradation, metric monitoring), three modes (FIX/DERIVED/CAPTURED), cloud skill community for collective intelligence, 54% token savings via skill reuse, MCP server integration | open-source | [HKUDS/OpenSpace](https://github.com/HKUDS/OpenSpace) | - |
 | Superpowers | Composable skills framework enforcing structured development — brainstorm, plan, TDD, subagent execution, two-stage review, and hard-gate verification — across Claude Code, Cursor, Codex, and Gemini CLI | open-source | [obra/superpowers](https://github.com/obra/superpowers) | - |
 | PUA | AI agent skill plugin that enforces persistence, proactive debugging, and mandatory verification across Claude Code, Codex, Cursor, and other tools | open-source | [tanweai/pua](https://github.com/tanweai/pua) | - |
+| Managed Agents | Anthropic engineering pattern for long-running agents with durable state, isolated execution, human oversight, and recoverable task progress | concept | [anthropic.com](https://www.anthropic.com/engineering/managed-agents) | - |
+| Agent Skills | Anthropic pattern for packaging procedural instructions, scripts, and assets so agents can load specialized capabilities on demand | concept | [anthropic.com](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) | - |
+| Effective Context Engineering | Anthropic engineering pattern for shaping what agents see through memory, retrieval, summarization, and state design instead of only prompt wording | concept | [anthropic.com](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) | - |
+| Code Execution With MCP | Anthropic architecture for giving agents controlled code execution through MCP-backed tool servers and isolated runtime environments | concept | [anthropic.com](https://www.anthropic.com/engineering/code-execution-with-mcp) | - |
 | Meta-Harness | Research system for automated harness engineering — an outer-loop coding agent searches over harness code using source, scores, and execution traces from prior candidates | research | [arxiv.org](https://arxiv.org/abs/2603.28052) | - |
 | Citadel | Agent orchestration harness for Claude Code — cost-based tier routing (Skill→Marshal→Archon→Fleet), discovery relay between parallel agent waves, campaign persistence, lifecycle hooks as safety net, file-based coordination claims | open-source | [SethGammon/Citadel](https://github.com/SethGammon/Citadel) | - |
 | gstack | Software factory by YC CEO — 28 sprint-structured skills (Think→Plan→Build→Review→Test→Ship→Reflect), autoplan with encoded decision heuristics (mechanical vs taste), multi-model adversarial review (Claude+Codex consensus), persistent browser daemon with a11y-tree element refs | open-source | [garrytan/gstack](https://github.com/garrytan/gstack) | - |
@@ -265,6 +278,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Devin (Cognition) | Autonomous software engineering agent | proprietary | [cognition.ai](https://www.cognition.ai) | - |
 | OpenSpace | Self-evolving agent skill engine — three-trigger evolution (post-analysis, tool degradation, metric monitoring), three modes (FIX/DERIVED/CAPTURED), cloud skill community for collective intelligence, 54% token savings via skill reuse, MCP server integration | open-source | [HKUDS/OpenSpace](https://github.com/HKUDS/OpenSpace) | - |
 | Superpowers | Composable skills framework enforcing structured development — brainstorm, plan, TDD, subagent execution, two-stage review, and hard-gate verification — across Claude Code, Cursor, Codex, and Gemini CLI | open-source | [obra/superpowers](https://github.com/obra/superpowers) | - |
+| Managed Agents | Anthropic engineering pattern for long-running agents with durable state, isolated execution, human oversight, and recoverable task progress | concept | [anthropic.com](https://www.anthropic.com/engineering/managed-agents) | - |
 | Citadel | Agent orchestration harness for Claude Code — cost-based tier routing (Skill→Marshal→Archon→Fleet), discovery relay between parallel agent waves, campaign persistence, lifecycle hooks as safety net, file-based coordination claims | open-source | [SethGammon/Citadel](https://github.com/SethGammon/Citadel) | - |
 | gstack | Software factory by YC CEO — 28 sprint-structured skills (Think→Plan→Build→Review→Test→Ship→Reflect), autoplan with encoded decision heuristics (mechanical vs taste), multi-model adversarial review (Claude+Codex consensus), persistent browser daemon with a11y-tree element refs | open-source | [garrytan/gstack](https://github.com/garrytan/gstack) | - |
 | GSD (v1) | Viral prompt framework for Claude Code — markdown slash commands for structured project execution | open-source | [glittercowboy/get-shit-done](https://github.com/glittercowboy/get-shit-done) | - |
@@ -401,6 +415,8 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | OpenAI Codex | Cloud coding agent with sandboxed execution | proprietary | [openai.com](https://openai.com/index/introducing-codex/) | - |
 | OpenAI Codex CLI | Open-source terminal coding agent from OpenAI with local repo access, tool execution, and Codex cloud integration | open-source | [openai/codex](https://github.com/openai/codex) | - |
 | Devin (Cognition) | Autonomous software engineering agent | proprietary | [cognition.ai](https://www.cognition.ai) | - |
+| Agent Skills | Anthropic pattern for packaging procedural instructions, scripts, and assets so agents can load specialized capabilities on demand | concept | [anthropic.com](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) | - |
+| Code Execution With MCP | Anthropic architecture for giving agents controlled code execution through MCP-backed tool servers and isolated runtime environments | concept | [anthropic.com](https://www.anthropic.com/engineering/code-execution-with-mcp) | - |
 | Agent Scripts | Reusable shell scripts and operational helpers for coding agents across repositories | open-source | [steipete/agent-scripts](https://github.com/steipete/agent-scripts) | - |
 | GSD 2 | Spec-driven autonomous coding agent — state machine with fresh context per task, crash recovery, cost tracking, and git automation | open-source | [gsd-build/GSD-2](https://github.com/gsd-build/GSD-2) | - |
 | Composio | Tool integrations for AI agents | managed | [composio.dev](https://www.composio.dev) | W24 |
@@ -509,6 +525,9 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Terminal-Bench 2.0 | Benchmark for real terminal work by AI agents, using executable tasks and verifiable command-line outcomes | open-source | [laude-institute/terminal-bench](https://github.com/laude-institute/terminal-bench) | - |
 | SWE-Bench Pro | Software-engineering agent benchmark with longer, enterprise-like, contamination-resistant coding tasks | open-source | [SWE-bench/SWE-bench](https://github.com/SWE-bench/SWE-bench) | - |
 | Bloom | Anthropic's automated behavioral evaluation framework — generates scenarios, quantifies frequency/severity, 0.86 human correlation | open-source | [safety-research/bloom](https://github.com/safety-research/bloom) | - |
+| Constitutional Classifiers | Anthropic safety research on classifiers trained from constitutional principles to block jailbreaks and policy-violating behavior | research | [anthropic.com](https://www.anthropic.com/research/constitutional-classifiers) | - |
+| Circuit Tracing | Anthropic interpretability research that traces internal model features and circuits to make model behavior more inspectable | research | [anthropic.com](https://www.anthropic.com/research/tracing-thoughts-language-model) | - |
+| Eval Awareness | Research on whether models recognize evaluation settings, a failure mode that can make benchmark behavior diverge from deployment behavior | research | [arxiv.org](https://arxiv.org/abs/2505.23836) | - |
 | OpenGauss | Multi-agent Lean 4 formalization orchestrator with On-Policy Distillation — converts tool feedback (compiler errors, test failures) into per-token training signal via hindsight relabeling | open-source | [math-inc/OpenGauss](https://github.com/math-inc/OpenGauss) | - |
 | Lean 4 | Open-source theorem prover and programming language for formal verification | open-source | [leanprover/lean4](https://github.com/leanprover/lean4) | - |
 | Dafny | Verification-aware programming language with integrated specs and proofs | open-source | [dafny-lang/dafny](https://github.com/dafny-lang/dafny) | - |
