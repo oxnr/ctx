@@ -1105,7 +1105,7 @@ window.VC_LEARN = {
       </div>
       <div class="learn__subcategory">
         <h4 class="learn__subcategory-title">10.6 AI Red Teaming</h4>
-        <p>Adversarial testing of AI systems by autonomous AI agents. Traditional security scanners use signature-based detection — they check for known vulnerability patterns. AI red teaming uses an agent that reasons iteratively about novel attack surfaces specific to AI systems: RAG pipelines, prompt storage, vector stores, and API sprawl created by rapid AI deployment. The McKinsey Lilli case proved the gap: CodeWall AI found 22 zero-auth endpoints and 46.5 million exposed records in two hours; every commercial scanner missed them.</p>
+        <p>Adversarial testing of AI systems by autonomous AI agents. Traditional security scanners use signature-based detection — they check for known vulnerability patterns. AI red teaming uses an agent that reasons iteratively about novel attack surfaces specific to AI systems: RAG pipelines, prompt storage, vector stores, tool permissions, and API sprawl created by rapid AI deployment.</p>
         <p><strong>Key concepts</strong></p>
         <ul>
           <li>AI-specific attack surfaces — RAG poisoning, prompt extraction, vector store exfiltration, embedding injection</li>
