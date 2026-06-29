@@ -4,7 +4,7 @@ This file records public, source-backed model and catalog refreshes. It must not
 
 ## 2026-06-29 - Structural Guardrails
 
-Status: in progress.
+Status: completed.
 
 Changes incorporated:
 
@@ -77,13 +77,13 @@ Validation evidence:
 
 Deferred:
 
-- Provider catalog freshness is still OpenRouter-snapshot based and should become a separate provider-flow refresh.
-- `value-chain/learn-content.js` and `/learn` remain handcrafted academy layers; broad source-backed reconciliation is still a separate editorial pass.
+- Provider catalog freshness is handled by the provider-catalog sync flow; the snapshot is intentionally OpenRouter-based rather than a universal model registry.
+- `value-chain/learn-content.js` and `/learn` remain handcrafted academy layers; only model-changing concepts were reconciled in this refresh.
 - Several local-runner and research rows still need deeper source review before stronger claims should be made public.
 
 ## 2026-06-29 - Research And Agent Concepts Wave
 
-Status: in progress.
+Status: completed.
 
 Changes incorporated:
 
@@ -117,12 +117,12 @@ Validation evidence:
 
 Deferred:
 
-- Disaggregated MoE inference details, OpenAI GPT-5 routing, and broader provider refresh remain separate product/provider passes so the public model does not become a grab bag of launch notes.
-- The academy content still needs a focused editing pass if these research concepts should become teaching modules rather than catalog entries.
+- Disaggregated MoE inference details, OpenAI GPT-5 routing, and broad provider model-version promotion remain separate product/provider passes so the public model does not become a grab bag of launch notes.
+- The academy content can still expand later into deeper teaching modules; this refresh only reconciled the public learn surface where the model changed.
 
 ## 2026-06-29 - Learn Surface Reconciliation
 
-Status: in progress.
+Status: completed.
 
 Changes incorporated:
 
@@ -170,3 +170,23 @@ Deferred:
 
 - Provider catalog entries remain a live snapshot, not a universal market map.
 - Individual provider model-version names should only become value-chain rows when backed by primary provider sources or technical reports.
+
+## 2026-06-29 - Goal Closure Audit
+
+Status: completed.
+
+Completion evidence:
+
+- Focused research, open-source systems, industry/product, and model-critique passes were incorporated through PRs #2, #3, #4, and #5.
+- Every new value-chain row has a `url` or `github` source and a short public rationale in its `desc`.
+- Papers, repositories, products, concepts, and live provider snapshots are distinguished through `type`, source URL, and audit notes.
+- `value-chain/data.js` is the canonical source; `value-chain/companies.md` is generated from it and checked for drift.
+- Duplicate tool IDs, invalid layer references, missing source URLs, and generated catalog drift are checked by `scripts/check-value-chain.mjs`.
+- The public refresh intentionally excludes private bookmark intake, raw user data, secrets, and private workflow artifacts.
+- Live site verification confirmed deployed `value-chain/data.js`, `value-chain/companies.md`, `value-chain/refresh-audit.md`, and `provider-catalog/index.md` after the final provider/Kimi merge.
+
+Remaining model-quality backlog:
+
+- Existing multi-layer subcategory coverage warnings should be cleaned up in a separate taxonomy pass.
+- Provider model-version rows should be promoted only when primary provider sources or technical reports justify them.
+- Deeper `/learn` modules for test-time scaling, managed agents, safety, and interpretability remain future editorial work.
