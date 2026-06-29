@@ -57,9 +57,11 @@ index.html + thesis/ + learn/         primary public site routes
 glossary/                             public glossary route
 scripts/sync-provider-catalog.sh      provider sync + derived artifact refresh
 scripts/sync-agent-library.sh         agent-library sync
+scripts/intake-raw-bookmarks.mjs      raw bookmark feed intake to local ignored candidate reports
 scripts/web-quality-audit.sh          static-site audit
 scripts/quality-cycle.sh              recurring release quality gate
 reports/quality-audit/                generated local audit output
+reports/bookmark-intake/              generated local raw-intake output
 ```
 
 ## Repository Map
@@ -81,6 +83,7 @@ reports/quality-audit/                generated local audit output
 | `agent-library/` | Reusable role references | Local index, sources, and sync history |
 | `llm-full.txt` | Machine-oriented project intent | Repo context for agent onboarding and alignment |
 | `reports/quality-audit/` | Local generated artifacts | Gitignored audit outputs |
+| `reports/bookmark-intake/` | Local generated artifacts | Gitignored raw bookmark candidate outputs |
 
 ## File Conventions
 
@@ -134,6 +137,12 @@ Refresh the local agent library index and source map:
 
 ```sh
 ./scripts/sync-agent-library.sh
+```
+
+Run a raw bookmark intake from a private BirdClaw feed checkout:
+
+```sh
+BOOKMARK_FEED=/path/to/feeds/bookmarks.jsonl node scripts/intake-raw-bookmarks.mjs
 ```
 
 ## Open Source Model

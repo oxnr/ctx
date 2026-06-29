@@ -1,9 +1,11 @@
 .claude/
+.cache/
 __pycache__/
 
 # Generated local context and quality artifacts
 recall/
 reports/quality-audit/
+reports/bookmark-intake/
 
 # Large synced upstream mirrors
 agent-library/vendors/
