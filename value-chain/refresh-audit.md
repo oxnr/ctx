@@ -117,7 +117,7 @@ Validation evidence:
 
 Deferred:
 
-- Kimi K2, disaggregated MoE inference details, OpenAI GPT-5 routing, and broader provider refresh remain separate product/provider passes so the public model does not become a grab bag of launch notes.
+- Disaggregated MoE inference details, OpenAI GPT-5 routing, and broader provider refresh remain separate product/provider passes so the public model does not become a grab bag of launch notes.
 - The academy content still needs a focused editing pass if these research concepts should become teaching modules rather than catalog entries.
 
 ## 2026-06-29 - Learn Surface Reconciliation
@@ -143,3 +143,30 @@ Deferred:
 
 - A full rewrite of `/learn` into a generated artifact remains out of scope for this pass.
 - The academy syllabus can still be expanded later into dedicated modules for test-time scaling, managed agents, and AI safety/interpretability.
+
+## 2026-06-29 - Provider Catalog And Kimi K2 Pass
+
+Status: completed.
+
+Changes incorporated:
+
+- Refreshed `provider-catalog/index.md` from the live OpenRouter model API at 2026-06-29T20:13:42Z.
+- Updated provider counts from 346 models / 57 providers to 338 models / 56 providers.
+- Preserved `provider-catalog/sync-log.md` as the audit trail for generated provider snapshots.
+- Added Kimi K2 to the value-chain model as a canonical Moonshot AI open-weight MoE model family covering pre-training and post-training.
+
+Primary sources:
+
+- `https://openrouter.ai/api/v1/models`
+- `https://arxiv.org/abs/2507.20534`
+- `https://github.com/MoonshotAI/Kimi-K2`
+
+Validation evidence:
+
+- `./scripts/quality-cycle.sh . 0 0` passed on 2026-06-29T20:16:35Z with 421 value-chain tools, 0 value-chain errors, 0 public-site issues, and 0 public-site warnings.
+- The value-chain checker still reports existing multi-layer subcategory coverage warnings as model-quality backlog rather than hard structural failures.
+
+Deferred:
+
+- Provider catalog entries remain a live snapshot, not a universal market map.
+- Individual provider model-version names should only become value-chain rows when backed by primary provider sources or technical reports.
