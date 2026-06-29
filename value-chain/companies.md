@@ -44,6 +44,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Qwen (Alibaba) | Qwen series, strong multilingual open models | open-weight | [github.com](https://github.com/QwenLM) | - |
 | Nemotron-Cascade 2 | NVIDIA 30B MoE (3B active) achieving IMO/IOI/ICPC gold via Cascade RL (domain-sequential RL stages) + Multi-Domain On-Policy Distillation (MOPD) consolidating specialist checkpoints into one model | open-weight | [research.nvidia.com](https://research.nvidia.com/labs/nemotron/) | - |
 | Qwen3-Coder | Alibaba's agentic coding model family — flagship 480B MoE with 35B active parameters, 256K native context, 1M extrapolated context, and long-horizon agent RL on 20K parallel environments | open-weight | [QwenLM/Qwen3-Coder](https://github.com/QwenLM/Qwen3-Coder) | - |
+| Kimi K2 | Moonshot AI open-weight MoE model family for agentic coding, tool use, and reasoning; K2 reports 1T total parameters, 32B activated parameters, MuonClip training, and agentic post-training | open-weight | [MoonshotAI/Kimi-K2](https://github.com/MoonshotAI/Kimi-K2) | - |
 | MiniMax | Open-weight MoE models (M1, M2, M2.5) with linear attention, multimodal API platform (image/video/TTS/music generation) | open-weight | [github.com](https://github.com/MiniMax-AI) | - |
 | Scale AI | Data labeling and curation for training | managed | [scale.com](https://scale.com) | S16 |
 | FineWeb | Open pre-training dataset (15T tokens, curated) | open-source | [huggingface.co](https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1) | - |
@@ -82,6 +83,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Together AI | GPU cloud, fine-tuning API, and fast inference | managed | [together.ai](https://www.together.ai) | - |
 | Databricks | Unified analytics with compute, fine-tuning, and RAG | proprietary | [databricks.com](https://www.databricks.com) | - |
 | Nemotron-Cascade 2 | NVIDIA 30B MoE (3B active) achieving IMO/IOI/ICPC gold via Cascade RL (domain-sequential RL stages) + Multi-Domain On-Policy Distillation (MOPD) consolidating specialist checkpoints into one model | open-weight | [research.nvidia.com](https://research.nvidia.com/labs/nemotron/) | - |
+| Kimi K2 | Moonshot AI open-weight MoE model family for agentic coding, tool use, and reasoning; K2 reports 1T total parameters, 32B activated parameters, MuonClip training, and agentic post-training | open-weight | [MoonshotAI/Kimi-K2](https://github.com/MoonshotAI/Kimi-K2) | - |
 | Sakana AI | Nature-inspired AI, evolutionary model merging | open-source | [github.com](https://github.com/SakanaAI) | - |
 | HuggingFace TRL | RLHF, DPO, SFT training library | open-source | [huggingface/trl](https://github.com/huggingface/trl) | - |
 | Axolotl | Streamlined multi-architecture fine-tuning | open-source | [OpenAccess-AI-Collective/axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) | - |
