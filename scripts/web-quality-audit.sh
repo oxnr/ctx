@@ -114,7 +114,7 @@ for file_path in files:
     if any("alt=" not in tag.lower() for tag in img_pattern.findall(content)):
         warnings.append(f"{file_path}: possible images without alt text")
 
-    if "http://" in content:
+    if re.search(r"\b(?:href|src|action)=['\"]http://", content, re.IGNORECASE):
         warnings.append(f"{file_path}: contains plain http links")
 
     if re.search(r"onclick=", content, re.IGNORECASE):

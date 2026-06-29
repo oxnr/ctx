@@ -196,24 +196,23 @@
 
     subcats.forEach(sc => {
       const tools = groups.get(sc.id);
-      // Add ungrouped tools to every subcategory
-      const combined = [...tools, ...ungrouped];
-      if (combined.length === 0) return;
+      if (tools.length === 0) return;
 
       const label = document.createElement("li");
       label.className = "explorer__subcat-label";
       label.textContent = sc.label;
       container.appendChild(label);
 
-      // De-duplicate (ungrouped tools that were also explicitly placed)
-      const seen = new Set();
-      combined.sort((a, b) => a.name.localeCompare(b.name)).forEach(t => {
-        if (!seen.has(t.id)) {
-          seen.add(t.id);
-          container.appendChild(makeToolItem(t));
-        }
-      });
+      tools.sort((a, b) => a.name.localeCompare(b.name)).forEach(t => container.appendChild(makeToolItem(t)));
     });
+
+    if (ungrouped.length) {
+      const label = document.createElement("li");
+      label.className = "explorer__subcat-label";
+      label.textContent = "Other";
+      container.appendChild(label);
+      ungrouped.sort((a, b) => a.name.localeCompare(b.name)).forEach(t => container.appendChild(makeToolItem(t)));
+    }
   }
 
   function showDetail(tool) {

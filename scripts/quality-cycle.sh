@@ -3,6 +3,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 AQT_SCRIPT="${ROOT_DIR}/scripts/web-quality-audit.sh"
+VALUE_CHAIN_CHECK="${ROOT_DIR}/scripts/check-value-chain.mjs"
 REPORT_DIR="${ROOT_DIR}/reports"
 ARTIFACT_DIR="${REPORT_DIR}/quality-audit"
 
@@ -42,6 +43,11 @@ if ! command -v python3 >/dev/null 2>&1; then
   exit 1
 fi
 
+if ! command -v node >/dev/null 2>&1; then
+  echo "node is required for $0" >&2
+  exit 1
+fi
+
 temp_file="$(mktemp)"
 trap 'rm -f "$temp_file"' EXIT
 
@@ -50,6 +56,7 @@ echo "Target: ${target}"
 echo "Limits: issues <= ${max_issues}, warnings <= ${max_warnings}"
 echo "Output: ${ARTIFACT_DIR}/web-quality-audit-${run_ts}.json"
 
+node "$VALUE_CHAIN_CHECK"
 "$AQT_SCRIPT" "$target" | tee "$temp_file"
 
 issues="$(read_json_field "$temp_file" "issue_count")"

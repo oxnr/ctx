@@ -55,7 +55,7 @@ agent-library/*.md                    local role and workflow reference set
 value-chain/*                         explorer data, taxonomy assets, and redirects
 index.html + thesis/ + learn/         primary public site routes
 glossary/                             public glossary route
-scripts/sync-provider-catalog.sh      provider sync + derived artifact refresh
+scripts/sync-provider-catalog.sh      provider snapshot sync
 scripts/sync-agent-library.sh         agent-library sync
 scripts/intake-raw-bookmarks.mjs      raw bookmark feed intake to local ignored candidate reports
 scripts/web-quality-audit.sh          static-site audit
@@ -90,6 +90,8 @@ reports/bookmark-intake/              generated local raw-intake output
 - Primary public routes are `/`, `/thesis`, `/learn`, and `/glossary`.
 - Compatibility routes such as `/practice`, `/stack`, and `/value-chain` may intentionally redirect.
 - Route content lives in `foo/index.html`.
+- `value-chain/data.js` is the canonical value-chain taxonomy and tool catalog.
+- `value-chain/companies.md` is generated from `value-chain/data.js`; do not hand-edit it.
 - `provider-catalog/index.md` is the canonical source for provider and model snapshot claims.
 - Public provider/model claims should be regenerated from `provider-catalog/index.md`, not hand-edited in derived HTML artifacts.
 - `academy/syllabus.md` is the single active curriculum sequence.
@@ -101,7 +103,7 @@ reports/bookmark-intake/              generated local raw-intake output
 This repository intentionally avoids a framework build pipeline.
 
 - The public site is plain HTML, CSS, and a small amount of JavaScript.
-- The operating artifacts are markdown, shell scripts, and one small Python generator.
+- The operating artifacts are markdown, shell scripts, small JavaScript utilities, and one small Python generator.
 - GitHub Pages serves the site directly.
 - There are no mandatory Git hooks. All quality and generation steps are explicit commands in `scripts/`.
 
@@ -127,7 +129,19 @@ Run the recurring quality gate:
 ./scripts/quality-cycle.sh . 0 9999
 ```
 
-Refresh the provider catalog and derived provider snapshot artifacts:
+Check the value-chain catalog and generated company catalog:
+
+```sh
+node scripts/check-value-chain.mjs
+```
+
+Regenerate the generated company catalog after editing `value-chain/data.js`:
+
+```sh
+node scripts/render-companies-catalog.mjs --write
+```
+
+Refresh the provider catalog snapshot:
 
 ```sh
 ./scripts/sync-provider-catalog.sh

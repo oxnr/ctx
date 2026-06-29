@@ -19,14 +19,18 @@ Public assets and client-facing documentation should pass the same quality basel
 ## Steps
 1. Run `./scripts/quality-cycle.sh <target> <max_issues> <max_warnings>`.
    - Example: `./scripts/quality-cycle.sh . 0 50`
-2. Confirm report artifacts:
+2. Confirm the value-chain check runs before the web audit:
+   - duplicate tool IDs fail the gate
+   - invalid layer refs fail the gate
+   - stale `value-chain/companies.md` fails the gate
+3. Confirm report artifacts:
    - `reports/quality-audit/web-quality-audit-latest.json`
    - `reports/quality-audit/quality-cycle-<timestamp>.json`
-3. If non-zero return code:
+4. If non-zero return code:
    - open `reports/quality-audit/web-quality-audit-latest.json`
    - fix critical issues first
    - re-run until pass or acceptance exception is approved.
-4. Record the outcome in your decision/update log when release blockers are deferred.
+5. Record the outcome in your decision/update log when release blockers are deferred.
 
 ## Recurring use
 - Weekly maintenance pass.

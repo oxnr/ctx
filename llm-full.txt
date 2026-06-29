@@ -74,14 +74,19 @@ PUBLIC PRESENTATION RULES
 CANONICAL FILES
 - `academy/syllabus.md` is the single active syllabus for engagements.
 - `provider-catalog/index.md` is the canonical provider/model snapshot.
+- `value-chain/data.js` is the canonical value-chain taxonomy and tool catalog.
+- `value-chain/companies.md` is generated from `value-chain/data.js`.
 - `agent-library/sources.md` and `agent-library/sync-log.md` are the provenance records for the local agent library.
 - `llm-full.txt` is the machine-readable project intent file.
 - `README.md` is the human-readable repo overview.
 
 MANDATES
 - Treat `provider-catalog/index.md` as the source of truth for provider/model snapshot claims.
+- Treat `value-chain/data.js` as the source of truth for value-chain layer and tool claims.
+- Run `node scripts/render-companies-catalog.mjs --write` after value-chain catalog edits.
+- Run `node scripts/check-value-chain.mjs` before publishing value-chain changes.
 - Do not hand-edit volatile provider/model claims in derived public HTML artifacts.
-- `scripts/sync-provider-catalog.sh` refreshes the provider catalog and currently also updates derived stack artifacts kept in the repo.
+- `scripts/sync-provider-catalog.sh` refreshes the provider catalog snapshot only.
 - Use files in `skills/` as canonical execution playbooks.
 - Keep the academy public by default unless a specific artifact is marked private.
 - Keep outputs in markdown, plain text, HTML, CSS, JavaScript, shell, or small Python utilities already consistent with the repo.

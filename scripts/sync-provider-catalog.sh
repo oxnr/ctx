@@ -5,7 +5,6 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 CATALOG_DIR="${ROOT_DIR}/provider-catalog"
 INDEX_FILE="${CATALOG_DIR}/index.md"
 SYNC_LOG="${CATALOG_DIR}/sync-log.md"
-STACK_RENDER_SCRIPT="${ROOT_DIR}/scripts/render-stack-page.py"
 
 OPENROUTER_URL="https://openrouter.ai/api/v1/models"
 RAW_FILE="$(mktemp)"
@@ -22,11 +21,6 @@ fi
 
 if ! command -v curl >/dev/null 2>&1; then
   echo "curl is required for provider sync" >&2
-  exit 1
-fi
-
-if ! command -v python3 >/dev/null 2>&1; then
-  echo "python3 is required for provider sync" >&2
   exit 1
 fi
 
@@ -154,8 +148,6 @@ mkdir -p "$CATALOG_DIR"
 
 fetch_openrouter
 sync_openrouter_catalog
-python3 "$STACK_RENDER_SCRIPT"
 
 echo "✅ Provider catalog sync complete: $INDEX_FILE"
 echo "📘 Sync log updated: $SYNC_LOG"
-echo "🧭 Stack page updated: ${ROOT_DIR}/stack/index.html"
