@@ -37,7 +37,7 @@ The value chain is a teaching and comparison model, not a strict ontology. Many 
 
 | Route | Role | Notes |
 | --- | --- | --- |
-| `/` | Home / value chain | Value flow in AI — interactive 10-layer map, explorer, and provider landscape snapshot |
+| `/` | Home / value chain | Value flow in AI — interactive 11-layer map, explorer, and provider landscape snapshot |
 | `/thesis` | Thesis | Build areas, operating principles, and code-explosion framing |
 | `/learn` | Academy | Public learning surface mapped to the value chain |
 | `/glossary` | Glossary | Shared vocabulary across the site |

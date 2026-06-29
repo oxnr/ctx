@@ -153,7 +153,7 @@ This is the single, active syllabus for all engagements.
   - provider-catalog with local registry and sync cadence
   - terminal/agent command map by role
   - image, audio, and multimodal fallback playbook
-  - `academy/raw-bookmark-intake-2026-06.md`
+  - public-safe provider and source catalog updates
 - Trigger skills:
   - `/provider-stack`
   - `/provider-catalog-update`

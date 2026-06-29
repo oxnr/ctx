@@ -19,7 +19,7 @@ THESIS
 - Human in the loop. Humans own decisions that are irreversible, high-stakes, or ambiguous. The boundary between human judgment and machine execution should be explicit, not emergent.
 
 VALUE-CHAIN MODEL
-- The 10-layer value chain is a teaching and comparison model, not a strict ontology.
+- The 11-layer value chain is a teaching and comparison model, not a strict ontology.
 - Many entities span multiple layers; do not force false precision when categorizing tools or companies.
 - The layers are:
   - L01 Compute
@@ -27,12 +27,13 @@ VALUE-CHAIN MODEL
   - L03 Post-Training
   - L04 Inference
   - L05 Routing
-  - L06 Orchestration
-  - L07 Context
-  - L08 Integrations
-  - L09 Eval and Safety
-  - L10 Products
-- In practice, layers 06 through 09 behave like the operating control plane around generation.
+  - L06 Harness
+  - L07 Orchestration
+  - L08 Context
+  - L09 Integrations
+  - L10 Eval and Safety
+  - L11 Products
+- In practice, layers 06 through 10 behave like the operating control plane around generation.
 
 PROJECT SHAPE
 - Public site:
