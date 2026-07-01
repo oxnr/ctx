@@ -176,6 +176,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Apple MLX | ML framework optimized for Apple Silicon | open-source | [ml-explore/mlx](https://github.com/ml-explore/mlx) | - |
 | Apple Core AI Models | Model export recipes, Python primitives, and Swift runtime utilities for on-device AI | open-source | [apple/coreai-models](https://github.com/apple/coreai-models) | - |
 | NVIDIA TensorRT-LLM | GPU-optimized LLM inference with Triton server | open-source | [NVIDIA/TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) | - |
+| DwarfStar / ds4 | Self-contained DeepSeek V4 Flash/PRO local inference engine for Metal, CUDA, and ROCm with KV RAM/on-disk handling, server API, agent integration, and validation docs | open-source | [antirez/ds4](https://github.com/antirez/ds4) | - |
 | Azure OpenAI Service | OpenAI models hosted on Azure with enterprise security | managed | [azure.microsoft.com](https://azure.microsoft.com/en-us/products/ai-services/openai-service) | - |
 | Azure AI Studio | Microsoft unified AI development platform | managed | [ai.azure.com](https://ai.azure.com) | - |
 | AWS SageMaker | End-to-end ML platform for training and deployment | managed | [aws.amazon.com](https://aws.amazon.com/sagemaker/) | - |
@@ -249,6 +250,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | MCP Servers | Official reference and community server catalog for Model Context Protocol connectors | open-source | [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) | - |
 | OpenHands | Open-source software-development agent with sandboxed execution, browser/tool use, and GitHub-oriented coding workflows | open-source | [OpenHands/OpenHands](https://github.com/OpenHands/OpenHands) | - |
 | PentAGI | Autonomous pentesting agent — ChainAST for conversations (typed AST with structural validation, byte tracking, force-repair), Generator/Refiner adaptive replanning, 12+ specialized agents, three-phase summarization with provider-specific reasoning preservation | open-source | [vxcontrol/pentagi](https://github.com/vxcontrol/pentagi) | - |
+| OpenClaw Agent Skills | Public shared skill catalog for agent workflows including autoreview, remote validation, transcript provenance, handoff, and session viewing | open-source | [openclaw/agent-skills](https://github.com/openclaw/agent-skills) | - |
 | Learn Claude Code | 12-session progressive guide to building AI coding agents — from basic loop to multi-agent worktree isolation | open-source | [shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code) | - |
 | Dedalus Labs | Hosts MCP servers with autoscaling and one-click deployment | managed | [dedaluslabs.com](https://dedaluslabs.com) | S25 |
 | Castari | Deploy AI agents in secure, autoscaling sandboxes with MCP connectors | managed | [castari.com](https://castari.com) | S25 |
@@ -387,7 +389,9 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Nomic | Open-source MoE embedding models with full transparency | open-source | [github.com](https://github.com/nomic-ai) | - |
 | Tavily | AI-native search API for agents and RAG pipelines | managed | [tavily.com](https://tavily.com) | - |
 | Exa | Embeddings-based semantic web search for LLMs | managed | [exa.ai](https://exa.ai) | - |
-| Firecrawl | Web-to-markdown API for LLM-ready data extraction | open-source | [mendableai/firecrawl](https://github.com/mendableai/firecrawl) | - |
+| Firecrawl | Web context API for agents: search, scrape, interact, crawl, map, batch scrape, and return LLM-ready Markdown, structured JSON, screenshots, and MCP/skill integrations | open-source | [firecrawl/firecrawl](https://github.com/firecrawl/firecrawl) | - |
+| turbovec | Rust/Python vector index using TurboQuant for local RAG: compressed vector storage, online ingest, SIMD search, and filtered retrieval | open-source | [RyanCodrai/turbovec](https://github.com/RyanCodrai/turbovec) | - |
+| Mirage | Unified virtual filesystem for AI agents, mounting services such as S3, Google Drive, Slack, Gmail, and Redis so agents can use shell-native file operations | open-source | [strukto-ai/mirage](https://github.com/strukto-ai/mirage) | - |
 | Crawl4AI | Open-source web crawler optimized for LLM data extraction | open-source | [unclecode/crawl4ai](https://github.com/unclecode/crawl4ai) | - |
 | Unstructured | Document parsing (PDF, DOCX, images) into LLM-ready data | open-source | [Unstructured-IO/unstructured](https://github.com/Unstructured-IO/unstructured) | - |
 | Snowflake Cortex AI | AI functions and LLM access within Snowflake | managed | [snowflake.com](https://www.snowflake.com/en/data-cloud/cortex/) | - |
@@ -448,6 +452,8 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Sweep AI | GitHub issue to PR automation agent | managed | [sweep.dev](https://sweep.dev) | S23 |
 | Middleware | Observability integrations for AI systems | managed | [middleware.io](https://middleware.io) | W23 |
 | OpenAI Agents SDK | First-party SDK for building agent workflows with tools, handoffs, tracing, and guardrails | open-source | [openai/openai-agents-python](https://github.com/openai/openai-agents-python) | - |
+| Mirage | Unified virtual filesystem for AI agents, mounting services such as S3, Google Drive, Slack, Gmail, and Redis so agents can use shell-native file operations | open-source | [strukto-ai/mirage](https://github.com/strukto-ai/mirage) | - |
+| OpenClaw Agent Skills | Public shared skill catalog for agent workflows including autoreview, remote validation, transcript provenance, handoff, and session viewing | open-source | [openclaw/agent-skills](https://github.com/openclaw/agent-skills) | - |
 | GitHub Copilot | AI code completion and chat in IDEs | managed | [features/copilot](https://github.com/features/copilot) | - |
 | Sourcegraph Cody | AI coding assistant with full-codebase context | managed | [sourcegraph.com](https://sourcegraph.com/cody) | - |
 | Tabnine | Privacy-focused AI code completion with on-prem option | managed | [tabnine.com](https://www.tabnine.com) | - |
@@ -510,6 +516,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | DSPy | Framework for programming LMs with automatic prompt and weight optimization | open-source | [stanfordnlp/dspy](https://github.com/stanfordnlp/dspy) | - |
 | OpenAI Agents SDK | First-party SDK for building agent workflows with tools, handoffs, tracing, and guardrails | open-source | [openai/openai-agents-python](https://github.com/openai/openai-agents-python) | - |
 | Traceloop (OpenLLMetry) | Vendor-neutral LLM tracing via OpenTelemetry | open-source | [traceloop/openllmetry](https://github.com/traceloop/openllmetry) | - |
+| Agent Governance Toolkit | Microsoft public-preview runtime governance toolkit for AI agents: deterministic policy enforcement, identity, sandboxing, and tamper-evident action records | open-source | [microsoft/agent-governance-toolkit](https://github.com/microsoft/agent-governance-toolkit) | - |
 | LMSYS Chatbot Arena | Crowdsourced LLM evaluation via blind comparisons | open-source | [lm-sys/FastChat](https://github.com/lm-sys/FastChat) | - |
 | Deepchecks | ML and LLM validation and testing framework | open-source | [deepchecks/deepchecks](https://github.com/deepchecks/deepchecks) | - |
 | NemoClaw | NVIDIA agent sandbox — binary-scoped network policies (per-binary, per-endpoint, per-HTTP-method), inference interception via gateway, Landlock/seccomp/netns enforcement, immutable config with operator-in-the-loop approval | open-source | [NVIDIA/NemoClaw](https://github.com/NVIDIA/NemoClaw) | - |

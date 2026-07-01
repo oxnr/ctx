@@ -18,6 +18,7 @@ This is the single, active syllabus for all engagements.
 - Deliverables:
   - `decisions/ai-foundations.md`
   - glossary + baseline prompt templates
+  - optional agent-fundamentals lab references such as `ai-agents-from-scratch`
 - Trigger skills:
   - `/agentic-audit`
   - `/prompt-engineering`
@@ -42,6 +43,7 @@ This is the single, active syllabus for all engagements.
 - Deliverables:
   - workflow map for one high-value use case
   - handoff checklist
+  - minimal local-agent lab covering function calling, memory, ReAct, and error handling
 - Trigger skills:
   - `/deploy-workflow`
   - `/agentic-audit`
@@ -73,6 +75,7 @@ This is the single, active syllabus for all engagements.
 - Deliverables:
   - one retrieval pipeline spec
   - query quality checks
+  - source-acquisition and local-vector review using Firecrawl/Mirage/turbovec-style examples
 - Trigger skills:
   - `/design-stack`
   - `/agentic-audit`
@@ -86,6 +89,7 @@ This is the single, active syllabus for all engagements.
   - safety matrix
   - rollback policy
   - secure discovery gate for raw bookmark intake and source-driven catalog updates
+  - deterministic policy-enforcement example using Agent Governance Toolkit-style gates
 - Trigger skill:
   - `/incident-operating`
 
@@ -97,6 +101,7 @@ This is the single, active syllabus for all engagements.
   - evaluation set for top use case
   - quality dashboard spec
   - web quality baseline and remediation plan for release candidates
+  - audit and policy-decision log requirements for autonomous actions
 - Trigger skill:
   - `/design-stack`
   - `/deploy-workflow`
