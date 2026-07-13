@@ -249,6 +249,11 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Hermes Agent | Self-improving AI agent with persistent memory, autonomous skill creation, multi-platform messaging, and subagent delegation | open-source | [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | - |
 | MCP Servers | Official reference and community server catalog for Model Context Protocol connectors | open-source | [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) | - |
 | OpenHands | Open-source software-development agent with sandboxed execution, browser/tool use, and GitHub-oriented coding workflows | open-source | [OpenHands/OpenHands](https://github.com/OpenHands/OpenHands) | - |
+| RTK | Rust CLI proxy that filters and compresses command output before it enters coding-agent context, useful for long-running Claude Code, Codex, Cursor, Windsurf, Cline, and Gemini sessions | open-source | [rtk-ai/rtk](https://github.com/rtk-ai/rtk) | - |
+| Context Mode | Cross-agent context optimization layer with MCP/hooks, output sandboxing, and session memory for reducing irrelevant context in coding-agent workflows | open-source | [mksglu/context-mode](https://github.com/mksglu/context-mode) | - |
+| Task Master AI | Task decomposition and state artifact system for AI-driven development across coding agents and editors | open-source | [eyaltoledano/claude-task-master](https://github.com/eyaltoledano/claude-task-master) | - |
+| Codex Plugin for Claude Code | Official OpenAI plugin bridge for invoking Codex review, delegation, rescue, status, and result workflows from Claude Code | open-source | [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc) | - |
+| MCPorter | TypeScript runtime, CLI, and code-generation toolkit for discovering configured MCP servers and calling their tools from TypeScript or command-line workflows | open-source | [openclaw/mcporter](https://github.com/openclaw/mcporter) | - |
 | PentAGI | Autonomous pentesting agent — ChainAST for conversations (typed AST with structural validation, byte tracking, force-repair), Generator/Refiner adaptive replanning, 12+ specialized agents, three-phase summarization with provider-specific reasoning preservation | open-source | [vxcontrol/pentagi](https://github.com/vxcontrol/pentagi) | - |
 | OpenClaw Agent Skills | Public shared skill catalog for agent workflows including autoreview, remote validation, transcript provenance, handoff, and session viewing | open-source | [openclaw/agent-skills](https://github.com/openclaw/agent-skills) | - |
 | Learn Claude Code | 12-session progressive guide to building AI coding agents — from basic loop to multi-agent worktree isolation | open-source | [shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code) | - |
@@ -307,6 +312,8 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Agent2Agent (A2A) | Google-led protocol for agent-to-agent interoperability, task delegation, and cross-system agent communication | open-source | [a2aproject/A2A](https://github.com/a2aproject/A2A) | - |
 | claude-squad | Terminal multiplexer for running multiple AI coding agents in parallel tmux sessions with shared worktree isolation | open-source | [smtg-ai/claude-squad](https://github.com/smtg-ai/claude-squad) | - |
 | OpenHands | Open-source software-development agent with sandboxed execution, browser/tool use, and GitHub-oriented coding workflows | open-source | [OpenHands/OpenHands](https://github.com/OpenHands/OpenHands) | - |
+| Task Master AI | Task decomposition and state artifact system for AI-driven development across coding agents and editors | open-source | [eyaltoledano/claude-task-master](https://github.com/eyaltoledano/claude-task-master) | - |
+| n8n-MCP | MCP server that exposes n8n node documentation, properties, and operations so agents can reason about workflow automation safely and structurally | open-source | [czlonkowski/n8n-mcp](https://github.com/czlonkowski/n8n-mcp) | - |
 | PentAGI | Autonomous pentesting agent — ChainAST for conversations (typed AST with structural validation, byte tracking, force-repair), Generator/Refiner adaptive replanning, 12+ specialized agents, three-phase summarization with provider-specific reasoning preservation | open-source | [vxcontrol/pentagi](https://github.com/vxcontrol/pentagi) | - |
 | DSPy | Framework for programming LMs with automatic prompt and weight optimization | open-source | [stanfordnlp/dspy](https://github.com/stanfordnlp/dspy) | - |
 | Agno | Model-agnostic agent framework with memory and multimodal | open-source | [agno-agi/agno](https://github.com/agno-agi/agno) | - |
@@ -386,6 +393,8 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Graphiti | Temporal knowledge graph for agent memory, incremental entity/event updates, and time-aware retrieval | open-source | [getzep/graphiti](https://github.com/getzep/graphiti) | - |
 | Obsidian Skills | Agent skills for operating on Obsidian's local-first Markdown, Bases, JSON Canvas, and CLI surfaces | open-source | [kepano/obsidian-skills](https://github.com/kepano/obsidian-skills) | - |
 | DESIGN.md | Google Labs format specification for giving coding agents a persistent, structured understanding of a visual identity and design system | open-source | [google-labs-code/design.md](https://github.com/google-labs-code/design.md) | - |
+| Context Mode | Cross-agent context optimization layer with MCP/hooks, output sandboxing, and session memory for reducing irrelevant context in coding-agent workflows | open-source | [mksglu/context-mode](https://github.com/mksglu/context-mode) | - |
+| Task Master AI | Task decomposition and state artifact system for AI-driven development across coding agents and editors | open-source | [eyaltoledano/claude-task-master](https://github.com/eyaltoledano/claude-task-master) | - |
 | Nomic | Open-source MoE embedding models with full transparency | open-source | [github.com](https://github.com/nomic-ai) | - |
 | Tavily | AI-native search API for agents and RAG pipelines | managed | [tavily.com](https://tavily.com) | - |
 | Exa | Embeddings-based semantic web search for LLMs | managed | [exa.ai](https://exa.ai) | - |
@@ -451,6 +460,11 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Zapier AI Actions | Connect AI to 6000+ apps via natural language | managed | [zapier.com](https://zapier.com/platform/ai-actions) | - |
 | Sweep AI | GitHub issue to PR automation agent | managed | [sweep.dev](https://sweep.dev) | S23 |
 | Middleware | Observability integrations for AI systems | managed | [middleware.io](https://middleware.io) | W23 |
+| Context Mode | Cross-agent context optimization layer with MCP/hooks, output sandboxing, and session memory for reducing irrelevant context in coding-agent workflows | open-source | [mksglu/context-mode](https://github.com/mksglu/context-mode) | - |
+| Codex Plugin for Claude Code | Official OpenAI plugin bridge for invoking Codex review, delegation, rescue, status, and result workflows from Claude Code | open-source | [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc) | - |
+| n8n-MCP | MCP server that exposes n8n node documentation, properties, and operations so agents can reason about workflow automation safely and structurally | open-source | [czlonkowski/n8n-mcp](https://github.com/czlonkowski/n8n-mcp) | - |
+| Cline | Open-source coding agent across IDE, CLI, SDK, task-board, and worktree workflows | open-source | [cline/cline](https://github.com/cline/cline) | - |
+| MCPorter | TypeScript runtime, CLI, and code-generation toolkit for discovering configured MCP servers and calling their tools from TypeScript or command-line workflows | open-source | [openclaw/mcporter](https://github.com/openclaw/mcporter) | - |
 | OpenAI Agents SDK | First-party SDK for building agent workflows with tools, handoffs, tracing, and guardrails | open-source | [openai/openai-agents-python](https://github.com/openai/openai-agents-python) | - |
 | Mirage | Unified virtual filesystem for AI agents, mounting services such as S3, Google Drive, Slack, Gmail, and Redis so agents can use shell-native file operations | open-source | [strukto-ai/mirage](https://github.com/strukto-ai/mirage) | - |
 | OpenClaw Agent Skills | Public shared skill catalog for agent workflows including autoreview, remote validation, transcript provenance, handoff, and session viewing | open-source | [openclaw/agent-skills](https://github.com/openclaw/agent-skills) | - |
@@ -585,6 +599,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Langdock | Enterprise AI platform with multi-model orchestration | proprietary | [langdock.com](https://langdock.com) | - |
 | Vibe Figma | Figma-to-React converter for turning design files into React, TypeScript, and Tailwind code | open-source | [vibeflowing-inc/vibe_figma](https://github.com/vibeflowing-inc/vibe_figma) | - |
 | OpenHands | Open-source software-development agent with sandboxed execution, browser/tool use, and GitHub-oriented coding workflows | open-source | [OpenHands/OpenHands](https://github.com/OpenHands/OpenHands) | - |
+| Cline | Open-source coding agent across IDE, CLI, SDK, task-board, and worktree workflows | open-source | [cline/cline](https://github.com/cline/cline) | - |
 | ChatGPT | General-purpose AI assistant by OpenAI | proprietary | [chat.openai.com](https://chat.openai.com) | - |
 | Claude | AI assistant with long context and tool use | proprietary | [claude.ai](https://claude.ai) | - |
 | Gemini | Google AI assistant, integrated with Workspace | proprietary | [gemini.google.com](https://gemini.google.com) | - |
