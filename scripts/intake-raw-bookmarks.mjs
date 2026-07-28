@@ -31,9 +31,13 @@ const bookmarks = parseJsonl(await readFile(input, "utf8"))
   .sort((a, b) => b.sortTime - a.sortTime);
 
 const since = new Date(now.getTime() - sinceDays * 24 * 60 * 60 * 1000);
-const recent = bookmarks.filter((bookmark) => bookmark.sortTime >= since.getTime());
-const selected = (recent.length ? recent : bookmarks).slice(0, limit);
-const urls = collectUrls(selected).slice(0, expandLimit);
+const recent = sinceDays > 0
+  ? bookmarks.filter((bookmark) => bookmark.sortTime >= since.getTime())
+  : bookmarks;
+const selectedPool = recent;
+const selected = limit > 0 ? selectedPool.slice(0, limit) : selectedPool;
+const allUrls = collectUrls(selected);
+const urls = expandLimit > 0 ? allUrls.slice(0, expandLimit) : allUrls;
 
 await expandUrls(urls, cache, { concurrency, timeoutMs });
 await writeFile(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);
