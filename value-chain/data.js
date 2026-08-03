@@ -479,6 +479,9 @@ window.VC_DATA = {
     { id: "lean-ctx", name: "LeanCTX", desc: "Local context-control layer for compressing agent reads and shell output while retaining session memory and policy controls.", type: "open-source", url: "https://leanctx.com", github: "https://github.com/yvgude/lean-ctx", directLayers: ["harness"], indirectLayers: [], yc: null, subcategories: ["context-management"] },
     { id: "zenml", name: "ZenML", desc: "Open-source platform for defining, running, and managing reproducible machine-learning and agent pipelines across local and remote stacks.", type: "open-source", url: "https://zenml.io", github: "https://github.com/zenml-io/zenml", directLayers: ["orchestration"], indirectLayers: [], yc: null, subcategories: ["workflow-design"] },
 
+    // -- Bookmark Intelligence Promotions --
+    { id: "codex-security", name: "Codex Security", desc: "Open-source CLI and TypeScript SDK for scanning authorized code repositories, validating potential vulnerabilities, and supporting remediation.", type: "open-source", url: "https://developers.openai.com/codex/security", github: "https://github.com/openai/codex-security", directLayers: ["eval"], indirectLayers: ["harness"], yc: null, subcategories: ["guardrails-security","evaluation"] },
+
     // ── L10 Eval & Safety ──
     { id: "braintrust", name: "Braintrust", desc: "Eval framework with logging and datasets", type: "managed", url: "https://www.braintrust.dev", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["evaluation"]},
     { id: "langfuse", name: "Langfuse", desc: "Open-source LLM observability and tracing", type: "open-source", url: "https://www.langfuse.com", github: "https://github.com/langfuse/langfuse", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
