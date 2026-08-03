@@ -660,6 +660,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | BenchLocal | Local-first desktop runtime for installing benchmark packs and comparing local or remote language models on repeatable tasks. | open-source | [stevibe/BenchLocal](https://github.com/stevibe/BenchLocal) | - |
 | OpenResearcher | Open research recipe for long-horizon deep-research agents spanning trajectory data, model training, and evaluation. | research | [TIGER-AI-Lab/OpenResearcher](https://github.com/TIGER-AI-Lab/OpenResearcher) | - |
 | Anubis | Apple Silicon application for repeatable local-LLM benchmarks, run history, and correlated hardware telemetry. | open-source | [uncSoft/anubis-oss](https://github.com/uncSoft/anubis-oss) | - |
+| Codex Security | Open-source CLI and TypeScript SDK for scanning authorized code repositories, validating potential vulnerabilities, and supporting remediation. | open-source | [openai/codex-security](https://github.com/openai/codex-security) | - |
 | Braintrust | Eval framework with logging and datasets | managed | [braintrust.dev](https://www.braintrust.dev) | S23 |
 | Langfuse | Open-source LLM observability and tracing | open-source | [langfuse/langfuse](https://github.com/langfuse/langfuse) | - |
 | Promptfoo | CLI for testing and evaluating prompts | open-source | [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) | - |
