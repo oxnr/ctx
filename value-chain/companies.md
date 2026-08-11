@@ -228,6 +228,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | OptiLLM | OpenAI-compatible proxy for applying configurable inference-time search and reasoning techniques to model calls. | open-source | [algorithmicsuperintelligence/optillm](https://github.com/algorithmicsuperintelligence/optillm) | - |
 | NadirClaw | Self-hosted OpenAI-compatible proxy that classifies requests, routes them across model tiers, checks responses, and escalates when needed. | proprietary | [NadirRouter/NadirClaw](https://github.com/NadirRouter/NadirClaw) | - |
 | LLMRouter | Library for training, evaluating, and serving query-dependent LLM routing strategies. | open-source | [ulab-uiuc/LLMRouter](https://github.com/ulab-uiuc/LLMRouter) | - |
+| OmniRoute | Open-source AI gateway that provides a unified OpenAI-compatible endpoint with provider routing and fallback. | open-source | [diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute) | - |
 | TensorZero | Open-source LLM gateway with optimization and experimentation | open-source | [tensorzero/tensorzero](https://github.com/tensorzero/tensorzero) | - |
 | Poe | Multi-model AI chat aggregator by Quora | managed | [poe.com](https://poe.com) | - |
 | Venice AI | Privacy-focused AI platform with uncensored model access | managed | [venice.ai](https://venice.ai) | - |
@@ -314,6 +315,9 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | mini-swe-agent | Compact software-engineering agent with linear history, shell-based actions, and interchangeable local or isolated execution environments. | open-source | [SWE-agent/mini-swe-agent](https://github.com/SWE-agent/mini-swe-agent) | - |
 | Skills Manager | macOS application for discovering, testing, installing, and managing skills across coding agents. | open-source | [yibie/skills-manager](https://github.com/yibie/skills-manager) | - |
 | LeanCTX | Local context-control layer for compressing agent reads and shell output while retaining session memory and policy controls. | open-source | [yvgude/lean-ctx](https://github.com/yvgude/lean-ctx) | - |
+| Cloudflare OS | Open-source AI workspace for agents and sandboxed per-user applications with capability-scoped connectors and approval queues. | open-source | [cloudflare/cloudflare-os](https://github.com/cloudflare/cloudflare-os) | - |
+| OfficeCLI | Open-source command-line tool for agents to create, inspect, edit, and render Word, Excel, and PowerPoint documents. | open-source | [iOfficeAI/OfficeCLI](https://github.com/iOfficeAI/OfficeCLI) | - |
+| Prime Agent | Open-source coding and research agent with a persistent Python environment, durable harness state, subagents, and resumable sessions. | open-source | [PrimeIntellect-ai/prime-agent](https://github.com/PrimeIntellect-ai/prime-agent) | - |
 | PentAGI | Autonomous pentesting agent — ChainAST for conversations (typed AST with structural validation, byte tracking, force-repair), Generator/Refiner adaptive replanning, 12+ specialized agents, three-phase summarization with provider-specific reasoning preservation | open-source | [vxcontrol/pentagi](https://github.com/vxcontrol/pentagi) | - |
 | OpenClaw Agent Skills | Public shared skill catalog for agent workflows including autoreview, remote validation, transcript provenance, handoff, and session viewing | open-source | [openclaw/agent-skills](https://github.com/openclaw/agent-skills) | - |
 | Learn Claude Code | 12-session progressive guide to building AI coding agents — from basic loop to multi-agent worktree isolation | open-source | [shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code) | - |
@@ -508,6 +512,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | ScrapeGraphAI | LLM-assisted graph pipelines for extracting structured information from websites and local documents. | open-source | [ScrapeGraphAI/Scrapegraph-ai](https://github.com/ScrapeGraphAI/Scrapegraph-ai) | - |
 | Semantica | Graph-native context infrastructure for knowledge modeling, retrieval, deterministic reasoning, and decision provenance. | open-source | [semantica-agi/semantica](https://github.com/semantica-agi/semantica) | - |
 | Xberg | Document extraction framework with a Rust core, language bindings, and CLI, REST, and MCP interfaces. | open-source | [xberg-io/xberg](https://github.com/xberg-io/xberg) | - |
+| OpenWiki | CLI that generates and maintains linked Markdown wikis from code or connected knowledge sources, with CI update workflows. | open-source | [langchain-ai/openwiki](https://github.com/langchain-ai/openwiki) | - |
 | Nomic | Open-source MoE embedding models with full transparency | open-source | [github.com](https://github.com/nomic-ai) | - |
 | Tavily | AI-native search API for agents and RAG pipelines | managed | [tavily.com](https://tavily.com) | - |
 | Exa | Embeddings-based semantic web search for LLMs | managed | [exa.ai](https://exa.ai) | - |
@@ -597,6 +602,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | OpenUI | Renderer-agnostic framework and streaming language for generating interfaces from an allowed component library. | open-source | [thesysdev/openui](https://github.com/thesysdev/openui) | - |
 | messaging-daemon | Local Signal, email, and Telegram daemon with immediate reads and separate human approval for external sends. | open-source | [vbuterin/messaging-daemon](https://github.com/vbuterin/messaging-daemon) | - |
 | Skills Manager | macOS application for discovering, testing, installing, and managing skills across coding agents. | open-source | [yibie/skills-manager](https://github.com/yibie/skills-manager) | - |
+| Grok Build | Open-source terminal coding agent with interactive and headless modes, workspace tooling, ACP support, and extensibility for skills and MCP. | open-source | [xai-org/grok-build](https://github.com/xai-org/grok-build) | - |
 | OpenAI Agents SDK | First-party SDK for building agent workflows with tools, handoffs, tracing, and guardrails | open-source | [openai/openai-agents-python](https://github.com/openai/openai-agents-python) | - |
 | Mirage | Unified virtual filesystem for AI agents, mounting services such as S3, Google Drive, Slack, Gmail, and Redis so agents can use shell-native file operations | open-source | [strukto-ai/mirage](https://github.com/strukto-ai/mirage) | - |
 | OpenClaw Agent Skills | Public shared skill catalog for agent workflows including autoreview, remote validation, transcript provenance, handoff, and session viewing | open-source | [openclaw/agent-skills](https://github.com/openclaw/agent-skills) | - |
