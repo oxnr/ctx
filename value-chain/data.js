@@ -495,6 +495,9 @@ window.VC_DATA = {
     { id: "centaur", name: "Centaur", desc: "Self-hosted team agent platform with Slack and API ingress, sandboxed execution, durable state, tool plugins, and workflows.", type: "open-source", url: "https://github.com/paradigmxyz/centaur", github: "https://github.com/paradigmxyz/centaur", directLayers: ["harness","orchestration","integrations"], indirectLayers: ["context"], yc: null, subcategories: ["execution-environments","workflow-design","connectors"] },
     { id: "desktop-cc-gui", name: "Desktop CC GUI", desc: "Desktop client that provides one graphical interface for multiple command-line AI coding runtimes and local project state.", type: "open-source", url: "https://github.com/zhukunpenglinyutong/desktop-cc-gui", github: "https://github.com/zhukunpenglinyutong/desktop-cc-gui", directLayers: ["integrations"], indirectLayers: ["harness","products"], yc: null, subcategories: ["code-dev-tools"] },
 
+    // -- Bookmark Intelligence Promotions --
+    { id: "hax", name: "hax", desc: "Terminal-native coding agent in C with local llama.cpp support and configurable model-provider connections.", type: "open-source", url: "https://github.com/OleksandrChekhovskyi/hax", github: "https://github.com/OleksandrChekhovskyi/hax", directLayers: ["integrations"], indirectLayers: ["harness","inference"], yc: null, subcategories: ["code-dev-tools"] },
+
     // ── L10 Eval & Safety ──
     { id: "braintrust", name: "Braintrust", desc: "Eval framework with logging and datasets", type: "managed", url: "https://www.braintrust.dev", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["evaluation"]},
     { id: "langfuse", name: "Langfuse", desc: "Open-source LLM observability and tracing", type: "open-source", url: "https://www.langfuse.com", github: "https://github.com/langfuse/langfuse", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
