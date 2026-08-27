@@ -498,6 +498,9 @@ window.VC_DATA = {
     // -- Bookmark Intelligence Promotions --
     { id: "hax", name: "hax", desc: "Terminal-native coding agent in C with local llama.cpp support and configurable model-provider connections.", type: "open-source", url: "https://github.com/OleksandrChekhovskyi/hax", github: "https://github.com/OleksandrChekhovskyi/hax", directLayers: ["integrations"], indirectLayers: ["harness","inference"], yc: null, subcategories: ["code-dev-tools"] },
 
+    // -- Bookmark Intelligence Promotions --
+    { id: "frontier-agent", name: "FrontierAgent", desc: "Open-source terminal agent runtime with task-scoped sandboxes, stateful ReAct and coordinated Agent Team workflows, and an included evaluation runner.", type: "open-source", url: "https://github.com/ApodexAI/FrontierAgent", github: "https://github.com/ApodexAI/FrontierAgent", directLayers: ["harness"], indirectLayers: ["orchestration","eval"], yc: null, subcategories: ["execution-environments"] },
+
     // ── L10 Eval & Safety ──
     { id: "braintrust", name: "Braintrust", desc: "Eval framework with logging and datasets", type: "managed", url: "https://www.braintrust.dev", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["evaluation"]},
     { id: "langfuse", name: "Langfuse", desc: "Open-source LLM observability and tracing", type: "open-source", url: "https://www.langfuse.com", github: "https://github.com/langfuse/langfuse", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
