@@ -797,6 +797,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | TradingAgents | Research framework that coordinates analyst, researcher, trader, and risk-management agents for simulated financial decisions. | research | [TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents) | - |
 | DeepChat | Local-first desktop client for multi-provider AI agents with MCP, skills, ACP, and remote messaging integrations. | open-source | [ThinkInAIXYZ/deepchat](https://github.com/ThinkInAIXYZ/deepchat) | - |
 | TaxHacker | Self-hosted accounting application for extracting, categorizing, searching, and exporting structured data from receipts and invoices. | open-source | [vas3k/TaxHacker](https://github.com/vas3k/TaxHacker) | - |
+| OpenSEO | Self-hostable SEO application with keyword research, rank tracking, backlink analysis, site audits, and MCP tools for AI agents. | open-source | [every-app/open-seo](https://github.com/every-app/open-seo) | - |
 | ChatGPT | General-purpose AI assistant by OpenAI | proprietary | [chat.openai.com](https://chat.openai.com) | - |
 | Claude | AI assistant with long context and tool use | proprietary | [claude.ai](https://claude.ai) | - |
 | Gemini | Google AI assistant, integrated with Workspace | proprietary | [gemini.google.com](https://gemini.google.com) | - |
