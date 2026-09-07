@@ -504,6 +504,9 @@ window.VC_DATA = {
     // -- Bookmark Intelligence Promotions --
     { id: "open-seo", name: "OpenSEO", desc: "Self-hostable SEO application with keyword research, rank tracking, backlink analysis, site audits, and MCP tools for AI agents.", type: "open-source", url: "https://openseo.so", github: "https://github.com/every-app/open-seo", directLayers: ["products"], indirectLayers: [], yc: null, subcategories: ["vertical-ai"] },
 
+    // -- Bookmark Intelligence Promotions --
+    { id: "openalgo", name: "OpenAlgo", desc: "Self-hosted trading platform with broker APIs, visual strategy workflows, and MCP tools for market data and order management.", type: "open-source", url: "https://github.com/marketcalls/openalgo", github: "https://github.com/marketcalls/openalgo", directLayers: ["products","integrations"], indirectLayers: [], yc: null, subcategories: ["vertical-ai","connectors"] },
+
     // ── L10 Eval & Safety ──
     { id: "braintrust", name: "Braintrust", desc: "Eval framework with logging and datasets", type: "managed", url: "https://www.braintrust.dev", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["evaluation"]},
     { id: "langfuse", name: "Langfuse", desc: "Open-source LLM observability and tracing", type: "open-source", url: "https://www.langfuse.com", github: "https://github.com/langfuse/langfuse", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},

@@ -609,6 +609,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Centaur | Self-hosted team agent platform with Slack and API ingress, sandboxed execution, durable state, tool plugins, and workflows. | open-source | [paradigmxyz/centaur](https://github.com/paradigmxyz/centaur) | - |
 | Desktop CC GUI | Desktop client that provides one graphical interface for multiple command-line AI coding runtimes and local project state. | open-source | [zhukunpenglinyutong/desktop-cc-gui](https://github.com/zhukunpenglinyutong/desktop-cc-gui) | - |
 | hax | Terminal-native coding agent in C with local llama.cpp support and configurable model-provider connections. | open-source | [OleksandrChekhovskyi/hax](https://github.com/OleksandrChekhovskyi/hax) | - |
+| OpenAlgo | Self-hosted trading platform with broker APIs, visual strategy workflows, and MCP tools for market data and order management. | open-source | [marketcalls/openalgo](https://github.com/marketcalls/openalgo) | - |
 | OpenAI Agents SDK | First-party SDK for building agent workflows with tools, handoffs, tracing, and guardrails | open-source | [openai/openai-agents-python](https://github.com/openai/openai-agents-python) | - |
 | Mirage | Unified virtual filesystem for AI agents, mounting services such as S3, Google Drive, Slack, Gmail, and Redis so agents can use shell-native file operations | open-source | [strukto-ai/mirage](https://github.com/strukto-ai/mirage) | - |
 | OpenClaw Agent Skills | Public shared skill catalog for agent workflows including autoreview, remote validation, transcript provenance, handoff, and session viewing | open-source | [openclaw/agent-skills](https://github.com/openclaw/agent-skills) | - |
@@ -798,6 +799,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | DeepChat | Local-first desktop client for multi-provider AI agents with MCP, skills, ACP, and remote messaging integrations. | open-source | [ThinkInAIXYZ/deepchat](https://github.com/ThinkInAIXYZ/deepchat) | - |
 | TaxHacker | Self-hosted accounting application for extracting, categorizing, searching, and exporting structured data from receipts and invoices. | open-source | [vas3k/TaxHacker](https://github.com/vas3k/TaxHacker) | - |
 | OpenSEO | Self-hostable SEO application with keyword research, rank tracking, backlink analysis, site audits, and MCP tools for AI agents. | open-source | [every-app/open-seo](https://github.com/every-app/open-seo) | - |
+| OpenAlgo | Self-hosted trading platform with broker APIs, visual strategy workflows, and MCP tools for market data and order management. | open-source | [marketcalls/openalgo](https://github.com/marketcalls/openalgo) | - |
 | ChatGPT | General-purpose AI assistant by OpenAI | proprietary | [chat.openai.com](https://chat.openai.com) | - |
 | Claude | AI assistant with long context and tool use | proprietary | [claude.ai](https://claude.ai) | - |
 | Gemini | Google AI assistant, integrated with Workspace | proprietary | [gemini.google.com](https://gemini.google.com) | - |
