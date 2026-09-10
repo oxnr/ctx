@@ -507,6 +507,9 @@ window.VC_DATA = {
     // -- Bookmark Intelligence Promotions --
     { id: "openalgo", name: "OpenAlgo", desc: "Self-hosted trading platform with broker APIs, visual strategy workflows, and MCP tools for market data and order management.", type: "open-source", url: "https://github.com/marketcalls/openalgo", github: "https://github.com/marketcalls/openalgo", directLayers: ["products","integrations"], indirectLayers: [], yc: null, subcategories: ["vertical-ai","connectors"] },
 
+    // -- Bookmark Intelligence Promotions --
+    { id: "pascal-editor", name: "Pascal Editor", desc: "Open-source 3D building editor with a local CLI and MCP tools for inspecting, editing, validating, and saving scene data.", type: "open-source", url: "https://github.com/pascalorg/editor", github: "https://github.com/pascalorg/editor", directLayers: ["products"], indirectLayers: [], yc: null, subcategories: ["vertical-ai"] },
+
     // ── L10 Eval & Safety ──
     { id: "braintrust", name: "Braintrust", desc: "Eval framework with logging and datasets", type: "managed", url: "https://www.braintrust.dev", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["evaluation"]},
     { id: "langfuse", name: "Langfuse", desc: "Open-source LLM observability and tracing", type: "open-source", url: "https://www.langfuse.com", github: "https://github.com/langfuse/langfuse", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
