@@ -800,6 +800,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | TaxHacker | Self-hosted accounting application for extracting, categorizing, searching, and exporting structured data from receipts and invoices. | open-source | [vas3k/TaxHacker](https://github.com/vas3k/TaxHacker) | - |
 | OpenSEO | Self-hostable SEO application with keyword research, rank tracking, backlink analysis, site audits, and MCP tools for AI agents. | open-source | [every-app/open-seo](https://github.com/every-app/open-seo) | - |
 | OpenAlgo | Self-hosted trading platform with broker APIs, visual strategy workflows, and MCP tools for market data and order management. | open-source | [marketcalls/openalgo](https://github.com/marketcalls/openalgo) | - |
+| Pascal Editor | Open-source 3D building editor with a local CLI and MCP tools for inspecting, editing, validating, and saving scene data. | open-source | [pascalorg/editor](https://github.com/pascalorg/editor) | - |
 | ChatGPT | General-purpose AI assistant by OpenAI | proprietary | [chat.openai.com](https://chat.openai.com) | - |
 | Claude | AI assistant with long context and tool use | proprietary | [claude.ai](https://claude.ai) | - |
 | Gemini | Google AI assistant, integrated with Workspace | proprietary | [gemini.google.com](https://gemini.google.com) | - |
