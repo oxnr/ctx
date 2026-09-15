@@ -510,6 +510,9 @@ window.VC_DATA = {
     // -- Bookmark Intelligence Promotions --
     { id: "pascal-editor", name: "Pascal Editor", desc: "Open-source 3D building editor with a local CLI and MCP tools for inspecting, editing, validating, and saving scene data.", type: "open-source", url: "https://github.com/pascalorg/editor", github: "https://github.com/pascalorg/editor", directLayers: ["products"], indirectLayers: [], yc: null, subcategories: ["vertical-ai"] },
 
+    // -- Bookmark Intelligence Promotions --
+    { id: "truecourse", name: "TrueCourse", desc: "Code analysis tool combining dependency graphs, deterministic rules, and LLM review for architecture and code-quality checks.", type: "open-source", url: "https://github.com/truecourse-ai/truecourse", github: "https://github.com/truecourse-ai/truecourse", directLayers: ["harness"], indirectLayers: [], yc: null, subcategories: ["constraints"] },
+
     // ── L10 Eval & Safety ──
     { id: "braintrust", name: "Braintrust", desc: "Eval framework with logging and datasets", type: "managed", url: "https://www.braintrust.dev", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["evaluation"]},
     { id: "langfuse", name: "Langfuse", desc: "Open-source LLM observability and tracing", type: "open-source", url: "https://www.langfuse.com", github: "https://github.com/langfuse/langfuse", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
