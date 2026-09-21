@@ -44,6 +44,7 @@ This is the single, active syllabus for all engagements.
   - workflow map for one high-value use case
   - handoff checklist
   - minimal local-agent lab covering function calling, memory, ReAct, and error handling
+  - [typed decision models](typed-decision-models.md): Jev-style choices, browser action contracts, and confidence-gated execution
 - Trigger skills:
   - `/deploy-workflow`
   - `/agentic-audit`
@@ -102,6 +103,7 @@ This is the single, active syllabus for all engagements.
   - quality dashboard spec
   - web quality baseline and remediation plan for release candidates
   - audit and policy-decision log requirements for autonomous actions
+  - [JevBench review exercise](typed-decision-models.md#jevbench-read-components-before-rankings): calibration, measured latency versus assumptions, and revision-pinned evidence
 - Trigger skill:
   - `/design-stack`
   - `/deploy-workflow`
