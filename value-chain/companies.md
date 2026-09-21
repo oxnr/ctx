@@ -134,6 +134,9 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Cohere | Enterprise NLP, embedding models, and Rerank API | proprietary | [cohere.com](https://cohere.com) | - |
 | Native Sparse Attention | Sparse-attention architecture research for efficient long-context training and inference without treating sparsity as only a serving trick | research | [arxiv.org](https://arxiv.org/abs/2502.11089) | - |
 | Replicate | Fine-tuning and inference API for open models | managed | [replicate.com](https://replicate.com) | - |
+| Laya | Open-weight non-autoregressive typed-decision models with English, multilingual and task-tuned checkpoints; domain calibration and option/context budgets remain material constraints. | open-weight | [NandhaKishorM/laya](https://github.com/NandhaKishorM/laya) | - |
+| Laya-MLX | Independent native MLX inference port for Laya typed-decision checkpoints on Apple Silicon, with conversion, parity checks and workload-specific local benchmarks. | open-source | [mizorewww/laya-mlx](https://github.com/mizorewww/laya-mlx) | - |
+| TypeSafe Jev | Hosted typed-decision model returning choices, scores and probabilities for software-controlled workflows; structured outputs still require task-specific correctness and calibration checks. | managed | [docs.typesafe.ai](https://docs.typesafe.ai/introduction) | - |
 | vLLM | High-throughput serving engine, PagedAttention | open-source | [vllm-project/vllm](https://github.com/vllm-project/vllm) | - |
 | llama.cpp | CPU/GPU inference in C++, GGUF quantization | open-source | [ggerganov/llama.cpp](https://github.com/ggerganov/llama.cpp) | - |
 | oMLX | macOS-native MLX inference server with paged SSD KV caching, continuous batching, multi-model LRU, fast time-to-first-token from cache, and an OpenAI-compatible API | open-source | [jundot/omlx](https://github.com/jundot/omlx) | - |
@@ -239,6 +242,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 
 | Entity | What they do | Type | Source | YC Batch |
 | --- | --- | --- | --- | --- |
+| Jev Ultrafast | Browser agent selecting operations and compatible observed DOM targets, with a separate text-generation helper, freshness guards and independent task verification. | open-source | [browser-use/jev-ultrafast](https://github.com/browser-use/jev-ultrafast) | - |
 | pi-autoresearch (Shopify) | Open-source autoresearch harness — automated research loop with benchmark-driven optimization, shipped by Shopify Engineering | open-source | [Shopify/pi-autoresearch](https://github.com/Shopify/pi-autoresearch) | - |
 | SWE-agent | Princeton's agent-computer interface for autonomous GitHub issue resolution — pioneered ACI design patterns (capped search, stateful viewer, lint-on-edit) | open-source | [princeton-nlp/SWE-agent](https://github.com/princeton-nlp/SWE-agent) | - |
 | LangGraph | Graph/state-machine framework for durable agent workflows, human review loops, persistence, and controllable multi-agent orchestration | open-source | [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) | - |
@@ -342,6 +346,8 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 
 | Entity | What they do | Type | Source | YC Batch |
 | --- | --- | --- | --- | --- |
+| Jev Ultrafast | Browser agent selecting operations and compatible observed DOM targets, with a separate text-generation helper, freshness guards and independent task verification. | open-source | [browser-use/jev-ultrafast](https://github.com/browser-use/jev-ultrafast) | - |
+| Jev Trader | Research demo connecting typed buy/sell decisions to a Monad/Kuru order loop; defaults to a mock model and dry-run without a key, not verified trading performance. | research | [jarrodwatts/jev-trader](https://github.com/jarrodwatts/jev-trader) | - |
 | LangChain | Chain/agent framework, LangGraph for stateful workflows | open-source | [langchain-ai/langchain](https://github.com/langchain-ai/langchain) | - |
 | LangGraph | Graph/state-machine framework for durable agent workflows, human review loops, persistence, and controllable multi-agent orchestration | open-source | [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) | - |
 | Open SWE | Async coding agent framework — sandbox-as-backend protocol, deterministic middleware hooks (@before_model/@after_agent), thread-to-sandbox persistence, multi-surface invocation (Slack/GitHub/Linear) | open-source | [langchain-ai/open-swe](https://github.com/langchain-ai/open-swe) | - |
@@ -645,6 +651,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | --- | --- | --- | --- | --- |
 | Openlayer | Fine-tuning evaluation and data quality | managed | [openlayer.com](https://openlayer.com) | - |
 | OpenPipe | Fine-tuning and evaluation platform for LLMs | managed | [openpipe.ai](https://openpipe.ai) | S23 |
+| JevBench | Decision-model evaluation harness reporting accuracy, calibration, latency and cost; composite scores depend on revision, weighting and explicit deployment assumptions. | open-source | [fstandhartinger/jevbench](https://github.com/fstandhartinger/jevbench) | - |
 | DeepSpec | DeepSeek codebase for training and evaluating speculative decoding algorithms | open-source | [deepseek-ai/DeepSpec](https://github.com/deepseek-ai/DeepSpec) | - |
 | pi-autoresearch (Shopify) | Open-source autoresearch harness — automated research loop with benchmark-driven optimization, shipped by Shopify Engineering | open-source | [Shopify/pi-autoresearch](https://github.com/Shopify/pi-autoresearch) | - |
 | Helicone | LLM proxy with observability and cost tracking | managed | [helicone.ai](https://www.helicone.ai) | W23 |
@@ -751,6 +758,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 
 | Entity | What they do | Type | Source | YC Batch |
 | --- | --- | --- | --- | --- |
+| Jev Trader | Research demo connecting typed buy/sell decisions to a Monad/Kuru order loop; defaults to a mock model and dry-run without a key, not verified trading performance. | research | [jarrodwatts/jev-trader](https://github.com/jarrodwatts/jev-trader) | - |
 | Lobe Chat | Open-source chat UI with plugin ecosystem, multi-model support, file upload, TTS, and knowledge base | open-source | [lobehub/lobe-chat](https://github.com/lobehub/lobe-chat) | - |
 | Open WebUI | Self-hosted ChatGPT-like interface supporting Ollama, OpenAI, and other backends | open-source | [open-webui/open-webui](https://github.com/open-webui/open-webui) | - |
 | ElevenLabs | Text-to-speech, voice cloning, and audio AI platform | proprietary | [elevenlabs.io](https://elevenlabs.io) | - |
