@@ -236,6 +236,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | TriAttention | Research implementation of KV-cache compression using query and key statistics, with inference-backend integrations. | research | [WeianMao/triattention](https://github.com/WeianMao/triattention) | - |
 | Zinc | Zig-based local GGUF inference engine with GPU backends, a chat interface, and an OpenAI-compatible API. | open-source | [zolotukhin/zinc](https://github.com/zolotukhin/zinc) | - |
 | FluidUse | Swift library for local Core ML decision inference and form interaction through macOS Accessibility and embedded WebKit. | open-source | [FluidInference/FluidUse](https://github.com/FluidInference/FluidUse) | - |
+| OmniVoice | Multilingual text-to-speech model for reference-based voice cloning and attribute-based voice design, with noncommercial pretrained weights. | open-weight | [k2-fsa/OmniVoice](https://github.com/k2-fsa/OmniVoice) | - |
 | SambaNova | Custom dataflow AI chips and cloud inference | proprietary | [sambanova.ai](https://sambanova.ai) | - |
 | Apple MLX | ML framework optimized for Apple Silicon | open-source | [ml-explore/mlx](https://github.com/ml-explore/mlx) | - |
 | Apple Core AI Models | Model export recipes, Python primitives, and Swift runtime utilities for on-device AI | open-source | [apple/coreai-models](https://github.com/apple/coreai-models) | - |
@@ -950,6 +951,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | OpenOats | macOS meeting assistant with local transcription and note retrieval using local or cloud AI providers. | open-source | [yazinsai/OpenOats](https://github.com/yazinsai/OpenOats) | - |
 | AiToEarn | AI content creation platform with image and video workflows, publishing schedules, and social-platform integrations. | open-source | [yikart/AiToEarn](https://github.com/yikart/AiToEarn) | - |
 | FreeFlow | macOS dictation app with transcript cleanup and spoken text editing through configurable transcription and language-model endpoints. | open-source | [zachlatta/freeflow](https://github.com/zachlatta/freeflow) | - |
+| VoiceStudio | Speech application for voice cloning, voice design, dubbing, transcription and audiobook workflows, with local engines and optional remote providers. | open-source | [debpalash/VoiceStudio](https://github.com/debpalash/VoiceStudio) | - |
 | ChatGPT | General-purpose AI assistant by OpenAI | proprietary | [chat.openai.com](https://chat.openai.com) | - |
 | Claude | AI assistant with long context and tool use | proprietary | [claude.ai](https://claude.ai) | - |
 | Gemini | Google AI assistant, integrated with Workspace | proprietary | [gemini.google.com](https://gemini.google.com) | - |
