@@ -658,6 +658,9 @@ window.VC_DATA = {
     { id: "voicestudio", name: "VoiceStudio", desc: "Speech application for voice cloning, voice design, dubbing, transcription and audiobook workflows, with local engines and optional remote providers.", type: "open-source", url: "https://github.com/debpalash/VoiceStudio", github: "https://github.com/debpalash/VoiceStudio", directLayers: ["products"], indirectLayers: [], yc: null, subcategories: ["creative-tools"] },
     { id: "omnivoice", name: "OmniVoice", desc: "Multilingual text-to-speech model for reference-based voice cloning and attribute-based voice design, with noncommercial pretrained weights.", type: "open-weight", url: "https://github.com/k2-fsa/OmniVoice", github: "https://github.com/k2-fsa/OmniVoice", directLayers: ["inference"], indirectLayers: [], yc: null, subcategories: ["multimodal"] },
 
+    // -- Bookmark Intelligence Promotions --
+    { id: "deepseek-harness", name: "DeepSeek Harness", desc: "Experimental Cordis-based agent harness with configurable plugins, tool execution, and resumable sessions.", type: "open-source", url: "https://github.com/deepseek-ai/deepseek-harness", github: "https://github.com/deepseek-ai/deepseek-harness", directLayers: ["harness"], indirectLayers: [], yc: null, subcategories: ["tool-infrastructure"] },
+
     // ── L10 Eval & Safety ──
     { id: "braintrust", name: "Braintrust", desc: "Eval framework with logging and datasets", type: "managed", url: "https://www.braintrust.dev", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["evaluation"]},
     { id: "langfuse", name: "Langfuse", desc: "Open-source LLM observability and tracing", type: "open-source", url: "https://www.langfuse.com", github: "https://github.com/langfuse/langfuse", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
