@@ -800,6 +800,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | MPP Tools | Cross-language conformance tests and SDK change-control tooling for the Machine Payments Protocol. | open-source | [tempoxyz/mpp-tools](https://github.com/tempoxyz/mpp-tools) | - |
 | TurboQuant+ and REFRACT | KV-cache quantization research with tools for comparing compressed inference against a reference model. | research | [TheTom/turboquant_plus](https://github.com/TheTom/turboquant_plus) | - |
 | System One Adapter for Python | Adapts language-model providers to typed decision interfaces with validation, retries, and probability diagnostics. | open-source | [typesafe-ai/system-one-adapter-python](https://github.com/typesafe-ai/system-one-adapter-python) | - |
+| Comparator | Checks Lean proof submissions against challenge statements, permitted axioms, and kernel acceptance, with optional external kernel checks. | open-source | [leanprover/comparator](https://github.com/leanprover/comparator) | - |
 | Braintrust | Eval framework with logging and datasets | managed | [braintrust.dev](https://www.braintrust.dev) | S23 |
 | Langfuse | Open-source LLM observability and tracing | open-source | [langfuse/langfuse](https://github.com/langfuse/langfuse) | - |
 | Promptfoo | CLI for testing and evaluating prompts | open-source | [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) | - |
