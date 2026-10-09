@@ -664,6 +664,9 @@ window.VC_DATA = {
     // -- Bookmark Intelligence Promotions --
     { id: "lean-comparator", name: "Comparator", desc: "Checks Lean proof submissions against challenge statements, permitted axioms, and kernel acceptance, with optional external kernel checks.", type: "open-source", url: "https://github.com/leanprover/comparator", github: "https://github.com/leanprover/comparator", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["formal-verification","evaluation"] },
 
+    // -- Bookmark Intelligence Promotions --
+    { id: "rf-detr", name: "RF-DETR", desc: "Python package for transformer-based object detection and instance segmentation, with fine-tuning and model export tools; Plus components are separately licensed.", type: "open-source", url: "https://github.com/roboflow/rf-detr", github: "https://github.com/roboflow/rf-detr", directLayers: ["inference"], indirectLayers: [], yc: null, subcategories: ["multimodal"] },
+
     // ── L10 Eval & Safety ──
     { id: "braintrust", name: "Braintrust", desc: "Eval framework with logging and datasets", type: "managed", url: "https://www.braintrust.dev", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["evaluation"]},
     { id: "langfuse", name: "Langfuse", desc: "Open-source LLM observability and tracing", type: "open-source", url: "https://www.langfuse.com", github: "https://github.com/langfuse/langfuse", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
