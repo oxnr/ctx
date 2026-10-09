@@ -237,6 +237,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Zinc | Zig-based local GGUF inference engine with GPU backends, a chat interface, and an OpenAI-compatible API. | open-source | [zolotukhin/zinc](https://github.com/zolotukhin/zinc) | - |
 | FluidUse | Swift library for local Core ML decision inference and form interaction through macOS Accessibility and embedded WebKit. | open-source | [FluidInference/FluidUse](https://github.com/FluidInference/FluidUse) | - |
 | OmniVoice | Multilingual text-to-speech model for reference-based voice cloning and attribute-based voice design, with noncommercial pretrained weights. | open-weight | [k2-fsa/OmniVoice](https://github.com/k2-fsa/OmniVoice) | - |
+| RF-DETR | Python package for transformer-based object detection and instance segmentation, with fine-tuning and model export tools; Plus components are separately licensed. | open-source | [roboflow/rf-detr](https://github.com/roboflow/rf-detr) | - |
 | SambaNova | Custom dataflow AI chips and cloud inference | proprietary | [sambanova.ai](https://sambanova.ai) | - |
 | Apple MLX | ML framework optimized for Apple Silicon | open-source | [ml-explore/mlx](https://github.com/ml-explore/mlx) | - |
 | Apple Core AI Models | Model export recipes, Python primitives, and Swift runtime utilities for on-device AI | open-source | [apple/coreai-models](https://github.com/apple/coreai-models) | - |
