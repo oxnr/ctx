@@ -670,6 +670,9 @@ window.VC_DATA = {
     // -- Bookmark Intelligence Promotions --
     { id: "rea", name: "REA", desc: "CLI and MCP server connecting agents to local binary, application, and runtime inspection tools with structured analysis evidence.", type: "open-source", url: "https://github.com/morluto/rea", github: "https://github.com/morluto/rea", directLayers: ["integrations"], indirectLayers: ["harness"], yc: null, subcategories: ["code-dev-tools","connectors"] },
 
+    // -- Bookmark Intelligence Promotions --
+    { id: "fish-speech", name: "Fish Speech", desc: "Text-to-speech models and inference tools for multilingual voice cloning, speaker control, and streamed audio, with model-specific license restrictions.", type: "open-weight", url: "https://speech.fish.audio", github: "https://github.com/fishaudio/fish-speech", directLayers: ["inference"], indirectLayers: [], yc: null, subcategories: ["multimodal"] },
+
     // ── L10 Eval & Safety ──
     { id: "braintrust", name: "Braintrust", desc: "Eval framework with logging and datasets", type: "managed", url: "https://www.braintrust.dev", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["evaluation"]},
     { id: "langfuse", name: "Langfuse", desc: "Open-source LLM observability and tracing", type: "open-source", url: "https://www.langfuse.com", github: "https://github.com/langfuse/langfuse", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
