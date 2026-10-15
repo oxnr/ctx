@@ -673,6 +673,10 @@ window.VC_DATA = {
     // -- Bookmark Intelligence Promotions --
     { id: "fish-speech", name: "Fish Speech", desc: "Text-to-speech models and inference tools for multilingual voice cloning, speaker control, and streamed audio, with model-specific license restrictions.", type: "open-weight", url: "https://speech.fish.audio", github: "https://github.com/fishaudio/fish-speech", directLayers: ["inference"], indirectLayers: [], yc: null, subcategories: ["multimodal"] },
 
+    // -- Bookmark Intelligence Promotions --
+    { id: "open-generative-ai", name: "Open Generative AI", desc: "Self-hostable image and video creation workspace with studio, workflow and agent interfaces backed by external generation APIs.", type: "open-source", url: "https://github.com/Anil-matcha/Open-Generative-AI", github: "https://github.com/Anil-matcha/Open-Generative-AI", directLayers: ["products"], indirectLayers: [], yc: null, subcategories: ["creative-tools"] },
+    { id: "phonecli", name: "PhoneCLI", desc: "Research harness for compiling mobile navigation into replayable commands with GUI and model fallback on iOS and Android.", type: "research", url: "https://github.com/HKUDS/PhoneCLI", github: "https://github.com/HKUDS/PhoneCLI", directLayers: ["harness"], indirectLayers: [], yc: null, subcategories: ["execution-environments","tool-infrastructure"] },
+
     // ── L10 Eval & Safety ──
     { id: "braintrust", name: "Braintrust", desc: "Eval framework with logging and datasets", type: "managed", url: "https://www.braintrust.dev", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["evaluation"]},
     { id: "langfuse", name: "Langfuse", desc: "Open-source LLM observability and tracing", type: "open-source", url: "https://www.langfuse.com", github: "https://github.com/langfuse/langfuse", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
