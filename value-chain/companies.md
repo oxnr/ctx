@@ -959,6 +959,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | FreeFlow | macOS dictation app with transcript cleanup and spoken text editing through configurable transcription and language-model endpoints. | open-source | [zachlatta/freeflow](https://github.com/zachlatta/freeflow) | - |
 | VoiceStudio | Speech application for voice cloning, voice design, dubbing, transcription and audiobook workflows, with local engines and optional remote providers. | open-source | [debpalash/VoiceStudio](https://github.com/debpalash/VoiceStudio) | - |
 | Open Generative AI | Self-hostable image and video creation workspace with studio, workflow and agent interfaces backed by external generation APIs. | open-source | [Anil-matcha/Open-Generative-AI](https://github.com/Anil-matcha/Open-Generative-AI) | - |
+| Meetily | Meeting assistant with local speech transcription and summaries through local or configurable cloud model providers. | open-source | [Zackriya-Solutions/meetily](https://github.com/Zackriya-Solutions/meetily) | - |
 | ChatGPT | General-purpose AI assistant by OpenAI | proprietary | [chat.openai.com](https://chat.openai.com) | - |
 | Claude | AI assistant with long context and tool use | proprietary | [claude.ai](https://claude.ai) | - |
 | Gemini | Google AI assistant, integrated with Workspace | proprietary | [gemini.google.com](https://gemini.google.com) | - |
