@@ -680,6 +680,9 @@ window.VC_DATA = {
     // -- Bookmark Intelligence Promotions --
     { id: "meetily", name: "Meetily", desc: "Meeting assistant with local speech transcription and summaries through local or configurable cloud model providers.", type: "open-source", url: "https://meetily.ai", github: "https://github.com/Zackriya-Solutions/meetily", directLayers: ["products"], indirectLayers: [], yc: null, subcategories: ["vertical-ai"] },
 
+    // -- Bookmark Intelligence Promotions --
+    { id: "cloudflare-security-audit-skill", name: "Cloudflare Security Audit Skill", desc: "Coding-agent skill for phased security audits with coverage ledgers, separate verification steps, and structured findings.", type: "open-source", url: "https://github.com/cloudflare/security-audit-skill", github: "https://github.com/cloudflare/security-audit-skill", directLayers: ["harness","orchestration"], indirectLayers: ["eval"], yc: null, subcategories: ["workflow-design","verification-loops","guardrails-security"] },
+
     // ── L10 Eval & Safety ──
     { id: "braintrust", name: "Braintrust", desc: "Eval framework with logging and datasets", type: "managed", url: "https://www.braintrust.dev", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["evaluation"]},
     { id: "langfuse", name: "Langfuse", desc: "Open-source LLM observability and tracing", type: "open-source", url: "https://www.langfuse.com", github: "https://github.com/langfuse/langfuse", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
