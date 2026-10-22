@@ -391,6 +391,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | DeepSeek Harness | Experimental Cordis-based agent harness with configurable plugins, tool execution, and resumable sessions. | open-source | [deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) | - |
 | PhoneCLI | Research harness for compiling mobile navigation into replayable commands with GUI and model fallback on iOS and Android. | research | [HKUDS/PhoneCLI](https://github.com/HKUDS/PhoneCLI) | - |
 | Cloudflare Security Audit Skill | Coding-agent skill for phased security audits with coverage ledgers, separate verification steps, and structured findings. | open-source | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) | - |
+| Beacon | Coding-agent memory layer documenting cross-harness session traces and reusable knowledge through MCP and Agent Skills. | open-source | [Asymptote-Labs/agent-beacon](https://github.com/Asymptote-Labs/agent-beacon) | - |
 | PentAGI | Autonomous pentesting agent — ChainAST for conversations (typed AST with structural validation, byte tracking, force-repair), Generator/Refiner adaptive replanning, 12+ specialized agents, three-phase summarization with provider-specific reasoning preservation | open-source | [vxcontrol/pentagi](https://github.com/vxcontrol/pentagi) | - |
 | OpenClaw Agent Skills | Public shared skill catalog for agent workflows including autoreview, remote validation, transcript provenance, handoff, and session viewing | open-source | [openclaw/agent-skills](https://github.com/openclaw/agent-skills) | - |
 | Learn Claude Code | 12-session progressive guide to building AI coding agents — from basic loop to multi-agent worktree isolation | open-source | [shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code) | - |
@@ -616,6 +617,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Birdclaw | Local Twitter/X archive application using SQLite search, a web interface and CLI, with optional cached live reads and a read-only MCP interface. | open-source | [steipete/birdclaw](https://github.com/steipete/birdclaw) | - |
 | Summarize | Extracts and summarizes web pages, files, and audiovisual content through CLI and browser workflows. | open-source | [steipete/summarize](https://github.com/steipete/summarize) | - |
 | Supavec | Document ingestion and retrieval application with APIs for file and text uploads, embeddings, search, and chat. | open-source | [supavec/supavec](https://github.com/supavec/supavec) | - |
+| Beacon | Coding-agent memory layer documenting cross-harness session traces and reusable knowledge through MCP and Agent Skills. | open-source | [Asymptote-Labs/agent-beacon](https://github.com/Asymptote-Labs/agent-beacon) | - |
 | Nomic | Open-source MoE embedding models with full transparency | open-source | [github.com](https://github.com/nomic-ai) | - |
 | Tavily | AI-native search API for agents and RAG pipelines | managed | [tavily.com](https://tavily.com) | - |
 | Exa | Embeddings-based semantic web search for LLMs | managed | [exa.ai](https://exa.ai) | - |
