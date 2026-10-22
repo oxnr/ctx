@@ -683,6 +683,9 @@ window.VC_DATA = {
     // -- Bookmark Intelligence Promotions --
     { id: "cloudflare-security-audit-skill", name: "Cloudflare Security Audit Skill", desc: "Coding-agent skill for phased security audits with coverage ledgers, separate verification steps, and structured findings.", type: "open-source", url: "https://github.com/cloudflare/security-audit-skill", github: "https://github.com/cloudflare/security-audit-skill", directLayers: ["harness","orchestration"], indirectLayers: ["eval"], yc: null, subcategories: ["workflow-design","verification-loops","guardrails-security"] },
 
+    // -- Bookmark Intelligence Promotions --
+    { id: "agent-beacon", name: "Beacon", desc: "Coding-agent memory layer documenting cross-harness session traces and reusable knowledge through MCP and Agent Skills.", type: "open-source", url: "https://beacon.sh", github: "https://github.com/Asymptote-Labs/agent-beacon", directLayers: ["context","harness"], indirectLayers: ["integrations"], yc: null, subcategories: ["memory-systems","observability","state-continuity"] },
+
     // ── L10 Eval & Safety ──
     { id: "braintrust", name: "Braintrust", desc: "Eval framework with logging and datasets", type: "managed", url: "https://www.braintrust.dev", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["evaluation"]},
     { id: "langfuse", name: "Langfuse", desc: "Open-source LLM observability and tracing", type: "open-source", url: "https://www.langfuse.com", github: "https://github.com/langfuse/langfuse", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
