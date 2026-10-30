@@ -686,6 +686,9 @@ window.VC_DATA = {
     // -- Bookmark Intelligence Promotions --
     { id: "agent-beacon", name: "Beacon", desc: "Coding-agent memory layer documenting cross-harness session traces and reusable knowledge through MCP and Agent Skills.", type: "open-source", url: "https://beacon.sh", github: "https://github.com/Asymptote-Labs/agent-beacon", directLayers: ["context","harness"], indirectLayers: ["integrations"], yc: null, subcategories: ["memory-systems","observability","state-continuity"] },
 
+    // -- Bookmark Intelligence Promotions --
+    { id: "mainplane", name: "Mainplane", desc: "Self-hosted agent harness connecting model providers, worker computers and messaging connectors.", type: "open-source", url: "https://github.com/mainplane-ai/mainplane", github: "https://github.com/mainplane-ai/mainplane", directLayers: ["harness"], indirectLayers: ["integrations"], yc: null, subcategories: ["autonomous-agents","execution-environments"] },
+
     // ── L10 Eval & Safety ──
     { id: "braintrust", name: "Braintrust", desc: "Eval framework with logging and datasets", type: "managed", url: "https://www.braintrust.dev", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["evaluation"]},
     { id: "langfuse", name: "Langfuse", desc: "Open-source LLM observability and tracing", type: "open-source", url: "https://www.langfuse.com", github: "https://github.com/langfuse/langfuse", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
