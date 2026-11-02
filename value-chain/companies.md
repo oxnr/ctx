@@ -73,6 +73,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Qwen3.8 | Qwen open-weight model family with multimodal inputs, configurable reasoning and support for coding and tool-using workflows. | open-weight | [QwenLM/Qwen3.8](https://github.com/QwenLM/Qwen3.8) | - |
 | Qwen3.8-Flash-Next | Open-weight multimodal mixture-of-experts model combining hybrid linear and sparse attention, gated residual connections and N-gram embeddings. | open-weight | [QwenLM/Qwen3.8-Flash-Next](https://github.com/QwenLM/Qwen3.8-Flash-Next) | - |
 | Tencent Hy4 preview | Mixture-of-experts language model with released instruction-tuned weights and an FP8 variant. | open-weight | [Tencent-Hunyuan/Hy4-preview](https://github.com/Tencent-Hunyuan/Hy4-preview) | - |
+| Next-Concept Modeling | Research framework for coarse-to-fine text generation using hierarchical discrete codes and parallel prediction within each level. | research | [HazyResearch/ncm](https://github.com/HazyResearch/ncm) | - |
 | AI21 Labs | Jamba foundation models with Mamba-Transformer architecture | proprietary | [ai21.com](https://www.ai21.com) | - |
 | Black Forest Labs | Flux image generation models, most photorealistic open model | open-source | [black-forest-labs/flux](https://github.com/black-forest-labs/flux) | - |
 | Inflection AI | Pi personal AI, enterprise foundation models | proprietary | [inflection.ai](https://inflection.ai) | - |
@@ -239,6 +240,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | OmniVoice | Multilingual text-to-speech model for reference-based voice cloning and attribute-based voice design, with noncommercial pretrained weights. | open-weight | [k2-fsa/OmniVoice](https://github.com/k2-fsa/OmniVoice) | - |
 | RF-DETR | Python package for transformer-based object detection and instance segmentation, with fine-tuning and model export tools; Plus components are separately licensed. | open-source | [roboflow/rf-detr](https://github.com/roboflow/rf-detr) | - |
 | Fish Speech | Text-to-speech models and inference tools for multilingual voice cloning, speaker control, and streamed audio, with model-specific license restrictions. | open-weight | [fishaudio/fish-speech](https://github.com/fishaudio/fish-speech) | - |
+| Next-Concept Modeling | Research framework for coarse-to-fine text generation using hierarchical discrete codes and parallel prediction within each level. | research | [HazyResearch/ncm](https://github.com/HazyResearch/ncm) | - |
 | SambaNova | Custom dataflow AI chips and cloud inference | proprietary | [sambanova.ai](https://sambanova.ai) | - |
 | Apple MLX | ML framework optimized for Apple Silicon | open-source | [ml-explore/mlx](https://github.com/ml-explore/mlx) | - |
 | Apple Core AI Models | Model export recipes, Python primitives, and Swift runtime utilities for on-device AI | open-source | [apple/coreai-models](https://github.com/apple/coreai-models) | - |
