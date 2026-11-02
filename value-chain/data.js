@@ -689,6 +689,9 @@ window.VC_DATA = {
     // -- Bookmark Intelligence Promotions --
     { id: "mainplane", name: "Mainplane", desc: "Self-hosted agent harness connecting model providers, worker computers and messaging connectors.", type: "open-source", url: "https://github.com/mainplane-ai/mainplane", github: "https://github.com/mainplane-ai/mainplane", directLayers: ["harness"], indirectLayers: ["integrations"], yc: null, subcategories: ["autonomous-agents","execution-environments"] },
 
+    // -- Bookmark Intelligence Promotions --
+    { id: "next-concept-modeling", name: "Next-Concept Modeling", desc: "Research framework for coarse-to-fine text generation using hierarchical discrete codes and parallel prediction within each level.", type: "research", url: "https://github.com/HazyResearch/ncm", github: "https://github.com/HazyResearch/ncm", directLayers: ["pretrain","inference"], indirectLayers: [], yc: null, subcategories: ["training-frameworks","performance-optimization"] },
+
     // ── L10 Eval & Safety ──
     { id: "braintrust", name: "Braintrust", desc: "Eval framework with logging and datasets", type: "managed", url: "https://www.braintrust.dev", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["evaluation"]},
     { id: "langfuse", name: "Langfuse", desc: "Open-source LLM observability and tracing", type: "open-source", url: "https://www.langfuse.com", github: "https://github.com/langfuse/langfuse", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
