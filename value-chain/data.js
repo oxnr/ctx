@@ -692,6 +692,9 @@ window.VC_DATA = {
     // -- Bookmark Intelligence Promotions --
     { id: "next-concept-modeling", name: "Next-Concept Modeling", desc: "Research framework for coarse-to-fine text generation using hierarchical discrete codes and parallel prediction within each level.", type: "research", url: "https://github.com/HazyResearch/ncm", github: "https://github.com/HazyResearch/ncm", directLayers: ["pretrain","inference"], indirectLayers: [], yc: null, subcategories: ["training-frameworks","performance-optimization"] },
 
+    // -- Bookmark Intelligence Promotions --
+    { id: "auto-ontology", name: "Auto-Ontology", desc: "Builds an ontology from database metadata to map business terms, SQL measures and table relationships, with human review and agent access through MCP and REST.", type: "open-source", url: "https://github.com/NVIDIA/auto-ontology", github: "https://github.com/NVIDIA/auto-ontology", directLayers: ["context"], indirectLayers: ["integrations"], yc: null, subcategories: ["context-management","retrieval-search","human-oversight"] },
+
     // ── L10 Eval & Safety ──
     { id: "braintrust", name: "Braintrust", desc: "Eval framework with logging and datasets", type: "managed", url: "https://www.braintrust.dev", github: null, directLayers: ["eval"], indirectLayers: [], yc: "S23", subcategories: ["evaluation"]},
     { id: "langfuse", name: "Langfuse", desc: "Open-source LLM observability and tracing", type: "open-source", url: "https://www.langfuse.com", github: "https://github.com/langfuse/langfuse", directLayers: ["eval"], indirectLayers: [], yc: null, subcategories: ["observability"]},
