@@ -621,6 +621,7 @@ Generated from `value-chain/data.js`. Do not hand-edit; run `node scripts/render
 | Summarize | Extracts and summarizes web pages, files, and audiovisual content through CLI and browser workflows. | open-source | [steipete/summarize](https://github.com/steipete/summarize) | - |
 | Supavec | Document ingestion and retrieval application with APIs for file and text uploads, embeddings, search, and chat. | open-source | [supavec/supavec](https://github.com/supavec/supavec) | - |
 | Beacon | Coding-agent memory layer documenting cross-harness session traces and reusable knowledge through MCP and Agent Skills. | open-source | [Asymptote-Labs/agent-beacon](https://github.com/Asymptote-Labs/agent-beacon) | - |
+| Auto-Ontology | Builds an ontology from database metadata to map business terms, SQL measures and table relationships, with human review and agent access through MCP and REST. | open-source | [NVIDIA/auto-ontology](https://github.com/NVIDIA/auto-ontology) | - |
 | Nomic | Open-source MoE embedding models with full transparency | open-source | [github.com](https://github.com/nomic-ai) | - |
 | Tavily | AI-native search API for agents and RAG pipelines | managed | [tavily.com](https://tavily.com) | - |
 | Exa | Embeddings-based semantic web search for LLMs | managed | [exa.ai](https://exa.ai) | - |
